@@ -1,0 +1,109 @@
+# Digicities ontology
+
+An open OWL/RDF ontology for describing city-scale energy systems, components, flows, and time-series data. Released under [CC BY 4.0](LICENSE).
+
+The ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...) plus a domain vocabulary covering energy carriers (electricity, heat, gas, fuels), converters, storage, sensors, meters, controllers, and the **15 attribute types** used to attach values to instances (physical, cost, categorical, event, geospatial, time-series, ...).
+
+It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform) (Streamlit UI + Docker stack + tutorials). The TTL is usable standalone with any RDF tool though. Load it into GraphDB, Stardog, Apache Jena, rdflib, or anything else that speaks Turtle.
+
+## What's in the box
+
+```
+core/
+├── dici_onto_core.ttl   # the ontology itself (~1.9k lines, ~133 classes)
+└── qudt_units.txt       # QUDT unit list referenced by Physical/Cost attributes
+docs/
+├── overview.md          # scope, design principles, namespaces
+├── attribute-types.md   # the 15 attribute-type classes and what they model
+├── class-hierarchy.md   # full class list grouped by upper concept
+└── CORE_EVOLUTION.md    # how workspace extensions become core
+tools/
+└── validate_extension.py  # library for partners to validate their workspace's extensions
+tests/
+└── test_parses.py       # rdflib smoke parse + sanity-check triple count
+```
+
+## Extensions live in workspaces, not here
+
+This repo holds **only the core ontology**, versioned and released. Extensions (new classes and properties your project needs) are authored in the workspace that uses them, in the workspace's own `ontology/extensions/*.ttl` files. Extensions use the same `dici_onto:` namespace as core. Two reasons:
+
+- SPARQL queries find core and extension terms uniformly. No UNION over multiple namespaces.
+- Concepts that later get promoted into core don't change IRI. Workspace data and queries keep working unchanged.
+
+See [`docs/CORE_EVOLUTION.md`](docs/CORE_EVOLUTION.md) for the full model: the three-stage workspace → multi-workspace → core lifecycle, the service compatibility contract, and what's deferred until the corpus matures.
+
+The [REFORMERS corpus](https://github.com/REFORMERS-EnergyValleys/REFORMERS_Ontology-Extensions-and-Knowledge-Graphs) is a working example of partners authoring extensions in their own workspaces.
+
+When you've drafted an extension TTL in your workspace, validate it locally:
+
+```bash
+python tools/validate_extension.py /path/to/<workspace>/ontology/extensions/<your_extension>.ttl
+```
+
+(The platform's workspace provisioner runs an equivalent parse check at workspace open. Running the script locally is faster.)
+
+## Quick start (Python / rdflib)
+
+```bash
+pip install rdflib
+```
+
+```python
+import rdflib
+g = rdflib.Graph()
+g.parse("core/dici_onto_core.ttl", format="turtle")
+print(len(g), "triples")
+```
+
+## Quick start (GraphDB / Stardog / Jena)
+
+Drop `core/dici_onto_core.ttl` into your triplestore as a named graph. The platform uses `<http://classes_and_attributes>`. The ontology declares itself as `<https://digicities.info/ontology>` and uses the `dici_onto:` prefix (`https://digicities.info/ontology#`).
+
+## Namespace
+
+Canonical prefix: `dici_onto: <https://digicities.info/ontology#>`
+
+The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/qudt/`, `http://qudt.org/vocab/unit/`) and QUDT currencies (`http://qudt.org/vocab/currency/`) for monetary values.
+
+## Versioning
+
+Semver. The current release is **v0.1.0**, the initial public snapshot of the core ontology.
+
+Downstream consumers (notably the Digicities platform) vendor a tagged copy of `core/dici_onto_core.ttl` rather than depending on this repo at build time. The platform records the vendored version in its own `services/graphdb/ontology/VERSION` file.
+
+## Contributing
+
+Issues and PRs welcome. For new classes or attribute types, please:
+
+1. Add a clear `rdfs:label` and `rdfs:comment` in English.
+2. Pick the right parent class. Most domain classes inherit from `Component`, `Process`, `Flow`, or `Resource`.
+3. Run `pytest` to confirm the file still parses.
+
+## Funding & acknowledgements
+
+Digicities was funded through the SFOE P+D program under the ERA-Net Smart Energy Systems joint initiative *Digital Transformation for the Energy Transition*, grant agreement No 88397.
+
+The authors thank all Digicities project collaborators and contributors who helped guide the development of the platform and the ontology.
+
+The open-source release of this project (repository split, license audit, CI scaffolding, deployment documentation) was prepared with the assistance of [Claude Code](https://claude.com/claude-code).
+
+## How to cite
+
+If you use the Digicities ontology in published work, please cite it:
+
+```bibtex
+@dataset{digicities-ontology,
+  title  = {Digicities Ontology},
+  author = {Allan, James},
+  year   = {2026},
+  url    = {https://github.com/uesl-empa/digicities-ontology},
+}
+```
+
+Or in prose: *"... modelled using the Digicities ontology (https://github.com/uesl-empa/digicities-ontology)."*
+
+If you also use the platform, please cite it separately. See [`digicities-platform`](https://github.com/uesl-empa/digicities-platform#how-to-cite).
+
+## License
+
+[Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0). You may use, redistribute, and adapt the ontology for any purpose, including commercial, as long as you give appropriate credit.
