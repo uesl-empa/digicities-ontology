@@ -1,10 +1,16 @@
 # Digicities ontology
 
-An open OWL/RDF ontology for describing city-scale energy systems, components, flows, and time-series data. Released under [CC BY 4.0](LICENSE).
+An open OWL/RDF ontology (CC BY 4.0) for describing **anything as a thing with attributes** — and connecting the people who publish data about those things, model them, and build on them.
 
-The ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...) plus a domain vocabulary covering energy carriers (electricity, heat, gas, fuels), converters, storage, sensors, meters, controllers, and the **15 attribute types** used to attach values to instances (physical, cost, categorical, event, geospatial, time-series, ...).
+Its core commitment is deliberately general: whatever you're describing — a building, a turbine, a district, a sensor, a market, a material, a process — is a *thing with attributes*. Because every party names the world the same way, the ontology becomes a shared language across a whole value chain:
 
-It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform) (Streamlit UI + Docker stack + tutorials). The TTL is usable standalone with any RDF tool though. Load it into GraphDB, Stardog, Apache Jena, rdflib, or anything else that speaks Turtle.
+- **Data publishers** describe things and release trustworthy, self-describing data about them.
+- **Modelers** assemble those same things into digital replicas of real systems.
+- **Developers** specify requirements and build services that act on them.
+
+Define a thing once, and it can be published, replicated, and built upon without translation at each handoff — so value flows along the chain instead of stalling between the people who produce data, model it, and put it to work. Energy systems are where this began and where it's proven, not the boundary.
+
+Concretely, the ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...), a domain vocabulary (energy carriers, converters, storage, sensors, meters, controllers), and the **15 attribute types** used to attach values to instances (physical, cost, categorical, event, geospatial, time-series, ...). It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform), but the TTL is usable standalone with any RDF tool — GraphDB, Stardog, Apache Jena, rdflib, or anything that speaks Turtle.
 
 ## Structure
 
