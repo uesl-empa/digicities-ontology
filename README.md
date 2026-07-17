@@ -6,7 +6,7 @@ The ontology defines a small set of upper-level classes (`Component`, `Process`,
 
 It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform) (Streamlit UI + Docker stack + tutorials). The TTL is usable standalone with any RDF tool though. Load it into GraphDB, Stardog, Apache Jena, rdflib, or anything else that speaks Turtle.
 
-## What's in the box
+## Structure
 
 ```
 core/
@@ -23,7 +23,7 @@ tests/
 └── test_parses.py       # rdflib smoke parse + sanity-check triple count
 ```
 
-## Extensions live in workspaces, not here
+## Managing Ontology Extensions
 
 This repo holds **only the core ontology**, versioned and released. Extensions (new classes and properties your project needs) are authored in the workspace that uses them, in the workspace's own `ontology/extensions/*.ttl` files. Extensions use the same `dici_onto:` namespace as core. Two reasons:
 
@@ -31,8 +31,6 @@ This repo holds **only the core ontology**, versioned and released. Extensions (
 - Concepts that later get promoted into core don't change IRI. Workspace data and queries keep working unchanged.
 
 See [`docs/CORE_EVOLUTION.md`](docs/CORE_EVOLUTION.md) for the full model: the three-stage workspace → multi-workspace → core lifecycle, the service compatibility contract, and what's deferred until the corpus matures.
-
-The [REFORMERS corpus](https://github.com/REFORMERS-EnergyValleys/REFORMERS_Ontology-Extensions-and-Knowledge-Graphs) is a working example of partners authoring extensions in their own workspaces.
 
 When you've drafted an extension TTL in your workspace, validate it locally:
 
@@ -55,7 +53,7 @@ g.parse("core/dici_onto_core.ttl", format="turtle")
 print(len(g), "triples")
 ```
 
-## Quick start (GraphDB / Stardog / Jena)
+## Quick start
 
 Drop `core/dici_onto_core.ttl` into your triplestore as a named graph. The platform uses `<http://classes_and_attributes>`. The ontology declares itself as `<https://digicities.info/ontology>` and uses the `dici_onto:` prefix (`https://digicities.info/ontology#`).
 
