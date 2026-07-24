@@ -26,7 +26,14 @@ Exits non-zero if any file fails one of these checks:
    always a mistake.
 5. **Labels & comments** — every newly declared class/property carries an
    `rdfs:label` and an `rdfs:comment`. The whole point of a shared
-   vocabulary is that humans can read it. Unlabelled terms are noise.
+   vocabulary is that humans — and the agents that map new usecases onto
+   it — can read it. Unlabelled terms are noise.
+6. **Mapping annotations (warnings)** — classes should also carry
+   `skos:definition`, `skos:altLabel` (synonyms) and `skos:example`.
+   These are what let an onboarding agent decide that e.g. a `WindPark`
+   belongs under `Location` without guessing from the name. Missing ones
+   warn rather than fail, but terms promoted to core must have them (see
+   `docs/CORE_EVOLUTION.md`).
 
 ## Usage
 
@@ -62,7 +69,7 @@ from pathlib import Path
 from typing import Iterable
 
 import rdflib
-from rdflib.namespace import OWL, RDF, RDFS
+from rdflib.namespace import OWL, RDF, RDFS, SKOS
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CORE_TTL = REPO_ROOT / "core" / "dici_onto_core.ttl"
@@ -141,14 +148,30 @@ def validate(path: Path, core: rdflib.Graph) -> Report:
                 f"class `{cls}` has no rdfs:subClassOf — every extension class must declare a parent"
             )
 
-    # 5. Labels and comments.
+    # 5. Labels and comments. Both are required: labels for humans,
+    # comments because they are the minimum machine-readable description
+    # an onboarding agent has to map concepts onto the vocabulary.
     for iri in sorted(all_terms):
         labels = list(g.objects(iri, RDFS.label))
         comments = list(g.objects(iri, RDFS.comment))
         if not labels:
             report.errors.append(f"`{iri}` is missing rdfs:label")
         if not comments:
-            report.warnings.append(f"`{iri}` is missing rdfs:comment")
+            report.errors.append(
+                f"`{iri}` is missing rdfs:comment — agents and other partners "
+                "map onto this vocabulary through descriptions, not names"
+            )
+
+    # 6. Mapping annotations (SKOS) — warn, don't fail. Terms promoted to
+    # core must carry these (docs/CORE_EVOLUTION.md promotion criteria).
+    for cls in sorted(classes):
+        for pred, what in (
+            (SKOS.definition, "skos:definition (precise meaning)"),
+            (SKOS.altLabel, "skos:altLabel (synonyms other partners might search for)"),
+            (SKOS.example, "skos:example (example instances or subclasses)"),
+        ):
+            if not list(g.objects(cls, pred)):
+                report.warnings.append(f"`{cls}` has no {what}")
 
     return report
 

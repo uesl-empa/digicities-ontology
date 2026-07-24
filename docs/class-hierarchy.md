@@ -1,6 +1,6 @@
 # Class hierarchy
 
-Full list of classes defined in `core/dici_onto_core.ttl`, grouped by upper concept. To regenerate this list, run:
+Full list of classes defined in `core/dici_onto_core.ttl`, grouped by upper concept. For per-term descriptions, synonyms and examples (the annotations agents map new concepts with), see the generated [term index](term-index.md) and the [mapping guide](AGENT_MAPPING_GUIDE.md). To regenerate this list, run:
 
 ```python
 import rdflib

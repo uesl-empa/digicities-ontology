@@ -1,0 +1,5879 @@
+{
+  "_note": "GENERATED FILE - do not edit. Regenerate with: python tools/generate_term_index.py",
+  "terms": [
+    {
+      "iri": "https://digicities.info/ontology#Author",
+      "name": "Author",
+      "kind": "annotationProperty",
+      "label": "author",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Provenance annotation naming the author of a term or graph",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Collaborator",
+      "name": "Collaborator",
+      "kind": "annotationProperty",
+      "label": "collaborator",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Provenance annotation naming a collaborator on a term or graph",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Institution",
+      "name": "Institution",
+      "kind": "annotationProperty",
+      "label": "institution",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Provenance annotation naming the institution behind a term or graph",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Synonymous",
+      "name": "Synonymous",
+      "kind": "annotationProperty",
+      "label": "synonymous",
+      "parents": [
+        "altLabel"
+      ],
+      "parentChainToRoot": [
+        "altLabel"
+      ],
+      "comment": "Legacy synonym annotation; prefer skos:altLabel for new terms",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#abbreviation",
+      "name": "abbreviation",
+      "kind": "annotationProperty",
+      "label": "abbreviation",
+      "parents": [
+        "altLabel"
+      ],
+      "parentChainToRoot": [
+        "altLabel"
+      ],
+      "comment": "Legacy abbreviation annotation; prefer skos:altLabel for new terms",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#definition",
+      "name": "definition",
+      "kind": "annotationProperty",
+      "label": "definition",
+      "parents": [
+        "definition"
+      ],
+      "parentChainToRoot": [
+        "definition"
+      ],
+      "comment": "Legacy definition annotation; prefer skos:definition for new terms",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDefaultUnit",
+      "name": "hasDefaultUnit",
+      "kind": "annotationProperty",
+      "label": "has default unit",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Annotation on an attribute class giving the default QUDT unit for its instances",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasQuantityKind",
+      "name": "hasQuantityKind",
+      "kind": "annotationProperty",
+      "label": "has quantity kind",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Annotation on an attribute class giving the QUDT quantity kind its values measure",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Actor",
+      "name": "Actor",
+      "kind": "class",
+      "label": "Actor",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Human or organizational agent that owns, operates, or regulates components",
+      "definition": "Actors represent stakeholders in the energy system including operators, regulators, consumers, and policy makers",
+      "altLabels": [
+        "Operator",
+        "Organisation",
+        "Owner",
+        "Stakeholder"
+      ],
+      "examples": [
+        "A utility company, a grid operator, a municipality, a household, a regulator"
+      ],
+      "scopeNote": "Use for humans and organisations that own, operate or regulate components. Automatic acting equipment is a Device (Actuator, Controller), not an Actor."
+    },
+    {
+      "iri": "https://digicities.info/ontology#ActorAttribute",
+      "name": "ActorAttribute",
+      "kind": "class",
+      "label": "Actor Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Actor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Actuator",
+      "name": "Actuator",
+      "kind": "class",
+      "label": "Actuator",
+      "parents": [
+        "Device"
+      ],
+      "parentChainToRoot": [
+        "Device",
+        "Component"
+      ],
+      "comment": "Device that converts control signals into physical action",
+      "definition": "Actuators are devices that produce motion or control mechanisms based on input signals",
+      "altLabels": [],
+      "examples": [
+        "Valve actuator, damper motor, relay"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ActuatorAttribute",
+      "name": "ActuatorAttribute",
+      "kind": "class",
+      "label": "Actuator Attribute",
+      "parents": [
+        "DeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Actuator; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ActuatorPosition",
+      "name": "ActuatorPosition",
+      "kind": "class",
+      "label": "Actuator Position",
+      "parents": [
+        "ActuatorAttribute"
+      ],
+      "parentChainToRoot": [
+        "ActuatorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Current position or state of an actuator",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "PERCENT"
+    },
+    {
+      "iri": "https://digicities.info/ontology#Assumption",
+      "name": "Assumption",
+      "kind": "class",
+      "label": "Assumption",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A modification rule applied to attributes when deriving a scenario",
+      "definition": null,
+      "altLabels": [
+        "Modifier",
+        "What-if Change"
+      ],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#AssumptionSeries",
+      "name": "AssumptionSeries",
+      "kind": "class",
+      "label": "Assumption (series)",
+      "parents": [
+        "Assumption"
+      ],
+      "parentChainToRoot": [
+        "Assumption"
+      ],
+      "comment": "Assumption modifying a series of values over time",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#AssumptionSingle",
+      "name": "AssumptionSingle",
+      "kind": "class",
+      "label": "Assumption (single value)",
+      "parents": [
+        "Assumption"
+      ],
+      "parentChainToRoot": [
+        "Assumption"
+      ],
+      "comment": "Assumption modifying a single scalar attribute value",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Attribute",
+      "name": "Attribute",
+      "kind": "class",
+      "label": "Attribute",
+      "parents": [
+        "Thing"
+      ],
+      "parentChainToRoot": [
+        "Thing"
+      ],
+      "comment": "Root class for measurable or descriptive properties attached to Components",
+      "definition": "An Attribute is a typed property-value node attached to a Component via dici_onto:hasAttribute (or a subproperty); the value itself is carried by qudt:value or another hasAttributeValue subproperty.",
+      "altLabels": [
+        "Characteristic",
+        "Field",
+        "Parameter",
+        "Property",
+        "Variable"
+      ],
+      "examples": [
+        "Rated power, floor area, insulation class, electricity demand profile"
+      ],
+      "scopeNote": "Concrete attribute classes subclass BOTH a kind (PhysicalAttribute, CategoricalAttribute, DynamicAttribute, ...) AND the owning component's attribute-group class (e.g. TurbineAttribute)."
+    },
+    {
+      "iri": "https://digicities.info/ontology#CategoricalAttribute",
+      "name": "CategoricalAttribute",
+      "kind": "class",
+      "label": "Categorical Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute whose value is one of an enumerated set of categories",
+      "definition": "An attribute whose value is drawn from a closed set of named categories; the allowed values are declared as subclasses of the attribute class.",
+      "altLabels": [],
+      "examples": [
+        "Insulation class (Poor / Average / Good), tariff type (Flat / Variable / Dual)"
+      ],
+      "scopeNote": "Declare the allowed values as subclasses of the concrete attribute class."
+    },
+    {
+      "iri": "https://digicities.info/ontology#CircuitBreaker",
+      "name": "CircuitBreaker",
+      "kind": "class",
+      "label": "Circuit Breaker",
+      "parents": [
+        "Switch"
+      ],
+      "parentChainToRoot": [
+        "Switch",
+        "Device",
+        "Component"
+      ],
+      "comment": "Switch that automatically interrupts electrical flow for safety",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ColdCarrier",
+      "name": "ColdCarrier",
+      "kind": "class",
+      "label": "Cold Carrier",
+      "parents": [
+        "ThermalEnergyCarrier"
+      ],
+      "parentChainToRoot": [
+        "ThermalEnergyCarrier",
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Thermal energy carrier delivering cooling",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Chilled water, brine"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ColdCarrierAttribute",
+      "name": "ColdCarrierAttribute",
+      "kind": "class",
+      "label": "Cold Carrier Attribute",
+      "parents": [
+        "ThermalEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "ThermalEnergyCarrierAttribute",
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Cold Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Component",
+      "name": "Component",
+      "kind": "class",
+      "label": "Component",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root class for every entity that can appear in a digital replica: infrastructure, places, actors, resources, flows and processes",
+      "definition": "The universal base class for things that exist in a modelled system. Every domain concept that represents an entity (rather than a measurable property) must be a direct or indirect subclass of Component.",
+      "altLabels": [
+        "Asset",
+        "Entity",
+        "System Element"
+      ],
+      "examples": [
+        "Buildings, turbines, districts, pipes, energy carriers, grid operators"
+      ],
+      "scopeNote": "Every new component type in an extension must be rdfs:subClassOf* Component or it will not appear in the platform UI. Measurable properties are NOT Components - subclass Attribute instead."
+    },
+    {
+      "iri": "https://digicities.info/ontology#ComponentAttribute",
+      "name": "ComponentAttribute",
+      "kind": "class",
+      "label": "Component Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Component; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ComponentAttributeRequirement",
+      "name": "ComponentAttributeRequirement",
+      "kind": "class",
+      "label": "Component-Attribute Requirement",
+      "parents": [
+        "ServiceRequirement"
+      ],
+      "parentChainToRoot": [
+        "ServiceRequirement"
+      ],
+      "comment": "Service requirement demanding that a component carries a given attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ComponentComponentRequirement",
+      "name": "ComponentComponentRequirement",
+      "kind": "class",
+      "label": "Component-Component Requirement",
+      "parents": [
+        "ServiceRequirement"
+      ],
+      "parentChainToRoot": [
+        "ServiceRequirement"
+      ],
+      "comment": "Service requirement demanding that two components are linked",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ComponentLink",
+      "name": "ComponentLink",
+      "kind": "class",
+      "label": "Component Link",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Reified edge connecting two components in a scenario, via hasInputEntity and linksInputEntityTo",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Controller",
+      "name": "Controller",
+      "kind": "class",
+      "label": "Controller",
+      "parents": [
+        "Device"
+      ],
+      "parentChainToRoot": [
+        "Device",
+        "Component"
+      ],
+      "comment": "Device that manages and coordinates other devices or processes",
+      "definition": "Controllers implement control logic and coordinate the operation of other system components",
+      "altLabels": [
+        "BMS",
+        "Building Management System",
+        "Control Unit"
+      ],
+      "examples": [
+        "Thermostat, building management system, SCADA controller"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ControllerAttribute",
+      "name": "ControllerAttribute",
+      "kind": "class",
+      "label": "Controller Attribute",
+      "parents": [
+        "DeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Controller; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ConversionProcess",
+      "name": "ConversionProcess",
+      "kind": "class",
+      "label": "Conversion Process",
+      "parents": [
+        "Process"
+      ],
+      "parentChainToRoot": [
+        "Process",
+        "Component"
+      ],
+      "comment": "Process that converts one form of energy to another",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Gas to heat in a boiler; electricity to heat in a heat pump"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ConversionProcessAttribute",
+      "name": "ConversionProcessAttribute",
+      "kind": "class",
+      "label": "Conversion Process Attribute",
+      "parents": [
+        "ProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "ProcessAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Conversion Process; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Converter",
+      "name": "Converter",
+      "kind": "class",
+      "label": "Converter",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Component that transforms an input into a different output form (energy or material)",
+      "definition": "A machine or installation that converts energy from one form or carrier to another, or transforms materials. The equipment is the Converter; the transformation activity it performs is a ConversionProcess.",
+      "altLabels": [
+        "Conversion Unit",
+        "Transformer"
+      ],
+      "examples": [
+        "Heat pump, boiler, electrolyser, turbine, inverter"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ConverterAttribute",
+      "name": "ConverterAttribute",
+      "kind": "class",
+      "label": "Converter Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Converter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#CurveAttribute",
+      "name": "CurveAttribute",
+      "kind": "class",
+      "label": "Curve Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute represented by x-y coordinate pairs forming a curve",
+      "definition": "An attribute represented by a set of x,y coordinate pairs forming a curve",
+      "altLabels": [],
+      "examples": [
+        "Heat pump COP as a function of outdoor temperature"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#CustomPhysicalRatioAttribute",
+      "name": "CustomPhysicalRatioAttribute",
+      "kind": "class",
+      "label": "Custom Physical Ratio Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "An attribute whose unit is a ratio of two QUDT units (numerator/denominator). The ratio is expressed as a human-readable string via dici_onto:hasUnitLabel (e.g. 'KWh/yr'). The constituent units are constrained by dici_onto:hasRatioUnits on the subclass definition. Unlike Physical attributes, no qudt:unit IRI is emitted for this type — dici_onto:hasUnitLabel is the sole unit representation.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Damper",
+      "name": "Damper",
+      "kind": "class",
+      "label": "Damper",
+      "parents": [
+        "Actuator"
+      ],
+      "parentChainToRoot": [
+        "Actuator",
+        "Device",
+        "Component"
+      ],
+      "comment": "Actuator that controls air flow",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Device",
+      "name": "Device",
+      "kind": "class",
+      "label": "Device",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Physical or virtual devices that monitor, control, or measure components in the energy system",
+      "definition": "Devices are components that provide sensing, actuation, measurement, or control capabilities within the energy system",
+      "altLabels": [
+        "Equipment",
+        "Instrument"
+      ],
+      "examples": [
+        "Sensors, meters, controllers, switches, actuators"
+      ],
+      "scopeNote": "Use for monitoring, control and measurement equipment. Machinery that converts or stores energy belongs under Converter or Storage, not Device."
+    },
+    {
+      "iri": "https://digicities.info/ontology#DeviceAttribute",
+      "name": "DeviceAttribute",
+      "kind": "class",
+      "label": "Device Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Device; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#DynamicAttribute",
+      "name": "DynamicAttribute",
+      "kind": "class",
+      "label": "Dynamic Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute whose value varies over time and is backed by time series data",
+      "definition": "An attribute whose value is a function of time rather than a single number; its data lives in linked TimeSeries nodes or external time series references.",
+      "altLabels": [],
+      "examples": [
+        "Electricity demand profile, wind speed series, outdoor temperature"
+      ],
+      "scopeNote": "Link the data via hasTimeSeries or the time-series reference properties; forecasts use FutureTimeSeries, measurements HistoricTimeSeries."
+    },
+    {
+      "iri": "https://digicities.info/ontology#Efficiency",
+      "name": "Efficiency",
+      "kind": "class",
+      "label": "Efficiency",
+      "parents": [
+        "ConversionProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "ConversionProcessAttribute",
+        "ProcessAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Conversion efficiency of a process",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "PERCENT"
+    },
+    {
+      "iri": "https://digicities.info/ontology#ElectricityCarrier",
+      "name": "ElectricityCarrier",
+      "kind": "class",
+      "label": "Electricity Carrier",
+      "parents": [
+        "EnergyCarrier"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Energy carrier for electrical energy",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Grid electricity, self-generated PV electricity"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ElectricityCarrierAttribute",
+      "name": "ElectricityCarrierAttribute",
+      "kind": "class",
+      "label": "Electricity Carrier Attribute",
+      "parents": [
+        "EnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Electricity Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ElectricityDemandProfile",
+      "name": "ElectricityDemandProfile",
+      "kind": "class",
+      "label": "Electricity Demand Profile",
+      "parents": [
+        "DynamicAttribute"
+      ],
+      "parentChainToRoot": [
+        "DynamicAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "A dynamic attribute representing the electricity demand over time",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW",
+      "quantityKind": "Power"
+    },
+    {
+      "iri": "https://digicities.info/ontology#ElectricityFlow",
+      "name": "ElectricityFlow",
+      "kind": "class",
+      "label": "Electricity Flow",
+      "parents": [
+        "EnergyCarrierFlow"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlow",
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of electrical energy between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW"
+    },
+    {
+      "iri": "https://digicities.info/ontology#ElectricityMeter",
+      "name": "ElectricityMeter",
+      "kind": "class",
+      "label": "Electricity Meter",
+      "parents": [
+        "Meter"
+      ],
+      "parentChainToRoot": [
+        "Meter",
+        "Device",
+        "Component"
+      ],
+      "comment": "Meter recording cumulative electrical energy consumption or production",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW-HR"
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyCarrier",
+      "name": "EnergyCarrier",
+      "kind": "class",
+      "label": "Energy Carrier",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "The medium or commodity form in which energy is stored, transported and consumed",
+      "definition": "An energy vector: the commodity that carries energy through the system, independent of the infrastructure that moves it.",
+      "altLabels": [
+        "Energy Commodity",
+        "Energy Vector"
+      ],
+      "examples": [
+        "Electricity, district heat, natural gas, hydrogen, biomass"
+      ],
+      "scopeNote": "EnergyCarrier is the commodity (what), Flow is its movement (the transfer), Network is the infrastructure it moves through."
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyCarrierAttribute",
+      "name": "EnergyCarrierAttribute",
+      "kind": "class",
+      "label": "Energy Carrier Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Energy Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyCarrierFlow",
+      "name": "EnergyCarrierFlow",
+      "kind": "class",
+      "label": "Energy Carrier Flow",
+      "parents": [
+        "Flow"
+      ],
+      "parentChainToRoot": [
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of energy carriers between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Electricity flow, heat flow, gas flow"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyCarrierFlowAttribute",
+      "name": "EnergyCarrierFlowAttribute",
+      "kind": "class",
+      "label": "Energy Carrier Flow Attribute",
+      "parents": [
+        "FlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Energy Carrier Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyConsumer",
+      "name": "EnergyConsumer",
+      "kind": "class",
+      "label": "Energy Consumer",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Component whose primary role is to consume energy",
+      "definition": "A component that takes energy out of the system for an end use. Consumers are the demand side: they receive flows but do not transform them into another carrier.",
+      "altLabels": [
+        "Demand",
+        "Energy Sink",
+        "Load"
+      ],
+      "examples": [
+        "A building heating load, an EV charging station, an industrial process line"
+      ],
+      "scopeNote": "Use for demand-side entities. A component that transforms energy onward rather than consuming it is a Converter."
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyConsumerAttribute",
+      "name": "EnergyConsumerAttribute",
+      "kind": "class",
+      "label": "Energy Consumer Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Energy Consumer; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyConverter",
+      "name": "EnergyConverter",
+      "kind": "class",
+      "label": "Energy Converter",
+      "parents": [
+        "Converter"
+      ],
+      "parentChainToRoot": [
+        "Converter",
+        "Component"
+      ],
+      "comment": "Converter transforming energy between carriers or forms",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Heat pump, boiler, fuel cell, inverter, wind turbine generator"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyConverterAttribute",
+      "name": "EnergyConverterAttribute",
+      "kind": "class",
+      "label": "Energy Converter Attribute",
+      "parents": [
+        "ConverterAttribute"
+      ],
+      "parentChainToRoot": [
+        "ConverterAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Energy Converter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyGenerator",
+      "name": "EnergyGenerator",
+      "kind": "class",
+      "label": "Energy Generator",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Component whose primary role is to produce energy",
+      "definition": "A component that injects energy into the system. Generators are the supply side: the equipment that produces an energy carrier from a resource or fuel.",
+      "altLabels": [
+        "Energy Source",
+        "Generator",
+        "Power Plant",
+        "Producer"
+      ],
+      "examples": [
+        "PV plant, diesel genset, CHP unit"
+      ],
+      "scopeNote": "The generating equipment is an EnergyGenerator (or a Converter subclass such as Turbine); the site it stands on (e.g. a wind park as a place) is a Location."
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyGeneratorAttribute",
+      "name": "EnergyGeneratorAttribute",
+      "kind": "class",
+      "label": "EnergyGenerator Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Energy Generator; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyStorage",
+      "name": "EnergyStorage",
+      "kind": "class",
+      "label": "Energy Storage",
+      "parents": [
+        "Storage"
+      ],
+      "parentChainToRoot": [
+        "Storage",
+        "Component"
+      ],
+      "comment": "Storage holding energy for later use",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Battery, thermal storage tank, hydrogen storage"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EnergyStorageAttribute",
+      "name": "EnergyStorageAttribute",
+      "kind": "class",
+      "label": "Energy Storage Attribute",
+      "parents": [
+        "StorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "StorageAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Energy Storage; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#EventAttribute",
+      "name": "EventAttribute",
+      "kind": "class",
+      "label": "Event Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute describing discrete events in time",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Outage event, maintenance window"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Flow",
+      "name": "Flow",
+      "kind": "class",
+      "label": "Flow",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Represents the movement or transfer of energy, materials, or information between components",
+      "definition": "A flow captures the dynamic transfer of entities (energy carriers, materials, etc.) between system components, including quantity, direction, and temporal characteristics",
+      "altLabels": [
+        "Stream",
+        "Transfer"
+      ],
+      "examples": [
+        "Electricity flow from the grid to a building; heat flow from a plant into a district network"
+      ],
+      "scopeNote": "A Flow connects a source Component to a destination Component (hasSource / hasDestination) and carries a Resource or EnergyCarrier (carriesResource). Use the typed subclasses (ElectricityFlow, HeatFlow, ...) where one fits."
+    },
+    {
+      "iri": "https://digicities.info/ontology#FlowAttribute",
+      "name": "FlowAttribute",
+      "kind": "class",
+      "label": "Flow Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#FlowCapacity",
+      "name": "FlowCapacity",
+      "kind": "class",
+      "label": "Flow Capacity",
+      "parents": [
+        "FlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Maximum flow rate capacity",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW"
+    },
+    {
+      "iri": "https://digicities.info/ontology#FlowRate",
+      "name": "FlowRate",
+      "kind": "class",
+      "label": "Flow Rate",
+      "parents": [
+        "FlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Rate of flow over time",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW"
+    },
+    {
+      "iri": "https://digicities.info/ontology#FlowSensor",
+      "name": "FlowSensor",
+      "kind": "class",
+      "label": "Flow Sensor",
+      "parents": [
+        "Sensor"
+      ],
+      "parentChainToRoot": [
+        "Sensor",
+        "Device",
+        "Component"
+      ],
+      "comment": "Sensor measuring volumetric or mass flow rate",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "M3-PER-SEC"
+    },
+    {
+      "iri": "https://digicities.info/ontology#FuelCarrier",
+      "name": "FuelCarrier",
+      "kind": "class",
+      "label": "Fuel Carrier",
+      "parents": [
+        "EnergyCarrier"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Combustible energy carrier",
+      "definition": null,
+      "altLabels": [
+        "Fuel"
+      ],
+      "examples": [
+        "Natural gas, heating oil, wood pellets, hydrogen"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#FuelCarrierAttribute",
+      "name": "FuelCarrierAttribute",
+      "kind": "class",
+      "label": "Fuel Carrier Attribute",
+      "parents": [
+        "EnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Fuel Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#FutureTimeSeries",
+      "name": "FutureTimeSeries",
+      "kind": "class",
+      "label": "Future Time Series",
+      "parents": [
+        "TimeSeries"
+      ],
+      "parentChainToRoot": [
+        "TimeSeries"
+      ],
+      "comment": "Time series data representing forecasted or projected future values",
+      "definition": null,
+      "altLabels": [
+        "Forecast",
+        "Prediction",
+        "Projection"
+      ],
+      "examples": [],
+      "scopeNote": "A wind, weather or demand forecast attaches to a DynamicAttribute via hasFutureTimeSeries."
+    },
+    {
+      "iri": "https://digicities.info/ontology#GasFlow",
+      "name": "GasFlow",
+      "kind": "class",
+      "label": "Gas Flow",
+      "parents": [
+        "EnergyCarrierFlow"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlow",
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of gaseous fuel between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "M3-PER-SEC"
+    },
+    {
+      "iri": "https://digicities.info/ontology#GasMeter",
+      "name": "GasMeter",
+      "kind": "class",
+      "label": "Gas Meter",
+      "parents": [
+        "Meter"
+      ],
+      "parentChainToRoot": [
+        "Meter",
+        "Device",
+        "Component"
+      ],
+      "comment": "Meter recording cumulative gas volume consumed",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "M3"
+    },
+    {
+      "iri": "https://digicities.info/ontology#GaseousFuelCarrier",
+      "name": "GaseousFuelCarrier",
+      "kind": "class",
+      "label": "Gaseous Fuel Carrier",
+      "parents": [
+        "FuelCarrier"
+      ],
+      "parentChainToRoot": [
+        "FuelCarrier",
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Fuel carrier in gaseous form",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Natural gas, biogas, hydrogen"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#GaseousFuelCarrierAttribute",
+      "name": "GaseousFuelCarrierAttribute",
+      "kind": "class",
+      "label": "Gaseous Fuel Carrier Attribute",
+      "parents": [
+        "FuelCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "FuelCarrierAttribute",
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Gaseous Fuel Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#GeospatialAttribute",
+      "name": "GeospatialAttribute",
+      "kind": "class",
+      "label": "Geospatial Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute holding geographic data such as coordinates or geometries",
+      "definition": "An attribute whose value is geographic: coordinates, geometries or other spatial references locating a component on a map.",
+      "altLabels": [],
+      "examples": [
+        "Latitude and longitude of a site; a boundary polygon"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#HeatCarrier",
+      "name": "HeatCarrier",
+      "kind": "class",
+      "label": "Heat Carrier",
+      "parents": [
+        "ThermalEnergyCarrier"
+      ],
+      "parentChainToRoot": [
+        "ThermalEnergyCarrier",
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Thermal energy carrier delivering heat",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "District heating water, steam"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#HeatCarrierAttribute",
+      "name": "HeatCarrierAttribute",
+      "kind": "class",
+      "label": "Heat Carrier Attribute",
+      "parents": [
+        "ThermalEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "ThermalEnergyCarrierAttribute",
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Heat Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#HeatFlow",
+      "name": "HeatFlow",
+      "kind": "class",
+      "label": "Heat Flow",
+      "parents": [
+        "EnergyCarrierFlow"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlow",
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of thermal energy between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW"
+    },
+    {
+      "iri": "https://digicities.info/ontology#HeatMeter",
+      "name": "HeatMeter",
+      "kind": "class",
+      "label": "Heat Meter",
+      "parents": [
+        "Meter"
+      ],
+      "parentChainToRoot": [
+        "Meter",
+        "Device",
+        "Component"
+      ],
+      "comment": "Meter recording cumulative thermal energy delivered",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW-HR"
+    },
+    {
+      "iri": "https://digicities.info/ontology#HistoricTimeSeries",
+      "name": "HistoricTimeSeries",
+      "kind": "class",
+      "label": "Historic Time Series",
+      "parents": [
+        "TimeSeries"
+      ],
+      "parentChainToRoot": [
+        "TimeSeries"
+      ],
+      "comment": "Time series data representing past measurements or observations",
+      "definition": null,
+      "altLabels": [
+        "Historical Data",
+        "Measured Data"
+      ],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#InformationFlow",
+      "name": "InformationFlow",
+      "kind": "class",
+      "label": "Information Flow",
+      "parents": [
+        "Flow"
+      ],
+      "parentChainToRoot": [
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of information or control signals between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Sensor readings sent to a controller; a control signal sent to an actuator"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#InformationFlowAttribute",
+      "name": "InformationFlowAttribute",
+      "kind": "class",
+      "label": "Information Flow Attribute",
+      "parents": [
+        "FlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Information Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Junction",
+      "name": "Junction",
+      "kind": "class",
+      "label": "Junction",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Component where multiple flows meet or diverge",
+      "definition": "Junctions represent nodes where flows can be split, merged, or redirected without transformation",
+      "altLabels": [
+        "Bus",
+        "Connection Point",
+        "Node"
+      ],
+      "examples": [
+        "Electrical busbar, pipe tee, district-heating manifold"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#JunctionAttribute",
+      "name": "JunctionAttribute",
+      "kind": "class",
+      "label": "Junction Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Junction; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#LiquidFuel",
+      "name": "LiquidFuel",
+      "kind": "class",
+      "label": "Liquid Fuel Carrier",
+      "parents": [
+        "FuelCarrier"
+      ],
+      "parentChainToRoot": [
+        "FuelCarrier",
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Fuel carrier in liquid form",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Heating oil, diesel, biofuel"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#LiquidFuelCarrierAttribute",
+      "name": "LiquidFuelCarrierAttribute",
+      "kind": "class",
+      "label": "Liquid Fuel Carrier Attribute",
+      "parents": [
+        "FuelCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "FuelCarrierAttribute",
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Liquid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#LiquidFuelFlow",
+      "name": "LiquidFuelFlow",
+      "kind": "class",
+      "label": "Liquid Fuel Flow",
+      "parents": [
+        "EnergyCarrierFlow"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlow",
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of liquid fuel between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "L-PER-SEC"
+    },
+    {
+      "iri": "https://digicities.info/ontology#LiveTimeSeries",
+      "name": "LiveTimeSeries",
+      "kind": "class",
+      "label": "Live Time Series",
+      "parents": [
+        "TimeSeries"
+      ],
+      "parentChainToRoot": [
+        "TimeSeries"
+      ],
+      "comment": "Time series data representing real-time or near real-time measurements",
+      "definition": null,
+      "altLabels": [
+        "Live Feed",
+        "Real-time Data"
+      ],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Location",
+      "name": "Location",
+      "kind": "class",
+      "label": "Location",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Spatial entity representing geographic areas or specific sites",
+      "definition": "Locations provide spatial context for components and flows, enabling geographic analysis and constraints",
+      "altLabels": [
+        "Area",
+        "District",
+        "Place",
+        "Region",
+        "Site",
+        "Zone"
+      ],
+      "examples": [
+        "A wind park, a city district, a campus, a building plot, a municipality"
+      ],
+      "scopeNote": "Use as the parent for spatial grouping concepts: a WindPark or a Campus is a Location. Do not use Network (connectivity infrastructure) or Junction (flow nodes) for spatial grouping. Components attach to a Location via dici_onto:locatedAt."
+    },
+    {
+      "iri": "https://digicities.info/ontology#LocationAttribute",
+      "name": "LocationAttribute",
+      "kind": "class",
+      "label": "Location Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Location; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Material",
+      "name": "Material",
+      "kind": "class",
+      "label": "Material",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Physical substance handled by the system that is not primarily an energy carrier",
+      "definition": "A physical substance moved, stored or processed by the system - water, waste, feedstock - as opposed to an EnergyCarrier, whose role is to carry energy.",
+      "altLabels": [],
+      "examples": [
+        "Water, waste, construction material, industrial feedstock"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialAttribute",
+      "name": "MaterialAttribute",
+      "kind": "class",
+      "label": "Material Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Material; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialConverter",
+      "name": "MaterialConverter",
+      "kind": "class",
+      "label": "Material Converter",
+      "parents": [
+        "Converter"
+      ],
+      "parentChainToRoot": [
+        "Converter",
+        "Component"
+      ],
+      "comment": "Converter transforming material inputs into different material outputs",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Waste incinerator, biogas digester, recycling plant"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialConverterAttribute",
+      "name": "MaterialConverterAttribute",
+      "kind": "class",
+      "label": "Material Converter Attribute",
+      "parents": [
+        "ConverterAttribute"
+      ],
+      "parentChainToRoot": [
+        "ConverterAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Material Converter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialFlow",
+      "name": "MaterialFlow",
+      "kind": "class",
+      "label": "Material Flow",
+      "parents": [
+        "Flow"
+      ],
+      "parentChainToRoot": [
+        "Flow",
+        "Component"
+      ],
+      "comment": "Flow of materials between components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Waste stream, water supply, feedstock delivery"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialFlowAttribute",
+      "name": "MaterialFlowAttribute",
+      "kind": "class",
+      "label": "Material Flow Attribute",
+      "parents": [
+        "FlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Material Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialStorage",
+      "name": "MaterialStorage",
+      "kind": "class",
+      "label": "Material Storage",
+      "parents": [
+        "Storage"
+      ],
+      "parentChainToRoot": [
+        "Storage",
+        "Component"
+      ],
+      "comment": "Storage holding materials",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Water reservoir, silo, warehouse, fuel depot"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MaterialStorageAttribute",
+      "name": "MaterialStorageAttribute",
+      "kind": "class",
+      "label": "Material Storage Attribute",
+      "parents": [
+        "StorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "StorageAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Material Storage; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MeasurementAccuracy",
+      "name": "MeasurementAccuracy",
+      "kind": "class",
+      "label": "Measurement Accuracy",
+      "parents": [
+        "DeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Accuracy specification of a measuring device",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "PERCENT"
+    },
+    {
+      "iri": "https://digicities.info/ontology#MeasurementValue",
+      "name": "MeasurementValue",
+      "kind": "class",
+      "label": "Measurement Value",
+      "parents": [
+        "SensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "SensorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Current measured value from a sensor",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Meter",
+      "name": "Meter",
+      "kind": "class",
+      "label": "Meter",
+      "parents": [
+        "Device"
+      ],
+      "parentChainToRoot": [
+        "Device",
+        "Component"
+      ],
+      "comment": "Device that measures and records consumption or production of resources",
+      "definition": "Meters measure cumulative quantities like energy consumption, flow volumes, or resource usage over time",
+      "altLabels": [
+        "Metering Device"
+      ],
+      "examples": [
+        "Electricity meter, gas meter, heat meter"
+      ],
+      "scopeNote": "Meters record cumulative consumption or production over time; instantaneous physical quantities are measured by Sensors."
+    },
+    {
+      "iri": "https://digicities.info/ontology#MeterAttribute",
+      "name": "MeterAttribute",
+      "kind": "class",
+      "label": "Meter Attribute",
+      "parents": [
+        "DeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#MeterReading",
+      "name": "MeterReading",
+      "kind": "class",
+      "label": "Meter Reading",
+      "parents": [
+        "MeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "MeterAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Cumulative measurement from a meter",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Network",
+      "name": "Network",
+      "kind": "class",
+      "label": "Network",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Infrastructure for transporting energy carriers or materials",
+      "definition": "Networks represent the physical infrastructure that enables flows between components, such as electrical grids, gas pipelines, or district heating networks",
+      "altLabels": [
+        "Distribution Network",
+        "Grid",
+        "Infrastructure Network"
+      ],
+      "examples": [
+        "Electricity distribution grid, gas pipeline network, district heating network"
+      ],
+      "scopeNote": "Network is the connective infrastructure through which flows move; the moving quantity itself is a Flow, and spatial grouping is a Location."
+    },
+    {
+      "iri": "https://digicities.info/ontology#NetworkAttribute",
+      "name": "NetworkAttribute",
+      "kind": "class",
+      "label": "Network Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Network; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#NonRenewableResource",
+      "name": "NonRenewableResource",
+      "kind": "class",
+      "label": "Non Renewable Resource",
+      "parents": [
+        "Resource"
+      ],
+      "parentChainToRoot": [
+        "Resource",
+        "Component"
+      ],
+      "comment": "Finite resource that does not replenish on a human timescale",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Coal, crude oil, natural gas reserves"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#NonRenewableResourceAttribute",
+      "name": "NonRenewableResourceAttribute",
+      "kind": "class",
+      "label": "Non Renewable Resource Attribute",
+      "parents": [
+        "ResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "ResourceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Non Renewable Resource; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#PhysicalAttribute",
+      "name": "PhysicalAttribute",
+      "kind": "class",
+      "label": "Physical Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute holding a numeric physical quantity with a unit",
+      "definition": "An attribute whose value is a single numeric quantity carrying a QUDT unit, e.g. a rated power in kilowatts or an area in square metres.",
+      "altLabels": [],
+      "examples": [
+        "Rated power (kW), rotor diameter (m), floor area (m2)"
+      ],
+      "scopeNote": "Use when the value is a number with a QUDT unit. Enumerated values are CategoricalAttribute; time-varying values are DynamicAttribute."
+    },
+    {
+      "iri": "https://digicities.info/ontology#PowerSensor",
+      "name": "PowerSensor",
+      "kind": "class",
+      "label": "Power Sensor",
+      "parents": [
+        "Sensor"
+      ],
+      "parentChainToRoot": [
+        "Sensor",
+        "Device",
+        "Component"
+      ],
+      "comment": "Sensor measuring instantaneous electrical or thermal power",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW"
+    },
+    {
+      "iri": "https://digicities.info/ontology#PressureSensor",
+      "name": "PressureSensor",
+      "kind": "class",
+      "label": "Pressure Sensor",
+      "parents": [
+        "Sensor"
+      ],
+      "parentChainToRoot": [
+        "Sensor",
+        "Device",
+        "Component"
+      ],
+      "comment": "Sensor measuring pressure",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "PA"
+    },
+    {
+      "iri": "https://digicities.info/ontology#Process",
+      "name": "Process",
+      "kind": "class",
+      "label": "Process",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "A process that transforms, transports, or modifies flows of energy or materials",
+      "definition": "A process represents any activity or operation that has input and output flows, including energy conversion, material transformation, or transport operations",
+      "altLabels": [
+        "Activity",
+        "Operation"
+      ],
+      "examples": [
+        "Space heating, combustion in a boiler, charging a battery"
+      ],
+      "scopeNote": "A Process is the activity; the equipment performing it is a Component subclass (Converter, Storage, ...)."
+    },
+    {
+      "iri": "https://digicities.info/ontology#ProcessAttribute",
+      "name": "ProcessAttribute",
+      "kind": "class",
+      "label": "Process Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Process; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ProcessCapacity",
+      "name": "ProcessCapacity",
+      "kind": "class",
+      "label": "Process Capacity",
+      "parents": [
+        "ProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "ProcessAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Maximum processing capacity",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW"
+    },
+    {
+      "iri": "https://digicities.info/ontology#RenewableResource",
+      "name": "RenewableResource",
+      "kind": "class",
+      "label": "Renewable Resource",
+      "parents": [
+        "Resource"
+      ],
+      "parentChainToRoot": [
+        "Resource",
+        "Component"
+      ],
+      "comment": "Resource that replenishes naturally on a human timescale",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Wind, solar irradiation, hydro, geothermal heat"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#RenewableResourceAttribute",
+      "name": "RenewableResourceAttribute",
+      "kind": "class",
+      "label": "Renewable Resource Attribute",
+      "parents": [
+        "ResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "ResourceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Renewable Resource; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Resource",
+      "name": "Resource",
+      "kind": "class",
+      "label": "Resource",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Primary source of energy or material drawn from the environment",
+      "definition": "A natural or primary resource that the system harvests, extracts or depends on, as distinct from the processed energy carriers derived from it.",
+      "altLabels": [
+        "Natural Resource",
+        "Primary Resource"
+      ],
+      "examples": [
+        "Wind, solar irradiation, groundwater, coal deposit"
+      ],
+      "scopeNote": "The wind blowing over a site is a Resource; the electricity generated from it is an ElectricityCarrier; the machine converting it is a Turbine."
+    },
+    {
+      "iri": "https://digicities.info/ontology#ResourceAttribute",
+      "name": "ResourceAttribute",
+      "kind": "class",
+      "label": "Resource Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Resource; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SamplingRate",
+      "name": "SamplingRate",
+      "kind": "class",
+      "label": "Sampling Rate",
+      "parents": [
+        "SensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "SensorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Frequency of measurements or readings",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "HZ"
+    },
+    {
+      "iri": "https://digicities.info/ontology#Scenario",
+      "name": "Scenario",
+      "kind": "class",
+      "label": "Scenario",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A what-if container: a named snapshot of replica components with attribute overrides",
+      "definition": "A named what-if case built from a digital replica: it references the replica components involved and carries only the attribute values that differ from the replica baseline.",
+      "altLabels": [
+        "Case",
+        "Simulation Case",
+        "Variant"
+      ],
+      "examples": [
+        "A baseline scenario; a heat-pump-retrofit scenario derived from it with modified heating attributes"
+      ],
+      "scopeNote": "Scenarios are thin: they reference the replica's components and carry only superseding attributes marked with usedInScenario."
+    },
+    {
+      "iri": "https://digicities.info/ontology#Sensor",
+      "name": "Sensor",
+      "kind": "class",
+      "label": "Sensor",
+      "parents": [
+        "Device"
+      ],
+      "parentChainToRoot": [
+        "Device",
+        "Component"
+      ],
+      "comment": "Device that measures physical quantities and converts them to signals",
+      "definition": "Sensors detect and respond to inputs from the physical environment, providing data for monitoring and control",
+      "altLabels": [
+        "Detector",
+        "Measuring Device",
+        "Probe"
+      ],
+      "examples": [
+        "Temperature sensor, pressure sensor, anemometer, pyranometer"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SensorAttribute",
+      "name": "SensorAttribute",
+      "kind": "class",
+      "label": "Sensor Attribute",
+      "parents": [
+        "DeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Service",
+      "name": "Service",
+      "kind": "class",
+      "label": "Service",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "An external model or tool (simulator, optimizer, forecaster) that consumes scenarios and returns results",
+      "definition": "An external computational model reachable from the platform - a simulator, optimizer or forecaster - that consumes a converted scenario payload and returns results.",
+      "altLabels": [
+        "External Service",
+        "Model",
+        "Tool"
+      ],
+      "examples": [
+        "Energy simulator, flexibility optimizer, wind power forecaster"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ServiceRequirement",
+      "name": "ServiceRequirement",
+      "kind": "class",
+      "label": "Service Requirement",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Declares an input a Service requires from a scenario: a component, an attribute, or a link between components",
+      "definition": "A machine-readable statement of one input a Service needs from a scenario: a component of a given type, an attribute on it, or a link between two components.",
+      "altLabels": [],
+      "examples": [
+        "A wind power forecaster requiring a Location with a wind speed DynamicAttribute"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SetPoint",
+      "name": "SetPoint",
+      "kind": "class",
+      "label": "Set Point",
+      "parents": [
+        "ControllerAttribute"
+      ],
+      "parentChainToRoot": [
+        "ControllerAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Target value for a controller",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SimpleCostAttribute",
+      "name": "SimpleCostAttribute",
+      "kind": "class",
+      "label": "Simple Cost Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute holding a plain monetary value",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Investment cost in EUR"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SimpleValueAttribute",
+      "name": "SimpleValueAttribute",
+      "kind": "class",
+      "label": "Simple Value Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute holding a plain literal value without unit semantics",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SolarResource",
+      "name": "SolarResource",
+      "kind": "class",
+      "label": "Solar Resource",
+      "parents": [
+        "RenewableResource"
+      ],
+      "parentChainToRoot": [
+        "RenewableResource",
+        "Resource",
+        "Component"
+      ],
+      "comment": "Solar irradiation as a harvestable renewable energy resource",
+      "definition": null,
+      "altLabels": [
+        "Insolation",
+        "Solar Irradiation"
+      ],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SolarResourceAttribute",
+      "name": "SolarResourceAttribute",
+      "kind": "class",
+      "label": "Solar Resource Attribute",
+      "parents": [
+        "RenewableResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "RenewableResourceAttribute",
+        "ResourceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Solar Resource; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SolidFuel",
+      "name": "SolidFuel",
+      "kind": "class",
+      "label": "Solid Fuel Carrier",
+      "parents": [
+        "FuelCarrier"
+      ],
+      "parentChainToRoot": [
+        "FuelCarrier",
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Fuel carrier in solid form",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Wood chips, pellets, coal"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SolidFuelCarrierAttribute",
+      "name": "SolidFuelCarrierAttribute",
+      "kind": "class",
+      "label": "Solid Fuel Carrier Attribute",
+      "parents": [
+        "FuelCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "FuelCarrierAttribute",
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Solid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#StateOfCharge",
+      "name": "StateOfCharge",
+      "kind": "class",
+      "label": "State of Charge",
+      "parents": [
+        "EnergyStorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyStorageAttribute",
+        "StorageAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Current state of charge as percentage of capacity",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "PERCENT"
+    },
+    {
+      "iri": "https://digicities.info/ontology#StaticAttribute",
+      "name": "StaticAttribute",
+      "kind": "class",
+      "label": "Static Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute whose value does not change over the modelled time horizon",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Storage",
+      "name": "Storage",
+      "kind": "class",
+      "label": "Storage",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Component that stores energy or materials over time",
+      "definition": "Storage components accumulate and release energy or materials, providing temporal flexibility to the system",
+      "altLabels": [
+        "Buffer",
+        "Reservoir",
+        "Store"
+      ],
+      "examples": [
+        "Battery, hot water tank, pumped hydro reservoir, hydrogen store"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#StorageAttribute",
+      "name": "StorageAttribute",
+      "kind": "class",
+      "label": "Storage Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Storage; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#StorageCapacity",
+      "name": "StorageCapacity",
+      "kind": "class",
+      "label": "Storage Capacity",
+      "parents": [
+        "StorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "StorageAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Maximum storage capacity",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "KiloW-HR"
+    },
+    {
+      "iri": "https://digicities.info/ontology#StorageProcess",
+      "name": "StorageProcess",
+      "kind": "class",
+      "label": "Storage Process",
+      "parents": [
+        "Process"
+      ],
+      "parentChainToRoot": [
+        "Process",
+        "Component"
+      ],
+      "comment": "Process that stores and releases energy or materials over time",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Charging and discharging a battery; filling a thermal store"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#StorageProcessAttribute",
+      "name": "StorageProcessAttribute",
+      "kind": "class",
+      "label": "Storage Process Attribute",
+      "parents": [
+        "ProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "ProcessAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Storage Process; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Switch",
+      "name": "Switch",
+      "kind": "class",
+      "label": "Switch",
+      "parents": [
+        "Device"
+      ],
+      "parentChainToRoot": [
+        "Device",
+        "Component"
+      ],
+      "comment": "Device that can interrupt or divert the flow of energy or materials",
+      "definition": "Switches control the routing or interruption of flows in the system",
+      "altLabels": [],
+      "examples": [
+        "Relay, circuit breaker, transfer switch"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SwitchAttribute",
+      "name": "SwitchAttribute",
+      "kind": "class",
+      "label": "Switch Attribute",
+      "parents": [
+        "DeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Switch; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#SwitchState",
+      "name": "SwitchState",
+      "kind": "class",
+      "label": "Switch State",
+      "parents": [
+        "SwitchAttribute"
+      ],
+      "parentChainToRoot": [
+        "SwitchAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Current state of a switch (open/closed, on/off)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#TemperatureSensor",
+      "name": "TemperatureSensor",
+      "kind": "class",
+      "label": "Temperature Sensor",
+      "parents": [
+        "Sensor"
+      ],
+      "parentChainToRoot": [
+        "Sensor",
+        "Device",
+        "Component"
+      ],
+      "comment": "Sensor measuring temperature",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "defaultUnit": "DEG_C"
+    },
+    {
+      "iri": "https://digicities.info/ontology#ThermalEnergyCarrier",
+      "name": "ThermalEnergyCarrier",
+      "kind": "class",
+      "label": "Thermal Energy Carrier",
+      "parents": [
+        "EnergyCarrier"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrier",
+        "Component"
+      ],
+      "comment": "Energy carrier transporting thermal energy (heat or cold)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ThermalEnergyCarrierAttribute",
+      "name": "ThermalEnergyCarrierAttribute",
+      "kind": "class",
+      "label": "Thermal Energy Carrier Attribute",
+      "parents": [
+        "EnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Thermal Energy Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#TimeSeries",
+      "name": "TimeSeries",
+      "kind": "class",
+      "label": "Time Series",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A sequence of data points indexed in time order, typically used to represent dynamic attributes over time",
+      "definition": "A time series is a series of data points indexed (or listed or graphed) in time order. Time series data is used to track changes over time for dynamic attributes.",
+      "altLabels": [
+        "Data Series",
+        "Profile",
+        "Timeseries"
+      ],
+      "examples": [
+        "Hourly electricity demand for 2024; a 48-hour wind speed forecast"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#TransportProcess",
+      "name": "TransportProcess",
+      "kind": "class",
+      "label": "Transport Process",
+      "parents": [
+        "Process"
+      ],
+      "parentChainToRoot": [
+        "Process",
+        "Component"
+      ],
+      "comment": "Process that transports energy or materials without transformation",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Pumping water through a pipe; transmitting electricity over a line"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#TransportProcessAttribute",
+      "name": "TransportProcessAttribute",
+      "kind": "class",
+      "label": "Transport Process Attribute",
+      "parents": [
+        "ProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "ProcessAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Transport Process; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Turbine",
+      "name": "Turbine",
+      "kind": "class",
+      "label": "Turbine",
+      "parents": [
+        "EnergyConverter"
+      ],
+      "parentChainToRoot": [
+        "EnergyConverter",
+        "Converter",
+        "Component"
+      ],
+      "comment": "Rotary energy converter extracting mechanical work from a moving fluid",
+      "definition": null,
+      "altLabels": [
+        "Gas Turbine",
+        "Hydro Turbine",
+        "Steam Turbine",
+        "Wind Turbine"
+      ],
+      "examples": [
+        "A wind turbine in a wind park; a steam turbine in a CHP plant"
+      ],
+      "scopeNote": "A WindTurbine extension class belongs here (under Turbine), while the wind park it stands in is a Location and the wind it harvests is a Wind resource."
+    },
+    {
+      "iri": "https://digicities.info/ontology#TurbineAttribute",
+      "name": "TurbineAttribute",
+      "kind": "class",
+      "label": "Turbine Attribute",
+      "parents": [
+        "EnergyConverterAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyConverterAttribute",
+        "ConverterAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Turbine; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#UnitBasedCostAttribute",
+      "name": "UnitBasedCostAttribute",
+      "kind": "class",
+      "label": "Unit Based Cost Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute holding a cost per unit of some quantity",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "Energy price in EUR per kWh"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Valve",
+      "name": "Valve",
+      "kind": "class",
+      "label": "Valve",
+      "parents": [
+        "Actuator"
+      ],
+      "parentChainToRoot": [
+        "Actuator",
+        "Device",
+        "Component"
+      ],
+      "comment": "Actuator that controls fluid flow",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Wind",
+      "name": "Wind",
+      "kind": "class",
+      "label": "Wind Resource",
+      "parents": [
+        "RenewableResource"
+      ],
+      "parentChainToRoot": [
+        "RenewableResource",
+        "Resource",
+        "Component"
+      ],
+      "comment": "The wind as a harvestable renewable energy resource",
+      "definition": null,
+      "altLabels": [
+        "Wind Energy",
+        "Wind Potential"
+      ],
+      "examples": [
+        "The wind resource at a wind park site, characterised by speed and direction profiles"
+      ],
+      "scopeNote": "Use for the wind resource itself. A wind park (the site) maps to Location; a wind turbine (the machine) maps to Turbine; forecast wind speeds are DynamicAttributes with a FutureTimeSeries."
+    },
+    {
+      "iri": "https://digicities.info/ontology#WindResourceAttribute",
+      "name": "WindResourceAttribute",
+      "kind": "class",
+      "label": "Wind Resource Attribute",
+      "parents": [
+        "RenewableResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "RenewableResourceAttribute",
+        "ResourceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Wind; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#assumptionDataProperty",
+      "name": "assumptionDataProperty",
+      "kind": "dataProperty",
+      "label": "assumption data property",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root data property for values carried by an Assumption",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#assumptionTimesteps",
+      "name": "assumptionTimesteps",
+      "kind": "dataProperty",
+      "label": "assumption timesteps",
+      "parents": [
+        "assumptionDataProperty"
+      ],
+      "parentChainToRoot": [
+        "assumptionDataProperty"
+      ],
+      "comment": "The timesteps at which an assumption series applies",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "AssumptionSeries"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#denominatorUnit",
+      "name": "denominatorUnit",
+      "kind": "dataProperty",
+      "label": "denominator unit",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Denominator unit of a custom physical ratio attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#endTime",
+      "name": "endTime",
+      "kind": "dataProperty",
+      "label": "end time",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The ending timestamp of the time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "dateTime"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#futureTimeSeriesOf",
+      "name": "futureTimeSeriesOf",
+      "kind": "dataProperty",
+      "label": "future time series of",
+      "parents": [
+        "timeSeriesReferenceOf"
+      ],
+      "parentChainToRoot": [
+        "timeSeriesReferenceOf"
+      ],
+      "comment": "Inverse-direction reference: forecast data describing an attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasAttributeValue",
+      "name": "hasAttributeValue",
+      "kind": "dataProperty",
+      "label": "has attribute value",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root data property carrying the literal value of an attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Attribute"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasCategoricalValue",
+      "name": "hasCategoricalValue",
+      "kind": "dataProperty",
+      "label": "has categorical value",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "The selected category value of a categorical attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDataPath",
+      "name": "hasDataPath",
+      "kind": "dataProperty",
+      "label": "has data path",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "Path to an external data file backing a curve attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDataPoints",
+      "name": "hasDataPoints",
+      "kind": "dataProperty",
+      "label": "has data points",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "The x-y data points of a curve attribute, as JSON",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "JSON"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFileName",
+      "name": "hasFileName",
+      "kind": "dataProperty",
+      "label": "has file name",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The filename of the time series data file",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFutureTimeSeriesReference",
+      "name": "hasFutureTimeSeriesReference",
+      "kind": "dataProperty",
+      "label": "has future time series reference",
+      "parents": [
+        "hasTimeSeriesReference"
+      ],
+      "parentChainToRoot": [
+        "hasTimeSeriesReference"
+      ],
+      "comment": "Reference from an attribute to external forecast time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasHistoricTimeSeriesReference",
+      "name": "hasHistoricTimeSeriesReference",
+      "kind": "dataProperty",
+      "label": "has historic time series reference",
+      "parents": [
+        "hasTimeSeriesReference"
+      ],
+      "parentChainToRoot": [
+        "hasTimeSeriesReference"
+      ],
+      "comment": "Reference from an attribute to external historical time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasLiveTimeSeriesReference",
+      "name": "hasLiveTimeSeriesReference",
+      "kind": "dataProperty",
+      "label": "has live time series reference",
+      "parents": [
+        "hasTimeSeriesReference"
+      ],
+      "parentChainToRoot": [
+        "hasTimeSeriesReference"
+      ],
+      "comment": "Reference from an attribute to an external live time series feed",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTemporalValue",
+      "name": "hasTemporalValue",
+      "kind": "dataProperty",
+      "label": "has temporal value",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "The temporal literal value of an attribute (e.g. a duration)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTimeSeriesReference",
+      "name": "hasTimeSeriesReference",
+      "kind": "dataProperty",
+      "label": "has time series reference",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root property referencing external time series data from an attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasUnitLabel",
+      "name": "hasUnitLabel",
+      "kind": "dataProperty",
+      "label": "has unit label",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A human-readable string label for the unit of an attribute instance (e.g. 'KWh', 'KWh/yr', 'm2'). Used alongside qudt:unit (ObjectProperty) to provide a string representation that applications can consume directly. For CustomPhysicalRatioAttribute instances this is the primary unit expression; for Physical, UnitBasedCost, Curve, Geospatial and TimeSeries attributes it is emitted in addition to the qudt:unit IRI for backwards compatibility.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Attribute"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#historicTimeSeriesReferenceOf",
+      "name": "historicTimeSeriesReferenceOf",
+      "kind": "dataProperty",
+      "label": "historic time series reference of",
+      "parents": [
+        "timeSeriesReferenceOf"
+      ],
+      "parentChainToRoot": [
+        "timeSeriesReferenceOf"
+      ],
+      "comment": "Inverse-direction reference: historical data describing an attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#identifierValue",
+      "name": "identifierValue",
+      "kind": "dataProperty",
+      "label": "identifier value",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "Literal value of an identifier attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#liveTimeSeriesReferenceOf",
+      "name": "liveTimeSeriesReferenceOf",
+      "kind": "dataProperty",
+      "label": "live time series reference of",
+      "parents": [
+        "timeSeriesReferenceOf"
+      ],
+      "parentChainToRoot": [
+        "timeSeriesReferenceOf"
+      ],
+      "comment": "Inverse-direction reference: live data describing an attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#modifier",
+      "name": "modifier",
+      "kind": "dataProperty",
+      "label": "modifier",
+      "parents": [
+        "assumptionDataProperty"
+      ],
+      "parentChainToRoot": [
+        "assumptionDataProperty"
+      ],
+      "comment": "Kind of modification an assumption applies (e.g. multiply, replace)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#modifierValue",
+      "name": "modifierValue",
+      "kind": "dataProperty",
+      "label": "modifier value",
+      "parents": [
+        "assumptionDataProperty"
+      ],
+      "parentChainToRoot": [
+        "assumptionDataProperty"
+      ],
+      "comment": "The numeric value used by an assumption's modifier",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#numeratorUnit",
+      "name": "numeratorUnit",
+      "kind": "dataProperty",
+      "label": "numerator unit",
+      "parents": [
+        "topDataProperty"
+      ],
+      "parentChainToRoot": [
+        "topDataProperty"
+      ],
+      "comment": "Numerator unit of a custom physical ratio attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#populationInfluenced",
+      "name": "populationInfluenced",
+      "kind": "dataProperty",
+      "label": "population influenced",
+      "parents": [
+        "assumptionDataProperty"
+      ],
+      "parentChainToRoot": [
+        "assumptionDataProperty"
+      ],
+      "comment": "Share or count of the population affected by an assumption",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#startTime",
+      "name": "startTime",
+      "kind": "dataProperty",
+      "label": "start time",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The starting timestamp of the time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "dateTime"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#storedAt",
+      "name": "storedAt",
+      "kind": "dataProperty",
+      "label": "stored at",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The location or path where the time series data is stored",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#temporalResolution",
+      "name": "temporalResolution",
+      "kind": "dataProperty",
+      "label": "temporal resolution",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The time interval between data points in the time series (e.g., PT1H for hourly, PT15M for 15-minute intervals)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "duration"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#timeSeriesReferenceOf",
+      "name": "timeSeriesReferenceOf",
+      "kind": "dataProperty",
+      "label": "time series reference of",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root inverse-direction property for time series references",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#timeSeriesType",
+      "name": "timeSeriesType",
+      "kind": "dataProperty",
+      "label": "time series type",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The type of time series: 'Historic', 'Live', or 'Future'",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#xUnitLabel",
+      "name": "xUnitLabel",
+      "kind": "dataProperty",
+      "label": "x unit label",
+      "parents": [
+        "hasUnitLabel"
+      ],
+      "parentChainToRoot": [
+        "hasUnitLabel"
+      ],
+      "comment": "String label for the x-axis unit of a CurveAttribute (e.g. 'DEG_C'). Emitted alongside dici_onto:xUnit IRI for backwards compatibility.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#yUnitLabel",
+      "name": "yUnitLabel",
+      "kind": "dataProperty",
+      "label": "y unit label",
+      "parents": [
+        "hasUnitLabel"
+      ],
+      "parentChainToRoot": [
+        "hasUnitLabel"
+      ],
+      "comment": "String label for the y-axis unit of a CurveAttribute (e.g. 'PERCENT'). Emitted alongside dici_onto:yUnit IRI for backwards compatibility.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#actuates",
+      "name": "actuates",
+      "kind": "objectProperty",
+      "label": "actuates",
+      "parents": [
+        "controls"
+      ],
+      "parentChainToRoot": [
+        "controls",
+        "linksComponent"
+      ],
+      "comment": "Actuator physically controls a component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Actuator"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#assumptionObjectProperty",
+      "name": "assumptionObjectProperty",
+      "kind": "objectProperty",
+      "label": "assumption object property",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root property for links from an Assumption to its targets",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#carriesEnergyCarrier",
+      "name": "carriesEnergyCarrier",
+      "kind": "objectProperty",
+      "label": "carries energy carrier",
+      "parents": [
+        "carriesResource"
+      ],
+      "parentChainToRoot": [
+        "carriesResource"
+      ],
+      "comment": "The energy carrier being transported by the flow",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyCarrierFlow"
+      ],
+      "range": [
+        "EnergyCarrier"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#carriesResource",
+      "name": "carriesResource",
+      "kind": "objectProperty",
+      "label": "carries resource",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The resource (energy carrier or material) being transported by the flow",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "Resource"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#contains",
+      "name": "contains",
+      "kind": "objectProperty",
+      "label": "contains",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "A component spatially or logically contains another component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#controls",
+      "name": "controls",
+      "kind": "objectProperty",
+      "label": "controls",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Device controls another component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Device"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#currency",
+      "name": "currency",
+      "kind": "objectProperty",
+      "label": "currency",
+      "parents": [
+        "topObjectProperty"
+      ],
+      "parentChainToRoot": [
+        "topObjectProperty"
+      ],
+      "comment": "Currency unit of a cost attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "CurrencyUnit"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#derivedFrom",
+      "name": "derivedFrom",
+      "kind": "objectProperty",
+      "label": "derived from",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Scenario provenance: this scenario was derived from another scenario",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Scenario"
+      ],
+      "range": [
+        "Scenario"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#fedBy",
+      "name": "fedBy",
+      "kind": "objectProperty",
+      "label": "fed by",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Supply relationship: this component is fed by another component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#feeds",
+      "name": "feeds",
+      "kind": "objectProperty",
+      "label": "feeds",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Supply relationship: this component feeds another component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#flowsThrough",
+      "name": "flowsThrough",
+      "kind": "objectProperty",
+      "label": "flows through",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Locations traversed by a flow",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasActorAttribute",
+      "name": "hasActorAttribute",
+      "kind": "objectProperty",
+      "label": "has actor attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Actor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Actor"
+      ],
+      "range": [
+        "ActorAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasActuatorAttribute",
+      "name": "hasActuatorAttribute",
+      "kind": "objectProperty",
+      "label": "has actuator attribute",
+      "parents": [
+        "hasDeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Actuator attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Actuator"
+      ],
+      "range": [
+        "ActuatorAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasAttribute",
+      "name": "hasAttribute",
+      "kind": "objectProperty",
+      "label": "has Attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Attaches an Attribute node to a Component; root of the has-attribute property hierarchy",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Attribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasColdAttribute",
+      "name": "hasColdAttribute",
+      "kind": "objectProperty",
+      "label": "has cold attribute",
+      "parents": [
+        "hasThermalEnergyAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasThermalEnergyAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Cold attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ColdCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasColdCarrierAttribute",
+      "name": "hasColdCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has cold carrier attribute",
+      "parents": [
+        "hasThermalEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasThermalEnergyCarrierAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Cold Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ColdCarrier"
+      ],
+      "range": [
+        "ColdCarrierAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasComponentAttribute",
+      "name": "hasComponentAttribute",
+      "kind": "objectProperty",
+      "label": "has component attribute",
+      "parents": [
+        "hasAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasAttribute"
+      ],
+      "comment": "Attaches a component attribute to a Component; parent of the per-component-type attachment properties",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasControllerAttribute",
+      "name": "hasControllerAttribute",
+      "kind": "objectProperty",
+      "label": "has controller attribute",
+      "parents": [
+        "hasDeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Controller attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Controller"
+      ],
+      "range": [
+        "ControllerAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasConversionProcessAttribute",
+      "name": "hasConversionProcessAttribute",
+      "kind": "objectProperty",
+      "label": "has conversion process attribute",
+      "parents": [
+        "hasProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasProcessAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Conversion Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ConversionProcess"
+      ],
+      "range": [
+        "ConversionProcessAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasConverterAttribute",
+      "name": "hasConverterAttribute",
+      "kind": "objectProperty",
+      "label": "has converter attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Converter"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDataPoints",
+      "name": "hasDataPoints",
+      "kind": "objectProperty",
+      "label": "has data points",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "The x-y data points of a curve attribute, as JSON",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "JSON"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDestination",
+      "name": "hasDestination",
+      "kind": "objectProperty",
+      "label": "has destination",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "The component to which the flow is directed",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDeviceAttribute",
+      "name": "hasDeviceAttribute",
+      "kind": "objectProperty",
+      "label": "has device attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Device attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Device"
+      ],
+      "range": [
+        "DeviceAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasElectricityAttribute",
+      "name": "hasElectricityAttribute",
+      "kind": "objectProperty",
+      "label": "has electricity attribute",
+      "parents": [
+        "hasEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Electricity attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ElectricityCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyCarrierAttribute",
+      "name": "hasEnergyCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has energy carrier attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyCarrierEnergyCostAttribute",
+      "name": "hasEnergyCarrierEnergyCostAttribute",
+      "kind": "objectProperty",
+      "label": "has energy carrier energy cost attribute",
+      "parents": [
+        "hasEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Carrier Energy Cost attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyCarrierFlowAttribute",
+      "name": "hasEnergyCarrierFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has energy carrier flow attribute",
+      "parents": [
+        "hasFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Carrier Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyCarrierFlow"
+      ],
+      "range": [
+        "EnergyCarrierFlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyConsumerAttribute",
+      "name": "hasEnergyConsumerAttribute",
+      "kind": "objectProperty",
+      "label": "has energy consumer attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Consumer attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyConsumer"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyConverterAttribute",
+      "name": "hasEnergyConverterAttribute",
+      "kind": "objectProperty",
+      "label": "has energy converter attribute",
+      "parents": [
+        "hasConverterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasConverterAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyConverter"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyGeneratorAttribute",
+      "name": "hasEnergyGeneratorAttribute",
+      "kind": "objectProperty",
+      "label": "has energy generator attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Generator attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyGenerator"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasEnergyStorageAttribute",
+      "name": "hasEnergyStorageAttribute",
+      "kind": "objectProperty",
+      "label": "has energy storage attribute",
+      "parents": [
+        "hasStorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasStorageAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Energy Storage attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyStorage"
+      ],
+      "range": [
+        "EnergyStorageAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFlowAttribute",
+      "name": "hasFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has flow attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "FlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFuelAttribute",
+      "name": "hasFuelAttribute",
+      "kind": "objectProperty",
+      "label": "has fuel attribute",
+      "parents": [
+        "hasEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "FuelCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFutureTimeSeries",
+      "name": "hasFutureTimeSeries",
+      "kind": "objectProperty",
+      "label": "has future time series",
+      "parents": [
+        "hasTimeSeries"
+      ],
+      "parentChainToRoot": [
+        "hasTimeSeries"
+      ],
+      "comment": "Links a dynamic attribute to forecast time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasGaseousFuelAttribute",
+      "name": "hasGaseousFuelAttribute",
+      "kind": "objectProperty",
+      "label": "has gaseous fuel attribute",
+      "parents": [
+        "hasFuelAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFuelAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Gaseous Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "GaseousFuelCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasHeatAttribute",
+      "name": "hasHeatAttribute",
+      "kind": "objectProperty",
+      "label": "has heat attribute",
+      "parents": [
+        "hasThermalEnergyAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasThermalEnergyAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Heat attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "HeatCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasHeatCarrierAttribute",
+      "name": "hasHeatCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has heat carrier attribute",
+      "parents": [
+        "hasThermalEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasThermalEnergyCarrierAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Heat Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "HeatCarrier"
+      ],
+      "range": [
+        "HeatCarrierAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasHistoricTimeSeries",
+      "name": "hasHistoricTimeSeries",
+      "kind": "objectProperty",
+      "label": "has historic time series",
+      "parents": [
+        "hasTimeSeries"
+      ],
+      "parentChainToRoot": [
+        "hasTimeSeries"
+      ],
+      "comment": "Links a dynamic attribute to measured historical time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasIdentifier",
+      "name": "hasIdentifier",
+      "kind": "objectProperty",
+      "label": "has identifier",
+      "parents": [
+        "hasAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasAttribute"
+      ],
+      "comment": "Attaches an identifier attribute to a component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasInformationFlowAttribute",
+      "name": "hasInformationFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has information flow attribute",
+      "parents": [
+        "hasFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Information Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "InformationFlow"
+      ],
+      "range": [
+        "InformationFlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasInput",
+      "name": "hasInput",
+      "kind": "objectProperty",
+      "label": "has input",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Links a component to one of its inputs",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasInputAttribute",
+      "name": "hasInputAttribute",
+      "kind": "objectProperty",
+      "label": "has input attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A ServiceRequirement names the attribute it requires",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ServiceRequirement"
+      ],
+      "range": [
+        "Attribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasInputEntity",
+      "name": "hasInputEntity",
+      "kind": "objectProperty",
+      "label": "has input entity",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A ComponentLink or ServiceRequirement points at its source component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentLink",
+        "ServiceRequirement"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasInputFlow",
+      "name": "hasInputFlow",
+      "kind": "objectProperty",
+      "label": "has input flow",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Links a component to its input flows",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Flow"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasJunctionAttribute",
+      "name": "hasJunctionAttribute",
+      "kind": "objectProperty",
+      "label": "has junction attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Junction attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Junction"
+      ],
+      "range": [
+        "JunctionAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasLiquidFuelAttribute",
+      "name": "hasLiquidFuelAttribute",
+      "kind": "objectProperty",
+      "label": "has liquid fuel attribute",
+      "parents": [
+        "hasFuelAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFuelAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Liquid Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "LiquidFuel"
+      ],
+      "range": [
+        "LiquidFuelCarrierAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasLiveTimeSeries",
+      "name": "hasLiveTimeSeries",
+      "kind": "objectProperty",
+      "label": "has live time series",
+      "parents": [
+        "hasTimeSeries"
+      ],
+      "parentChainToRoot": [
+        "hasTimeSeries"
+      ],
+      "comment": "Links a dynamic attribute to a real-time time series feed",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasLocation",
+      "name": "hasLocation",
+      "kind": "objectProperty",
+      "label": "has location",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Links a component to the Location it belongs to",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasLocationAttribute",
+      "name": "hasLocationAttribute",
+      "kind": "objectProperty",
+      "label": "has location attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Location attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Location"
+      ],
+      "range": [
+        "LocationAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasMaterialAttribute",
+      "name": "hasMaterialAttribute",
+      "kind": "objectProperty",
+      "label": "has material attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Material attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Material"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasMaterialConverterAttribute",
+      "name": "hasMaterialConverterAttribute",
+      "kind": "objectProperty",
+      "label": "has material converter attribute",
+      "parents": [
+        "hasConverterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasConverterAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Material Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "MaterialConverter"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasMaterialFlowAttribute",
+      "name": "hasMaterialFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has material flow attribute",
+      "parents": [
+        "hasFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Material Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "MaterialFlow"
+      ],
+      "range": [
+        "MaterialFlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasMaterialStorageAttribute",
+      "name": "hasMaterialStorageAttribute",
+      "kind": "objectProperty",
+      "label": "has material storage attribute",
+      "parents": [
+        "hasStorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasStorageAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Material Storage attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "MaterialStorage"
+      ],
+      "range": [
+        "MaterialStorageAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasMeterAttribute",
+      "name": "hasMeterAttribute",
+      "kind": "objectProperty",
+      "label": "has meter attribute",
+      "parents": [
+        "hasDeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Meter"
+      ],
+      "range": [
+        "MeterAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasNetworkAttribute",
+      "name": "hasNetworkAttribute",
+      "kind": "objectProperty",
+      "label": "has network attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Network attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Network"
+      ],
+      "range": [
+        "NetworkAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasNonRenewableAttribute",
+      "name": "hasNonRenewableAttribute",
+      "kind": "objectProperty",
+      "label": "has non renewable attribute",
+      "parents": [
+        "hasResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Non Renewable attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "NonRenewableResource"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasNonRenewableResourceAttribute",
+      "name": "hasNonRenewableResourceAttribute",
+      "kind": "objectProperty",
+      "label": "has non renewable resource attribute",
+      "parents": [
+        "hasResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Non Renewable Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "NonRenewableResource"
+      ],
+      "range": [
+        "NonRenewableResourceAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasOutputFlow",
+      "name": "hasOutputFlow",
+      "kind": "objectProperty",
+      "label": "has output flow",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Links a component to its output flows",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Flow"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasPart",
+      "name": "hasPart",
+      "kind": "objectProperty",
+      "label": "has part",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Whole-part composition: this component has another component as a part",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasProcessAttribute",
+      "name": "hasProcessAttribute",
+      "kind": "objectProperty",
+      "label": "has process attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Process"
+      ],
+      "range": [
+        "ProcessAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasRenewableAttribute",
+      "name": "hasRenewableAttribute",
+      "kind": "objectProperty",
+      "label": "has renewable attribute",
+      "parents": [
+        "hasResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Renewable attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "RenewableResource"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasRenewableResourceAttribute",
+      "name": "hasRenewableResourceAttribute",
+      "kind": "objectProperty",
+      "label": "has renewable resource attribute",
+      "parents": [
+        "hasResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Renewable Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "RenewableResource"
+      ],
+      "range": [
+        "RenewableResourceAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasResourceAttribute",
+      "name": "hasResourceAttribute",
+      "kind": "objectProperty",
+      "label": "has resource attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Resource"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSensorAttribute",
+      "name": "hasSensorAttribute",
+      "kind": "objectProperty",
+      "label": "has sensor attribute",
+      "parents": [
+        "hasDeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Sensor"
+      ],
+      "range": [
+        "SensorAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSolarAttribute",
+      "name": "hasSolarAttribute",
+      "kind": "objectProperty",
+      "label": "has solar attribute",
+      "parents": [
+        "hasRenewableAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasRenewableAttribute",
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Solar attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "SolarResource"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSolidFuelAttribute",
+      "name": "hasSolidFuelAttribute",
+      "kind": "objectProperty",
+      "label": "has solid fuel attribute",
+      "parents": [
+        "hasFuelAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFuelAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Solid Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "SolidFuel"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSource",
+      "name": "hasSource",
+      "kind": "objectProperty",
+      "label": "has source",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "The component from which the flow originates",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasStorageAttribute",
+      "name": "hasStorageAttribute",
+      "kind": "objectProperty",
+      "label": "has storage attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Storage attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Storage"
+      ],
+      "range": [
+        "StorageAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasStorageProcessAttribute",
+      "name": "hasStorageProcessAttribute",
+      "kind": "objectProperty",
+      "label": "has storage process attribute",
+      "parents": [
+        "hasProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasProcessAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Storage Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "StorageProcess"
+      ],
+      "range": [
+        "StorageProcessAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSwitchAttribute",
+      "name": "hasSwitchAttribute",
+      "kind": "objectProperty",
+      "label": "has switch attribute",
+      "parents": [
+        "hasDeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Switch attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Switch"
+      ],
+      "range": [
+        "SwitchAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTemporalPrecision",
+      "name": "hasTemporalPrecision",
+      "kind": "objectProperty",
+      "label": "has temporal precision",
+      "parents": [
+        "hasUnit"
+      ],
+      "parentChainToRoot": [
+        "hasUnit"
+      ],
+      "comment": "Unit expressing the temporal precision of an attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasThermalEnergyAttribute",
+      "name": "hasThermalEnergyAttribute",
+      "kind": "objectProperty",
+      "label": "has thermal energy attribute",
+      "parents": [
+        "hasEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Thermal Energy attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ThermalEnergyCarrier"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasThermalEnergyCarrierAttribute",
+      "name": "hasThermalEnergyCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has thermal energy carrier attribute",
+      "parents": [
+        "hasEnergyCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Thermal Energy Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ThermalEnergyCarrier"
+      ],
+      "range": [
+        "ThermalEnergyCarrierAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTimeSeries",
+      "name": "hasTimeSeries",
+      "kind": "objectProperty",
+      "label": "has time series",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a dynamic attribute to its associated time series data",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "DynamicAttribute"
+      ],
+      "range": [
+        "TimeSeries"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTransportProcessAttribute",
+      "name": "hasTransportProcessAttribute",
+      "kind": "objectProperty",
+      "label": "has transport process attribute",
+      "parents": [
+        "hasProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasProcessAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Transport Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TransportProcess"
+      ],
+      "range": [
+        "TransportProcessAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTurbineAttribute",
+      "name": "hasTurbineAttribute",
+      "kind": "objectProperty",
+      "label": "has turbine attribute",
+      "parents": [
+        "hasEnergyConverterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyConverterAttribute",
+        "hasConverterAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Turbine attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Turbine"
+      ],
+      "range": [
+        "TurbineAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasUnit",
+      "name": "hasUnit",
+      "kind": "objectProperty",
+      "label": "has unit",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links an attribute to its QUDT unit",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Attribute"
+      ],
+      "range": [
+        "Unit"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasWindAttribute",
+      "name": "hasWindAttribute",
+      "kind": "objectProperty",
+      "label": "has wind attribute",
+      "parents": [
+        "hasRenewableAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasRenewableAttribute",
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Wind attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Wind"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#isAttributeOf",
+      "name": "isAttributeOf",
+      "kind": "objectProperty",
+      "label": "is attribute of",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "An attribute is required by a ServiceRequirement (inverse of hasInputAttribute)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Attribute"
+      ],
+      "range": [
+        "ServiceRequirement"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isDestinationOf",
+      "name": "isDestinationOf",
+      "kind": "objectProperty",
+      "label": "is destination of",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "The component receives a flow (inverse of hasDestination)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Flow"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isEntityOf",
+      "name": "isEntityOf",
+      "kind": "objectProperty",
+      "label": "is entity of",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A component is the subject entity of a ServiceRequirement",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "ServiceRequirement"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isFutureTimeSeriesOf",
+      "name": "isFutureTimeSeriesOf",
+      "kind": "objectProperty",
+      "label": "is future time series of",
+      "parents": [
+        "isTimeSeriesOf"
+      ],
+      "parentChainToRoot": [
+        "isTimeSeriesOf"
+      ],
+      "comment": "A forecast time series describes a dynamic attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "FutureTimeSeries"
+      ],
+      "range": [
+        "DynamicAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isHistoricTimeSeriesOf",
+      "name": "isHistoricTimeSeriesOf",
+      "kind": "objectProperty",
+      "label": "is historic time series of",
+      "parents": [
+        "isTimeSeriesOf"
+      ],
+      "parentChainToRoot": [
+        "isTimeSeriesOf"
+      ],
+      "comment": "A historical time series describes a dynamic attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "HistoricTimeSeries"
+      ],
+      "range": [
+        "DynamicAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isLiveTimeSeriesOf",
+      "name": "isLiveTimeSeriesOf",
+      "kind": "objectProperty",
+      "label": "is live time series of",
+      "parents": [
+        "isTimeSeriesOf"
+      ],
+      "parentChainToRoot": [
+        "isTimeSeriesOf"
+      ],
+      "comment": "A live time series describes a dynamic attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "LiveTimeSeries"
+      ],
+      "range": [
+        "DynamicAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isRequiredBy",
+      "name": "isRequiredBy",
+      "kind": "objectProperty",
+      "label": "is required by",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A ServiceRequirement belongs to a Service (inverse of requires)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ServiceRequirement"
+      ],
+      "range": [
+        "Service"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isSourceOf",
+      "name": "isSourceOf",
+      "kind": "objectProperty",
+      "label": "is source of",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "The component originates a flow (inverse of hasSource)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Flow"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#isTimeSeriesOf",
+      "name": "isTimeSeriesOf",
+      "kind": "objectProperty",
+      "label": "is time series of",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a time series to the dynamic attribute it represents",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TimeSeries"
+      ],
+      "range": [
+        "DynamicAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#linksComponent",
+      "name": "linksComponent",
+      "kind": "objectProperty",
+      "label": "links component",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Root symmetric property for any component-to-component relationship",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#linksInputEntityTo",
+      "name": "linksInputEntityTo",
+      "kind": "objectProperty",
+      "label": "links input entity to",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A ComponentLink points at its target component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentLink"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#locatedAt",
+      "name": "locatedAt",
+      "kind": "objectProperty",
+      "label": "located at",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Physical location of a component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#locatedIn",
+      "name": "locatedIn",
+      "kind": "objectProperty",
+      "label": "located in",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "A Location is spatially contained within another Location",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Location"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#locationOf",
+      "name": "locationOf",
+      "kind": "objectProperty",
+      "label": "location of",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "A Location hosts a component (inverse of the location attachment properties)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#measures",
+      "name": "measures",
+      "kind": "objectProperty",
+      "label": "measures",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Device measures a specific attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Device"
+      ],
+      "range": [
+        "Attribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#monitors",
+      "name": "monitors",
+      "kind": "objectProperty",
+      "label": "monitors",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Device monitors another component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Device"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#occursDuring",
+      "name": "occursDuring",
+      "kind": "objectProperty",
+      "label": "occurs during",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Temporal association: one component or process occurs during another",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#operates",
+      "name": "operates",
+      "kind": "objectProperty",
+      "label": "operates",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Operational control relationship",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Actor"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#owns",
+      "name": "owns",
+      "kind": "objectProperty",
+      "label": "owns",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Ownership relationship between actors and components",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Actor"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#partOf",
+      "name": "partOf",
+      "kind": "objectProperty",
+      "label": "part of",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "Whole-part composition: this component is part of another component",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#realTimeSource",
+      "name": "realTimeSource",
+      "kind": "objectProperty",
+      "label": "real-time source",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Reference to a real-time data source for live dynamic attributes",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "DynamicAttribute"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#requires",
+      "name": "requires",
+      "kind": "objectProperty",
+      "label": "requires",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A Service requires a ServiceRequirement to be satisfied by the submitted scenario",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Service"
+      ],
+      "range": [
+        "ServiceRequirement"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#targetAttribute",
+      "name": "targetAttribute",
+      "kind": "objectProperty",
+      "label": "target attribute",
+      "parents": [
+        "assumptionObjectProperty"
+      ],
+      "parentChainToRoot": [
+        "assumptionObjectProperty"
+      ],
+      "comment": "The attribute an Assumption modifies",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Assumption"
+      ],
+      "range": [
+        "Attribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#targetComponent",
+      "name": "targetComponent",
+      "kind": "objectProperty",
+      "label": "target component",
+      "parents": [
+        "assumptionObjectProperty"
+      ],
+      "parentChainToRoot": [
+        "assumptionObjectProperty"
+      ],
+      "comment": "The component an Assumption applies to",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Assumption"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#usedInScenario",
+      "name": "usedInScenario",
+      "kind": "objectProperty",
+      "label": "used in scenario",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Marks a component, attribute or link as belonging to a Scenario",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Attribute",
+        "Component",
+        "ComponentLink"
+      ],
+      "range": [
+        "Scenario"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#xAttribute",
+      "name": "xAttribute",
+      "kind": "objectProperty",
+      "label": "x attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Quantity kind of the x axis of a curve attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "QuantityKind"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#xUnit",
+      "name": "xUnit",
+      "kind": "objectProperty",
+      "label": "x unit",
+      "parents": [
+        "hasUnit"
+      ],
+      "parentChainToRoot": [
+        "hasUnit"
+      ],
+      "comment": "Unit of the x axis of a curve attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "Unit"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#yAttribute",
+      "name": "yAttribute",
+      "kind": "objectProperty",
+      "label": "y attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Quantity kind of the y axis of a curve attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "QuantityKind"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#yUnit",
+      "name": "yUnit",
+      "kind": "objectProperty",
+      "label": "y unit",
+      "parents": [
+        "hasUnit"
+      ],
+      "parentChainToRoot": [
+        "hasUnit"
+      ],
+      "comment": "Unit of the y axis of a curve attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CurveAttribute"
+      ],
+      "range": [
+        "Unit"
+      ]
+    }
+  ]
+}
