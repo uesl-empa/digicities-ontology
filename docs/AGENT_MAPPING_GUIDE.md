@@ -15,7 +15,7 @@ Every term in `core/dici_onto_core.ttl` carries:
 | `rdfs:label` | Human-readable name |
 | `rdfs:comment` | One-line description |
 | `skos:definition` / `dici_onto:definition` | Precise meaning, boundary conditions |
-| `skos:altLabel` | Synonyms — the words *your* domain might use for this concept |
+| `skos:altLabel` | Synonyms **and common narrower terms** — the words *your* domain might use for this concept (see below) |
 | `skos:example` | Concrete instances/subclasses that belong here |
 | `skos:scopeNote` | When to use this class **and when not to** (disambiguation vs. sibling classes) |
 
@@ -60,6 +60,16 @@ For each domain concept:
 4. **If nothing fits**, create an extension class under the closest parent —
    and give it the same annotations (see below), so the *next* mapping over
    your extension works too.
+
+   **altLabels are a retrieval surface, not identity claims.** They mix true
+   synonyms with common *narrower* terms — `Location` lists "Site" and
+   "District" so a search lands in the right place. An altLabel hit means
+   "this is the right neighborhood", not "these concepts are identical". If
+   your usecase needs the narrower concept as a distinct type (e.g. `Site`
+   with its own attributes), mint it as an **extension subclass** under the
+   annotated class. If it's later adopted by ≥2 workpackages it gets promoted
+   to core, and the altLabel moves from the parent onto the promoted class
+   ([`CORE_EVOLUTION.md`](CORE_EVOLUTION.md)).
 5. **Confirm consequential choices with the usecase author** — parent class,
    attribute kind, units, links. Propose your reasoning, get sign-off, then
    commit (this is the platform's "confirm, don't guess" rule).
