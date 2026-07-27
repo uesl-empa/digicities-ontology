@@ -25,6 +25,7 @@ for s, _, _ in g.triples((None, rdflib.RDF.type, rdflib.OWL.Class)):
 - `Assumption` — `AssumptionSingle` and `AssumptionSeries` variants
 - `TimeSeries` — `HistoricTimeSeries`, `LiveTimeSeries`, `FutureTimeSeries`
 - `Actor`, `Service`, `ServiceRequirement` — system-actor concepts
+- `TemporalPrecision` — value set (named individuals `Year`, `YearMonth`, `Date`, `DateTime`, `Unknown`) for event-attribute temporal granularity
 
 ## Components
 

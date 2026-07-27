@@ -12,6 +12,10 @@ Annotation release: the vocabulary now describes itself, so onboarding agents ca
 - `tools/generate_term_index.py` — generates the agent-facing lookup `docs/term-index.json` / `docs/term-index.md` from the TTL (optionally merged with workspace extension TTLs).
 - `docs/AGENT_MAPPING_GUIDE.md` — the mapping procedure and decision tree for onboarding agents, with a worked wind-forecasting example.
 - `tests/test_annotations.py` — annotation-coverage tests and a stale-index guard (CI fails if `term-index.*` doesn't match the TTL).
+- **20 platform terms promoted into core** (previously minted only in the platform's vendored copy): scenario/registry provenance data properties (`assumptionApplied`, `assumptionId`, `assumptionType`, `builtForService`, `cost`, `createdInWorkspace`, `generatedBy`, `linkType`, `modificationType`, `modifiedComponents`, `sourceCatalog`, `sourceType`, `sourceWorkspace`), the `TemporalPrecision` class with its `Year`/`YearMonth`/`Date`/`DateTime`/`Unknown` individuals, and `linksInputyEntityTo` — the historical misspelling the platform scenario tooling writes — added as a **deprecated `rdfs:subPropertyOf linksInputEntityTo`** so semantic queries via the canonical name find the data.
+
+### Fixed
+- `hasDataPath` domain loosened from `CurveAttribute` to `Attribute` — the platform also uses data paths on resource attributes, and the old conjunction of domains mis-typed those nodes.
 
 ### Changed
 - `tools/validate_extension.py`: a missing `rdfs:comment` is now an **error** (was a warning); missing `skos:definition`/`altLabel`/`example` on classes warn.

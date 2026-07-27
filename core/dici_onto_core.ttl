@@ -865,6 +865,16 @@ dici_onto:linksInputEntityTo rdf:type owl:ObjectProperty ;
                              rdfs:comment "A ComponentLink points at its target component"@en .
 
 
+###  https://digicities.info/ontology#linksInputyEntityTo
+dici_onto:linksInputyEntityTo rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf dici_onto:linksInputEntityTo ;
+                              rdfs:domain dici_onto:ComponentLink ;
+                              rdfs:range dici_onto:Component ;
+                              owl:deprecated "true"^^xsd:boolean ;
+                              rdfs:label "links input entity to (historical spelling)" ;
+                              rdfs:comment "Historical misspelling of linksInputEntityTo that the platform scenario tooling writes in ComponentLink data. Declared a subproperty of the canonical property so semantic queries via linksInputEntityTo still find the data under RDFS inference. Do not use in new vocabularies or code"@en .
+
+
 ###  https://digicities.info/ontology#locatedAt
 dici_onto:locatedAt rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf dici_onto:linksComponent ;
@@ -1082,10 +1092,10 @@ dici_onto:hasCategoricalValue rdf:type owl:DatatypeProperty ;
 ###  https://digicities.info/ontology#hasDataPath
 dici_onto:hasDataPath rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf dici_onto:hasAttributeValue ;
-                      rdfs:domain dici_onto:CurveAttribute ;
+                      rdfs:domain dici_onto:Attribute ;
                       rdfs:range xsd:string ;
                       rdfs:label "has data path" ;
-                      rdfs:comment "Path to an external data file backing a curve attribute"@en .
+                      rdfs:comment "Path to an external data file backing an attribute value (e.g. a curve or a weather file)"@en .
 
 
 ###  https://digicities.info/ontology#hasDataPoints
@@ -1246,6 +1256,106 @@ dici_onto:timeSeriesType rdf:type owl:DatatypeProperty ;
                          rdfs:range xsd:string ;
                          rdfs:comment "The type of time series: 'Historic', 'Live', or 'Future'"@en ;
                          rdfs:label "time series type" .
+
+
+###  https://digicities.info/ontology#assumptionApplied
+dici_onto:assumptionApplied rdf:type owl:DatatypeProperty ;
+                            rdfs:domain dici_onto:Scenario ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "assumption applied" ;
+                            rdfs:comment "Name of an assumption applied when deriving this scenario. Scenario-provenance metadata written by the platform tooling"@en .
+
+
+###  https://digicities.info/ontology#assumptionId
+dici_onto:assumptionId rdf:type owl:DatatypeProperty ;
+                       rdfs:domain dici_onto:Scenario ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "assumption id" ;
+                       rdfs:comment "Identifier of an assumption applied when deriving this scenario. Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#assumptionType
+dici_onto:assumptionType rdf:type owl:DatatypeProperty ;
+                         rdfs:domain dici_onto:Scenario ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "assumption type" ;
+                         rdfs:comment "Kind of assumption applied when deriving this scenario (e.g. single value or series). Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#builtForService
+dici_onto:builtForService rdf:type owl:DatatypeProperty ;
+                          rdfs:domain dici_onto:Scenario ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "built for service" ;
+                          rdfs:comment "Name of the service a scenario was assembled for. Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#cost
+dici_onto:cost rdf:type owl:DatatypeProperty ;
+               rdfs:domain dici_onto:Attribute ;
+               rdfs:label "cost" ;
+               rdfs:comment "Monetary cost literal attached to an attribute node by the scenario tooling. For modelled costs prefer the cost attribute classes (SimpleCostAttribute, UnitBasedCostAttribute)"@en .
+
+
+###  https://digicities.info/ontology#createdInWorkspace
+dici_onto:createdInWorkspace rdf:type owl:DatatypeProperty ;
+                             rdfs:domain dici_onto:Scenario ;
+                             rdfs:range xsd:string ;
+                             rdfs:label "created in workspace" ;
+                             rdfs:comment "Identifier of the workspace a scenario was created in. Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#generatedBy
+dici_onto:generatedBy rdf:type owl:DatatypeProperty ;
+                      rdfs:domain dici_onto:Scenario ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "generated by" ;
+                      rdfs:comment "Tool or module that generated the scenario. Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#linkType
+dici_onto:linkType rdf:type owl:DatatypeProperty ;
+                   rdfs:domain dici_onto:ComponentLink ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "link type" ;
+                   rdfs:comment "Kind of relationship a ComponentLink represents (e.g. contains, feeds)"@en .
+
+
+###  https://digicities.info/ontology#modificationType
+dici_onto:modificationType rdf:type owl:DatatypeProperty ;
+                           rdfs:domain dici_onto:Scenario ;
+                           rdfs:range xsd:string ;
+                           rdfs:label "modification type" ;
+                           rdfs:comment "Kind of modification a derived scenario applies relative to its parent. Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#modifiedComponents
+dici_onto:modifiedComponents rdf:type owl:DatatypeProperty ;
+                             rdfs:domain dici_onto:Scenario ;
+                             rdfs:range xsd:integer ;
+                             rdfs:label "modified components" ;
+                             rdfs:comment "Number of components modified in a derived scenario. Scenario-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#sourceCatalog
+dici_onto:sourceCatalog rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "source catalog" ;
+                        rdfs:comment "Catalog a service definition or template was sourced from. Registry-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#sourceType
+dici_onto:sourceType rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "source type" ;
+                     rdfs:comment "Kind of source a workspace artefact came from. Registry-provenance metadata"@en .
+
+
+###  https://digicities.info/ontology#sourceWorkspace
+dici_onto:sourceWorkspace rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "source workspace" ;
+                          rdfs:comment "Workspace an artefact was copied or imported from. Registry-provenance metadata"@en .
 
 
 #################################################################
@@ -2367,6 +2477,13 @@ dici_onto:TemperatureSensor rdf:type owl:Class ;
                             rdfs:comment "Sensor measuring temperature"@en .
 
 
+###  https://digicities.info/ontology#TemporalPrecision
+dici_onto:TemporalPrecision rdf:type owl:Class ;
+                            rdfs:comment "Granularity of an event attribute temporal value; the allowed values are its named individuals"@en ;
+                            rdfs:label "Temporal Precision" ;
+                            skos:example "Year, Year-Month, Date, Date-Time, Unknown"@en .
+
+
 ###  https://digicities.info/ontology#ThermalEnergyCarrier
 dici_onto:ThermalEnergyCarrier rdf:type owl:Class ;
                                rdfs:subClassOf dici_onto:EnergyCarrier ;
@@ -2466,6 +2583,41 @@ dici_onto:WindResourceAttribute rdf:type owl:Class ;
 
 ###  http://qudt.org/vocab/unit/KiloW-HR
 unit:KiloW-HR rdf:type owl:NamedIndividual .
+
+
+###  https://digicities.info/ontology#Date
+dici_onto:Date rdf:type owl:NamedIndividual ,
+                        dici_onto:TemporalPrecision ;
+               rdfs:label "Date" ;
+               rdfs:comment "Temporal precision of a calendar date (day)"@en .
+
+
+###  https://digicities.info/ontology#DateTime
+dici_onto:DateTime rdf:type owl:NamedIndividual ,
+                            dici_onto:TemporalPrecision ;
+                   rdfs:label "Date-Time" ;
+                   rdfs:comment "Temporal precision of a date with time of day"@en .
+
+
+###  https://digicities.info/ontology#Unknown
+dici_onto:Unknown rdf:type owl:NamedIndividual ,
+                           dici_onto:TemporalPrecision ;
+                  rdfs:label "Unknown" ;
+                  rdfs:comment "Temporal precision is not known"@en .
+
+
+###  https://digicities.info/ontology#Year
+dici_onto:Year rdf:type owl:NamedIndividual ,
+                        dici_onto:TemporalPrecision ;
+               rdfs:label "Year" ;
+               rdfs:comment "Temporal precision of a calendar year"@en .
+
+
+###  https://digicities.info/ontology#YearMonth
+dici_onto:YearMonth rdf:type owl:NamedIndividual ,
+                             dici_onto:TemporalPrecision ;
+                    rdfs:label "Year-Month" ;
+                    rdfs:comment "Temporal precision of a year and month"@en .
 
 
 #################################################################
