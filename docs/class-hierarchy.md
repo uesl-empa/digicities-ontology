@@ -1,6 +1,6 @@
 # Class hierarchy
 
-Full list of classes defined in `core/dici_onto_core.ttl`, grouped by upper concept. To regenerate this list, run:
+Full list of classes defined in `core/dici_onto_core.ttl`, grouped by upper concept. For per-term descriptions, synonyms and examples (the annotations agents map new concepts with), see the generated [term index](term-index.md) and the [mapping guide](AGENT_MAPPING_GUIDE.md). To regenerate this list, run:
 
 ```python
 import rdflib
@@ -20,11 +20,12 @@ for s, _, _ in g.triples((None, rdflib.RDF.type, rdflib.OWL.Class)):
 - `Network` — connectivity layer
 - `Location` — spatial context
 - `Attribute` — measurable properties (see [attribute-types.md](attribute-types.md))
-- `Reference` — citation entries
+- `Reference` — citation entries (`ReferenceType` value set, e.g. the `DOI` individual)
 - `Scenario` — what-if container
 - `Assumption` — `AssumptionSingle` and `AssumptionSeries` variants
 - `TimeSeries` — `HistoricTimeSeries`, `LiveTimeSeries`, `FutureTimeSeries`
 - `Actor`, `Service`, `ServiceRequirement` — system-actor concepts
+- `TemporalPrecision` — value set (named individuals `Year`, `YearMonth`, `Date`, `DateTime`, `Unknown`) for event-attribute temporal granularity
 
 ## Components
 
@@ -92,7 +93,7 @@ See [attribute-types.md](attribute-types.md) for full descriptions.
 - `Attribute`
   - `PhysicalAttribute`, `SimpleCostAttribute`, `UnitBasedCostAttribute`
   - `CategoricalAttribute`, `EventAttribute`, `ComponentAttribute`
-  - `CurveAttribute`, `CustomPhysicalRatioAttribute`
+  - `CurveAttribute`, `CustomPhysicalRatioAttribute`, `AnnotationAttribute`
   - `SimpleValueAttribute`, `StaticAttribute`, `DynamicAttribute`
   - `GeospatialAttribute`
   - Domain-specific `…Attribute` subclasses for each component/flow/resource class (e.g. `EnergyConsumerAttribute`, `ConverterAttribute`, `MeterAttribute`, …) — used as a typing marker so SPARQL queries can filter "all attributes of an X".

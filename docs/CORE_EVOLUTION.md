@@ -39,7 +39,9 @@ Promotion criteria, in rough order of importance:
 1. **In use across ≥2 workpackages.** Proves the concept generalises.
 2. **Stable for ≥6 months.** Proves the definition has settled.
 3. **No competing definition.** If two workspaces have inconsistent declarations, those need to be reconciled before promotion.
-4. **Labels and comments are clean.** Core is a public artefact. Sloppy prose stays in workspaces.
+4. **The full annotation set is present and clean.** Core is a public artefact that both humans and onboarding agents map onto: every promoted term needs `rdfs:label` + `rdfs:comment`, and classes where mapping decisions happen also need `skos:definition`, `skos:altLabel` (synonyms), `skos:example`, and — where siblings could be confused — a `skos:scopeNote`. See [`AGENT_MAPPING_GUIDE.md`](AGENT_MAPPING_GUIDE.md). Sloppy prose stays in workspaces.
+5. **The term index is regenerated.** Run `python tools/generate_term_index.py` and commit the updated `docs/term-index.{json,md}` — CI fails on a stale index.
+6. **altLabels migrate on promotion.** Core classes list common narrower terms as `skos:altLabel` (e.g. "Site" on `Location`) so agents map onto the right parent before the narrower concept exists. When such a term is promoted to its own core class, remove it from the parent's altLabels in the same PR — the label now belongs to the promoted class.
 
 ## Service compatibility contract
 

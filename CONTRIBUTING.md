@@ -11,6 +11,8 @@ The most impactful contribution. When a concept has been used in **≥2 workpack
 The PR should:
 
 - Add the class or property declarations to `core/dici_onto_core.ttl`. Use the existing structure as a guide. Group related concepts together. Keep labels and comments crisp.
+- Carry the **full annotation set**: `rdfs:label`, `rdfs:comment`, and for classes `skos:definition`, `skos:altLabel` (synonyms), `skos:example`, plus a `skos:scopeNote` where the class could be confused with a sibling. These annotations are what onboarding agents map new usecases with — see [`docs/AGENT_MAPPING_GUIDE.md`](docs/AGENT_MAPPING_GUIDE.md). The tests enforce label/comment coverage.
+- Regenerate the term index (`python tools/generate_term_index.py`) and commit the updated `docs/term-index.{json,md}` — CI fails on a stale index.
 - Update [`docs/class-hierarchy.md`](docs/class-hierarchy.md) and [`docs/attribute-types.md`](docs/attribute-types.md) if you've added classes that belong in those lists.
 - Link the originating workspace extensions in the PR description so reviewers can see the prior art.
 - Note in the PR body which workpackages were using the concept and for how long.
