@@ -20,7 +20,7 @@ for s, _, _ in g.triples((None, rdflib.RDF.type, rdflib.OWL.Class)):
 - `Network` — connectivity layer
 - `Location` — spatial context
 - `Attribute` — measurable properties (see [attribute-types.md](attribute-types.md))
-- `Reference` — citation entries
+- `Reference` — citation entries (`ReferenceType` value set, e.g. the `DOI` individual)
 - `Scenario` — what-if container
 - `Assumption` — `AssumptionSingle` and `AssumptionSeries` variants
 - `TimeSeries` — `HistoricTimeSeries`, `LiveTimeSeries`, `FutureTimeSeries`
@@ -93,7 +93,7 @@ See [attribute-types.md](attribute-types.md) for full descriptions.
 - `Attribute`
   - `PhysicalAttribute`, `SimpleCostAttribute`, `UnitBasedCostAttribute`
   - `CategoricalAttribute`, `EventAttribute`, `ComponentAttribute`
-  - `CurveAttribute`, `CustomPhysicalRatioAttribute`
+  - `CurveAttribute`, `CustomPhysicalRatioAttribute`, `AnnotationAttribute`
   - `SimpleValueAttribute`, `StaticAttribute`, `DynamicAttribute`
   - `GeospatialAttribute`
   - Domain-specific `…Attribute` subclasses for each component/flow/resource class (e.g. `EnergyConsumerAttribute`, `ConverterAttribute`, `MeterAttribute`, …) — used as a typing marker so SPARQL queries can filter "all attributes of an X".

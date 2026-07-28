@@ -33,7 +33,7 @@ What it deliberately does **not** cover (out of scope, defer to specialist ontol
 
 4. **Re-use over re-invention.** Units come from QUDT, currencies from QUDT, provenance from PROV-O, basic typing from RDFS/OWL. The ontology only defines what's specific to city-scale energy.
 
-5. **Small core, extensible periphery.** The core TTL is intentionally compact (~130 classes). Project-specific extensions live in separate TTL files loaded by downstream tools as named graphs.
+5. **Small core, extensible periphery.** The core TTL is intentionally compact (~143 classes). Project-specific extensions live in separate TTL files loaded by downstream tools as named graphs.
 
 6. **Terms describe themselves.** Every term carries `rdfs:label` + `rdfs:comment`, and mapping-decision classes additionally carry `skos:definition`, `skos:altLabel` (synonyms), `skos:example`, and `skos:scopeNote`. This is what lets onboarding agents map domain concepts (a `WindPark` → `Location`) semantically instead of by name. See the [mapping guide](AGENT_MAPPING_GUIDE.md) and the generated [term index](term-index.md).
 

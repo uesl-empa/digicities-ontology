@@ -16,17 +16,22 @@ Concretely, the ontology defines a small set of upper-level classes (`Component`
 
 ```
 core/
-├── dici_onto_core.ttl   # the ontology itself (~1.9k lines, ~133 classes)
+├── dici_onto_core.ttl   # the ontology itself (~2.7k lines, ~143 classes)
 └── qudt_units.txt       # QUDT unit list referenced by Physical/Cost attributes
 docs/
 ├── overview.md          # scope, design principles, namespaces
 ├── attribute-types.md   # the 15 attribute-type classes and what they model
 ├── class-hierarchy.md   # full class list grouped by upper concept
-└── CORE_EVOLUTION.md    # how workspace extensions become core
+├── CORE_EVOLUTION.md    # how workspace extensions become core
+├── AGENT_MAPPING_GUIDE.md  # mapping procedure + decision tree for onboarding agents
+├── term-index.json      # generated agent-facing term lookup (labels, comments, SKOS)
+└── term-index.md        # human-readable rendering of the term index
 tools/
-└── validate_extension.py  # library for partners to validate their workspace's extensions
+├── validate_extension.py    # library for partners to validate their workspace's extensions
+└── generate_term_index.py   # regenerates docs/term-index.{json,md} from the TTL
 tests/
-└── test_parses.py       # rdflib smoke parse + sanity-check triple count
+├── test_parses.py       # rdflib smoke parse + sanity-check triple count
+└── test_annotations.py  # annotation coverage + stale-term-index guard
 ```
 
 ## Managing Ontology Extensions
@@ -71,7 +76,7 @@ The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/
 
 ## Versioning
 
-Semver. The current release is **v0.1.0**, the initial public snapshot of the core ontology.
+Semver. The current release is **v0.2.0**, the annotation release: every term carries `rdfs:label` + `rdfs:comment` (mapping-decision classes also SKOS annotations), the TTL declares `owl:versionInfo`, and the generated `docs/term-index.{json,md}` gives agents a lookup surface. See [`CHANGELOG.md`](CHANGELOG.md).
 
 Downstream consumers (notably the Digicities platform) vendor a tagged copy of `core/dici_onto_core.ttl` rather than depending on this repo at build time. The platform records the vendored version in its own `services/graphdb/ontology/VERSION` file.
 

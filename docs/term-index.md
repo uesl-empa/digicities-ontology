@@ -48,6 +48,14 @@ mapping procedure.
 - **Description:** Current position or state of an actuator
 - **Default unit:** PERCENT
 
+### AnnotationAttribute
+
+- **Label:** Annotation Attribute
+- **Hierarchy:** Thing > Attribute > **AnnotationAttribute**
+- **Description:** Attribute carrying free-text notes or commentary about a component, with its content in hasAnnotationValue
+- **Synonyms:** Comment, Note
+- **Examples:** Data-quality remark, operator note
+
 ### Assumption
 
 - **Label:** Assumption
@@ -725,6 +733,21 @@ mapping procedure.
 - **Description:** Maximum processing capacity
 - **Default unit:** KiloW
 
+### Reference
+
+- **Label:** Reference
+- **Hierarchy:** (root)
+- **Description:** A citable information source (report, paper, dataset, website) that replica or scenario data points to as provenance. Instances are created from the Reference sheet of the ingestion template
+- **Synonyms:** Citation, Source
+- **Examples:** A journal article identified by DOI backing an efficiency value
+
+### ReferenceType
+
+- **Label:** Reference Type
+- **Hierarchy:** (root)
+- **Description:** Kind of citable source a Reference is; the allowed values are its named individuals
+- **Examples:** DOI
+
 ### RenewableResource
 
 - **Label:** Renewable Resource
@@ -1023,6 +1046,14 @@ mapping procedure.
 - **Hierarchy:** (root)
 - **Description:** Root property for links from an Assumption to its targets
 
+### basedOn
+
+- **Label:** based on
+- **Hierarchy:** (root)
+- **Description:** Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling
+- **Domain:** Scenario
+- **Range:** Scenario
+
 ### carriesEnergyCarrier
 
 - **Label:** carries energy carrier
@@ -1157,14 +1188,6 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasConverterAttribute**
 - **Description:** Attaches a Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Converter
-
-### hasDataPoints
-
-- **Label:** has data points
-- **Hierarchy:** hasAttributeValue > **hasDataPoints**
-- **Description:** The x-y data points of a curve attribute, as JSON
-- **Domain:** CurveAttribute
-- **Range:** JSON
 
 ### hasDestination
 
@@ -1450,6 +1473,14 @@ mapping procedure.
 - **Description:** Attaches a Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Process
 - **Range:** ProcessAttribute
+
+### hasReferenceType
+
+- **Label:** has reference type
+- **Hierarchy:** (root)
+- **Description:** The kind of citable source a Reference is (e.g. the DOI individual). Written from the ReferenceType column of the ingestion template's Reference sheet
+- **Domain:** Reference
+- **Range:** ReferenceType
 
 ### hasRenewableAttribute
 
@@ -1763,6 +1794,15 @@ mapping procedure.
 - **Domain:** Service
 - **Range:** ServiceRequirement
 
+### supersedesAttribute
+
+- **Label:** supersedes attribute
+- **Hierarchy:** (root)
+- **Description:** A thin-scenario override attribute points at the replica attribute it replaces. Consumers materialize a scenario by taking the replica and swapping in every attribute that supersedes one of its attributes
+- **Scope:** Written by the platform scenario tooling together with usedInScenario; the override carries the new value while the superseded replica attribute keeps the baseline value.
+- **Domain:** Attribute
+- **Range:** Attribute
+
 ### targetAttribute
 
 - **Label:** target attribute
@@ -1907,6 +1947,14 @@ mapping procedure.
 - **Hierarchy:** (root)
 - **Description:** Tool or module that generated the scenario. Scenario-provenance metadata
 - **Domain:** Scenario
+- **Range:** string
+
+### hasAnnotationValue
+
+- **Label:** has annotation value
+- **Hierarchy:** hasAttributeValue > **hasAnnotationValue**
+- **Description:** The free-text content of an annotation attribute
+- **Domain:** AnnotationAttribute
 - **Range:** string
 
 ### hasAttributeValue
@@ -2162,6 +2210,12 @@ mapping procedure.
 - **Label:** definition
 - **Hierarchy:** definition > **definition**
 - **Description:** Legacy definition annotation; prefer skos:definition for new terms
+
+### hasDefaultTemporalPrecision
+
+- **Label:** has default temporal precision
+- **Hierarchy:** (root)
+- **Description:** Annotation on an event attribute class giving the default temporal precision (a TemporalPrecision individual) for its instances. Class-level counterpart of hasTemporalPrecision, mirroring hasDefaultUnit
 
 ### hasDefaultUnit
 

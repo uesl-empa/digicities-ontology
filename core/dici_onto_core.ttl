@@ -12,6 +12,8 @@
 @base <https://digicities.info/ontology#> .
 
 <https://digicities.info/ontology> rdf:type owl:Ontology ;
+    owl:versionIRI <https://digicities.info/ontology/0.2.0> ;
+    owl:versionInfo "0.2.0" ;
     rdfs:label "Digicities ontology"@en ;
     rdfs:comment "Open OWL/RDF ontology for describing city-scale energy systems."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
@@ -84,6 +86,14 @@ dici_onto:hasDefaultUnit rdf:type owl:AnnotationProperty ;
                          rdfs:comment "Annotation on an attribute class giving the default QUDT unit for its instances"@en .
 
 
+###  https://digicities.info/ontology#hasDefaultTemporalPrecision
+dici_onto:hasDefaultTemporalPrecision rdf:type owl:AnnotationProperty ;
+                                      rdfs:range dici_onto:TemporalPrecision ;
+                                      rdfs:domain dici_onto:EventAttribute ;
+                                      rdfs:label "has default temporal precision"@en ;
+                                      rdfs:comment "Annotation on an event attribute class giving the default temporal precision (a TemporalPrecision individual) for its instances. Class-level counterpart of hasTemporalPrecision, mirroring hasDefaultUnit"@en .
+
+
 ###  https://digicities.info/ontology#hasQuantityKind
 dici_onto:hasQuantityKind rdf:type owl:AnnotationProperty ;
                           rdfs:range qudt:QuantityKind ;
@@ -124,6 +134,14 @@ dici_onto:actuates rdf:type owl:ObjectProperty ;
 dici_onto:assumptionObjectProperty rdf:type owl:ObjectProperty ;
                                    rdfs:label "assumption object property"@en ;
                                    rdfs:comment "Root property for links from an Assumption to its targets"@en .
+
+
+###  https://digicities.info/ontology#basedOn
+dici_onto:basedOn rdf:type owl:ObjectProperty ;
+                  rdfs:domain dici_onto:Scenario ;
+                  rdfs:range dici_onto:Scenario ;
+                  rdfs:label "based on"@en ;
+                  rdfs:comment "Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling"@en .
 
 
 ###  https://digicities.info/ontology#carriesEnergyCarrier
@@ -275,14 +293,6 @@ dici_onto:hasConverterAttribute rdf:type owl:ObjectProperty ;
                                 rdfs:domain dici_onto:Converter ;
                                 rdfs:label "has converter attribute"@en ;
                                 rdfs:comment "Attaches a Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute"@en .
-
-
-###  https://digicities.info/ontology#hasDataPoints
-dici_onto:hasDataPoints rdf:type owl:ObjectProperty ;
-                        rdfs:domain dici_onto:CurveAttribute ;
-                        rdfs:range rdf:JSON ;
-                        rdfs:label "has data points"@en ;
-                        rdfs:comment "The x-y data points of a curve attribute, as JSON"@en .
 
 
 ###  https://digicities.info/ontology#hasDestination
@@ -614,6 +624,14 @@ dici_onto:hasProcessAttribute rdf:type owl:ObjectProperty ;
                               rdfs:range dici_onto:ProcessAttribute ;
                               rdfs:label "has process attribute" ;
                               rdfs:comment "Attaches a Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute"@en .
+
+
+###  https://digicities.info/ontology#hasReferenceType
+dici_onto:hasReferenceType rdf:type owl:ObjectProperty ;
+                           rdfs:domain dici_onto:Reference ;
+                           rdfs:range dici_onto:ReferenceType ;
+                           rdfs:label "has reference type"@en ;
+                           rdfs:comment "The kind of citable source a Reference is (e.g. the DOI individual). Written from the ReferenceType column of the ingestion template's Reference sheet"@en .
 
 
 ###  https://digicities.info/ontology#hasRenewableAttribute
@@ -964,6 +982,15 @@ dici_onto:requires rdf:type owl:ObjectProperty ;
                    rdfs:comment "A Service requires a ServiceRequirement to be satisfied by the submitted scenario"@en .
 
 
+###  https://digicities.info/ontology#supersedesAttribute
+dici_onto:supersedesAttribute rdf:type owl:ObjectProperty ;
+                              rdfs:domain dici_onto:Attribute ;
+                              rdfs:range dici_onto:Attribute ;
+                              rdfs:label "supersedes attribute"@en ;
+                              rdfs:comment "A thin-scenario override attribute points at the replica attribute it replaces. Consumers materialize a scenario by taking the replica and swapping in every attribute that supersedes one of its attributes"@en ;
+                              skos:scopeNote "Written by the platform scenario tooling together with usedInScenario; the override carries the new value while the superseded replica attribute keeps the baseline value."@en .
+
+
 ###  https://digicities.info/ontology#targetAttribute
 dici_onto:targetAttribute rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf dici_onto:assumptionObjectProperty ;
@@ -1082,6 +1109,15 @@ dici_onto:hasAttributeValue rdf:type owl:DatatypeProperty ;
                             rdfs:comment "Root data property carrying the literal value of an attribute"@en .
 
 
+###  https://digicities.info/ontology#hasAnnotationValue
+dici_onto:hasAnnotationValue rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf dici_onto:hasAttributeValue ;
+                             rdfs:domain dici_onto:AnnotationAttribute ;
+                             rdfs:range xsd:string ;
+                             rdfs:label "has annotation value"@en ;
+                             rdfs:comment "The free-text content of an annotation attribute"@en .
+
+
 ###  https://digicities.info/ontology#hasCategoricalValue
 dici_onto:hasCategoricalValue rdf:type owl:DatatypeProperty ;
                               rdfs:subPropertyOf dici_onto:hasAttributeValue ;
@@ -1100,7 +1136,11 @@ dici_onto:hasDataPath rdf:type owl:DatatypeProperty ;
 
 ###  https://digicities.info/ontology#hasDataPoints
 dici_onto:hasDataPoints rdf:type owl:DatatypeProperty ;
-                        rdfs:subPropertyOf dici_onto:hasAttributeValue .
+                        rdfs:subPropertyOf dici_onto:hasAttributeValue ;
+                        rdfs:domain dici_onto:CurveAttribute ;
+                        rdfs:range rdf:JSON ;
+                        rdfs:label "has data points"@en ;
+                        rdfs:comment "The x-y data points of a curve attribute, as JSON"@en .
 
 
 ###  https://digicities.info/ontology#hasFileName
@@ -1421,6 +1461,16 @@ dici_onto:ActuatorPosition rdf:type owl:Class ;
                            rdfs:comment "Current position or state of an actuator"@en ;
                            rdfs:label "Actuator Position" ;
                            dici_onto:hasDefaultUnit unit:PERCENT .
+
+
+###  https://digicities.info/ontology#AnnotationAttribute
+dici_onto:AnnotationAttribute rdf:type owl:Class ;
+                              rdfs:subClassOf dici_onto:Attribute ;
+                              rdfs:label "Annotation Attribute" ;
+                              rdfs:comment "Attribute carrying free-text notes or commentary about a component, with its content in hasAnnotationValue"@en ;
+                              skos:altLabel "Note"@en ,
+                                            "Comment"@en ;
+                              skos:example "Data-quality remark, operator note"@en .
 
 
 ###  https://digicities.info/ontology#Assumption
@@ -2244,6 +2294,22 @@ dici_onto:ProcessCapacity rdf:type owl:Class ;
                           dici_onto:hasDefaultUnit unit:KiloW .
 
 
+###  https://digicities.info/ontology#Reference
+dici_onto:Reference rdf:type owl:Class ;
+                    rdfs:label "Reference" ;
+                    rdfs:comment "A citable information source (report, paper, dataset, website) that replica or scenario data points to as provenance. Instances are created from the Reference sheet of the ingestion template"@en ;
+                    skos:altLabel "Citation"@en ,
+                                  "Source"@en ;
+                    skos:example "A journal article identified by DOI backing an efficiency value"@en .
+
+
+###  https://digicities.info/ontology#ReferenceType
+dici_onto:ReferenceType rdf:type owl:Class ;
+                        rdfs:label "Reference Type" ;
+                        rdfs:comment "Kind of citable source a Reference is; the allowed values are its named individuals"@en ;
+                        skos:example "DOI"@en .
+
+
 ###  https://digicities.info/ontology#RenewableResource
 dici_onto:RenewableResource rdf:type owl:Class ;
                             rdfs:subClassOf dici_onto:Resource ;
@@ -2599,6 +2665,13 @@ dici_onto:DateTime rdf:type owl:NamedIndividual ,
                    rdfs:comment "Temporal precision of a date with time of day"@en .
 
 
+###  https://digicities.info/ontology#DOI
+dici_onto:DOI rdf:type owl:NamedIndividual ,
+                       dici_onto:ReferenceType ;
+              rdfs:label "DOI" ;
+              rdfs:comment "Reference identified by a Digital Object Identifier"@en .
+
+
 ###  https://digicities.info/ontology#Unknown
 dici_onto:Unknown rdf:type owl:NamedIndividual ,
                            dici_onto:TemporalPrecision ;
@@ -2618,13 +2691,6 @@ dici_onto:YearMonth rdf:type owl:NamedIndividual ,
                              dici_onto:TemporalPrecision ;
                     rdfs:label "Year-Month" ;
                     rdfs:comment "Temporal precision of a year and month"@en .
-
-
-#################################################################
-#    Annotations
-#################################################################
-
-dici_onto:hasDataPoints rdfs:label "has data points" .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

@@ -92,6 +92,19 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#hasDefaultTemporalPrecision",
+      "name": "hasDefaultTemporalPrecision",
+      "kind": "annotationProperty",
+      "label": "has default temporal precision",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Annotation on an event attribute class giving the default temporal precision (a TemporalPrecision individual) for its instances. Class-level counterpart of hasTemporalPrecision, mirroring hasDefaultUnit",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#hasDefaultUnit",
       "name": "hasDefaultUnit",
       "kind": "annotationProperty",
@@ -221,6 +234,29 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "PERCENT"
+    },
+    {
+      "iri": "https://digicities.info/ontology#AnnotationAttribute",
+      "name": "AnnotationAttribute",
+      "kind": "class",
+      "label": "Annotation Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute carrying free-text notes or commentary about a component, with its content in hasAnnotationValue",
+      "definition": null,
+      "altLabels": [
+        "Comment",
+        "Note"
+      ],
+      "examples": [
+        "Data-quality remark, operator note"
+      ],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#Assumption",
@@ -2141,6 +2177,39 @@
       "defaultUnit": "KiloW"
     },
     {
+      "iri": "https://digicities.info/ontology#Reference",
+      "name": "Reference",
+      "kind": "class",
+      "label": "Reference",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A citable information source (report, paper, dataset, website) that replica or scenario data points to as provenance. Instances are created from the Reference sheet of the ingestion template",
+      "definition": null,
+      "altLabels": [
+        "Citation",
+        "Source"
+      ],
+      "examples": [
+        "A journal article identified by DOI backing an efficiency value"
+      ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#ReferenceType",
+      "name": "ReferenceType",
+      "kind": "class",
+      "label": "Reference Type",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Kind of citable source a Reference is; the allowed values are its named individuals",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "DOI"
+      ],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#RenewableResource",
       "name": "RenewableResource",
       "kind": "class",
@@ -3172,6 +3241,29 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasAnnotationValue",
+      "name": "hasAnnotationValue",
+      "kind": "dataProperty",
+      "label": "has annotation value",
+      "parents": [
+        "hasAttributeValue"
+      ],
+      "parentChainToRoot": [
+        "hasAttributeValue"
+      ],
+      "comment": "The free-text content of an annotation attribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "AnnotationAttribute"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasAttributeValue",
       "name": "hasAttributeValue",
       "kind": "dataProperty",
@@ -3800,6 +3892,25 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#basedOn",
+      "name": "basedOn",
+      "kind": "objectProperty",
+      "label": "based on",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Scenario"
+      ],
+      "range": [
+        "Scenario"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#carriesEnergyCarrier",
       "name": "carriesEnergyCarrier",
       "kind": "objectProperty",
@@ -4196,29 +4307,6 @@
         "Converter"
       ],
       "range": []
-    },
-    {
-      "iri": "https://digicities.info/ontology#hasDataPoints",
-      "name": "hasDataPoints",
-      "kind": "objectProperty",
-      "label": "has data points",
-      "parents": [
-        "hasAttributeValue"
-      ],
-      "parentChainToRoot": [
-        "hasAttributeValue"
-      ],
-      "comment": "The x-y data points of a curve attribute, as JSON",
-      "definition": null,
-      "altLabels": [],
-      "examples": [],
-      "scopeNote": null,
-      "domain": [
-        "CurveAttribute"
-      ],
-      "range": [
-        "JSON"
-      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasDestination",
@@ -5102,6 +5190,25 @@
       ],
       "range": [
         "ProcessAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasReferenceType",
+      "name": "hasReferenceType",
+      "kind": "objectProperty",
+      "label": "has reference type",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The kind of citable source a Reference is (e.g. the DOI individual). Written from the ReferenceType column of the ingestion template's Reference sheet",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Reference"
+      ],
+      "range": [
+        "ReferenceType"
       ]
     },
     {
@@ -5999,6 +6106,25 @@
       ],
       "range": [
         "ServiceRequirement"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#supersedesAttribute",
+      "name": "supersedesAttribute",
+      "kind": "objectProperty",
+      "label": "supersedes attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A thin-scenario override attribute points at the replica attribute it replaces. Consumers materialize a scenario by taking the replica and swapping in every attribute that supersedes one of its attributes",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": "Written by the platform scenario tooling together with usedInScenario; the override carries the new value while the superseded replica attribute keeps the baseline value.",
+      "domain": [
+        "Attribute"
+      ],
+      "range": [
+        "Attribute"
       ]
     },
     {
