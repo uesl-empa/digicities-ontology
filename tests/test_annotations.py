@@ -115,6 +115,26 @@ def test_legacy_annotation_properties_bridge_to_skos():
     assert (DICI.abbreviation, RDFS.subPropertyOf, SKOS.altLabel) in g
 
 
+def test_deprecated_spelling_bridges_to_canonical():
+    """linksInputyEntityTo (the historical misspelling the platform writes) must
+    stay owl:deprecated AND bridged as a subproperty, so canonical-name queries
+    reach typo-written data through RDFS inference."""
+    g = _load_core()
+    dep = DICI.linksInputyEntityTo
+    assert (dep, OWL.deprecated, rdflib.Literal(True)) in g
+    assert (dep, RDFS.subPropertyOf, DICI.linksInputEntityTo) in g
+
+
+def test_no_object_and_datatype_double_typing():
+    """OWL DL forbids one IRI being both an object and a datatype property —
+    the hasDataPoints regression (duplicate term-index entries)."""
+    g = _load_core()
+    obj = set(g.subjects(RDF.type, OWL.ObjectProperty))
+    dat = set(g.subjects(RDF.type, OWL.DatatypeProperty))
+    both = sorted(str(t) for t in obj & dat)
+    assert not both, f"terms typed as both object and datatype property: {both}"
+
+
 def test_term_index_is_fresh(tmp_path):
     """docs/term-index.{json,md} must match a regeneration from the TTL."""
     subprocess.run(
