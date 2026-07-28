@@ -206,8 +206,10 @@ def main(argv: list[str]) -> int:
     md_path = args.out / "term-index.md"
 
     payload = {"_note": GENERATED_NOTE, "terms": records}
-    json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-    md_path.write_text(render_markdown(records), encoding="utf-8", newline="\n")
+    # Write bytes (not write_text(newline=...), which is Python 3.10+) so the
+    # committed index stays LF-only and byte-stable on any OS / Python version.
+    json_path.write_bytes((json.dumps(payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
+    md_path.write_bytes(render_markdown(records).encode("utf-8"))
 
     print(f"wrote {json_path} ({len(records)} terms)")
     print(f"wrote {md_path}")
