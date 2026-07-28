@@ -9,11 +9,16 @@ on:
 jobs:
   parse-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 3.9 is the oldest supported interpreter (the term-index generator is
+        # kept 3.9-compatible); 3.11 is the historical CI baseline.
+        python-version: ["3.9", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
       - name: Install deps
         run: pip install rdflib pytest
       - name: Run tests
