@@ -1172,11 +1172,18 @@ mapping procedure.
 - **Domain:** Flow
 - **Range:** Location
 
+### groupComponent
+
+- **Label:** group component
+- **Hierarchy:** (root)
+- **Description:** The component instance whose linked components this group's members belong to. Present only on Sets of a component-grouped GroupedSet.
+- **Domain:** Set
+
 ### groupedBy
 
 - **Label:** grouped by
 - **Hierarchy:** (root)
-- **Description:** The attribute class whose values partition the components (class-as-value, e.g. dici_onto:PostalCode).
+- **Description:** What partitions the members: an attribute class whose values are the group keys (class-as-value, e.g. dici_onto:PostalCode), or a component class whose instances are the groups — each member's owner is linked to that instance via a linksComponent-family edge (e.g. dici_onto:WindPark for per-park turbine statistics).
 - **Domain:** GroupedSet
 
 ### hasActorAttribute
@@ -2117,7 +2124,7 @@ mapping procedure.
 
 - **Label:** group key
 - **Hierarchy:** (root)
-- **Description:** The raw value of the grouping attribute for this partition. Present only on Sets that are members of a GroupedSet.
+- **Description:** The raw value of the grouping attribute — or the label of the grouping component instance — for this partition. Present only on Sets that are members of a GroupedSet.
 - **Domain:** Set
 
 ### hasAnnotationValue

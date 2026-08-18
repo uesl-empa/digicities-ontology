@@ -2778,7 +2778,13 @@ dici_onto:ofAttributeType rdf:type owl:ObjectProperty ;
 dici_onto:groupedBy rdf:type owl:ObjectProperty ;
         rdfs:domain dici_onto:GroupedSet ;
         rdfs:label "grouped by" ;
-        rdfs:comment "The attribute class whose values partition the components (class-as-value, e.g. dici_onto:PostalCode)."@en .
+        rdfs:comment "What partitions the members: an attribute class whose values are the group keys (class-as-value, e.g. dici_onto:PostalCode), or a component class whose instances are the groups — each member's owner is linked to that instance via a linksComponent-family edge (e.g. dici_onto:WindPark for per-park turbine statistics)."@en .
+
+###  https://digicities.info/ontology#groupComponent
+dici_onto:groupComponent rdf:type owl:ObjectProperty ;
+        rdfs:domain dici_onto:Set ;
+        rdfs:label "group component" ;
+        rdfs:comment "The component instance whose linked components this group's members belong to. Present only on Sets of a component-grouped GroupedSet."@en .
 
 ###  https://digicities.info/ontology#hasGroup
 dici_onto:hasGroup rdf:type owl:ObjectProperty ;
@@ -2812,7 +2818,7 @@ dici_onto:hasBin rdf:type owl:ObjectProperty ;
 dici_onto:groupKey rdf:type owl:DatatypeProperty ;
         rdfs:domain dici_onto:Set ;
         rdfs:label "group key" ;
-        rdfs:comment "The raw value of the grouping attribute for this partition. Present only on Sets that are members of a GroupedSet."@en .
+        rdfs:comment "The raw value of the grouping attribute — or the label of the grouping component instance — for this partition. Present only on Sets that are members of a GroupedSet."@en .
 
 ###  https://digicities.info/ontology#count
 dici_onto:count rdf:type owl:DatatypeProperty ;

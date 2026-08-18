@@ -4,10 +4,10 @@ All notable changes to the Digicities ontology are recorded here. The project fo
 
 ## [0.3.0] — 2026-08-18
 
-Collections release: dataset-level analysis — aggregate attribute instances into sets with descriptive statistics, and partition one attribute type by another (GROUP BY analogue).
+Collections release: dataset-level analysis — aggregate attribute instances into sets with descriptive statistics, and partition one attribute type by another — or by the component instances its owners are linked to (GROUP BY analogue).
 
 ### Added
-- **Collections vocabulary**: `Collection` (abstract), `Set`, `GroupedSet`, `DescriptiveStatistics`, `Distribution`, `DistributionBin` classes; `aggregatedIn` (domain `Attribute`) with `hasMember` inverse, `hasSet`/`derivedFromDataSet` (data-source provenance), `ofAttributeType`/`groupedBy` (class-as-value), `hasGroup`, `hasDescriptiveStatistics`, `hasDistribution`, `hasBin` object properties; `groupKey`, the statistics data properties (`count`, `mean`, `standardDeviation`, `minValue`, `maxValue`, `median`, `sum`, `distinctCount`, `mode`), bin data properties (`binLabel`, `binLowerBound`, `binUpperBound`, `binFrequency`), and `computedAt`/`computedBy` provenance. Collections are **derived, recomputable artefacts** materialized by the platform's `backend/collections` into a dedicated named graph — never authored data. `minValue`/`maxValue` deliberately carry no `rdfs:range` (numeric sets hold `xsd:double`, temporal sets `xsd:dateTime`).
+- **Collections vocabulary**: `Collection` (abstract), `Set`, `GroupedSet`, `DescriptiveStatistics`, `Distribution`, `DistributionBin` classes; `aggregatedIn` (domain `Attribute`) with `hasMember` inverse, `hasSet`/`derivedFromDataSet` (data-source provenance), `ofAttributeType`/`groupedBy` (class-as-value), `hasGroup`, `groupComponent` (component-grouped Sets name their container instance), `hasDescriptiveStatistics`, `hasDistribution`, `hasBin` object properties; `groupKey`, the statistics data properties (`count`, `mean`, `standardDeviation`, `minValue`, `maxValue`, `median`, `sum`, `distinctCount`, `mode`), bin data properties (`binLabel`, `binLowerBound`, `binUpperBound`, `binFrequency`), and `computedAt`/`computedBy` provenance. Collections are **derived, recomputable artefacts** materialized by the platform's `backend/collections` into a dedicated named graph — never authored data. `minValue`/`maxValue` deliberately carry no `rdfs:range` (numeric sets hold `xsd:double`, temporal sets `xsd:dateTime`).
 
 ## [0.2.0] — 2026-07-24
 

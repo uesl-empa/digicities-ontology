@@ -3465,7 +3465,7 @@
       "label": "group key",
       "parents": [],
       "parentChainToRoot": [],
-      "comment": "The raw value of the grouping attribute for this partition. Present only on Sets that are members of a GroupedSet.",
+      "comment": "The raw value of the grouping attribute — or the label of the grouping component instance — for this partition. Present only on Sets that are members of a GroupedSet.",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -4484,13 +4484,30 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#groupComponent",
+      "name": "groupComponent",
+      "kind": "objectProperty",
+      "label": "group component",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The component instance whose linked components this group's members belong to. Present only on Sets of a component-grouped GroupedSet.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Set"
+      ],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#groupedBy",
       "name": "groupedBy",
       "kind": "objectProperty",
       "label": "grouped by",
       "parents": [],
       "parentChainToRoot": [],
-      "comment": "The attribute class whose values partition the components (class-as-value, e.g. dici_onto:PostalCode).",
+      "comment": "What partitions the members: an attribute class whose values are the group keys (class-as-value, e.g. dici_onto:PostalCode), or a component class whose instances are the groups — each member's owner is linked to that instance via a linksComponent-family edge (e.g. dici_onto:WindPark for per-park turbine statistics).",
       "definition": null,
       "altLabels": [],
       "examples": [],
