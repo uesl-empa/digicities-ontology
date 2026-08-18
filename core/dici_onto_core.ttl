@@ -2904,3 +2904,22 @@ dici_onto:computedAt rdf:type owl:DatatypeProperty ;
 dici_onto:computedBy rdf:type owl:DatatypeProperty ;
         rdfs:label "computed by" ;
         rdfs:comment "Identifier/version of the service that materialized this Collection."@en .
+
+###  https://digicities.info/ontology#AggregateAttribute
+dici_onto:AggregateAttribute rdf:type owl:Class ;
+        rdfs:subClassOf dici_onto:Attribute ;
+        rdfs:label "Aggregate Attribute" ;
+        rdfs:comment "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored."@en .
+
+###  https://digicities.info/ontology#aggregateOf
+dici_onto:aggregateOf rdf:type owl:ObjectProperty ;
+        rdfs:domain dici_onto:AggregateAttribute ;
+        rdfs:range dici_onto:Set ;
+        rdfs:label "aggregate of" ;
+        rdfs:comment "Links a projected aggregate attribute node back to the group Set it summarizes — the Set carries the full statistics and membership."@en .
+
+###  https://digicities.info/ontology#statisticUsed
+dici_onto:statisticUsed rdf:type owl:DatatypeProperty ;
+        rdfs:domain dici_onto:AggregateAttribute ;
+        rdfs:label "statistic used" ;
+        rdfs:comment "Which statistic of the underlying Set this aggregate attribute's value is (mean, median, sum, minValue, maxValue, count, standardDeviation)."@en .

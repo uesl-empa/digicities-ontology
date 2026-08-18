@@ -48,6 +48,12 @@ mapping procedure.
 - **Description:** Current position or state of an actuator
 - **Default unit:** PERCENT
 
+### AggregateAttribute
+
+- **Label:** Aggregate Attribute
+- **Hierarchy:** Thing > Attribute > **AggregateAttribute**
+- **Description:** A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.
+
 ### AnnotationAttribute
 
 - **Label:** Annotation Attribute
@@ -1075,6 +1081,14 @@ mapping procedure.
 - **Description:** Actuator physically controls a component
 - **Domain:** Actuator
 - **Range:** Component
+
+### aggregateOf
+
+- **Label:** aggregate of
+- **Hierarchy:** (root)
+- **Description:** Links a projected aggregate attribute node back to the group Set it summarizes — the Set carries the full statistics and membership.
+- **Domain:** AggregateAttribute
+- **Range:** Set
 
 ### aggregatedIn
 
@@ -2343,6 +2357,13 @@ mapping procedure.
 - **Description:** The starting timestamp of the time series data
 - **Domain:** TimeSeries
 - **Range:** dateTime
+
+### statisticUsed
+
+- **Label:** statistic used
+- **Hierarchy:** (root)
+- **Description:** Which statistic of the underlying Set this aggregate attribute's value is (mean, median, sum, minValue, maxValue, count, standardDeviation).
+- **Domain:** AggregateAttribute
 
 ### storedAt
 

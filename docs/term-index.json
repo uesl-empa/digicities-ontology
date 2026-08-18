@@ -236,6 +236,24 @@
       "defaultUnit": "PERCENT"
     },
     {
+      "iri": "https://digicities.info/ontology#AggregateAttribute",
+      "name": "AggregateAttribute",
+      "kind": "class",
+      "label": "Aggregate Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#AnnotationAttribute",
       "name": "AnnotationAttribute",
       "kind": "class",
@@ -4066,6 +4084,23 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#statisticUsed",
+      "name": "statisticUsed",
+      "kind": "dataProperty",
+      "label": "statistic used",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Which statistic of the underlying Set this aggregate attribute's value is (mean, median, sum, minValue, maxValue, count, standardDeviation).",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "AggregateAttribute"
+      ],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#storedAt",
       "name": "storedAt",
       "kind": "dataProperty",
@@ -4222,6 +4257,25 @@
       ],
       "range": [
         "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#aggregateOf",
+      "name": "aggregateOf",
+      "kind": "objectProperty",
+      "label": "aggregate of",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a projected aggregate attribute node back to the group Set it summarizes — the Set carries the full statistics and membership.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "AggregateAttribute"
+      ],
+      "range": [
+        "Set"
       ]
     },
     {
