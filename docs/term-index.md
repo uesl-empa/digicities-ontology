@@ -48,6 +48,12 @@ mapping procedure.
 - **Description:** Current position or state of an actuator
 - **Default unit:** PERCENT
 
+### AggregateAttribute
+
+- **Label:** Aggregate Attribute
+- **Hierarchy:** Thing > Attribute > **AggregateAttribute**
+- **Description:** A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.
+
 ### AnnotationAttribute
 
 - **Label:** Annotation Attribute
@@ -112,6 +118,12 @@ mapping procedure.
 - **Label:** Cold Carrier Attribute
 - **Hierarchy:** Thing > Attribute > ComponentAttribute > EnergyCarrierAttribute > ThermalEnergyCarrierAttribute > **ColdCarrierAttribute**
 - **Description:** Typing marker grouping attributes that apply to a Cold Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
+### Collection
+
+- **Label:** Collection
+- **Hierarchy:** (root)
+- **Description:** Abstract grouping of attribute instances derived from a dataset. Superclass of Set and GroupedSet. Collections are derived, recomputable artefacts — not authored data.
 
 ### Component
 
@@ -210,6 +222,12 @@ mapping procedure.
 - **Hierarchy:** Component > Device > Actuator > **Damper**
 - **Description:** Actuator that controls air flow
 
+### DescriptiveStatistics
+
+- **Label:** Descriptive Statistics
+- **Hierarchy:** (root)
+- **Description:** Aggregate statistics computed over the members of a Set. Which properties are populated depends on the datatype family of the Set's attribute type (numeric, categorical, temporal, boolean); inapplicable properties are absent, never null.
+
 ### Device
 
 - **Label:** Device
@@ -225,6 +243,18 @@ mapping procedure.
 - **Label:** Device Attribute
 - **Hierarchy:** Thing > Attribute > ComponentAttribute > **DeviceAttribute**
 - **Description:** Typing marker grouping attributes that apply to a Device; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
+### Distribution
+
+- **Label:** Distribution
+- **Hierarchy:** (root)
+- **Description:** Binned/frequency representation of the values in a Set: histogram bins for numeric values, category frequencies for categorical values.
+
+### DistributionBin
+
+- **Label:** Distribution Bin
+- **Hierarchy:** (root)
+- **Description:** One bin of a Distribution: a label, optional numeric bounds, and a frequency.
 
 ### DynamicAttribute
 
@@ -464,6 +494,12 @@ mapping procedure.
 - **Description:** Attribute holding geographic data such as coordinates or geometries
 - **Definition:** An attribute whose value is geographic: coordinates, geometries or other spatial references locating a component on a map.
 - **Examples:** Latitude and longitude of a site; a boundary polygon
+
+### GroupedSet
+
+- **Label:** Grouped Set
+- **Hierarchy:** Collection > **GroupedSet**
+- **Description:** A partition of an attribute type over the distinct values of a grouping attribute type on the same components (SQL GROUP BY analogue). Members are Sets, one per group key.
 
 ### HeatCarrier
 
@@ -826,6 +862,12 @@ mapping procedure.
 - **Definition:** A machine-readable statement of one input a Service needs from a scenario: a component of a given type, an attribute on it, or a link between two components.
 - **Examples:** A wind power forecaster requiring a Location with a wind speed DynamicAttribute
 
+### Set
+
+- **Label:** Set
+- **Hierarchy:** Collection > **Set**
+- **Description:** A collection of attribute instances of a single attribute type, drawn from one workspace replica (optionally restricted to one data source), or one partition of a GroupedSet. Carries descriptive statistics.
+
 ### SetPoint
 
 - **Label:** Set Point
@@ -1040,6 +1082,22 @@ mapping procedure.
 - **Domain:** Actuator
 - **Range:** Component
 
+### aggregateOf
+
+- **Label:** aggregate of
+- **Hierarchy:** (root)
+- **Description:** Links a projected aggregate attribute node back to the group Set it summarizes — the Set carries the full statistics and membership.
+- **Domain:** AggregateAttribute
+- **Range:** Set
+
+### aggregatedIn
+
+- **Label:** aggregated in
+- **Hierarchy:** (root)
+- **Description:** Links an attribute instance to a Set it is a member of. The materializer asserts only this direction; query the other with ^aggregatedIn.
+- **Domain:** Attribute
+- **Range:** Set
+
 ### assumptionObjectProperty
 
 - **Label:** assumption object property
@@ -1099,6 +1157,13 @@ mapping procedure.
 - **Domain:** Scenario
 - **Range:** Scenario
 
+### derivedFromDataSet
+
+- **Label:** derived from data set
+- **Hierarchy:** (root)
+- **Description:** Provenance link from a Collection back to the data source (Reference) it was restricted to. Absent when the Collection covers the whole workspace replica.
+- **Domain:** Collection
+
 ### fedBy
 
 - **Label:** fed by
@@ -1120,6 +1185,20 @@ mapping procedure.
 - **Description:** Locations traversed by a flow
 - **Domain:** Flow
 - **Range:** Location
+
+### groupComponent
+
+- **Label:** group component
+- **Hierarchy:** (root)
+- **Description:** The component instance whose linked components this group's members belong to. Present only on Sets of a component-grouped GroupedSet.
+- **Domain:** Set
+
+### groupedBy
+
+- **Label:** grouped by
+- **Hierarchy:** (root)
+- **Description:** What partitions the members: an attribute class whose values are the group keys (class-as-value, e.g. dici_onto:PostalCode), or a component class whose instances are the groups — each member's owner is linked to that instance via a linksComponent-family edge (e.g. dici_onto:WindPark for per-park turbine statistics).
+- **Domain:** GroupedSet
 
 ### hasActorAttribute
 
@@ -1144,6 +1223,14 @@ mapping procedure.
 - **Description:** Attaches an Attribute node to a Component; root of the has-attribute property hierarchy
 - **Domain:** Component
 - **Range:** Attribute
+
+### hasBin
+
+- **Label:** has bin
+- **Hierarchy:** (root)
+- **Description:** One bin of this Distribution.
+- **Domain:** Distribution
+- **Range:** DistributionBin
 
 ### hasColdAttribute
 
@@ -1189,6 +1276,14 @@ mapping procedure.
 - **Description:** Attaches a Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Converter
 
+### hasDescriptiveStatistics
+
+- **Label:** has descriptive statistics
+- **Hierarchy:** (root)
+- **Description:** The aggregate statistics computed over this Set's members.
+- **Domain:** Set
+- **Range:** DescriptiveStatistics
+
 ### hasDestination
 
 - **Label:** has destination
@@ -1204,6 +1299,14 @@ mapping procedure.
 - **Description:** Attaches a Device attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Device
 - **Range:** DeviceAttribute
+
+### hasDistribution
+
+- **Label:** has distribution
+- **Hierarchy:** (root)
+- **Description:** The binned/frequency representation of this Set's values.
+- **Domain:** Set
+- **Range:** Distribution
 
 ### hasElectricityAttribute
 
@@ -1289,6 +1392,14 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelAttribute > **hasGaseousFuelAttribute**
 - **Description:** Attaches a Gaseous Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** GaseousFuelCarrier
+
+### hasGroup
+
+- **Label:** has group
+- **Hierarchy:** (root)
+- **Description:** Links a GroupedSet to one member Set per distinct group key.
+- **Domain:** GroupedSet
+- **Range:** Set
 
 ### hasHeatAttribute
 
@@ -1421,6 +1532,12 @@ mapping procedure.
 - **Domain:** MaterialStorage
 - **Range:** MaterialStorageAttribute
 
+### hasMember
+
+- **Label:** has member
+- **Hierarchy:** (root)
+- **Description:** Convenience inverse of aggregatedIn. Not asserted by the materializer — the collections graph is not closure-materialized; use ^aggregatedIn in queries.
+
 ### hasMeterAttribute
 
 - **Label:** has meter attribute
@@ -1511,6 +1628,13 @@ mapping procedure.
 - **Description:** Attaches a Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Sensor
 - **Range:** SensorAttribute
+
+### hasSet
+
+- **Label:** has set
+- **Hierarchy:** (root)
+- **Description:** Links a data source (a Reference) to a Collection derived from it. Only asserted when a Collection was restricted to one data source.
+- **Range:** Collection
 
 ### hasSolarAttribute
 
@@ -1757,6 +1881,13 @@ mapping procedure.
 - **Hierarchy:** linksComponent > **occursDuring**
 - **Description:** Temporal association: one component or process occurs during another
 
+### ofAttributeType
+
+- **Label:** of attribute type
+- **Hierarchy:** (root)
+- **Description:** The attribute class whose instances this collection aggregates (class-as-value, e.g. dici_onto:RotorDiameter).
+- **Domain:** Collection
+
 ### operates
 
 - **Label:** operates
@@ -1898,6 +2029,33 @@ mapping procedure.
 - **Domain:** Scenario
 - **Range:** string
 
+### binFrequency
+
+- **Label:** bin frequency
+- **Hierarchy:** (root)
+- **Description:** How many of the Set's values fall in this bin.
+- **Range:** integer
+
+### binLabel
+
+- **Label:** bin label
+- **Hierarchy:** (root)
+- **Description:** Human-readable bin identity: a numeric range like [300, 400) or a category value.
+
+### binLowerBound
+
+- **Label:** bin lower bound
+- **Hierarchy:** (root)
+- **Description:** Inclusive lower bound of a numeric histogram bin.
+- **Range:** double
+
+### binUpperBound
+
+- **Label:** bin upper bound
+- **Hierarchy:** (root)
+- **Description:** Exclusive upper bound of a numeric histogram bin (the last bin is closed).
+- **Range:** double
+
 ### builtForService
 
 - **Label:** built for service
@@ -1906,12 +2064,32 @@ mapping procedure.
 - **Domain:** Scenario
 - **Range:** string
 
+### computedAt
+
+- **Label:** computed at
+- **Hierarchy:** (root)
+- **Description:** When this Collection was materialized. A Collection older than its workspace's last data load is stale.
+- **Range:** dateTime
+
+### computedBy
+
+- **Label:** computed by
+- **Hierarchy:** (root)
+- **Description:** Identifier/version of the service that materialized this Collection.
+
 ### cost
 
 - **Label:** cost
 - **Hierarchy:** (root)
 - **Description:** Monetary cost literal attached to an attribute node by the scenario tooling. For modelled costs prefer the cost attribute classes (SimpleCostAttribute, UnitBasedCostAttribute)
 - **Domain:** Attribute
+
+### count
+
+- **Label:** count
+- **Hierarchy:** (root)
+- **Description:** How many values the Set aggregates.
+- **Range:** integer
 
 ### createdInWorkspace
 
@@ -1926,6 +2104,13 @@ mapping procedure.
 - **Label:** denominator unit
 - **Hierarchy:** (root)
 - **Description:** Denominator unit of a custom physical ratio attribute
+
+### distinctCount
+
+- **Label:** distinct count
+- **Hierarchy:** (root)
+- **Description:** How many distinct values occur in the Set.
+- **Range:** integer
 
 ### endTime
 
@@ -1948,6 +2133,13 @@ mapping procedure.
 - **Description:** Tool or module that generated the scenario. Scenario-provenance metadata
 - **Domain:** Scenario
 - **Range:** string
+
+### groupKey
+
+- **Label:** group key
+- **Hierarchy:** (root)
+- **Description:** The raw value of the grouping attribute — or the label of the grouping component instance — for this partition. Present only on Sets that are members of a GroupedSet.
+- **Domain:** Set
 
 ### hasAnnotationValue
 
@@ -2058,6 +2250,38 @@ mapping procedure.
 - **Hierarchy:** timeSeriesReferenceOf > **liveTimeSeriesReferenceOf**
 - **Description:** Inverse-direction reference: live data describing an attribute
 
+### maxValue
+
+- **Label:** maximum value
+- **Hierarchy:** (root)
+- **Description:** Largest value in the Set: xsd:double for numeric sets, xsd:dateTime (latest) for temporal sets — hence no fixed range.
+
+### mean
+
+- **Label:** mean
+- **Hierarchy:** (root)
+- **Description:** Arithmetic mean of a numeric Set's values.
+- **Range:** double
+
+### median
+
+- **Label:** median
+- **Hierarchy:** (root)
+- **Description:** Median of a numeric Set's values.
+- **Range:** double
+
+### minValue
+
+- **Label:** minimum value
+- **Hierarchy:** (root)
+- **Description:** Smallest value in the Set: xsd:double for numeric sets, xsd:dateTime (earliest) for temporal sets — hence no fixed range.
+
+### mode
+
+- **Label:** mode
+- **Hierarchy:** (root)
+- **Description:** Most frequent value in a categorical Set. Repeated when several values tie.
+
 ### modificationType
 
 - **Label:** modification type
@@ -2119,6 +2343,13 @@ mapping procedure.
 - **Description:** Workspace an artefact was copied or imported from. Registry-provenance metadata
 - **Range:** string
 
+### standardDeviation
+
+- **Label:** standard deviation
+- **Hierarchy:** (root)
+- **Description:** Sample standard deviation. Absent when the Set has fewer than two members.
+- **Range:** double
+
 ### startTime
 
 - **Label:** start time
@@ -2127,6 +2358,13 @@ mapping procedure.
 - **Domain:** TimeSeries
 - **Range:** dateTime
 
+### statisticUsed
+
+- **Label:** statistic used
+- **Hierarchy:** (root)
+- **Description:** Which statistic of the underlying Set this aggregate attribute's value is (mean, median, sum, minValue, maxValue, count, standardDeviation).
+- **Domain:** AggregateAttribute
+
 ### storedAt
 
 - **Label:** stored at
@@ -2134,6 +2372,13 @@ mapping procedure.
 - **Description:** The location or path where the time series data is stored
 - **Domain:** TimeSeries
 - **Range:** string
+
+### sum
+
+- **Label:** sum
+- **Hierarchy:** (root)
+- **Description:** Sum of a numeric Set's values.
+- **Range:** double
 
 ### temporalResolution
 

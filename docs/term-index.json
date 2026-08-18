@@ -236,6 +236,24 @@
       "defaultUnit": "PERCENT"
     },
     {
+      "iri": "https://digicities.info/ontology#AggregateAttribute",
+      "name": "AggregateAttribute",
+      "kind": "class",
+      "label": "Aggregate Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#AnnotationAttribute",
       "name": "AnnotationAttribute",
       "kind": "class",
@@ -409,6 +427,19 @@
         "Thing"
       ],
       "comment": "Typing marker grouping attributes that apply to a Cold Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Collection",
+      "name": "Collection",
+      "kind": "class",
+      "label": "Collection",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Abstract grouping of attribute instances derived from a dataset. Superclass of Set and GroupedSet. Collections are derived, recomputable artefacts — not authored data.",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -681,6 +712,19 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#DescriptiveStatistics",
+      "name": "DescriptiveStatistics",
+      "kind": "class",
+      "label": "Descriptive Statistics",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Aggregate statistics computed over the members of a Set. Which properties are populated depends on the datatype family of the Set's attribute type (numeric, categorical, temporal, boolean); inapplicable properties are absent, never null.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#Device",
       "name": "Device",
       "kind": "class",
@@ -716,6 +760,32 @@
         "Thing"
       ],
       "comment": "Typing marker grouping attributes that apply to a Device; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#Distribution",
+      "name": "Distribution",
+      "kind": "class",
+      "label": "Distribution",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Binned/frequency representation of the values in a Set: histogram bins for numeric values, category frequencies for categorical values.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#DistributionBin",
+      "name": "DistributionBin",
+      "kind": "class",
+      "label": "Distribution Bin",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "One bin of a Distribution: a label, optional numeric bounds, and a frequency.",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -1396,6 +1466,23 @@
       "examples": [
         "Latitude and longitude of a site; a boundary polygon"
       ],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#GroupedSet",
+      "name": "GroupedSet",
+      "kind": "class",
+      "label": "Grouped Set",
+      "parents": [
+        "Collection"
+      ],
+      "parentChainToRoot": [
+        "Collection"
+      ],
+      "comment": "A partition of an attribute type over the distinct values of a grouping attribute type on the same components (SQL GROUP BY analogue). Members are Sets, one per group key.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
       "scopeNote": null
     },
     {
@@ -2410,6 +2497,23 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#Set",
+      "name": "Set",
+      "kind": "class",
+      "label": "Set",
+      "parents": [
+        "Collection"
+      ],
+      "parentChainToRoot": [
+        "Collection"
+      ],
+      "comment": "A collection of attribute instances of a single attribute type, drawn from one workspace replica (optionally restricted to one data source), or one partition of a GroupedSet. Carries descriptive statistics.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#SetPoint",
       "name": "SetPoint",
       "kind": "class",
@@ -3114,6 +3218,72 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#binFrequency",
+      "name": "binFrequency",
+      "kind": "dataProperty",
+      "label": "bin frequency",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "How many of the Set's values fall in this bin.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "integer"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#binLabel",
+      "name": "binLabel",
+      "kind": "dataProperty",
+      "label": "bin label",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Human-readable bin identity: a numeric range like [300, 400) or a category value.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#binLowerBound",
+      "name": "binLowerBound",
+      "kind": "dataProperty",
+      "label": "bin lower bound",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Inclusive lower bound of a numeric histogram bin.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "double"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#binUpperBound",
+      "name": "binUpperBound",
+      "kind": "dataProperty",
+      "label": "bin upper bound",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Exclusive upper bound of a numeric histogram bin (the last bin is closed).",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "double"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#builtForService",
       "name": "builtForService",
       "kind": "dataProperty",
@@ -3133,6 +3303,38 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#computedAt",
+      "name": "computedAt",
+      "kind": "dataProperty",
+      "label": "computed at",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "When this Collection was materialized. A Collection older than its workspace's last data load is stale.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "dateTime"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#computedBy",
+      "name": "computedBy",
+      "kind": "dataProperty",
+      "label": "computed by",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Identifier/version of the service that materialized this Collection.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#cost",
       "name": "cost",
       "kind": "dataProperty",
@@ -3148,6 +3350,23 @@
         "Attribute"
       ],
       "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#count",
+      "name": "count",
+      "kind": "dataProperty",
+      "label": "count",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "How many values the Set aggregates.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "integer"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#createdInWorkspace",
@@ -3182,6 +3401,23 @@
       "scopeNote": null,
       "domain": [],
       "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#distinctCount",
+      "name": "distinctCount",
+      "kind": "dataProperty",
+      "label": "distinct count",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "How many distinct values occur in the Set.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "integer"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#endTime",
@@ -3239,6 +3475,23 @@
       "range": [
         "string"
       ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#groupKey",
+      "name": "groupKey",
+      "kind": "dataProperty",
+      "label": "group key",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The raw value of the grouping attribute — or the label of the grouping component instance — for this partition. Present only on Sets that are members of a GroupedSet.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Set"
+      ],
+      "range": []
     },
     {
       "iri": "https://digicities.info/ontology#hasAnnotationValue",
@@ -3551,6 +3804,85 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#maxValue",
+      "name": "maxValue",
+      "kind": "dataProperty",
+      "label": "maximum value",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Largest value in the Set: xsd:double for numeric sets, xsd:dateTime (latest) for temporal sets — hence no fixed range.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#mean",
+      "name": "mean",
+      "kind": "dataProperty",
+      "label": "mean",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Arithmetic mean of a numeric Set's values.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "double"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#median",
+      "name": "median",
+      "kind": "dataProperty",
+      "label": "median",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Median of a numeric Set's values.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "double"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#minValue",
+      "name": "minValue",
+      "kind": "dataProperty",
+      "label": "minimum value",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Smallest value in the Set: xsd:double for numeric sets, xsd:dateTime (earliest) for temporal sets — hence no fixed range.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#mode",
+      "name": "mode",
+      "kind": "dataProperty",
+      "label": "mode",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Most frequent value in a categorical Set. Repeated when several values tie.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#modificationType",
       "name": "modificationType",
       "kind": "dataProperty",
@@ -3716,6 +4048,23 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#standardDeviation",
+      "name": "standardDeviation",
+      "kind": "dataProperty",
+      "label": "standard deviation",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Sample standard deviation. Absent when the Set has fewer than two members.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "double"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#startTime",
       "name": "startTime",
       "kind": "dataProperty",
@@ -3735,6 +4084,23 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#statisticUsed",
+      "name": "statisticUsed",
+      "kind": "dataProperty",
+      "label": "statistic used",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Which statistic of the underlying Set this aggregate attribute's value is (mean, median, sum, minValue, maxValue, count, standardDeviation).",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "AggregateAttribute"
+      ],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#storedAt",
       "name": "storedAt",
       "kind": "dataProperty",
@@ -3751,6 +4117,23 @@
       ],
       "range": [
         "string"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#sum",
+      "name": "sum",
+      "kind": "dataProperty",
+      "label": "sum",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Sum of a numeric Set's values.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "double"
       ]
     },
     {
@@ -3874,6 +4257,44 @@
       ],
       "range": [
         "Component"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#aggregateOf",
+      "name": "aggregateOf",
+      "kind": "objectProperty",
+      "label": "aggregate of",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a projected aggregate attribute node back to the group Set it summarizes — the Set carries the full statistics and membership.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "AggregateAttribute"
+      ],
+      "range": [
+        "Set"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#aggregatedIn",
+      "name": "aggregatedIn",
+      "kind": "objectProperty",
+      "label": "aggregated in",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links an attribute instance to a Set it is a member of. The materializer asserts only this direction; query the other with ^aggregatedIn.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Attribute"
+      ],
+      "range": [
+        "Set"
       ]
     },
     {
@@ -4035,6 +4456,23 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#derivedFromDataSet",
+      "name": "derivedFromDataSet",
+      "kind": "objectProperty",
+      "label": "derived from data set",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Provenance link from a Collection back to the data source (Reference) it was restricted to. Absent when the Collection covers the whole workspace replica.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Collection"
+      ],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#fedBy",
       "name": "fedBy",
       "kind": "objectProperty",
@@ -4098,6 +4536,40 @@
       "range": [
         "Location"
       ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#groupComponent",
+      "name": "groupComponent",
+      "kind": "objectProperty",
+      "label": "group component",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The component instance whose linked components this group's members belong to. Present only on Sets of a component-grouped GroupedSet.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Set"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#groupedBy",
+      "name": "groupedBy",
+      "kind": "objectProperty",
+      "label": "grouped by",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "What partitions the members: an attribute class whose values are the group keys (class-as-value, e.g. dici_onto:PostalCode), or a component class whose instances are the groups — each member's owner is linked to that instance via a linksComponent-family edge (e.g. dici_onto:WindPark for per-park turbine statistics).",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "GroupedSet"
+      ],
+      "range": []
     },
     {
       "iri": "https://digicities.info/ontology#hasActorAttribute",
@@ -4165,6 +4637,25 @@
       ],
       "range": [
         "Attribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasBin",
+      "name": "hasBin",
+      "kind": "objectProperty",
+      "label": "has bin",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "One bin of this Distribution.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Distribution"
+      ],
+      "range": [
+        "DistributionBin"
       ]
     },
     {
@@ -4309,6 +4800,25 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#hasDescriptiveStatistics",
+      "name": "hasDescriptiveStatistics",
+      "kind": "objectProperty",
+      "label": "has descriptive statistics",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The aggregate statistics computed over this Set's members.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Set"
+      ],
+      "range": [
+        "DescriptiveStatistics"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasDestination",
       "name": "hasDestination",
       "kind": "objectProperty",
@@ -4353,6 +4863,25 @@
       ],
       "range": [
         "DeviceAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDistribution",
+      "name": "hasDistribution",
+      "kind": "objectProperty",
+      "label": "has distribution",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The binned/frequency representation of this Set's values.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Set"
+      ],
+      "range": [
+        "Distribution"
       ]
     },
     {
@@ -4627,6 +5156,25 @@
         "GaseousFuelCarrier"
       ],
       "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasGroup",
+      "name": "hasGroup",
+      "kind": "objectProperty",
+      "label": "has group",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a GroupedSet to one member Set per distinct group key.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "GroupedSet"
+      ],
+      "range": [
+        "Set"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasHeatAttribute",
@@ -5030,6 +5578,21 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasMember",
+      "name": "hasMember",
+      "kind": "objectProperty",
+      "label": "has member",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Convenience inverse of aggregatedIn. Not asserted by the materializer — the collections graph is not closure-materialized; use ^aggregatedIn in queries.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
       "iri": "https://digicities.info/ontology#hasMeterAttribute",
       "name": "hasMeterAttribute",
       "kind": "objectProperty",
@@ -5304,6 +5867,23 @@
       ],
       "range": [
         "SensorAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSet",
+      "name": "hasSet",
+      "kind": "objectProperty",
+      "label": "has set",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a data source (a Reference) to a Collection derived from it. Only asserted when a Collection was restricted to one data source.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "Collection"
       ]
     },
     {
@@ -6005,6 +6585,23 @@
       "examples": [],
       "scopeNote": null,
       "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#ofAttributeType",
+      "name": "ofAttributeType",
+      "kind": "objectProperty",
+      "label": "of attribute type",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The attribute class whose instances this collection aggregates (class-as-value, e.g. dici_onto:RotorDiameter).",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Collection"
+      ],
       "range": []
     },
     {
