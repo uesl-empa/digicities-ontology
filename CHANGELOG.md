@@ -2,6 +2,16 @@
 
 All notable changes to the Digicities ontology are recorded here. The project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] — 2026-08-28
+
+Observation release: pure observations as first-class components. Some inputs are observed data with no modelled sensor or equipment behind them; until now they had to be forced onto a device class or dropped.
+
+### Added
+- **`Observation`** (subclass of `Component`): an observed phenomenon or measurement record that stands on its own. Use it when only the observed data matters; if the observing device is part of the model, the data still belongs on that device (`Sensor`, `Meter`), and a single measured property of an existing component stays an `Attribute`.
+- **`WeatherObservation`** (subclass of `Observation`): observed weather conditions at a place, independent of weather-station equipment.
+- **`CompositeWeatherObservation`** (subclass of `WeatherObservation`): several weather variables bundled into one artefact, typically a weather file (EPW, TMY) referenced from an attribute via `hasDataPath`.
+- Matching typing markers `ObservationAttribute`, `WeatherObservationAttribute`, `CompositeWeatherObservationAttribute` following the per-class attribute-group convention.
+
 ## [0.3.0] — 2026-08-18
 
 Collections release: dataset-level analysis — aggregate attribute instances into sets with descriptive statistics, and partition one attribute type by another — or by the component instances its owners are linked to (GROUP BY analogue).
