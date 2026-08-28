@@ -26,6 +26,7 @@ for s, _, _ in g.triples((None, rdflib.RDF.type, rdflib.OWL.Class)):
 - `TimeSeries` — `HistoricTimeSeries`, `LiveTimeSeries`, `FutureTimeSeries`
 - `Actor`, `Service`, `ServiceRequirement` — system-actor concepts
 - `TemporalPrecision` — value set (named individuals `Year`, `YearMonth`, `Date`, `DateTime`, `Unknown`) for event-attribute temporal granularity
+- `Observation` — observed data with no modelled equipment behind it (see Observations below)
 
 ## Components
 
@@ -42,6 +43,14 @@ Physical things in the world.
   - `Junction` — connection nodes
   - `ComponentLink` — connectivity edges
   - `ComponentAttributeRequirement`, `ComponentComponentRequirement` — schema constraints
+
+## Observations
+
+Observed phenomena that stand on their own — use when only the observed data matters and no sensor or equipment is part of the model. If the observing device IS modelled, attach the data to it (`Sensor`, `Meter`) instead.
+
+- `Observation`
+  - `WeatherObservation` — observed weather conditions at a place
+    - `CompositeWeatherObservation` — many weather variables in one artefact, typically a weather file (EPW/TMY) referenced via `hasDataPath`
 
 ## Processes
 

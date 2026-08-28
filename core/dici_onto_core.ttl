@@ -12,8 +12,8 @@
 @base <https://digicities.info/ontology#> .
 
 <https://digicities.info/ontology> rdf:type owl:Ontology ;
-    owl:versionIRI <https://digicities.info/ontology/0.3.0> ;
-    owl:versionInfo "0.3.0" ;
+    owl:versionIRI <https://digicities.info/ontology/0.4.0> ;
+    owl:versionInfo "0.4.0" ;
     rdfs:label "Digicities ontology"@en ;
     rdfs:comment "Open OWL/RDF ontology for describing city-scale energy systems."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
@@ -1581,6 +1581,27 @@ dici_onto:ComponentLink rdf:type owl:Class ;
                         rdfs:comment "Reified edge connecting two components in a scenario, via hasInputEntity and linksInputEntityTo"@en .
 
 
+###  https://digicities.info/ontology#CompositeWeatherObservation
+dici_onto:CompositeWeatherObservation rdf:type owl:Class ;
+                                      rdfs:subClassOf dici_onto:WeatherObservation ;
+                                      rdfs:label "Composite Weather Observation" ;
+                                      rdfs:comment "Weather observation bundling several weather variables into one artefact, typically a weather file"@en ;
+                                      skos:definition "A weather observation whose value is a multi-variable artefact (temperature, irradiance, wind, humidity and more in one dataset) rather than a single observed quantity. The artefact is usually an external weather file referenced from an attribute via hasDataPath."@en ;
+                                      skos:altLabel "Weather File"@en ,
+                                                    "EPW File"@en ,
+                                                    "TMY Dataset"@en ,
+                                                    "Composite Weather Data"@en ;
+                                      skos:example "An EPW weather file for Zurich backing a building simulation; a TMY3 dataset for a site"@en ;
+                                      skos:scopeNote "Reference the file from an attribute via hasDataPath. A single observed weather variable (one temperature series) belongs on a WeatherObservation as an ordinary attribute instead."@en .
+
+
+###  https://digicities.info/ontology#CompositeWeatherObservationAttribute
+dici_onto:CompositeWeatherObservationAttribute rdf:type owl:Class ;
+                                               rdfs:subClassOf dici_onto:WeatherObservationAttribute ;
+                                               rdfs:label "Composite Weather Observation Attribute" ;
+                                               rdfs:comment "Typing marker grouping attributes that apply to a Composite Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en .
+
+
 ###  https://digicities.info/ontology#Controller
 dici_onto:Controller rdf:type owl:Class ;
                      rdfs:subClassOf dici_onto:Device ;
@@ -2241,6 +2262,27 @@ dici_onto:NonRenewableResourceAttribute rdf:type owl:Class ;
                                         rdfs:comment "Typing marker grouping attributes that apply to a Non Renewable Resource; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en .
 
 
+###  https://digicities.info/ontology#Observation
+dici_onto:Observation rdf:type owl:Class ;
+                      rdfs:subClassOf dici_onto:Component ;
+                      rdfs:label "Observation" ;
+                      rdfs:comment "Observed phenomenon or measurement record that stands on its own, without a modelled sensor or piece of equipment behind it"@en ;
+                      skos:definition "An Observation is a component that carries observed or recorded data about a phenomenon when the observing equipment is not part of the model. The observed values attach to it as ordinary attributes, so data can enter the replica without inventing a device to own it."@en ;
+                      skos:altLabel "Measurement Record"@en ,
+                                    "Observed Data"@en ,
+                                    "Recording"@en ,
+                                    "Field Observation"@en ;
+                      skos:example "A weather record for a site; an observed traffic count on a road; an air-quality reading for a district"@en ;
+                      skos:scopeNote "Use when only the observed data matters. If the observing device IS part of the model, attach the data to that device (Sensor, Meter) instead; a single measured property of an existing component stays an Attribute on that component, not an Observation."@en .
+
+
+###  https://digicities.info/ontology#ObservationAttribute
+dici_onto:ObservationAttribute rdf:type owl:Class ;
+                               rdfs:subClassOf dici_onto:ComponentAttribute ;
+                               rdfs:label "Observation Attribute" ;
+                               rdfs:comment "Typing marker grouping attributes that apply to an Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en .
+
+
 ###  https://digicities.info/ontology#PhysicalAttribute
 dici_onto:PhysicalAttribute rdf:type owl:Class ;
                             rdfs:subClassOf dici_onto:Attribute ;
@@ -2623,6 +2665,26 @@ dici_onto:Valve rdf:type owl:Class ;
                 rdfs:subClassOf dici_onto:Actuator ;
                 rdfs:comment "Actuator that controls fluid flow"@en ;
                 rdfs:label "Valve" .
+
+
+###  https://digicities.info/ontology#WeatherObservation
+dici_onto:WeatherObservation rdf:type owl:Class ;
+                             rdfs:subClassOf dici_onto:Observation ;
+                             rdfs:label "Weather Observation" ;
+                             rdfs:comment "Observation of weather conditions at a place, independent of any weather-station equipment"@en ;
+                             skos:definition "An observation carrying observed or recorded weather data (temperature, wind, irradiance, precipitation and similar) for a place, used when no weather station or sensor is modelled."@en ;
+                             skos:altLabel "Weather Data"@en ,
+                                           "Weather Record"@en ,
+                                           "Meteorological Observation"@en ;
+                             skos:example "Observed hourly temperature and wind speed for a site in 2024"@en ;
+                             skos:scopeNote "For a modelled weather station or sensor (the device), use Sensor. For the harvestable resource itself, use SolarResource or Wind. A bundle of many weather variables in one artefact (a weather file) is a CompositeWeatherObservation."@en .
+
+
+###  https://digicities.info/ontology#WeatherObservationAttribute
+dici_onto:WeatherObservationAttribute rdf:type owl:Class ;
+                                      rdfs:subClassOf dici_onto:ObservationAttribute ;
+                                      rdfs:label "Weather Observation Attribute" ;
+                                      rdfs:comment "Typing marker grouping attributes that apply to a Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en .
 
 
 ###  https://digicities.info/ontology#Wind

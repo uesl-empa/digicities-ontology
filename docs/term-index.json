@@ -530,6 +530,53 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#CompositeWeatherObservation",
+      "name": "CompositeWeatherObservation",
+      "kind": "class",
+      "label": "Composite Weather Observation",
+      "parents": [
+        "WeatherObservation"
+      ],
+      "parentChainToRoot": [
+        "WeatherObservation",
+        "Observation",
+        "Component"
+      ],
+      "comment": "Weather observation bundling several weather variables into one artefact, typically a weather file",
+      "definition": "A weather observation whose value is a multi-variable artefact (temperature, irradiance, wind, humidity and more in one dataset) rather than a single observed quantity. The artefact is usually an external weather file referenced from an attribute via hasDataPath.",
+      "altLabels": [
+        "Composite Weather Data",
+        "EPW File",
+        "TMY Dataset",
+        "Weather File"
+      ],
+      "examples": [
+        "An EPW weather file for Zurich backing a building simulation; a TMY3 dataset for a site"
+      ],
+      "scopeNote": "Reference the file from an attribute via hasDataPath. A single observed weather variable (one temperature series) belongs on a WeatherObservation as an ordinary attribute instead."
+    },
+    {
+      "iri": "https://digicities.info/ontology#CompositeWeatherObservationAttribute",
+      "name": "CompositeWeatherObservationAttribute",
+      "kind": "class",
+      "label": "Composite Weather Observation Attribute",
+      "parents": [
+        "WeatherObservationAttribute"
+      ],
+      "parentChainToRoot": [
+        "WeatherObservationAttribute",
+        "ObservationAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Composite Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#Controller",
       "name": "Controller",
       "kind": "class",
@@ -2142,6 +2189,49 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#Observation",
+      "name": "Observation",
+      "kind": "class",
+      "label": "Observation",
+      "parents": [
+        "Component"
+      ],
+      "parentChainToRoot": [
+        "Component"
+      ],
+      "comment": "Observed phenomenon or measurement record that stands on its own, without a modelled sensor or piece of equipment behind it",
+      "definition": "An Observation is a component that carries observed or recorded data about a phenomenon when the observing equipment is not part of the model. The observed values attach to it as ordinary attributes, so data can enter the replica without inventing a device to own it.",
+      "altLabels": [
+        "Field Observation",
+        "Measurement Record",
+        "Observed Data",
+        "Recording"
+      ],
+      "examples": [
+        "A weather record for a site; an observed traffic count on a road; an air-quality reading for a district"
+      ],
+      "scopeNote": "Use when only the observed data matters. If the observing device IS part of the model, attach the data to that device (Sensor, Meter) instead; a single measured property of an existing component stays an Attribute on that component, not an Observation."
+    },
+    {
+      "iri": "https://digicities.info/ontology#ObservationAttribute",
+      "name": "ObservationAttribute",
+      "kind": "class",
+      "label": "Observation Attribute",
+      "parents": [
+        "ComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to an Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#PhysicalAttribute",
       "name": "PhysicalAttribute",
       "kind": "class",
@@ -3074,6 +3164,50 @@
         "Component"
       ],
       "comment": "Actuator that controls fluid flow",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#WeatherObservation",
+      "name": "WeatherObservation",
+      "kind": "class",
+      "label": "Weather Observation",
+      "parents": [
+        "Observation"
+      ],
+      "parentChainToRoot": [
+        "Observation",
+        "Component"
+      ],
+      "comment": "Observation of weather conditions at a place, independent of any weather-station equipment",
+      "definition": "An observation carrying observed or recorded weather data (temperature, wind, irradiance, precipitation and similar) for a place, used when no weather station or sensor is modelled.",
+      "altLabels": [
+        "Meteorological Observation",
+        "Weather Data",
+        "Weather Record"
+      ],
+      "examples": [
+        "Observed hourly temperature and wind speed for a site in 2024"
+      ],
+      "scopeNote": "For a modelled weather station or sensor (the device), use Sensor. For the harvestable resource itself, use SolarResource or Wind. A bundle of many weather variables in one artefact (a weather file) is a CompositeWeatherObservation."
+    },
+    {
+      "iri": "https://digicities.info/ontology#WeatherObservationAttribute",
+      "name": "WeatherObservationAttribute",
+      "kind": "class",
+      "label": "Weather Observation Attribute",
+      "parents": [
+        "ObservationAttribute"
+      ],
+      "parentChainToRoot": [
+        "ObservationAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
       "definition": null,
       "altLabels": [],
       "examples": [],

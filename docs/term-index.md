@@ -159,6 +159,22 @@ mapping procedure.
 - **Hierarchy:** (root)
 - **Description:** Reified edge connecting two components in a scenario, via hasInputEntity and linksInputEntityTo
 
+### CompositeWeatherObservation
+
+- **Label:** Composite Weather Observation
+- **Hierarchy:** Component > Observation > WeatherObservation > **CompositeWeatherObservation**
+- **Description:** Weather observation bundling several weather variables into one artefact, typically a weather file
+- **Definition:** A weather observation whose value is a multi-variable artefact (temperature, irradiance, wind, humidity and more in one dataset) rather than a single observed quantity. The artefact is usually an external weather file referenced from an attribute via hasDataPath.
+- **Synonyms:** Composite Weather Data, EPW File, TMY Dataset, Weather File
+- **Examples:** An EPW weather file for Zurich backing a building simulation; a TMY3 dataset for a site
+- **Scope:** Reference the file from an attribute via hasDataPath. A single observed weather variable (one temperature series) belongs on a WeatherObservation as an ordinary attribute instead.
+
+### CompositeWeatherObservationAttribute
+
+- **Label:** Composite Weather Observation Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > ObservationAttribute > WeatherObservationAttribute > **CompositeWeatherObservationAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Composite Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### Controller
 
 - **Label:** Controller
@@ -723,6 +739,22 @@ mapping procedure.
 - **Hierarchy:** Thing > Attribute > ComponentAttribute > ResourceAttribute > **NonRenewableResourceAttribute**
 - **Description:** Typing marker grouping attributes that apply to a Non Renewable Resource; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
+### Observation
+
+- **Label:** Observation
+- **Hierarchy:** Component > **Observation**
+- **Description:** Observed phenomenon or measurement record that stands on its own, without a modelled sensor or piece of equipment behind it
+- **Definition:** An Observation is a component that carries observed or recorded data about a phenomenon when the observing equipment is not part of the model. The observed values attach to it as ordinary attributes, so data can enter the replica without inventing a device to own it.
+- **Synonyms:** Field Observation, Measurement Record, Observed Data, Recording
+- **Examples:** A weather record for a site; an observed traffic count on a road; an air-quality reading for a district
+- **Scope:** Use when only the observed data matters. If the observing device IS part of the model, attach the data to that device (Sensor, Meter) instead; a single measured property of an existing component stays an Attribute on that component, not an Observation.
+
+### ObservationAttribute
+
+- **Label:** Observation Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > **ObservationAttribute**
+- **Description:** Typing marker grouping attributes that apply to an Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### PhysicalAttribute
 
 - **Label:** Physical Attribute
@@ -1056,6 +1088,22 @@ mapping procedure.
 - **Label:** Valve
 - **Hierarchy:** Component > Device > Actuator > **Valve**
 - **Description:** Actuator that controls fluid flow
+
+### WeatherObservation
+
+- **Label:** Weather Observation
+- **Hierarchy:** Component > Observation > **WeatherObservation**
+- **Description:** Observation of weather conditions at a place, independent of any weather-station equipment
+- **Definition:** An observation carrying observed or recorded weather data (temperature, wind, irradiance, precipitation and similar) for a place, used when no weather station or sensor is modelled.
+- **Synonyms:** Meteorological Observation, Weather Data, Weather Record
+- **Examples:** Observed hourly temperature and wind speed for a site in 2024
+- **Scope:** For a modelled weather station or sensor (the device), use Sensor. For the harvestable resource itself, use SolarResource or Wind. A bundle of many weather variables in one artefact (a weather file) is a CompositeWeatherObservation.
+
+### WeatherObservationAttribute
+
+- **Label:** Weather Observation Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > ObservationAttribute > **WeatherObservationAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### Wind
 
