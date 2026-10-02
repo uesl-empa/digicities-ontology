@@ -2,6 +2,20 @@
 
 All notable changes to the Digicities ontology are recorded here. The project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] — 2026-10-02
+
+Configuration release: settings a model needs to run get their own place, owned by the service, and the catalogue provenance the platform already relies on is declared in core.
+
+### Added
+- **`ConfigurationAttribute`** (subclass of `Attribute`): marker for a value that exists for a model or service to operate rather than as an observation or behaviour of a component. The test: **a value that sets a boundary condition of the model run is configuration** — a model or algorithm choice, a calibration constant, a run name or frequency, a stream address. Orthogonal to the value kind: an attribute class is a `ConfigurationAttribute` *and* e.g. a `CategoricalAttribute`.
+- **`ServiceConfiguration`**: a configuration profile owned by one `Service` (typically one config file or run setup). Deliberately **not** a `Component`. Properties: `hasConfiguration` (Service → profile) with inverse `configures`, `appliesTo` (profile → the components it is tuned for; not system topology), `hasConfigurationParameter` (profile → its `ConfigurationAttribute` values). Profiles keep two services that configure the same component from colliding on it.
+- **`derivedFromCatalogue`** (object property, Component → Component, `⊑ prov:wasDerivedFrom`, not a `linksComponent` subproperty) and **`isCatalogueEntry`** (boolean): catalogue provenance the platform explorer and the onboarding agent have used since 0.3/0.4, previously declared per workspace extension (`derivedFromCatalogue`) or not at all (`isCatalogueEntry`). Promoted because every catalogue onboarding (wind, solar, the technology database) uses them.
+- `prov:` prefix in the core header.
+- Annotation guard: both new classes are mapping-decision classes (definition + example required); a new test keeps configuration and catalogue terms outside system topology.
+
+### Docs
+- `attribute-types.md` and `AGENT_MAPPING_GUIDE.md`: the boundary-condition test and the wind example (simulation config and stream addresses become a service configuration profile, never a component).
+
 ## [0.4.0] — 2026-08-28
 
 Observation release: pure observations as first-class components. Some inputs are observed data with no modelled sensor or equipment behind them; until now they had to be forced onto a device class or dropped.

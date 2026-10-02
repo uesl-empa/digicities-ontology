@@ -175,6 +175,16 @@ mapping procedure.
 - **Hierarchy:** Thing > Attribute > ComponentAttribute > ObservationAttribute > WeatherObservationAttribute > **CompositeWeatherObservationAttribute**
 - **Description:** Typing marker grouping attributes that apply to a Composite Weather Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
+### ConfigurationAttribute
+
+- **Label:** Configuration Attribute
+- **Hierarchy:** Thing > Attribute > **ConfigurationAttribute**
+- **Description:** Attribute whose value exists for a model or service to operate (a boundary condition of the model run), not as an observation or behaviour of a component.
+- **Definition:** A configuration parameter of a model or service: a value that sets a boundary condition of the model run, such as a model or algorithm choice, a calibration constant, a run name, a run frequency or a stream address. Orthogonal to the value kind: an attribute class is a ConfigurationAttribute AND its value kind (e.g. CategoricalAttribute, PhysicalAttribute). Its instances hang off a ServiceConfiguration via hasConfigurationParameter, never off a component.
+- **Synonyms:** Boundary condition, Config parameter, Configuration parameter, Model setting, Run parameter
+- **Examples:** Wake model type (Bastankhah_PorteAgel_2014), wake decay constant k, turbulence intensity used by the model, simulation name, input/output stream address, run frequency
+- **Scope:** The test is whether the value is a boundary condition of the model run. A property you could observe or measure on the component itself (a turbine's hub height, a room's floor area) is NOT configuration, even when only one model uses it.
+
 ### Controller
 
 - **Label:** Controller
@@ -886,6 +896,15 @@ mapping procedure.
 - **Synonyms:** External Service, Model, Tool
 - **Examples:** Energy simulator, flexibility optimizer, wind power forecaster
 
+### ServiceConfiguration
+
+- **Label:** Service Configuration
+- **Hierarchy:** (root)
+- **Description:** A configuration profile of one Service: the set of configuration parameters for one way of running it (typically one config file or run setup).
+- **Definition:** A named configuration profile owned by one Service, grouping the ConfigurationAttribute values one run setup uses. NOT a Component: it describes how a model runs, not a thing in the system. It may name the components it is tuned for (appliesTo); a profile with no appliesTo configures the service as a whole.
+- **Synonyms:** Configuration profile, Model configuration, Run configuration
+- **Examples:** simulation_alkmaar (wake model, k, TI) applying to WindPark Alkmaar; a runtime profile holding a forecaster's input and output stream addresses
+
 ### ServiceRequirement
 
 - **Label:** Service Requirement
@@ -1146,6 +1165,14 @@ mapping procedure.
 - **Domain:** Attribute
 - **Range:** Set
 
+### appliesTo
+
+- **Label:** applies to
+- **Hierarchy:** (root)
+- **Description:** A component a ServiceConfiguration profile is tuned for (the wind park a wake-model setup was calibrated on). Not a linksComponent subproperty: it is not system topology.
+- **Domain:** ServiceConfiguration
+- **Range:** Component
+
 ### assumptionObjectProperty
 
 - **Label:** assumption object property
@@ -1176,6 +1203,14 @@ mapping procedure.
 - **Domain:** Flow
 - **Range:** Resource
 
+### configures
+
+- **Label:** configures
+- **Hierarchy:** (root)
+- **Description:** The Service a ServiceConfiguration profile belongs to (inverse of hasConfiguration).
+- **Domain:** ServiceConfiguration
+- **Range:** Service
+
 ### contains
 
 - **Label:** contains
@@ -1204,6 +1239,16 @@ mapping procedure.
 - **Description:** Scenario provenance: this scenario was derived from another scenario
 - **Domain:** Scenario
 - **Range:** Scenario
+
+### derivedFromCatalogue
+
+- **Label:** derived from catalogue
+- **Hierarchy:** wasDerivedFrom > **derivedFromCatalogue**
+- **Description:** Links a sited component instance to the catalogue or manufacturer-specification entry of the same class its values were taken from.
+- **Definition:** Provenance link from a real, sited instance (a turbine in a park) to the catalogue entry (its turbine type) that specifies it. Not a linksComponent subproperty: it records where values came from, not how the system is connected.
+- **Examples:** WindTurbine Alkmaar_1 derivedFromCatalogue the WindTurbine catalogue entry alkmaar_2p3MW
+- **Domain:** Component
+- **Range:** Component
 
 ### derivedFromDataSet
 
@@ -1300,6 +1345,22 @@ mapping procedure.
 - **Label:** has component attribute
 - **Hierarchy:** hasAttribute > **hasComponentAttribute**
 - **Description:** Attaches a component attribute to a Component; parent of the per-component-type attachment properties
+
+### hasConfiguration
+
+- **Label:** has configuration
+- **Hierarchy:** (root)
+- **Description:** A Service owns a ServiceConfiguration profile.
+- **Domain:** Service
+- **Range:** ServiceConfiguration
+
+### hasConfigurationParameter
+
+- **Label:** has configuration parameter
+- **Hierarchy:** (root)
+- **Description:** Attaches a configuration parameter (a ConfigurationAttribute node with its value) to its ServiceConfiguration profile.
+- **Domain:** ServiceConfiguration
+- **Range:** ConfigurationAttribute
 
 ### hasControllerAttribute
 
@@ -2283,6 +2344,14 @@ mapping procedure.
 - **Label:** identifier value
 - **Hierarchy:** hasAttributeValue > **identifierValue**
 - **Description:** Literal value of an identifier attribute
+
+### isCatalogueEntry
+
+- **Label:** is catalogue entry
+- **Hierarchy:** (root)
+- **Description:** Marks a component instance as a catalogue / reference entry (a type or specification) rather than a sited thing. Explorers can hide such entries; scenarios leave them out.
+- **Domain:** Component
+- **Range:** boolean
 
 ### linkType
 

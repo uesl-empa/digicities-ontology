@@ -24,7 +24,7 @@ for s, _, _ in g.triples((None, rdflib.RDF.type, rdflib.OWL.Class)):
 - `Scenario` — what-if container
 - `Assumption` — `AssumptionSingle` and `AssumptionSeries` variants
 - `TimeSeries` — `HistoricTimeSeries`, `LiveTimeSeries`, `FutureTimeSeries`
-- `Actor`, `Service`, `ServiceRequirement` — system-actor concepts
+- `Actor`, `Service`, `ServiceRequirement`, `ServiceConfiguration` — system-actor concepts
 - `TemporalPrecision` — value set (named individuals `Year`, `YearMonth`, `Date`, `DateTime`, `Unknown`) for event-attribute temporal granularity
 - `Observation` — observed data with no modelled equipment behind it (see Observations below)
 
@@ -136,6 +136,7 @@ See [attribute-types.md](attribute-types.md) for full descriptions.
 
 - `Actor`, `ActorAttribute`
 - `Service`, `ServiceRequirement`
+- `ServiceConfiguration` — a configuration profile of one service (not a component); its parameters are `ConfigurationAttribute`s
 
 ---
 

@@ -577,6 +577,32 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#ConfigurationAttribute",
+      "name": "ConfigurationAttribute",
+      "kind": "class",
+      "label": "Configuration Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute whose value exists for a model or service to operate (a boundary condition of the model run), not as an observation or behaviour of a component.",
+      "definition": "A configuration parameter of a model or service: a value that sets a boundary condition of the model run, such as a model or algorithm choice, a calibration constant, a run name, a run frequency or a stream address. Orthogonal to the value kind: an attribute class is a ConfigurationAttribute AND its value kind (e.g. CategoricalAttribute, PhysicalAttribute). Its instances hang off a ServiceConfiguration via hasConfigurationParameter, never off a component.",
+      "altLabels": [
+        "Boundary condition",
+        "Config parameter",
+        "Configuration parameter",
+        "Model setting",
+        "Run parameter"
+      ],
+      "examples": [
+        "Wake model type (Bastankhah_PorteAgel_2014), wake decay constant k, turbulence intensity used by the model, simulation name, input/output stream address, run frequency"
+      ],
+      "scopeNote": "The test is whether the value is a boundary condition of the model run. A property you could observe or measure on the component itself (a turbine's hub height, a room's floor area) is NOT configuration, even when only one model uses it."
+    },
+    {
       "iri": "https://digicities.info/ontology#Controller",
       "name": "Controller",
       "kind": "class",
@@ -2572,6 +2598,25 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#ServiceConfiguration",
+      "name": "ServiceConfiguration",
+      "kind": "class",
+      "label": "Service Configuration",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A configuration profile of one Service: the set of configuration parameters for one way of running it (typically one config file or run setup).",
+      "definition": "A named configuration profile owned by one Service, grouping the ConfigurationAttribute values one run setup uses. NOT a Component: it describes how a model runs, not a thing in the system. It may name the components it is tuned for (appliesTo); a profile with no appliesTo configures the service as a whole.",
+      "altLabels": [
+        "Configuration profile",
+        "Model configuration",
+        "Run configuration"
+      ],
+      "examples": [
+        "simulation_alkmaar (wake model, k, TI) applying to WindPark Alkmaar; a runtime profile holding a forecaster's input and output stream addresses"
+      ],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#ServiceRequirement",
       "name": "ServiceRequirement",
       "kind": "class",
@@ -3900,6 +3945,25 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#isCatalogueEntry",
+      "name": "isCatalogueEntry",
+      "kind": "dataProperty",
+      "label": "is catalogue entry",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Marks a component instance as a catalogue / reference entry (a type or specification) rather than a sited thing. Explorers can hide such entries; scenarios leave them out.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "boolean"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#linkType",
       "name": "linkType",
       "kind": "dataProperty",
@@ -4432,6 +4496,25 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#appliesTo",
+      "name": "appliesTo",
+      "kind": "objectProperty",
+      "label": "applies to",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A component a ServiceConfiguration profile is tuned for (the wind park a wake-model setup was calibrated on). Not a linksComponent subproperty: it is not system topology.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ServiceConfiguration"
+      ],
+      "range": [
+        "Component"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#assumptionObjectProperty",
       "name": "assumptionObjectProperty",
       "kind": "objectProperty",
@@ -4505,6 +4588,25 @@
       ],
       "range": [
         "Resource"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#configures",
+      "name": "configures",
+      "kind": "objectProperty",
+      "label": "configures",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The Service a ServiceConfiguration profile belongs to (inverse of hasConfiguration).",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ServiceConfiguration"
+      ],
+      "range": [
+        "Service"
       ]
     },
     {
@@ -4587,6 +4689,31 @@
       ],
       "range": [
         "Scenario"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#derivedFromCatalogue",
+      "name": "derivedFromCatalogue",
+      "kind": "objectProperty",
+      "label": "derived from catalogue",
+      "parents": [
+        "wasDerivedFrom"
+      ],
+      "parentChainToRoot": [
+        "wasDerivedFrom"
+      ],
+      "comment": "Links a sited component instance to the catalogue or manufacturer-specification entry of the same class its values were taken from.",
+      "definition": "Provenance link from a real, sited instance (a turbine in a park) to the catalogue entry (its turbine type) that specifies it. Not a linksComponent subproperty: it records where values came from, not how the system is connected.",
+      "altLabels": [],
+      "examples": [
+        "WindTurbine Alkmaar_1 derivedFromCatalogue the WindTurbine catalogue entry alkmaar_2p3MW"
+      ],
+      "scopeNote": null,
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "Component"
       ]
     },
     {
@@ -4860,6 +4987,44 @@
       "scopeNote": null,
       "domain": [],
       "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasConfiguration",
+      "name": "hasConfiguration",
+      "kind": "objectProperty",
+      "label": "has configuration",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A Service owns a ServiceConfiguration profile.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Service"
+      ],
+      "range": [
+        "ServiceConfiguration"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasConfigurationParameter",
+      "name": "hasConfigurationParameter",
+      "kind": "objectProperty",
+      "label": "has configuration parameter",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Attaches a configuration parameter (a ConfigurationAttribute node with its value) to its ServiceConfiguration profile.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ServiceConfiguration"
+      ],
+      "range": [
+        "ConfigurationAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasControllerAttribute",

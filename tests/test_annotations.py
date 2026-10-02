@@ -54,6 +54,8 @@ MAPPING_DECISION_CLASSES = [
     "Scenario",
     "Service",
     "ServiceRequirement",
+    "ConfigurationAttribute",
+    "ServiceConfiguration",
 ]
 
 
@@ -158,3 +160,20 @@ def test_term_index_json_shape():
     assert "Site" in loc["altLabels"]
     assert loc["parentChainToRoot"] == ["Component"]
     assert terms["Turbine"]["parentChainToRoot"] == ["EnergyConverter", "Converter", "Component"]
+
+
+def test_configuration_and_catalogue_terms_stay_outside_topology():
+    """Configuration describes how a model runs and catalogue links record where
+    values came from — neither is system topology. A ServiceConfiguration is not a
+    Component (scenario sync would treat it as part of the system), and neither
+    appliesTo nor derivedFromCatalogue may be walked as a component link."""
+    g = _load_core()
+    sub = lambda a, b: (a, RDFS.subClassOf, b) in g or any(  # noqa: E731
+        sub(p, b) for p in g.objects(a, RDFS.subClassOf))
+    assert sub(DICI.ConfigurationAttribute, DICI.Attribute)
+    assert not sub(DICI.ServiceConfiguration, DICI.Component)
+    for prop in (DICI.appliesTo, DICI.derivedFromCatalogue, DICI.hasConfigurationParameter):
+        assert (prop, RDFS.subPropertyOf, DICI.linksComponent) not in g, prop
+    assert (DICI.derivedFromCatalogue, RDFS.subPropertyOf,
+            rdflib.URIRef("http://www.w3.org/ns/prov#wasDerivedFrom")) in g
+    assert (DICI.configures, OWL.inverseOf, DICI.hasConfiguration) in g

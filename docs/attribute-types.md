@@ -21,6 +21,7 @@ The Excel-importer convention in the Digicities platform mirrors these classes �
 | `HistoricTimeSeries` (`Historic`)  | Past observations attached to an attribute.                            | `dici_onto:hasHistoricTimeSeries <…/series>`                                             |
 | `LiveTimeSeries` (`Live`)          | Streaming/live observations.                                           | `dici_onto:hasLiveTimeSeries <…/series>`                                                 |
 | `FutureTimeSeries` (`Future`)      | Forecasts or scenario projections.                                     | `dici_onto:hasFutureTimeSeries <…/series>`                                               |
+| `ConfigurationAttribute`           | Marker mixin: a setting a model needs to run (a boundary condition), not a property of a component. | (intersected with `Categorical`/`Physical`/etc.; attached to a `ServiceConfiguration`)   |
 
 In the ontology TTL, every class above inherits (directly or transitively) from `dici_onto:Attribute`.
 
@@ -67,5 +68,7 @@ Any attribute can carry a citation via the standard PROV-O property:
 - **A function (load profile, efficiency curve, …)?** → `CurveAttribute`.
 - **A bare string or untyped number?** → `SimpleValueAttribute`. Use sparingly — units and categories are more useful for downstream tooling.
 - **A time-varying signal?** → `HistoricTimeSeries` / `LiveTimeSeries` / `FutureTimeSeries`. Attach via `dici_onto:hasHistoricTimeSeries` etc.
+
+- **A setting the model needs to run, not something true of the component?** → mark the class `ConfigurationAttribute` as well as its value kind, and attach its values to a `ServiceConfiguration` profile of the service (`hasConfigurationParameter`), not to the component. The test: **if the value is a boundary condition of the model run, it is configuration** — a model or algorithm choice, a calibration constant (a wake decay constant), a run name or frequency, a stream address. A profile names the components it is tuned for with `appliesTo`.
 
 When in doubt, prefer the most specific type the data fits — generic `SimpleValueAttribute` is a fallback, not a default.
