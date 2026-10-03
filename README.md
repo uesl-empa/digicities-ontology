@@ -10,17 +10,17 @@ Its core commitment is deliberately general: whatever you're describing, e.g. a 
 
 Define a thing once, and it can be published, replicated, and built upon without translation at each handoff — so value flows along the chain instead of stalling between the people who produce data, model it, and put it to work. Energy systems are where this began and where it's proven, not the boundary.
 
-Concretely, the ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...), a domain vocabulary (energy carriers, converters, storage, sensors, meters, controllers), and the **15 attribute types** used to attach values to instances (physical, cost, categorical, event, geospatial, time-series, ...). It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform), but the TTL is usable standalone with any RDF tool.
+Concretely, the ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...), a domain vocabulary (energy carriers, converters, storage, sensors, meters, controllers), and the **16 attribute types** used to attach values to instances (physical, cost, categorical, event, geospatial, time-series, ...). It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform), but the TTL is usable standalone with any RDF tool.
 
 ## Structure
 
 ```
 core/
-├── dici_onto_core.ttl   # the ontology itself (~2.7k lines, ~143 classes)
+├── dici_onto_core.ttl   # the ontology itself (~3.1k lines, ~158 classes)
 └── qudt_units.txt       # QUDT unit list referenced by Physical/Cost attributes
 docs/
 ├── overview.md          # scope, design principles, namespaces
-├── attribute-types.md   # the 15 attribute-type classes and what they model
+├── attribute-types.md   # the 16 attribute-type classes and what they model
 ├── class-hierarchy.md   # full class list grouped by upper concept
 ├── CORE_EVOLUTION.md    # how workspace extensions become core
 ├── AGENT_MAPPING_GUIDE.md  # mapping procedure + decision tree for onboarding agents
