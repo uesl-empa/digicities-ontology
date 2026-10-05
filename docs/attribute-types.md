@@ -1,6 +1,6 @@
 # Attribute types
 
-Every measurable property of a `Component`, `Process`, `Flow`, or `Resource` instance is itself an instance of an `Attribute` subclass. This page lists the 15 attribute-type classes the ontology defines, what they model, and how downstream tools serialise them.
+Every measurable property of a `Component`, `Process`, `Flow`, or `Resource` instance is itself an instance of an `Attribute` subclass. This page lists the 16 attribute-type classes the ontology defines, what they model, and how downstream tools serialise them.
 
 The Excel-importer convention in the Digicities platform mirrors these classes — the spreadsheet header row that picks an attribute type literally names the class (`Physical`, `SimpleCost`, etc.).
 
