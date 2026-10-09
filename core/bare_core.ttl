@@ -39,9 +39,9 @@ dici_onto:CategoricalAttribute a owl:Class ;
     rdfs:label "Categorical Attribute" ;
     rdfs:comment "Attribute whose value is one of an enumerated set of categories"@en ;
     rdfs:subClassOf dici_onto:Attribute ;
-    skos:definition "An attribute whose value is drawn from a closed set of named categories; the allowed values are declared as subclasses of the attribute class."@en ;
+    skos:definition "An attribute whose value is drawn from a closed set of named categories; the allowed values are named individuals of the attribute class, and the attribute points at the one it takes with hasCategoricalValue."@en ;
     skos:example "Insulation class (Poor / Average / Good), tariff type (Flat / Variable / Dual)"@en ;
-    skos:scopeNote "Declare the allowed values as subclasses of the concrete attribute class."@en .
+    skos:scopeNote "Declare the allowed values as named individuals of the concrete attribute class (the Ontology Manager does this); state the value of an attribute with hasCategoricalValue, never as an extra rdf:type."@en .
 
 dici_onto:Collaborator a owl:AnnotationProperty ;
     rdfs:label "collaborator"@en ;
@@ -379,10 +379,11 @@ dici_onto:hasBin a owl:ObjectProperty ;
     rdfs:domain dici_onto:Distribution ;
     rdfs:range dici_onto:DistributionBin .
 
-dici_onto:hasCategoricalValue a owl:DatatypeProperty ;
+dici_onto:hasCategoricalValue a owl:ObjectProperty ;
     rdfs:label "has categorical value"@en ;
-    rdfs:comment "The selected category value of a categorical attribute"@en ;
-    rdfs:subPropertyOf dici_onto:hasAttributeValue .
+    rdfs:comment "Links a categorical attribute to the category it takes. The category is an IRI: a named individual of the attribute's own class (the allowed values, declared with the Ontology Manager's add_named_individual), so the range is the categorical attribute class. It plays the role hasAttributeValue plays for literal values, but an object property cannot sit under a datatype property, so it has no parent property."@en ;
+    rdfs:domain dici_onto:CategoricalAttribute ;
+    rdfs:range dici_onto:CategoricalAttribute .
 
 dici_onto:hasComponentAttribute a owl:ObjectProperty ;
     rdfs:label "has component attribute"@en ;

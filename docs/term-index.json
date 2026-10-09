@@ -365,12 +365,12 @@
         "Thing"
       ],
       "comment": "Attribute whose value is one of an enumerated set of categories",
-      "definition": "An attribute whose value is drawn from a closed set of named categories; the allowed values are declared as subclasses of the attribute class.",
+      "definition": "An attribute whose value is drawn from a closed set of named categories; the allowed values are named individuals of the attribute class, and the attribute points at the one it takes with hasCategoricalValue.",
       "altLabels": [],
       "examples": [
         "Insulation class (Poor / Average / Good), tariff type (Flat / Variable / Dual)"
       ],
-      "scopeNote": "Declare the allowed values as subclasses of the concrete attribute class."
+      "scopeNote": "Declare the allowed values as named individuals of the concrete attribute class (the Ontology Manager does this); state the value of an attribute with hasCategoricalValue, never as an extra rdf:type."
     },
     {
       "iri": "https://digicities.info/ontology#CircuitBreaker",
@@ -4085,25 +4085,6 @@
       "range": []
     },
     {
-      "iri": "https://digicities.info/ontology#hasCategoricalValue",
-      "name": "hasCategoricalValue",
-      "kind": "dataProperty",
-      "label": "has categorical value",
-      "parents": [
-        "hasAttributeValue"
-      ],
-      "parentChainToRoot": [
-        "hasAttributeValue"
-      ],
-      "comment": "The selected category value of a categorical attribute",
-      "definition": null,
-      "altLabels": [],
-      "examples": [],
-      "scopeNote": null,
-      "domain": [],
-      "range": []
-    },
-    {
       "iri": "https://digicities.info/ontology#hasDataPath",
       "name": "hasDataPath",
       "kind": "dataProperty",
@@ -5315,6 +5296,25 @@
       ],
       "range": [
         "DistributionBin"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasCategoricalValue",
+      "name": "hasCategoricalValue",
+      "kind": "objectProperty",
+      "label": "has categorical value",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Links a categorical attribute to the category it takes. The category is an IRI: a named individual of the attribute's own class (the allowed values, declared with the Ontology Manager's add_named_individual), so the range is the categorical attribute class. It plays the role hasAttributeValue plays for literal values, but an object property cannot sit under a datatype property, so it has no parent property.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CategoricalAttribute"
+      ],
+      "range": [
+        "CategoricalAttribute"
       ]
     },
     {

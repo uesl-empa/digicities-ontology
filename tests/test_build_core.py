@@ -103,6 +103,7 @@ def test_no_term_of_the_previous_release_disappears_silently():
 # Annotations this release changes on purpose, with the reason.
 INTENDED_ANNOTATION_CHANGES = {
     DICI.locationOf: "0.6.0: the inverse of hasLocation only (locatedIn has locationContains)",
+    DICI.hasCategoricalValue: "0.6.0: an object property; the value is the category IRI",
 }
 
 

@@ -67,7 +67,7 @@ The core declares one provenance property so far: `derivedFromCatalogue` (a sub-
 
 - **Has a numeric value + a unit?** → `PhysicalAttribute`. If the unit is per-X, use `CustomPhysicalRatioAttribute`.
 - **Money?** → `SimpleCostAttribute` if a total; `UnitBasedCostAttribute` if a rate (e.g. CHF/kWh).
-- **One of a fixed list of choices?** → `CategoricalAttribute`. The choice values themselves should be `dici_onto:` instances.
+- **One of a fixed list of choices?** → `CategoricalAttribute`. The choice values are named individuals of the attribute's own class (declared with the Ontology Manager), and the attribute points at the one it takes with `hasCategoricalValue`, an object property: the value is an IRI, never a literal and never an extra `rdf:type` of the attribute.
 - **A pointer to another instance?** Not an attribute: a link. Use an object property under `linksComponent` that names the relationship (`locatedIn`, `hasLocation`, `partOf`, ...). In the Excel importer this is a `ClassObject` column.
 - **A point in time?** → `EventAttribute`. The serialiser auto-detects year vs. date vs. datetime.
 - **A function (load profile, efficiency curve, …)?** → `CurveAttribute`.

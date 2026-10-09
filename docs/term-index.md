@@ -96,9 +96,9 @@ mapping procedure.
 - **Label:** Categorical Attribute
 - **Hierarchy:** Thing > Attribute > **CategoricalAttribute**
 - **Description:** Attribute whose value is one of an enumerated set of categories
-- **Definition:** An attribute whose value is drawn from a closed set of named categories; the allowed values are declared as subclasses of the attribute class.
+- **Definition:** An attribute whose value is drawn from a closed set of named categories; the allowed values are named individuals of the attribute class, and the attribute points at the one it takes with hasCategoricalValue.
 - **Examples:** Insulation class (Poor / Average / Good), tariff type (Flat / Variable / Dual)
-- **Scope:** Declare the allowed values as subclasses of the concrete attribute class.
+- **Scope:** Declare the allowed values as named individuals of the concrete attribute class (the Ontology Manager does this); state the value of an attribute with hasCategoricalValue, never as an extra rdf:type.
 
 ### CircuitBreaker
 
@@ -1447,6 +1447,14 @@ mapping procedure.
 - **Domain:** Distribution
 - **Range:** DistributionBin
 
+### hasCategoricalValue
+
+- **Label:** has categorical value
+- **Hierarchy:** (root)
+- **Description:** Links a categorical attribute to the category it takes. The category is an IRI: a named individual of the attribute's own class (the allowed values, declared with the Ontology Manager's add_named_individual), so the range is the categorical attribute class. It plays the role hasAttributeValue plays for literal values, but an object property cannot sit under a datatype property, so it has no parent property.
+- **Domain:** CategoricalAttribute
+- **Range:** CategoricalAttribute
+
 ### hasCircuitBreakerAttribute
 
 - **Label:** has circuit breaker attribute
@@ -2654,12 +2662,6 @@ mapping procedure.
 - **Hierarchy:** (root)
 - **Description:** Root data property carrying the literal value of an attribute
 - **Domain:** Attribute
-
-### hasCategoricalValue
-
-- **Label:** has categorical value
-- **Hierarchy:** hasAttributeValue > **hasCategoricalValue**
-- **Description:** The selected category value of a categorical attribute
 
 ### hasDataPath
 
