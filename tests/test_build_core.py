@@ -6,7 +6,8 @@
   ``check_pattern`` finds nothing);
 - no term of the previous release disappears silently: it is still there, a
   deprecated alias of its replacement, or listed as removed in the CHANGELOG;
-- labels and comments of the terms that stayed are unchanged;
+- labels and comments of the terms that stayed are unchanged, except the changes
+  listed in ``INTENDED_ANNOTATION_CHANGES`` with their reason;
 - README, ``owl:versionInfo`` and the CHANGELOG name the same version.
 
 The build and pattern tests need a digicities-platform checkout (the Ontology
@@ -99,11 +100,17 @@ def test_no_term_of_the_previous_release_disappears_silently():
         assert next(iter(targets)) in _terms(new), f"{alias} points at a missing term"
 
 
+# Annotations this release changes on purpose, with the reason.
+INTENDED_ANNOTATION_CHANGES = {
+    DICI.locationOf: "0.6.0: the inverse of hasLocation only (locatedIn has locationContains)",
+}
+
+
 def test_labels_and_comments_of_kept_terms_are_unchanged():
     old, new = _previous(), _core()
     deprecated = set(new.subjects(OWL.deprecated, None))
     changed = []
-    for term in sorted((_terms(old) & _terms(new)) - deprecated):
+    for term in sorted((_terms(old) & _terms(new)) - deprecated - set(INTENDED_ANNOTATION_CHANGES)):
         for prop in (RDFS.label, RDFS.comment):
             if set(old.objects(term, prop)) != set(new.objects(term, prop)):
                 changed.append(f"{term} {prop}")

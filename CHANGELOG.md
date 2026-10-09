@@ -11,12 +11,14 @@ All notable changes to the Digicities ontology are recorded here. The project fo
 - `hasComponentAttribute` states `rdfs:domain Component` and `rdfs:range ComponentAttribute` (the root of the pattern).
 - The core's attributes go through the same operations as an extension's: each has a value kind and one link predicate `has<Component><Attribute>Attribute`. Kinds: `ActuatorPosition`, `MeasurementAccuracy`, `SamplingRate`, `FlowCapacity`, `FlowRate`, `Efficiency`, `ProcessCapacity`, `StateOfCharge`, `StorageCapacity` are `PhysicalAttribute` (with their existing default units); `SetPoint` is `SimpleValueAttribute`; `MeterReading` and `MeasurementValue` are `DynamicAttribute`; `SwitchState` is `CategoricalAttribute`.
 - The predicates under the old short duplicates now hang under the full ones (e.g. `hasSolarResourceAttribute ⊑ hasRenewableResourceAttribute`).
+- **`locatedIn` has its own inverse, `locationContains`.** `locationOf` was the inverse of both `hasLocation` and `locatedIn`, so under inference `hasLocation(a, b)` gave `locationOf(b, a)` and then `locatedIn(a, b)`: the two predicates always appeared together and choosing one meant nothing. `locationOf` is now the inverse of `hasLocation` only. A test keeps every property's inverse partner unshared.
 
 ### Added
 - Every component class has its own category and general predicate: the 14 leaf classes (`CircuitBreaker`, `Damper`, `Valve`, `ElectricityFlow`, `GasFlow`, `HeatFlow`, `LiquidFuelFlow`, `ElectricityMeter`, `GasMeter`, `HeatMeter`, `FlowSensor`, `PowerSensor`, `PressureSensor`, `TemperatureSensor`) and the observation family (`hasObservationAttribute`, `hasWeatherObservationAttribute`, `hasCompositeWeatherObservationAttribute`), which had categories but no predicates.
 - 13 link predicates for the core's attributes (`hasConversionProcessEfficiencyAttribute`, ...).
 - **`DataPathAttribute`** (subclass of `Attribute`): the value kind of an attribute whose value is a path or reference to a data file, read through `hasDataPath`. Before, `ResourceAttribute` did this job AND was the category of the `Resource` component; it is now only that category. A data-path attribute is typed `DataPathAttribute`.
 - **`IdentifierAttribute`** (subclass of `Attribute`): the value kind of an attribute whose value identifies the thing it belongs to, reached through `hasIdentifier`. Identifier attribute classes (`BuildingId`, `BacnetId`, ...) were filed under the component's category with no value kind, which broke the pattern check.
+- `locationContains` (inverse of `locatedIn`).
 - `core/bare_core.ttl`, `core/scaffold_instructions.json`, `tools/build_core.py`, `tests/test_build_core.py` (reproducible build, pattern check, no silent term loss, unchanged annotations, one version everywhere).
 
 ### Deprecated (aliases kept for one release, `owl:deprecated true` + `owl:equivalentClass` / `owl:equivalentProperty`)

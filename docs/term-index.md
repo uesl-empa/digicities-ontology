@@ -2345,11 +2345,18 @@ mapping procedure.
 - **Description:** A Location is spatially contained within another Location
 - **Domain:** Location
 
+### locationContains
+
+- **Label:** location contains
+- **Hierarchy:** linksComponent > **locationContains**
+- **Description:** The place that contains the located thing (inverse of locatedIn)
+- **Range:** Location
+
 ### locationOf
 
 - **Label:** location of
 - **Hierarchy:** linksComponent > **locationOf**
-- **Description:** A Location hosts a component (inverse of the location attachment properties)
+- **Description:** A Location hosts a component (inverse of hasLocation)
 
 ### measures
 

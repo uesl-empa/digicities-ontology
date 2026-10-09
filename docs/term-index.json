@@ -8047,6 +8047,27 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#locationContains",
+      "name": "locationContains",
+      "kind": "objectProperty",
+      "label": "location contains",
+      "parents": [
+        "linksComponent"
+      ],
+      "parentChainToRoot": [
+        "linksComponent"
+      ],
+      "comment": "The place that contains the located thing (inverse of locatedIn)",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "Location"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#locationOf",
       "name": "locationOf",
       "kind": "objectProperty",
@@ -8057,7 +8078,7 @@
       "parentChainToRoot": [
         "linksComponent"
       ],
-      "comment": "A Location hosts a component (inverse of the location attachment properties)",
+      "comment": "A Location hosts a component (inverse of hasLocation)",
       "definition": null,
       "altLabels": [],
       "examples": [],

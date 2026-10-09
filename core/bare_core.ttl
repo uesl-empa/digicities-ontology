@@ -628,7 +628,13 @@ dici_onto:locatedIn a owl:ObjectProperty ;
     rdfs:comment "A Location is spatially contained within another Location"@en ;
     rdfs:domain dici_onto:Location ;
     rdfs:subPropertyOf dici_onto:linksComponent ;
-    owl:inverseOf dici_onto:locationOf .
+    owl:inverseOf dici_onto:locationContains .
+
+dici_onto:locationContains a owl:ObjectProperty ;
+    rdfs:label "location contains"@en ;
+    rdfs:comment "The place that contains the located thing (inverse of locatedIn)"@en ;
+    rdfs:range dici_onto:Location ;
+    rdfs:subPropertyOf dici_onto:linksComponent .
 
 dici_onto:maxValue a owl:DatatypeProperty ;
     rdfs:label "maximum value" ;
@@ -1078,7 +1084,7 @@ dici_onto:hasUnitLabel a owl:DatatypeProperty ;
 
 dici_onto:locationOf a owl:ObjectProperty ;
     rdfs:label "location of"@en ;
-    rdfs:comment "A Location hosts a component (inverse of the location attachment properties)"@en ;
+    rdfs:comment "A Location hosts a component (inverse of hasLocation)"@en ;
     rdfs:subPropertyOf dici_onto:linksComponent .
 
 dici_onto:hasTimeSeries a owl:ObjectProperty ;

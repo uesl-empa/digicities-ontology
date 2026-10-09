@@ -994,7 +994,7 @@ dici_onto:locatedIn a owl:ObjectProperty ;
     rdfs:comment "A Location is spatially contained within another Location"@en ;
     rdfs:domain dici_onto:Location ;
     rdfs:subPropertyOf dici_onto:linksComponent ;
-    owl:inverseOf dici_onto:locationOf .
+    owl:inverseOf dici_onto:locationContains .
 
 dici_onto:maxValue a owl:DatatypeProperty ;
     rdfs:label "maximum value" ;
@@ -1929,6 +1929,17 @@ dici_onto:linksInputEntityTo a owl:ObjectProperty ;
     rdfs:domain dici_onto:ComponentLink ;
     rdfs:range dici_onto:Component .
 
+dici_onto:locationContains a owl:ObjectProperty ;
+    rdfs:label "location contains"@en ;
+    rdfs:comment "The place that contains the located thing (inverse of locatedIn)"@en ;
+    rdfs:range dici_onto:Location ;
+    rdfs:subPropertyOf dici_onto:linksComponent .
+
+dici_onto:locationOf a owl:ObjectProperty ;
+    rdfs:label "location of"@en ;
+    rdfs:comment "A Location hosts a component (inverse of hasLocation)"@en ;
+    rdfs:subPropertyOf dici_onto:linksComponent .
+
 dici_onto:partOf a owl:ObjectProperty ;
     rdfs:label "part of"@en ;
     rdfs:comment "Whole-part composition: this component is part of another component"@en ;
@@ -2162,11 +2173,6 @@ dici_onto:hasUnitLabel a owl:DatatypeProperty ;
     rdfs:domain dici_onto:Attribute ;
     rdfs:range xsd:string .
 
-dici_onto:locationOf a owl:ObjectProperty ;
-    rdfs:label "location of"@en ;
-    rdfs:comment "A Location hosts a component (inverse of the location attachment properties)"@en ;
-    rdfs:subPropertyOf dici_onto:linksComponent .
-
 unit:KiloW-HR a owl:NamedIndividual .
 
 dici_onto:Actor a owl:Class ;
@@ -2297,20 +2303,6 @@ dici_onto:FuelCarrierAttribute a owl:Class ;
     rdfs:comment "Typing marker grouping attributes that apply to a Fuel Carrier; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en ;
     rdfs:subClassOf dici_onto:EnergyCarrierAttribute .
 
-dici_onto:Location a owl:Class ;
-    rdfs:label "Location" ;
-    rdfs:comment "Spatial entity representing geographic areas or specific sites"@en ;
-    rdfs:subClassOf dici_onto:Component ;
-    skos:altLabel "Area"@en,
-        "District"@en,
-        "Place"@en,
-        "Region"@en,
-        "Site"@en,
-        "Zone"@en ;
-    skos:example "A wind park, a city district, a campus, a building plot, a municipality"@en ;
-    skos:scopeNote "Use as the parent for spatial grouping concepts: a WindPark or a Campus is a Location. Do not use Network (connectivity infrastructure) or Junction (flow nodes) for spatial grouping. Components attach to a Location via dici_onto:locatedAt."@en ;
-    dici_onto:definition "Locations provide spatial context for components and flows, enabling geographic analysis and constraints"@en .
-
 dici_onto:Resource a owl:Class ;
     rdfs:label "Resource" ;
     rdfs:comment "Primary source of energy or material drawn from the environment"@en ;
@@ -2436,6 +2428,20 @@ dici_onto:EnergyCarrierFlowAttribute a owl:Class ;
     rdfs:label "Energy Carrier Flow Attribute" ;
     rdfs:comment "Typing marker grouping attributes that apply to a Energy Carrier Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en ;
     rdfs:subClassOf dici_onto:FlowAttribute .
+
+dici_onto:Location a owl:Class ;
+    rdfs:label "Location" ;
+    rdfs:comment "Spatial entity representing geographic areas or specific sites"@en ;
+    rdfs:subClassOf dici_onto:Component ;
+    skos:altLabel "Area"@en,
+        "District"@en,
+        "Place"@en,
+        "Region"@en,
+        "Site"@en,
+        "Zone"@en ;
+    skos:example "A wind park, a city district, a campus, a building plot, a municipality"@en ;
+    skos:scopeNote "Use as the parent for spatial grouping concepts: a WindPark or a Campus is a Location. Do not use Network (connectivity infrastructure) or Junction (flow nodes) for spatial grouping. Components attach to a Location via dici_onto:locatedAt."@en ;
+    dici_onto:definition "Locations provide spatial context for components and flows, enabling geographic analysis and constraints"@en .
 
 dici_onto:Meter a owl:Class ;
     rdfs:label "Meter" ;
