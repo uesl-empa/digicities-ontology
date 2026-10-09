@@ -25,6 +25,8 @@ What it deliberately does **not** cover (out of scope, defer to specialist ontol
 - Occupant modelling and behavioural data.
 - Market and pricing models beyond `SimpleCostAttribute` / `UnitBasedCostAttribute`.
 
+Link to those ontologies with SKOS mappings rather than modelling them again. [LINKING_DOMAINS.md](LINKING_DOMAINS.md) explains how, with a checked example for OEO, Brick, SAREF, BOT, IFC and CIM.
+
 ## Design principles
 
 1. **Attribute-as-class.** Every measurable property is an *instance* of an attribute class (`PhysicalAttribute`, `CategoricalAttribute`, etc.), not a datatype property. This lets attributes carry their own units, provenance, time-series, and uncertainty without losing the link to the parent component.
