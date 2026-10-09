@@ -828,6 +828,24 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#DataPathAttribute",
+      "name": "DataPathAttribute",
+      "kind": "class",
+      "label": "Data Path Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute whose value is a path or reference to a data file, read through hasDataPath",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#DescriptiveStatistics",
       "name": "DescriptiveStatistics",
       "kind": "class",
@@ -1850,6 +1868,24 @@
         "Historical Data",
         "Measured Data"
       ],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#IdentifierAttribute",
+      "name": "IdentifierAttribute",
+      "kind": "class",
+      "label": "Identifier Attribute",
+      "parents": [
+        "Attribute"
+      ],
+      "parentChainToRoot": [
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Attribute whose value identifies the thing it belongs to, reached through hasIdentifier",
+      "definition": null,
+      "altLabels": [],
       "examples": [],
       "scopeNote": null
     },

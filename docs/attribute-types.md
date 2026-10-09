@@ -15,6 +15,8 @@ The Excel-importer convention in the Digicities platform mirrors these classes �
 | `CurveAttribute`                   | An x/y curve with units on each axis.                                  | `dici_onto:hasDataPoints """[(0,0);(1,2);…]"""`                                          |
 | `CustomPhysicalRatioAttribute`     | A ratio of two physical quantities (numerator/denominator units).     | `qudt:value 0.25 ; dici_onto:hasUnitLabel "CHF/KiloW-HR"`                                |
 | `SimpleValueAttribute`             | A bare string or number, no unit.                                     | `dici_onto:hasAttributeValue "BLDG-A-001"`                                               |
+| `DataPathAttribute`                | A path or reference to a data file (a weather file, a dataset).       | `dici_onto:hasDataPath "weather/vienna.epw"`                                            |
+| `IdentifierAttribute`              | A value that identifies its owner (an asset id, a BACnet id).         | `dici_onto:identifierValue "BLDG-A-001"` via `dici_onto:hasIdentifier`                  |
 | `StaticAttribute`                  | Marker mixin for time-invariant properties.                            | (intersected with `Physical`/`Categorical`/etc.)                                         |
 | `DynamicAttribute`                 | Marker mixin for properties that vary over time.                       | (typically combined with a `TimeSeries` link)                                            |
 | `GeospatialAttribute`              | Latitude/longitude or full GeoSPARQL geometry.                         | implementation depends on the geo-vocabulary chosen                                      |
@@ -66,6 +68,7 @@ Any attribute can carry a citation via the standard PROV-O property:
 - **A pointer to another instance?** → `ComponentAttribute` (a.k.a. ClassObject in the Excel importer). Pick the predicate that names the relationship (`locatedIn`, `installedAt`, `partOf`, …).
 - **A point in time?** → `EventAttribute`. The serialiser auto-detects year vs. date vs. datetime.
 - **A function (load profile, efficiency curve, …)?** → `CurveAttribute`.
+- **A path or reference to a data file?** → `DataPathAttribute` (value in `dici_onto:hasDataPath`).
 - **A bare string or untyped number?** → `SimpleValueAttribute`. Use sparingly — units and categories are more useful for downstream tooling.
 - **A time-varying signal?** → `HistoricTimeSeries` / `LiveTimeSeries` / `FutureTimeSeries`. Attach via `dici_onto:hasHistoricTimeSeries` etc.
 

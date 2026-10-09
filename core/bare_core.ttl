@@ -109,6 +109,16 @@ dici_onto:SimpleCostAttribute a owl:Class ;
     rdfs:subClassOf dici_onto:Attribute ;
     skos:example "Investment cost in EUR"@en .
 
+dici_onto:DataPathAttribute a owl:Class ;
+    rdfs:label "Data Path Attribute" ;
+    rdfs:comment "Attribute whose value is a path or reference to a data file, read through hasDataPath"@en ;
+    rdfs:subClassOf dici_onto:Attribute .
+
+dici_onto:IdentifierAttribute a owl:Class ;
+    rdfs:label "Identifier Attribute" ;
+    rdfs:comment "Attribute whose value identifies the thing it belongs to, reached through hasIdentifier"@en ;
+    rdfs:subClassOf dici_onto:Attribute .
+
 dici_onto:SimpleValueAttribute a owl:Class ;
     rdfs:label "Simple Value Attribute" ;
     rdfs:comment "Attribute holding a plain literal value without unit semantics"@en ;

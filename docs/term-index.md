@@ -260,6 +260,12 @@ mapping procedure.
 - **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > ActuatorAttribute > **DamperAttribute**
 - **Description:** Typing marker grouping attributes that apply to a Damper; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
+### DataPathAttribute
+
+- **Label:** Data Path Attribute
+- **Hierarchy:** Thing > Attribute > **DataPathAttribute**
+- **Description:** Attribute whose value is a path or reference to a data file, read through hasDataPath
+
 ### DescriptiveStatistics
 
 - **Label:** Descriptive Statistics
@@ -614,6 +620,12 @@ mapping procedure.
 - **Hierarchy:** TimeSeries > **HistoricTimeSeries**
 - **Description:** Time series data representing past measurements or observations
 - **Synonyms:** Historical Data, Measured Data
+
+### IdentifierAttribute
+
+- **Label:** Identifier Attribute
+- **Hierarchy:** Thing > Attribute > **IdentifierAttribute**
+- **Description:** Attribute whose value identifies the thing it belongs to, reached through hasIdentifier
 
 ### InformationFlow
 

@@ -57,6 +57,11 @@ dici_onto:DOI a owl:NamedIndividual,
     rdfs:label "DOI" ;
     rdfs:comment "Reference identified by a Digital Object Identifier"@en .
 
+dici_onto:DataPathAttribute a owl:Class ;
+    rdfs:label "Data Path Attribute" ;
+    rdfs:comment "Attribute whose value is a path or reference to a data file, read through hasDataPath"@en ;
+    rdfs:subClassOf dici_onto:Attribute .
+
 dici_onto:Date a owl:NamedIndividual,
         dici_onto:TemporalPrecision ;
     rdfs:label "Date" ;
@@ -80,6 +85,11 @@ dici_onto:GeospatialAttribute a owl:Class ;
     rdfs:subClassOf dici_onto:Attribute ;
     skos:definition "An attribute whose value is geographic: coordinates, geometries or other spatial references locating a component on a map."@en ;
     skos:example "Latitude and longitude of a site; a boundary polygon"@en .
+
+dici_onto:IdentifierAttribute a owl:Class ;
+    rdfs:label "Identifier Attribute" ;
+    rdfs:comment "Attribute whose value identifies the thing it belongs to, reached through hasIdentifier"@en ;
+    rdfs:subClassOf dici_onto:Attribute .
 
 dici_onto:Institution a owl:AnnotationProperty ;
     rdfs:label "institution"@en ;
