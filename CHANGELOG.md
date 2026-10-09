@@ -2,6 +2,32 @@
 
 All notable changes to the Digicities ontology are recorded here. The project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] — 2026-10-09
+
+**BREAKING (pre-1.0 minor).** Scaffold release: the core is no longer edited by hand. It is built by replaying `core/scaffold_instructions.json` through the Digicities platform's Ontology Manager onto `core/bare_core.ttl` (`tools/build_core.py`), so the core follows the same Entity-Attribute-Relation pattern as every workspace extension, by construction. Hand edits had left the pattern broken in 49 places (missing ranges, duplicate predicates, categories named unlike their component, components without a scaffold).
+
+### Changed
+- **`rdfs:range` of every `has<X>Attribute` is `<X>Attribute`, the component's category, and nothing else.** 19 general predicates had no range; they now state it. Tools read a component's category from this range, never from a name.
+- `hasComponentAttribute` states `rdfs:domain Component` and `rdfs:range ComponentAttribute` (the root of the pattern).
+- The core's attributes go through the same operations as an extension's: each has a value kind and one link predicate `has<Component><Attribute>Attribute`. Kinds: `ActuatorPosition`, `MeasurementAccuracy`, `SamplingRate`, `FlowCapacity`, `FlowRate`, `Efficiency`, `ProcessCapacity`, `StateOfCharge`, `StorageCapacity` are `PhysicalAttribute` (with their existing default units); `SetPoint` is `SimpleValueAttribute`; `MeterReading` and `MeasurementValue` are `DynamicAttribute`; `SwitchState` is `CategoricalAttribute`.
+- The predicates under the old short duplicates now hang under the full ones (e.g. `hasSolarResourceAttribute ⊑ hasRenewableResourceAttribute`).
+
+### Added
+- Every component class has its own category and general predicate: the 14 leaf classes (`CircuitBreaker`, `Damper`, `Valve`, `ElectricityFlow`, `GasFlow`, `HeatFlow`, `LiquidFuelFlow`, `ElectricityMeter`, `GasMeter`, `HeatMeter`, `FlowSensor`, `PowerSensor`, `PressureSensor`, `TemperatureSensor`) and the observation family (`hasObservationAttribute`, `hasWeatherObservationAttribute`, `hasCompositeWeatherObservationAttribute`), which had categories but no predicates.
+- 13 link predicates for the core's attributes (`hasConversionProcessEfficiencyAttribute`, ...).
+- `core/bare_core.ttl`, `core/scaffold_instructions.json`, `tools/build_core.py`, `tests/test_build_core.py` (reproducible build, pattern check, no silent term loss, unchanged annotations, one version everywhere).
+
+### Deprecated (aliases kept for one release, `owl:deprecated true` + `owl:equivalentClass` / `owl:equivalentProperty`)
+- Renamed to the Ontology Manager's naming rule: `LiquidFuelCarrierAttribute` → `LiquidFuelAttribute`, `SolidFuelCarrierAttribute` → `SolidFuelAttribute`, `WindResourceAttribute` → `WindAttribute`, `hasElectricityAttribute` → `hasElectricityCarrierAttribute`, `hasFuelAttribute` → `hasFuelCarrierAttribute`, `hasGaseousFuelAttribute` → `hasGaseousFuelCarrierAttribute`, `hasSolarAttribute` → `hasSolarResourceAttribute`.
+- Duplicates of a full predicate with the same domain: `hasColdAttribute` → `hasColdCarrierAttribute`, `hasHeatAttribute` → `hasHeatCarrierAttribute`, `hasThermalEnergyAttribute` → `hasThermalEnergyCarrierAttribute`, `hasRenewableAttribute` → `hasRenewableResourceAttribute`, `hasNonRenewableAttribute` → `hasNonRenewableResourceAttribute`.
+- A property alias is also `rdfs:subPropertyOf` its replacement, so data still using it is found under `hasAttribute`.
+
+### Removed
+- `hasEnergyCarrierEnergyCostAttribute`: no domain, no range, and its class (`EnergyCostAttribute`) was removed in an earlier hand edit.
+
+### Docs
+- `overview.md` versioning: before 1.0.0 a minor bump may break; breaking 0.x releases say so and keep deprecated aliases one release.
+
 ## [0.5.0] — 2026-10-02
 
 Configuration release: settings a model needs to run get their own place, owned by the service, and the catalogue provenance the platform already relies on is declared in core.

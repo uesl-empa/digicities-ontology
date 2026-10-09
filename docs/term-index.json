@@ -219,7 +219,8 @@
       "kind": "class",
       "label": "Actuator Position",
       "parents": [
-        "ActuatorAttribute"
+        "ActuatorAttribute",
+        "PhysicalAttribute"
       ],
       "parentChainToRoot": [
         "ActuatorAttribute",
@@ -385,6 +386,27 @@
         "Component"
       ],
       "comment": "Switch that automatically interrupts electrical flow for safety",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#CircuitBreakerAttribute",
+      "name": "CircuitBreakerAttribute",
+      "kind": "class",
+      "label": "Circuit Breaker Attribute",
+      "parents": [
+        "SwitchAttribute"
+      ],
+      "parentChainToRoot": [
+        "SwitchAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Circuit Breaker; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -785,6 +807,27 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#DamperAttribute",
+      "name": "DamperAttribute",
+      "kind": "class",
+      "label": "Damper Attribute",
+      "parents": [
+        "ActuatorAttribute"
+      ],
+      "parentChainToRoot": [
+        "ActuatorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Damper; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#DescriptiveStatistics",
       "name": "DescriptiveStatistics",
       "kind": "class",
@@ -890,7 +933,8 @@
       "kind": "class",
       "label": "Efficiency",
       "parents": [
-        "ConversionProcessAttribute"
+        "ConversionProcessAttribute",
+        "PhysicalAttribute"
       ],
       "parentChainToRoot": [
         "ConversionProcessAttribute",
@@ -988,6 +1032,27 @@
       "defaultUnit": "KiloW"
     },
     {
+      "iri": "https://digicities.info/ontology#ElectricityFlowAttribute",
+      "name": "ElectricityFlowAttribute",
+      "kind": "class",
+      "label": "Electricity Flow Attribute",
+      "parents": [
+        "EnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlowAttribute",
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to an Electricity Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#ElectricityMeter",
       "name": "ElectricityMeter",
       "kind": "class",
@@ -1006,6 +1071,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "KiloW-HR"
+    },
+    {
+      "iri": "https://digicities.info/ontology#ElectricityMeterAttribute",
+      "name": "ElectricityMeterAttribute",
+      "kind": "class",
+      "label": "Electricity Meter Attribute",
+      "parents": [
+        "MeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "MeterAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to an Electricity Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#EnergyCarrier",
@@ -1320,7 +1406,8 @@
       "kind": "class",
       "label": "Flow Capacity",
       "parents": [
-        "FlowAttribute"
+        "FlowAttribute",
+        "PhysicalAttribute"
       ],
       "parentChainToRoot": [
         "FlowAttribute",
@@ -1341,7 +1428,8 @@
       "kind": "class",
       "label": "Flow Rate",
       "parents": [
-        "FlowAttribute"
+        "FlowAttribute",
+        "PhysicalAttribute"
       ],
       "parentChainToRoot": [
         "FlowAttribute",
@@ -1375,6 +1463,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "M3-PER-SEC"
+    },
+    {
+      "iri": "https://digicities.info/ontology#FlowSensorAttribute",
+      "name": "FlowSensorAttribute",
+      "kind": "class",
+      "label": "Flow Sensor Attribute",
+      "parents": [
+        "SensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "SensorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Flow Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#FuelCarrier",
@@ -1460,6 +1569,27 @@
       "defaultUnit": "M3-PER-SEC"
     },
     {
+      "iri": "https://digicities.info/ontology#GasFlowAttribute",
+      "name": "GasFlowAttribute",
+      "kind": "class",
+      "label": "Gas Flow Attribute",
+      "parents": [
+        "EnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlowAttribute",
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Gas Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#GasMeter",
       "name": "GasMeter",
       "kind": "class",
@@ -1478,6 +1608,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "M3"
+    },
+    {
+      "iri": "https://digicities.info/ontology#GasMeterAttribute",
+      "name": "GasMeterAttribute",
+      "kind": "class",
+      "label": "Gas Meter Attribute",
+      "parents": [
+        "MeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "MeterAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Gas Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#GaseousFuelCarrier",
@@ -1621,6 +1772,27 @@
       "defaultUnit": "KiloW"
     },
     {
+      "iri": "https://digicities.info/ontology#HeatFlowAttribute",
+      "name": "HeatFlowAttribute",
+      "kind": "class",
+      "label": "Heat Flow Attribute",
+      "parents": [
+        "EnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlowAttribute",
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Heat Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#HeatMeter",
       "name": "HeatMeter",
       "kind": "class",
@@ -1639,6 +1811,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "KiloW-HR"
+    },
+    {
+      "iri": "https://digicities.info/ontology#HeatMeterAttribute",
+      "name": "HeatMeterAttribute",
+      "kind": "class",
+      "label": "Heat Meter Attribute",
+      "parents": [
+        "MeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "MeterAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Heat Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#HistoricTimeSeries",
@@ -1764,10 +1957,10 @@
       "scopeNote": null
     },
     {
-      "iri": "https://digicities.info/ontology#LiquidFuelCarrierAttribute",
-      "name": "LiquidFuelCarrierAttribute",
+      "iri": "https://digicities.info/ontology#LiquidFuelAttribute",
+      "name": "LiquidFuelAttribute",
       "kind": "class",
-      "label": "Liquid Fuel Carrier Attribute",
+      "label": "Liquid Fuel Attribute",
       "parents": [
         "FuelCarrierAttribute"
       ],
@@ -1779,6 +1972,19 @@
         "Thing"
       ],
       "comment": "Typing marker grouping attributes that apply to a Liquid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#LiquidFuelCarrierAttribute",
+      "name": "LiquidFuelCarrierAttribute",
+      "kind": "class",
+      "label": "Liquid Fuel Carrier Attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Deprecated in v0.6.0: use LiquidFuelAttribute. Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -1803,6 +2009,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "L-PER-SEC"
+    },
+    {
+      "iri": "https://digicities.info/ontology#LiquidFuelFlowAttribute",
+      "name": "LiquidFuelFlowAttribute",
+      "kind": "class",
+      "label": "Liquid Fuel Flow Attribute",
+      "parents": [
+        "EnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "EnergyCarrierFlowAttribute",
+        "FlowAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Liquid Fuel Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#LiveTimeSeries",
@@ -2033,7 +2260,8 @@
       "kind": "class",
       "label": "Measurement Accuracy",
       "parents": [
-        "DeviceAttribute"
+        "DeviceAttribute",
+        "PhysicalAttribute"
       ],
       "parentChainToRoot": [
         "DeviceAttribute",
@@ -2054,12 +2282,11 @@
       "kind": "class",
       "label": "Measurement Value",
       "parents": [
+        "DynamicAttribute",
         "SensorAttribute"
       ],
       "parentChainToRoot": [
-        "SensorAttribute",
-        "DeviceAttribute",
-        "ComponentAttribute",
+        "DynamicAttribute",
         "Attribute",
         "Thing"
       ],
@@ -2117,12 +2344,11 @@
       "kind": "class",
       "label": "Meter Reading",
       "parents": [
+        "DynamicAttribute",
         "MeterAttribute"
       ],
       "parentChainToRoot": [
-        "MeterAttribute",
-        "DeviceAttribute",
-        "ComponentAttribute",
+        "DynamicAttribute",
         "Attribute",
         "Thing"
       ],
@@ -2298,6 +2524,27 @@
       "defaultUnit": "KiloW"
     },
     {
+      "iri": "https://digicities.info/ontology#PowerSensorAttribute",
+      "name": "PowerSensorAttribute",
+      "kind": "class",
+      "label": "Power Sensor Attribute",
+      "parents": [
+        "SensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "SensorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Power Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#PressureSensor",
       "name": "PressureSensor",
       "kind": "class",
@@ -2316,6 +2563,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "PA"
+    },
+    {
+      "iri": "https://digicities.info/ontology#PressureSensorAttribute",
+      "name": "PressureSensorAttribute",
+      "kind": "class",
+      "label": "Pressure Sensor Attribute",
+      "parents": [
+        "SensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "SensorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Pressure Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#Process",
@@ -2364,11 +2632,11 @@
       "kind": "class",
       "label": "Process Capacity",
       "parents": [
+        "PhysicalAttribute",
         "ProcessAttribute"
       ],
       "parentChainToRoot": [
-        "ProcessAttribute",
-        "ComponentAttribute",
+        "PhysicalAttribute",
         "Attribute",
         "Thing"
       ],
@@ -2499,12 +2767,11 @@
       "kind": "class",
       "label": "Sampling Rate",
       "parents": [
+        "PhysicalAttribute",
         "SensorAttribute"
       ],
       "parentChainToRoot": [
-        "SensorAttribute",
-        "DeviceAttribute",
-        "ComponentAttribute",
+        "PhysicalAttribute",
         "Attribute",
         "Thing"
       ],
@@ -2654,7 +2921,8 @@
       "kind": "class",
       "label": "Set Point",
       "parents": [
-        "ControllerAttribute"
+        "ControllerAttribute",
+        "SimpleValueAttribute"
       ],
       "parentChainToRoot": [
         "ControllerAttribute",
@@ -2772,10 +3040,10 @@
       "scopeNote": null
     },
     {
-      "iri": "https://digicities.info/ontology#SolidFuelCarrierAttribute",
-      "name": "SolidFuelCarrierAttribute",
+      "iri": "https://digicities.info/ontology#SolidFuelAttribute",
+      "name": "SolidFuelAttribute",
       "kind": "class",
-      "label": "Solid Fuel Carrier Attribute",
+      "label": "Solid Fuel Attribute",
       "parents": [
         "FuelCarrierAttribute"
       ],
@@ -2793,12 +3061,26 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#SolidFuelCarrierAttribute",
+      "name": "SolidFuelCarrierAttribute",
+      "kind": "class",
+      "label": "Solid Fuel Carrier Attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Deprecated in v0.6.0: use SolidFuelAttribute. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#StateOfCharge",
       "name": "StateOfCharge",
       "kind": "class",
       "label": "State of Charge",
       "parents": [
-        "EnergyStorageAttribute"
+        "EnergyStorageAttribute",
+        "PhysicalAttribute"
       ],
       "parentChainToRoot": [
         "EnergyStorageAttribute",
@@ -2880,11 +3162,11 @@
       "kind": "class",
       "label": "Storage Capacity",
       "parents": [
+        "PhysicalAttribute",
         "StorageAttribute"
       ],
       "parentChainToRoot": [
-        "StorageAttribute",
-        "ComponentAttribute",
+        "PhysicalAttribute",
         "Attribute",
         "Thing"
       ],
@@ -2981,12 +3263,11 @@
       "kind": "class",
       "label": "Switch State",
       "parents": [
+        "CategoricalAttribute",
         "SwitchAttribute"
       ],
       "parentChainToRoot": [
-        "SwitchAttribute",
-        "DeviceAttribute",
-        "ComponentAttribute",
+        "CategoricalAttribute",
         "Attribute",
         "Thing"
       ],
@@ -3015,6 +3296,27 @@
       "examples": [],
       "scopeNote": null,
       "defaultUnit": "DEG_C"
+    },
+    {
+      "iri": "https://digicities.info/ontology#TemperatureSensorAttribute",
+      "name": "TemperatureSensorAttribute",
+      "kind": "class",
+      "label": "Temperature Sensor Attribute",
+      "parents": [
+        "SensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "SensorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Temperature Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
     },
     {
       "iri": "https://digicities.info/ontology#TemporalPrecision",
@@ -3215,6 +3517,27 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#ValveAttribute",
+      "name": "ValveAttribute",
+      "kind": "class",
+      "label": "Valve Attribute",
+      "parents": [
+        "ActuatorAttribute"
+      ],
+      "parentChainToRoot": [
+        "ActuatorAttribute",
+        "DeviceAttribute",
+        "ComponentAttribute",
+        "Attribute",
+        "Thing"
+      ],
+      "comment": "Typing marker grouping attributes that apply to a Valve; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#WeatherObservation",
       "name": "WeatherObservation",
       "kind": "class",
@@ -3283,10 +3606,10 @@
       "scopeNote": "Use for the wind resource itself. A wind park (the site) maps to Location; a wind turbine (the machine) maps to Turbine; forecast wind speeds are DynamicAttributes with a FutureTimeSeries."
     },
     {
-      "iri": "https://digicities.info/ontology#WindResourceAttribute",
-      "name": "WindResourceAttribute",
+      "iri": "https://digicities.info/ontology#WindAttribute",
+      "name": "WindAttribute",
       "kind": "class",
-      "label": "Wind Resource Attribute",
+      "label": "Wind Attribute",
       "parents": [
         "RenewableResourceAttribute"
       ],
@@ -3298,6 +3621,19 @@
         "Thing"
       ],
       "comment": "Typing marker grouping attributes that apply to a Wind; lets SPARQL select all attributes of one component type via rdfs:subClassOf*",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#WindResourceAttribute",
+      "name": "WindResourceAttribute",
+      "kind": "class",
+      "label": "Wind Resource Attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Deprecated in v0.6.0: use WindAttribute. Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -4857,6 +5193,32 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasActuatorActuatorPositionAttribute",
+      "name": "hasActuatorActuatorPositionAttribute",
+      "kind": "objectProperty",
+      "label": "has actuator actuator position attribute",
+      "parents": [
+        "hasActuatorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasActuatorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links an Actuator to its Actuator Position attribute; under hasActuatorAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Actuator"
+      ],
+      "range": [
+        "ActuatorPosition"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasActuatorAttribute",
       "name": "hasActuatorAttribute",
       "kind": "objectProperty",
@@ -4920,27 +5282,52 @@
       ]
     },
     {
-      "iri": "https://digicities.info/ontology#hasColdAttribute",
-      "name": "hasColdAttribute",
+      "iri": "https://digicities.info/ontology#hasCircuitBreakerAttribute",
+      "name": "hasCircuitBreakerAttribute",
       "kind": "objectProperty",
-      "label": "has cold attribute",
+      "label": "has circuit breaker attribute",
       "parents": [
-        "hasThermalEnergyAttribute"
+        "hasSwitchAttribute"
       ],
       "parentChainToRoot": [
-        "hasThermalEnergyAttribute",
-        "hasEnergyCarrierAttribute",
+        "hasSwitchAttribute",
+        "hasDeviceAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Cold attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Attaches a Circuit Breaker attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
       "definition": null,
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
       "domain": [
-        "ColdCarrier"
+        "CircuitBreaker"
       ],
+      "range": [
+        "CircuitBreakerAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasColdAttribute",
+      "name": "hasColdAttribute",
+      "kind": "objectProperty",
+      "label": "has cold attribute",
+      "parents": [
+        "hasColdCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasColdCarrierAttribute",
+        "hasThermalEnergyCarrierAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Deprecated in v0.6.0: use hasColdCarrierAttribute. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
       "range": []
     },
     {
@@ -4985,8 +5372,38 @@
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
-      "domain": [],
-      "range": []
+      "domain": [
+        "Component"
+      ],
+      "range": [
+        "ComponentAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasCompositeWeatherObservationAttribute",
+      "name": "hasCompositeWeatherObservationAttribute",
+      "kind": "objectProperty",
+      "label": "has composite weather observation attribute",
+      "parents": [
+        "hasWeatherObservationAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasWeatherObservationAttribute",
+        "hasObservationAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Composite Weather Observation attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "CompositeWeatherObservation"
+      ],
+      "range": [
+        "CompositeWeatherObservationAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasConfiguration",
@@ -5052,6 +5469,32 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasControllerSetPointAttribute",
+      "name": "hasControllerSetPointAttribute",
+      "kind": "objectProperty",
+      "label": "has controller set point attribute",
+      "parents": [
+        "hasControllerAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasControllerAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Controller to its Set Point attribute; under hasControllerAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Controller"
+      ],
+      "range": [
+        "SetPoint"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasConversionProcessAttribute",
       "name": "hasConversionProcessAttribute",
       "kind": "objectProperty",
@@ -5077,6 +5520,32 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasConversionProcessEfficiencyAttribute",
+      "name": "hasConversionProcessEfficiencyAttribute",
+      "kind": "objectProperty",
+      "label": "has conversion process efficiency attribute",
+      "parents": [
+        "hasConversionProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasConversionProcessAttribute",
+        "hasProcessAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Conversion Process to its Efficiency attribute; under hasConversionProcessAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ConversionProcess"
+      ],
+      "range": [
+        "Efficiency"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasConverterAttribute",
       "name": "hasConverterAttribute",
       "kind": "objectProperty",
@@ -5096,7 +5565,35 @@
       "domain": [
         "Converter"
       ],
-      "range": []
+      "range": [
+        "ConverterAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDamperAttribute",
+      "name": "hasDamperAttribute",
+      "kind": "objectProperty",
+      "label": "has damper attribute",
+      "parents": [
+        "hasActuatorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasActuatorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Damper attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Damper"
+      ],
+      "range": [
+        "DamperAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasDescriptiveStatistics",
@@ -5165,6 +5662,31 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasDeviceMeasurementAccuracyAttribute",
+      "name": "hasDeviceMeasurementAccuracyAttribute",
+      "kind": "objectProperty",
+      "label": "has device measurement accuracy attribute",
+      "parents": [
+        "hasDeviceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Device to its Measurement Accuracy attribute; under hasDeviceAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Device"
+      ],
+      "range": [
+        "MeasurementAccuracy"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasDistribution",
       "name": "hasDistribution",
       "kind": "objectProperty",
@@ -5189,6 +5711,28 @@
       "kind": "objectProperty",
       "label": "has electricity attribute",
       "parents": [
+        "hasElectricityCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasElectricityCarrierAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Deprecated in v0.6.0: use hasElectricityCarrierAttribute. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasElectricityCarrierAttribute",
+      "name": "hasElectricityCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has electricity carrier attribute",
+      "parents": [
         "hasEnergyCarrierAttribute"
       ],
       "parentChainToRoot": [
@@ -5196,7 +5740,7 @@
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Electricity attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Attaches an Electricity Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -5204,7 +5748,61 @@
       "domain": [
         "ElectricityCarrier"
       ],
-      "range": []
+      "range": [
+        "ElectricityCarrierAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasElectricityFlowAttribute",
+      "name": "hasElectricityFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has electricity flow attribute",
+      "parents": [
+        "hasEnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierFlowAttribute",
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches an Electricity Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ElectricityFlow"
+      ],
+      "range": [
+        "ElectricityFlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasElectricityMeterAttribute",
+      "name": "hasElectricityMeterAttribute",
+      "kind": "objectProperty",
+      "label": "has electricity meter attribute",
+      "parents": [
+        "hasMeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasMeterAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches an Electricity Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ElectricityMeter"
+      ],
+      "range": [
+        "ElectricityMeterAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasEnergyCarrierAttribute",
@@ -5226,28 +5824,9 @@
       "domain": [
         "EnergyCarrier"
       ],
-      "range": []
-    },
-    {
-      "iri": "https://digicities.info/ontology#hasEnergyCarrierEnergyCostAttribute",
-      "name": "hasEnergyCarrierEnergyCostAttribute",
-      "kind": "objectProperty",
-      "label": "has energy carrier energy cost attribute",
-      "parents": [
-        "hasEnergyCarrierAttribute"
-      ],
-      "parentChainToRoot": [
-        "hasEnergyCarrierAttribute",
-        "hasComponentAttribute",
-        "hasAttribute"
-      ],
-      "comment": "Attaches a Energy Carrier Energy Cost attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
-      "definition": null,
-      "altLabels": [],
-      "examples": [],
-      "scopeNote": null,
-      "domain": [],
-      "range": []
+      "range": [
+        "EnergyCarrierAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasEnergyCarrierFlowAttribute",
@@ -5294,7 +5873,9 @@
       "domain": [
         "EnergyConsumer"
       ],
-      "range": []
+      "range": [
+        "EnergyConsumerAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasEnergyConverterAttribute",
@@ -5317,7 +5898,9 @@
       "domain": [
         "EnergyConverter"
       ],
-      "range": []
+      "range": [
+        "EnergyConverterAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasEnergyGeneratorAttribute",
@@ -5339,7 +5922,9 @@
       "domain": [
         "EnergyGenerator"
       ],
-      "range": []
+      "range": [
+        "EnergyGeneratorAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasEnergyStorageAttribute",
@@ -5367,6 +5952,32 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasEnergyStorageStateOfChargeAttribute",
+      "name": "hasEnergyStorageStateOfChargeAttribute",
+      "kind": "objectProperty",
+      "label": "has energy storage state of charge attribute",
+      "parents": [
+        "hasEnergyStorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyStorageAttribute",
+        "hasStorageAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links an Energy Storage to its State Of Charge attribute; under hasEnergyStorageAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "EnergyStorage"
+      ],
+      "range": [
+        "StateOfCharge"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasFlowAttribute",
       "name": "hasFlowAttribute",
       "kind": "objectProperty",
@@ -5391,10 +6002,108 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasFlowFlowCapacityAttribute",
+      "name": "hasFlowFlowCapacityAttribute",
+      "kind": "objectProperty",
+      "label": "has flow flow capacity attribute",
+      "parents": [
+        "hasFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Flow to its Flow Capacity attribute; under hasFlowAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "FlowCapacity"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFlowFlowRateAttribute",
+      "name": "hasFlowFlowRateAttribute",
+      "kind": "objectProperty",
+      "label": "has flow flow rate attribute",
+      "parents": [
+        "hasFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Flow to its Flow Rate attribute; under hasFlowAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Flow"
+      ],
+      "range": [
+        "FlowRate"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFlowSensorAttribute",
+      "name": "hasFlowSensorAttribute",
+      "kind": "objectProperty",
+      "label": "has flow sensor attribute",
+      "parents": [
+        "hasSensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSensorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Flow Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "FlowSensor"
+      ],
+      "range": [
+        "FlowSensorAttribute"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasFuelAttribute",
       "name": "hasFuelAttribute",
       "kind": "objectProperty",
       "label": "has fuel attribute",
+      "parents": [
+        "hasFuelCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFuelCarrierAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Deprecated in v0.6.0: use hasFuelCarrierAttribute. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasFuelCarrierAttribute",
+      "name": "hasFuelCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has fuel carrier attribute",
       "parents": [
         "hasEnergyCarrierAttribute"
       ],
@@ -5403,7 +6112,7 @@
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Attaches a Fuel Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -5411,7 +6120,9 @@
       "domain": [
         "FuelCarrier"
       ],
-      "range": []
+      "range": [
+        "FuelCarrierAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasFutureTimeSeries",
@@ -5433,20 +6144,95 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#hasGasFlowAttribute",
+      "name": "hasGasFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has gas flow attribute",
+      "parents": [
+        "hasEnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierFlowAttribute",
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Gas Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "GasFlow"
+      ],
+      "range": [
+        "GasFlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasGasMeterAttribute",
+      "name": "hasGasMeterAttribute",
+      "kind": "objectProperty",
+      "label": "has gas meter attribute",
+      "parents": [
+        "hasMeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasMeterAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Gas Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "GasMeter"
+      ],
+      "range": [
+        "GasMeterAttribute"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasGaseousFuelAttribute",
       "name": "hasGaseousFuelAttribute",
       "kind": "objectProperty",
       "label": "has gaseous fuel attribute",
       "parents": [
-        "hasFuelAttribute"
+        "hasGaseousFuelCarrierAttribute"
       ],
       "parentChainToRoot": [
-        "hasFuelAttribute",
+        "hasGaseousFuelCarrierAttribute",
+        "hasFuelCarrierAttribute",
         "hasEnergyCarrierAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Gaseous Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Deprecated in v0.6.0: use hasGaseousFuelCarrierAttribute. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasGaseousFuelCarrierAttribute",
+      "name": "hasGaseousFuelCarrierAttribute",
+      "kind": "objectProperty",
+      "label": "has gaseous fuel carrier attribute",
+      "parents": [
+        "hasFuelCarrierAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasFuelCarrierAttribute",
+        "hasEnergyCarrierAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Gaseous Fuel Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -5454,7 +6240,9 @@
       "domain": [
         "GaseousFuelCarrier"
       ],
-      "range": []
+      "range": [
+        "GaseousFuelCarrierAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasGroup",
@@ -5481,22 +6269,21 @@
       "kind": "objectProperty",
       "label": "has heat attribute",
       "parents": [
-        "hasThermalEnergyAttribute"
+        "hasHeatCarrierAttribute"
       ],
       "parentChainToRoot": [
-        "hasThermalEnergyAttribute",
+        "hasHeatCarrierAttribute",
+        "hasThermalEnergyCarrierAttribute",
         "hasEnergyCarrierAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Heat attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Deprecated in v0.6.0: use hasHeatCarrierAttribute. Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
-      "domain": [
-        "HeatCarrier"
-      ],
+      "domain": [],
       "range": []
     },
     {
@@ -5523,6 +6310,58 @@
       ],
       "range": [
         "HeatCarrierAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasHeatFlowAttribute",
+      "name": "hasHeatFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has heat flow attribute",
+      "parents": [
+        "hasEnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierFlowAttribute",
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Heat Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "HeatFlow"
+      ],
+      "range": [
+        "HeatFlowAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasHeatMeterAttribute",
+      "name": "hasHeatMeterAttribute",
+      "kind": "objectProperty",
+      "label": "has heat meter attribute",
+      "parents": [
+        "hasMeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasMeterAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Heat Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "HeatMeter"
+      ],
+      "range": [
+        "HeatMeterAttribute"
       ]
     },
     {
@@ -5699,10 +6538,10 @@
       "kind": "objectProperty",
       "label": "has liquid fuel attribute",
       "parents": [
-        "hasFuelAttribute"
+        "hasFuelCarrierAttribute"
       ],
       "parentChainToRoot": [
-        "hasFuelAttribute",
+        "hasFuelCarrierAttribute",
         "hasEnergyCarrierAttribute",
         "hasComponentAttribute",
         "hasAttribute"
@@ -5716,7 +6555,33 @@
         "LiquidFuel"
       ],
       "range": [
-        "LiquidFuelCarrierAttribute"
+        "LiquidFuelAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasLiquidFuelFlowAttribute",
+      "name": "hasLiquidFuelFlowAttribute",
+      "kind": "objectProperty",
+      "label": "has liquid fuel flow attribute",
+      "parents": [
+        "hasEnergyCarrierFlowAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasEnergyCarrierFlowAttribute",
+        "hasFlowAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Liquid Fuel Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "LiquidFuelFlow"
+      ],
+      "range": [
+        "LiquidFuelFlowAttribute"
       ]
     },
     {
@@ -5801,7 +6666,9 @@
       "domain": [
         "Material"
       ],
-      "range": []
+      "range": [
+        "MaterialAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasMaterialConverterAttribute",
@@ -5824,7 +6691,9 @@
       "domain": [
         "MaterialConverter"
       ],
-      "range": []
+      "range": [
+        "MaterialConverterAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasMaterialFlowAttribute",
@@ -5917,6 +6786,32 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasMeterMeterReadingAttribute",
+      "name": "hasMeterMeterReadingAttribute",
+      "kind": "objectProperty",
+      "label": "has meter meter reading attribute",
+      "parents": [
+        "hasMeterAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasMeterAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Meter to its Meter Reading attribute; under hasMeterAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Meter"
+      ],
+      "range": [
+        "MeterReading"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasNetworkAttribute",
       "name": "hasNetworkAttribute",
       "kind": "objectProperty",
@@ -5946,21 +6841,20 @@
       "kind": "objectProperty",
       "label": "has non renewable attribute",
       "parents": [
-        "hasResourceAttribute"
+        "hasNonRenewableResourceAttribute"
       ],
       "parentChainToRoot": [
+        "hasNonRenewableResourceAttribute",
         "hasResourceAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Non Renewable attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Deprecated in v0.6.0: use hasNonRenewableResourceAttribute. Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
-      "domain": [
-        "NonRenewableResource"
-      ],
+      "domain": [],
       "range": []
     },
     {
@@ -5986,6 +6880,30 @@
       ],
       "range": [
         "NonRenewableResourceAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasObservationAttribute",
+      "name": "hasObservationAttribute",
+      "kind": "objectProperty",
+      "label": "has observation attribute",
+      "parents": [
+        "hasComponentAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches an Observation attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Observation"
+      ],
+      "range": [
+        "ObservationAttribute"
       ]
     },
     {
@@ -6031,6 +6949,58 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#hasPowerSensorAttribute",
+      "name": "hasPowerSensorAttribute",
+      "kind": "objectProperty",
+      "label": "has power sensor attribute",
+      "parents": [
+        "hasSensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSensorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Power Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "PowerSensor"
+      ],
+      "range": [
+        "PowerSensorAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasPressureSensorAttribute",
+      "name": "hasPressureSensorAttribute",
+      "kind": "objectProperty",
+      "label": "has pressure sensor attribute",
+      "parents": [
+        "hasSensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSensorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Pressure Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "PressureSensor"
+      ],
+      "range": [
+        "PressureSensorAttribute"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasProcessAttribute",
       "name": "hasProcessAttribute",
       "kind": "objectProperty",
@@ -6052,6 +7022,31 @@
       ],
       "range": [
         "ProcessAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasProcessProcessCapacityAttribute",
+      "name": "hasProcessProcessCapacityAttribute",
+      "kind": "objectProperty",
+      "label": "has process process capacity attribute",
+      "parents": [
+        "hasProcessAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasProcessAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Process to its Process Capacity attribute; under hasProcessAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Process"
+      ],
+      "range": [
+        "ProcessCapacity"
       ]
     },
     {
@@ -6079,21 +7074,20 @@
       "kind": "objectProperty",
       "label": "has renewable attribute",
       "parents": [
-        "hasResourceAttribute"
+        "hasRenewableResourceAttribute"
       ],
       "parentChainToRoot": [
+        "hasRenewableResourceAttribute",
         "hasResourceAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Renewable attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Deprecated in v0.6.0: use hasRenewableResourceAttribute. Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
-      "domain": [
-        "RenewableResource"
-      ],
+      "domain": [],
       "range": []
     },
     {
@@ -6141,7 +7135,9 @@
       "domain": [
         "Resource"
       ],
-      "range": []
+      "range": [
+        "ResourceAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasSensorAttribute",
@@ -6169,6 +7165,58 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasSensorMeasurementValueAttribute",
+      "name": "hasSensorMeasurementValueAttribute",
+      "kind": "objectProperty",
+      "label": "has sensor measurement value attribute",
+      "parents": [
+        "hasSensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSensorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Sensor to its Measurement Value attribute; under hasSensorAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Sensor"
+      ],
+      "range": [
+        "MeasurementValue"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSensorSamplingRateAttribute",
+      "name": "hasSensorSamplingRateAttribute",
+      "kind": "objectProperty",
+      "label": "has sensor sampling rate attribute",
+      "parents": [
+        "hasSensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSensorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Sensor to its Sampling Rate attribute; under hasSensorAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Sensor"
+      ],
+      "range": [
+        "SamplingRate"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasSet",
       "name": "hasSet",
       "kind": "objectProperty",
@@ -6191,15 +7239,38 @@
       "kind": "objectProperty",
       "label": "has solar attribute",
       "parents": [
-        "hasRenewableAttribute"
+        "hasSolarResourceAttribute"
       ],
       "parentChainToRoot": [
-        "hasRenewableAttribute",
+        "hasSolarResourceAttribute",
+        "hasRenewableResourceAttribute",
         "hasResourceAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Solar attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Deprecated in v0.6.0: use hasSolarResourceAttribute. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSolarResourceAttribute",
+      "name": "hasSolarResourceAttribute",
+      "kind": "objectProperty",
+      "label": "has solar resource attribute",
+      "parents": [
+        "hasRenewableResourceAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasRenewableResourceAttribute",
+        "hasResourceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Solar Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -6207,7 +7278,9 @@
       "domain": [
         "SolarResource"
       ],
-      "range": []
+      "range": [
+        "SolarResourceAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasSolidFuelAttribute",
@@ -6215,10 +7288,10 @@
       "kind": "objectProperty",
       "label": "has solid fuel attribute",
       "parents": [
-        "hasFuelAttribute"
+        "hasFuelCarrierAttribute"
       ],
       "parentChainToRoot": [
-        "hasFuelAttribute",
+        "hasFuelCarrierAttribute",
         "hasEnergyCarrierAttribute",
         "hasComponentAttribute",
         "hasAttribute"
@@ -6231,7 +7304,9 @@
       "domain": [
         "SolidFuel"
       ],
-      "range": []
+      "range": [
+        "SolidFuelAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#hasSource",
@@ -6306,6 +7381,31 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasStorageStorageCapacityAttribute",
+      "name": "hasStorageStorageCapacityAttribute",
+      "kind": "objectProperty",
+      "label": "has storage storage capacity attribute",
+      "parents": [
+        "hasStorageAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasStorageAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Storage to its Storage Capacity attribute; under hasStorageAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Storage"
+      ],
+      "range": [
+        "StorageCapacity"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasSwitchAttribute",
       "name": "hasSwitchAttribute",
       "kind": "objectProperty",
@@ -6328,6 +7428,58 @@
       ],
       "range": [
         "SwitchAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasSwitchSwitchStateAttribute",
+      "name": "hasSwitchSwitchStateAttribute",
+      "kind": "objectProperty",
+      "label": "has switch switch state attribute",
+      "parents": [
+        "hasSwitchAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSwitchAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Links a Switch to its Switch State attribute; under hasSwitchAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Switch"
+      ],
+      "range": [
+        "SwitchState"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasTemperatureSensorAttribute",
+      "name": "hasTemperatureSensorAttribute",
+      "kind": "objectProperty",
+      "label": "has temperature sensor attribute",
+      "parents": [
+        "hasSensorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasSensorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Temperature Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "TemperatureSensor"
+      ],
+      "range": [
+        "TemperatureSensorAttribute"
       ]
     },
     {
@@ -6355,21 +7507,20 @@
       "kind": "objectProperty",
       "label": "has thermal energy attribute",
       "parents": [
-        "hasEnergyCarrierAttribute"
+        "hasThermalEnergyCarrierAttribute"
       ],
       "parentChainToRoot": [
+        "hasThermalEnergyCarrierAttribute",
         "hasEnergyCarrierAttribute",
         "hasComponentAttribute",
         "hasAttribute"
       ],
-      "comment": "Attaches a Thermal Energy attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "comment": "Deprecated in v0.6.0: use hasThermalEnergyCarrierAttribute. Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
-      "domain": [
-        "ThermalEnergyCarrier"
-      ],
+      "domain": [],
       "range": []
     },
     {
@@ -6487,15 +7638,66 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasValveAttribute",
+      "name": "hasValveAttribute",
+      "kind": "objectProperty",
+      "label": "has valve attribute",
+      "parents": [
+        "hasActuatorAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasActuatorAttribute",
+        "hasDeviceAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Valve attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "Valve"
+      ],
+      "range": [
+        "ValveAttribute"
+      ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasWeatherObservationAttribute",
+      "name": "hasWeatherObservationAttribute",
+      "kind": "objectProperty",
+      "label": "has weather observation attribute",
+      "parents": [
+        "hasObservationAttribute"
+      ],
+      "parentChainToRoot": [
+        "hasObservationAttribute",
+        "hasComponentAttribute",
+        "hasAttribute"
+      ],
+      "comment": "Attaches a Weather Observation attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "WeatherObservation"
+      ],
+      "range": [
+        "WeatherObservationAttribute"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasWindAttribute",
       "name": "hasWindAttribute",
       "kind": "objectProperty",
       "label": "has wind attribute",
       "parents": [
-        "hasRenewableAttribute"
+        "hasRenewableResourceAttribute"
       ],
       "parentChainToRoot": [
-        "hasRenewableAttribute",
+        "hasRenewableResourceAttribute",
         "hasResourceAttribute",
         "hasComponentAttribute",
         "hasAttribute"
@@ -6508,7 +7710,9 @@
       "domain": [
         "Wind"
       ],
-      "range": []
+      "range": [
+        "WindAttribute"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#isAttributeOf",

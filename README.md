@@ -16,8 +16,10 @@ Concretely, the ontology defines a small set of upper-level classes (`Component`
 
 ```
 core/
-├── dici_onto_core.ttl   # the ontology itself (~3.1k lines, ~158 classes)
-└── qudt_units.txt       # QUDT unit list referenced by Physical/Cost attributes
+├── dici_onto_core.ttl          # the ontology itself: BUILT, never edited by hand
+├── bare_core.ttl               # the hand-authored part (top classes, value kinds, link and value properties)
+├── scaffold_instructions.json  # Ontology Manager ops that add every component class and its scaffold
+└── qudt_units.txt              # QUDT unit list referenced by Physical/Cost attributes
 docs/
 ├── overview.md          # scope, design principles, namespaces
 ├── attribute-types.md   # the 16 attribute-type classes and what they model
@@ -27,6 +29,7 @@ docs/
 ├── term-index.json      # generated agent-facing term lookup (labels, comments, SKOS)
 └── term-index.md        # human-readable rendering of the term index
 tools/
+├── build_core.py            # builds core/dici_onto_core.ttl through the platform's Ontology Manager
 ├── validate_extension.py    # library for partners to validate their workspace's extensions
 └── generate_term_index.py   # regenerates docs/term-index.{json,md} from the TTL
 tests/
@@ -76,7 +79,15 @@ The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/
 
 ## Versioning
 
-Semver. The current release is **v0.2.0**, the annotation release: every term carries `rdfs:label` + `rdfs:comment` (mapping-decision classes also SKOS annotations), the TTL declares `owl:versionInfo`, and the generated `docs/term-index.{json,md}` gives agents a lookup surface. See [`CHANGELOG.md`](CHANGELOG.md).
+Semver. The current release is **v0.6.0**, the scaffold release: the core is built by replaying `core/scaffold_instructions.json` through the Digicities platform's Ontology Manager onto `core/bare_core.ttl`, so every component class has its category and general predicate by construction (range = the category), exactly like a workspace extension. Renamed terms stay one release as `owl:deprecated` aliases. See [`CHANGELOG.md`](CHANGELOG.md).
+
+To change the core, edit `bare_core.ttl` or `scaffold_instructions.json`, then rebuild:
+
+```
+DIGICITIES_PLATFORM_DIR=/path/to/digicities-platform python tools/build_core.py
+```
+
+`tests/test_build_core.py` fails when the committed core differs from what the build produces.
 
 Downstream consumers (notably the Digicities platform) vendor a tagged copy of `core/dici_onto_core.ttl` rather than depending on this repo at build time. The platform records the vendored version in its own `services/graphdb/ontology/VERSION` file.
 

@@ -72,6 +72,6 @@ See [class-hierarchy.md](class-hierarchy.md) for the full list.
 
 ## Versioning
 
-Semver. Breaking changes (renaming or removing a class, changing a domain/range) bump the major version. Additive changes (new classes, new attribute types) bump the minor. Pure annotation or comment fixes bump the patch.
+Semver. Breaking changes (renaming or removing a class, changing a domain/range) bump the major version. Additive changes (new classes, new attribute types) bump the minor. Pure annotation or comment fixes bump the patch. Before 1.0.0, a minor bump may break: a breaking 0.x release says so at the top of its CHANGELOG entry, and renamed terms stay one release as `owl:deprecated` aliases.
 
 Downstream consumers should pin a specific tag. The Digicities platform vendors the TTL and tracks the version in its own `services/graphdb/ontology/VERSION` file.
