@@ -1,8 +1,8 @@
 # Attribute types
 
-Every measurable property of a `Component`, `Process`, `Flow`, or `Resource` instance is itself an instance of an `Attribute` subclass. This page lists the 16 attribute-type classes the ontology defines, what they model, and how downstream tools serialise them.
+Every property of a `Component`, `Process`, `Flow`, or `Resource` instance that carries a value is itself an instance of an `Attribute` subclass. This page lists the attribute classes the ontology defines (the value kinds, the marker classes and the per-component categories), what they model, and how the platform writes them.
 
-The Excel-importer convention in the Digicities platform mirrors these classes — the spreadsheet header row that picks an attribute type literally names the class (`Physical`, `SimpleCost`, etc.).
+The Excel importer in the Digicities platform uses the same names: the header row that picks an attribute type names the value kind (`Physical`, `SimpleCost`, ...).
 
 | Class                              | Purpose                                                              | Typical output triples                                                                  |
 |------------------------------------|----------------------------------------------------------------------|------------------------------------------------------------------------------------------|
@@ -10,20 +10,25 @@ The Excel-importer convention in the Digicities platform mirrors these classes �
 | `SimpleCostAttribute`              | A monetary value in a specific currency.                              | `qudt:value 250.0 ; dici_onto:currency cur:CHF`                                          |
 | `UnitBasedCostAttribute`           | A per-unit cost (e.g. CHF per kWh). Combines unit + currency.        | adds a `qudt:unit` triple on top of `SimpleCostAttribute`                                |
 | `CategoricalAttribute`             | A value drawn from a closed vocabulary.                               | `dici_onto:hasCategoricalValue dici_onto:SingleFamilyHouse`                              |
-| `EventAttribute`                   | A point-in-time event (year, date, or datetime — auto-detected).      | `dici_onto:hasTemporalValue "1970"^^xsd:gYear`                                           |
-| `ComponentAttribute` (ClassObject) | A typed link to another instance (the foreign-key analogue).          | `dici_onto:locatedIn <…/Location/AlpineValley>`                                          |
+| `EventAttribute`                   | A point-in-time event (year, date, or datetime, detected from the value). | `dici_onto:hasTemporalValue "1970"^^xsd:gYear`                                           |
+| `ComponentAttribute`               | The root of the per-component categories. Every component class has one (`TurbineAttribute`, `SensorAttribute`, ...), and its attributes are filed under it. Not a value kind. | `dici_onto:HubHeight rdfs:subClassOf dici_onto:TurbineAttribute`                         |
 | `CurveAttribute`                   | An x/y curve with units on each axis.                                  | `dici_onto:hasDataPoints """[(0,0);(1,2);…]"""`                                          |
 | `CustomPhysicalRatioAttribute`     | A ratio of two physical quantities (numerator/denominator units).     | `qudt:value 0.25 ; dici_onto:hasUnitLabel "CHF/KiloW-HR"`                                |
 | `SimpleValueAttribute`             | A bare string or number, no unit.                                     | `dici_onto:hasAttributeValue "BLDG-A-001"`                                               |
+| `DataPathAttribute`                | A path or reference to a data file (a weather file, a dataset).       | `dici_onto:hasDataPath "weather/vienna.epw"`                                            |
+| `IdentifierAttribute`              | A value that identifies its owner (an asset id, a BACnet id).         | `dici_onto:identifierValue "BLDG-A-001"` via `dici_onto:hasIdentifier`                  |
 | `StaticAttribute`                  | Marker mixin for time-invariant properties.                            | (intersected with `Physical`/`Categorical`/etc.)                                         |
 | `DynamicAttribute`                 | Marker mixin for properties that vary over time.                       | (typically combined with a `TimeSeries` link)                                            |
 | `GeospatialAttribute`              | Latitude/longitude or full GeoSPARQL geometry.                         | implementation depends on the geo-vocabulary chosen                                      |
-| `HistoricTimeSeries` (`Historic`)  | Past observations attached to an attribute.                            | `dici_onto:hasHistoricTimeSeries <…/series>`                                             |
-| `LiveTimeSeries` (`Live`)          | Streaming/live observations.                                           | `dici_onto:hasLiveTimeSeries <…/series>`                                                 |
-| `FutureTimeSeries` (`Future`)      | Forecasts or scenario projections.                                     | `dici_onto:hasFutureTimeSeries <…/series>`                                               |
+| `AggregateAttribute`               | A derived statistic (a mean, a count) of a group of attribute values, written onto the group's component by the platform. Never authored. | `qudt:value 84.5` on e.g. `<…/WindPark/A/HubHeightMean>`                                 |
 | `ConfigurationAttribute`           | Marker mixin: a setting a model needs to run (a boundary condition), not a property of a component. | (intersected with `Categorical`/`Physical`/etc.; attached to a `ServiceConfiguration`)   |
 
-In the ontology TTL, every class above inherits (directly or transitively) from `dici_onto:Attribute`.
+In the ontology TTL, every class above inherits from `dici_onto:Attribute`.
+
+Two things are deliberately not attribute types:
+
+- **Time series.** `HistoricTimeSeries`, `LiveTimeSeries` and `FutureTimeSeries` are subclasses of `TimeSeries`, not of `Attribute`. An attribute points at a series (`hasHistoricTimeSeries`) or at the series' address (`hasHistoricTimeSeriesReference`, `hasLiveTimeSeriesReference`, `hasFutureTimeSeriesReference`). A live data stream, such as a weather feed, belongs to the component that produces it: it is the `hasLiveTimeSeriesReference` of one of that component's attributes. The Excel importer's `Historic`, `Live` and `Future` columns create these.
+- **Links to another instance.** A turbine in a wind park is a link, not an attribute: an object property under `linksComponent` (`partOf`, `locatedIn`, `hasLocation`, ...). The Excel importer calls such a column `ClassObject`.
 
 ## How attributes attach to instances
 
@@ -42,11 +47,11 @@ Each instance has a path-style attribute URI. For a building with a floor area o
     qudt:hasQuantityKind quantitykind:Area .
 ```
 
-The path-style URI (`BuildingA/floorArea`) is the recommended convention but not enforced by the ontology itself — projects can mint their own URI shapes.
+The path-style URI (`BuildingA/floorArea`) is the recommended convention. The ontology does not enforce it, so projects can mint their own URI shapes.
 
 ## Provenance
 
-Any attribute can carry a citation via the standard PROV-O property:
+The core declares one provenance property so far: `derivedFromCatalogue` (a sub-property of `prov:wasDerivedFrom`), from a sited instance to the catalogue entry it was specified from. To cite a source for a value, use PROV-O directly, as below. A dedicated core property for this (`hasReference`) is planned; see the platform's `docs/KNOWN_LIMITATIONS.md`.
 
 ```turtle
 <…/BuildingA/floorArea>
@@ -62,13 +67,15 @@ Any attribute can carry a citation via the standard PROV-O property:
 
 - **Has a numeric value + a unit?** → `PhysicalAttribute`. If the unit is per-X, use `CustomPhysicalRatioAttribute`.
 - **Money?** → `SimpleCostAttribute` if a total; `UnitBasedCostAttribute` if a rate (e.g. CHF/kWh).
-- **One of a fixed list of choices?** → `CategoricalAttribute`. The choice values themselves should be `dici_onto:` instances.
-- **A pointer to another instance?** → `ComponentAttribute` (a.k.a. ClassObject in the Excel importer). Pick the predicate that names the relationship (`locatedIn`, `installedAt`, `partOf`, …).
+- **One of a fixed list of choices?** → `CategoricalAttribute`. The choice values are named individuals of the attribute's own class (declared with the Ontology Manager), and the attribute points at the one it takes with `hasCategoricalValue`, an object property: the value is an IRI, never a literal and never an extra `rdf:type` of the attribute.
+- **A pointer to another instance?** Not an attribute: a link. Use an object property under `linksComponent` that names the relationship (`locatedIn`, `hasLocation`, `partOf`, ...). In the Excel importer this is a `ClassObject` column.
 - **A point in time?** → `EventAttribute`. The serialiser auto-detects year vs. date vs. datetime.
 - **A function (load profile, efficiency curve, …)?** → `CurveAttribute`.
-- **A bare string or untyped number?** → `SimpleValueAttribute`. Use sparingly — units and categories are more useful for downstream tooling.
-- **A time-varying signal?** → `HistoricTimeSeries` / `LiveTimeSeries` / `FutureTimeSeries`. Attach via `dici_onto:hasHistoricTimeSeries` etc.
+- **A path or reference to a data file?** → `DataPathAttribute` (value in `dici_onto:hasDataPath`).
+- **A bare string or untyped number?** → `SimpleValueAttribute`. Use it sparingly: units and categories are more useful to the tools that read the data.
+- **An identifier (an asset id, a BACnet id)?** → `IdentifierAttribute`, linked with `hasIdentifier`.
+- **A time-varying signal?** → a `DynamicAttribute` whose values are a time series: point it at the series with `hasHistoricTimeSeries` / `hasFutureTimeSeries`, or at a live stream with `hasLiveTimeSeriesReference` (the stream address).
 
-- **A setting the model needs to run, not something true of the component?** → mark the class `ConfigurationAttribute` as well as its value kind, and attach its values to a `ServiceConfiguration` profile of the service (`hasConfigurationParameter`), not to the component. The test: **if the value is a boundary condition of the model run, it is configuration** — a model or algorithm choice, a calibration constant (a wake decay constant), a run name or frequency, a stream address. A profile names the components it is tuned for with `appliesTo`.
+- **A setting the model needs to run, not something true of the component?** → mark the class `ConfigurationAttribute` as well as its value kind, and attach its values to a `ServiceConfiguration` profile of the service (`hasConfigurationParameter`), not to the component. The test: **if the value is a boundary condition of the model run, it is configuration**: a model or algorithm choice, a calibration constant (a wake decay constant), a run name or frequency. A live data stream that delivers a component's values is not configuration: it belongs to that component, as the `hasLiveTimeSeriesReference` of one of its attributes. A profile names the components it is tuned for with `appliesTo`.
 
-When in doubt, prefer the most specific type the data fits — generic `SimpleValueAttribute` is a fallback, not a default.
+When in doubt, prefer the most specific type the data fits. `SimpleValueAttribute` is a fallback, not a default.

@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use the Digicities ontology in published work, please cite it as below."
+type: dataset
+title: "Digicities Ontology"
+abstract: >-
+  Digicities is a requirements-driven semantic layer that connects models to the
+  data they need: each model states its inputs as requirements against a shared
+  ontology, and the platform finds, checks and delivers that data from a knowledge
+  graph. This is that shared ontology (OWL/RDF).
+authors:
+  - family-names: Allan
+    given-names: James
+version: 0.6.0
+license: CC-BY-4.0
+repository-code: "https://github.com/uesl-empa/digicities-ontology"
+keywords:
+  - ontology
+  - OWL
+  - RDF
+  - semantic layer
+  - energy systems

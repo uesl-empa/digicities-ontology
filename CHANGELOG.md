@@ -2,6 +2,37 @@
 
 All notable changes to the Digicities ontology are recorded here. The project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] — 2026-10-09
+
+**BREAKING (pre-1.0 minor).** Scaffold release: the core is no longer edited by hand. It is built by replaying `core/scaffold_instructions.json` through the Digicities platform's Ontology Manager onto `core/bare_core.ttl` (`tools/build_core.py`), so the core follows the same Entity-Attribute-Relation pattern as every workspace extension, by construction. Hand edits had left the pattern broken in 49 places (missing ranges, duplicate predicates, categories named unlike their component, components without a scaffold).
+
+### Changed
+- **`rdfs:range` of every `has<X>Attribute` is `<X>Attribute`, the component's category, and nothing else.** 19 general predicates had no range; they now state it. Tools read a component's category from this range, never from a name.
+- `hasComponentAttribute` states `rdfs:domain Component` and `rdfs:range ComponentAttribute` (the root of the pattern).
+- The core's attributes go through the same operations as an extension's: each has a value kind and one link predicate `has<Component><Attribute>Attribute`. Kinds: `ActuatorPosition`, `MeasurementAccuracy`, `SamplingRate`, `FlowCapacity`, `FlowRate`, `Efficiency`, `ProcessCapacity`, `StateOfCharge`, `StorageCapacity` are `PhysicalAttribute` (with their existing default units); `SetPoint` is `SimpleValueAttribute`; `MeterReading` and `MeasurementValue` are `DynamicAttribute`; `SwitchState` is `CategoricalAttribute`.
+- The predicates under the old short duplicates now hang under the full ones (e.g. `hasSolarResourceAttribute ⊑ hasRenewableResourceAttribute`).
+- **Categorical values are IRIs.** `hasCategoricalValue` is an `owl:ObjectProperty` (it was a datatype property under `hasAttributeValue`, although every writer and reader already used an IRI). It points from a categorical attribute to the category it takes: a named individual of the attribute's own class. Domain and range are `CategoricalAttribute`. It has no parent property, since an object property cannot sit under the datatype property `hasAttributeValue`. Writers now state it instead of typing the attribute node with the category.
+- **`locatedIn` has its own inverse, `locationContains`.** `locationOf` was the inverse of both `hasLocation` and `locatedIn`, so under inference `hasLocation(a, b)` gave `locationOf(b, a)` and then `locatedIn(a, b)`: the two predicates always appeared together and choosing one meant nothing. `locationOf` is now the inverse of `hasLocation` only. A test keeps every property's inverse partner unshared.
+
+### Added
+- Every component class has its own category and general predicate: the 14 leaf classes (`CircuitBreaker`, `Damper`, `Valve`, `ElectricityFlow`, `GasFlow`, `HeatFlow`, `LiquidFuelFlow`, `ElectricityMeter`, `GasMeter`, `HeatMeter`, `FlowSensor`, `PowerSensor`, `PressureSensor`, `TemperatureSensor`) and the observation family (`hasObservationAttribute`, `hasWeatherObservationAttribute`, `hasCompositeWeatherObservationAttribute`), which had categories but no predicates.
+- 13 link predicates for the core's attributes (`hasConversionProcessEfficiencyAttribute`, ...).
+- **`DataPathAttribute`** (subclass of `Attribute`): the value kind of an attribute whose value is a path or reference to a data file, read through `hasDataPath`. Before, `ResourceAttribute` did this job AND was the category of the `Resource` component; it is now only that category. A data-path attribute is typed `DataPathAttribute`.
+- **`IdentifierAttribute`** (subclass of `Attribute`): the value kind of an attribute whose value identifies the thing it belongs to, reached through `hasIdentifier`. Identifier attribute classes (`BuildingId`, `BacnetId`, ...) were filed under the component's category with no value kind, which broke the pattern check.
+- `locationContains` (inverse of `locatedIn`).
+- `core/bare_core.ttl`, `core/scaffold_instructions.json`, `tools/build_core.py`, `tests/test_build_core.py` (reproducible build, pattern check, no silent term loss, unchanged annotations, one version everywhere).
+
+### Deprecated (aliases kept for one release, `owl:deprecated true` + `owl:equivalentClass` / `owl:equivalentProperty`)
+- Renamed to the Ontology Manager's naming rule: `LiquidFuelCarrierAttribute` → `LiquidFuelAttribute`, `SolidFuelCarrierAttribute` → `SolidFuelAttribute`, `WindResourceAttribute` → `WindAttribute`, `hasElectricityAttribute` → `hasElectricityCarrierAttribute`, `hasFuelAttribute` → `hasFuelCarrierAttribute`, `hasGaseousFuelAttribute` → `hasGaseousFuelCarrierAttribute`, `hasSolarAttribute` → `hasSolarResourceAttribute`.
+- Duplicates of a full predicate with the same domain: `hasColdAttribute` → `hasColdCarrierAttribute`, `hasHeatAttribute` → `hasHeatCarrierAttribute`, `hasThermalEnergyAttribute` → `hasThermalEnergyCarrierAttribute`, `hasRenewableAttribute` → `hasRenewableResourceAttribute`, `hasNonRenewableAttribute` → `hasNonRenewableResourceAttribute`.
+- A property alias is also `rdfs:subPropertyOf` its replacement, so data still using it is found under `hasAttribute`.
+
+### Removed
+- `hasEnergyCarrierEnergyCostAttribute`: no domain, no range, and its class (`EnergyCostAttribute`) was removed in an earlier hand edit.
+
+### Docs
+- `overview.md` versioning: before 1.0.0 a minor bump may break; breaking 0.x releases say so and keep deprecated aliases one release.
+
 ## [0.5.0] — 2026-10-02
 
 Configuration release: settings a model needs to run get their own place, owned by the service, and the catalogue provenance the platform already relies on is declared in core.

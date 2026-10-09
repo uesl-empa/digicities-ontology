@@ -96,15 +96,21 @@ mapping procedure.
 - **Label:** Categorical Attribute
 - **Hierarchy:** Thing > Attribute > **CategoricalAttribute**
 - **Description:** Attribute whose value is one of an enumerated set of categories
-- **Definition:** An attribute whose value is drawn from a closed set of named categories; the allowed values are declared as subclasses of the attribute class.
+- **Definition:** An attribute whose value is drawn from a closed set of named categories; the allowed values are named individuals of the attribute class, and the attribute points at the one it takes with hasCategoricalValue.
 - **Examples:** Insulation class (Poor / Average / Good), tariff type (Flat / Variable / Dual)
-- **Scope:** Declare the allowed values as subclasses of the concrete attribute class.
+- **Scope:** Declare the allowed values as named individuals of the concrete attribute class (the Ontology Manager does this); state the value of an attribute with hasCategoricalValue, never as an extra rdf:type.
 
 ### CircuitBreaker
 
 - **Label:** Circuit Breaker
 - **Hierarchy:** Component > Device > Switch > **CircuitBreaker**
 - **Description:** Switch that automatically interrupts electrical flow for safety
+
+### CircuitBreakerAttribute
+
+- **Label:** Circuit Breaker Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SwitchAttribute > **CircuitBreakerAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Circuit Breaker; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### ColdCarrier
 
@@ -248,6 +254,18 @@ mapping procedure.
 - **Hierarchy:** Component > Device > Actuator > **Damper**
 - **Description:** Actuator that controls air flow
 
+### DamperAttribute
+
+- **Label:** Damper Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > ActuatorAttribute > **DamperAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Damper; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
+### DataPathAttribute
+
+- **Label:** Data Path Attribute
+- **Hierarchy:** Thing > Attribute > **DataPathAttribute**
+- **Description:** Attribute whose value is a path or reference to a data file, read through hasDataPath
+
 ### DescriptiveStatistics
 
 - **Label:** Descriptive Statistics
@@ -326,12 +344,24 @@ mapping procedure.
 - **Description:** Flow of electrical energy between components
 - **Default unit:** KiloW
 
+### ElectricityFlowAttribute
+
+- **Label:** Electricity Flow Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > FlowAttribute > EnergyCarrierFlowAttribute > **ElectricityFlowAttribute**
+- **Description:** Typing marker grouping attributes that apply to an Electricity Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### ElectricityMeter
 
 - **Label:** Electricity Meter
 - **Hierarchy:** Component > Device > Meter > **ElectricityMeter**
 - **Description:** Meter recording cumulative electrical energy consumption or production
 - **Default unit:** KiloW-HR
+
+### ElectricityMeterAttribute
+
+- **Label:** Electricity Meter Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > MeterAttribute > **ElectricityMeterAttribute**
+- **Description:** Typing marker grouping attributes that apply to an Electricity Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### EnergyCarrier
 
@@ -464,6 +494,12 @@ mapping procedure.
 - **Description:** Sensor measuring volumetric or mass flow rate
 - **Default unit:** M3-PER-SEC
 
+### FlowSensorAttribute
+
+- **Label:** Flow Sensor Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SensorAttribute > **FlowSensorAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Flow Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### FuelCarrier
 
 - **Label:** Fuel Carrier
@@ -493,12 +529,24 @@ mapping procedure.
 - **Description:** Flow of gaseous fuel between components
 - **Default unit:** M3-PER-SEC
 
+### GasFlowAttribute
+
+- **Label:** Gas Flow Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > FlowAttribute > EnergyCarrierFlowAttribute > **GasFlowAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Gas Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### GasMeter
 
 - **Label:** Gas Meter
 - **Hierarchy:** Component > Device > Meter > **GasMeter**
 - **Description:** Meter recording cumulative gas volume consumed
 - **Default unit:** M3
+
+### GasMeterAttribute
+
+- **Label:** Gas Meter Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > MeterAttribute > **GasMeterAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Gas Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### GaseousFuelCarrier
 
@@ -547,6 +595,12 @@ mapping procedure.
 - **Description:** Flow of thermal energy between components
 - **Default unit:** KiloW
 
+### HeatFlowAttribute
+
+- **Label:** Heat Flow Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > FlowAttribute > EnergyCarrierFlowAttribute > **HeatFlowAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Heat Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### HeatMeter
 
 - **Label:** Heat Meter
@@ -554,12 +608,24 @@ mapping procedure.
 - **Description:** Meter recording cumulative thermal energy delivered
 - **Default unit:** KiloW-HR
 
+### HeatMeterAttribute
+
+- **Label:** Heat Meter Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > MeterAttribute > **HeatMeterAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Heat Meter; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### HistoricTimeSeries
 
 - **Label:** Historic Time Series
 - **Hierarchy:** TimeSeries > **HistoricTimeSeries**
 - **Description:** Time series data representing past measurements or observations
 - **Synonyms:** Historical Data, Measured Data
+
+### IdentifierAttribute
+
+- **Label:** Identifier Attribute
+- **Hierarchy:** Thing > Attribute > **IdentifierAttribute**
+- **Description:** Attribute whose value identifies the thing it belongs to, reached through hasIdentifier
 
 ### InformationFlow
 
@@ -596,11 +662,17 @@ mapping procedure.
 - **Description:** Fuel carrier in liquid form
 - **Examples:** Heating oil, diesel, biofuel
 
+### LiquidFuelAttribute
+
+- **Label:** Liquid Fuel Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > EnergyCarrierAttribute > FuelCarrierAttribute > **LiquidFuelAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Liquid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### LiquidFuelCarrierAttribute
 
 - **Label:** Liquid Fuel Carrier Attribute
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > EnergyCarrierAttribute > FuelCarrierAttribute > **LiquidFuelCarrierAttribute**
-- **Description:** Typing marker grouping attributes that apply to a Liquid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+- **Hierarchy:** (root)
+- **Description:** Deprecated in v0.6.0: use LiquidFuelAttribute. Kept for one release.
 
 ### LiquidFuelFlow
 
@@ -608,6 +680,12 @@ mapping procedure.
 - **Hierarchy:** Component > Flow > EnergyCarrierFlow > **LiquidFuelFlow**
 - **Description:** Flow of liquid fuel between components
 - **Default unit:** L-PER-SEC
+
+### LiquidFuelFlowAttribute
+
+- **Label:** Liquid Fuel Flow Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > FlowAttribute > EnergyCarrierFlowAttribute > **LiquidFuelFlowAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Liquid Fuel Flow; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### LiveTimeSeries
 
@@ -695,7 +773,7 @@ mapping procedure.
 ### MeasurementValue
 
 - **Label:** Measurement Value
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SensorAttribute > **MeasurementValue**
+- **Hierarchy:** Thing > Attribute > DynamicAttribute > **MeasurementValue**
 - **Description:** Current measured value from a sensor
 
 ### Meter
@@ -717,7 +795,7 @@ mapping procedure.
 ### MeterReading
 
 - **Label:** Meter Reading
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > MeterAttribute > **MeterReading**
+- **Hierarchy:** Thing > Attribute > DynamicAttribute > **MeterReading**
 - **Description:** Cumulative measurement from a meter
 
 ### Network
@@ -781,12 +859,24 @@ mapping procedure.
 - **Description:** Sensor measuring instantaneous electrical or thermal power
 - **Default unit:** KiloW
 
+### PowerSensorAttribute
+
+- **Label:** Power Sensor Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SensorAttribute > **PowerSensorAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Power Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### PressureSensor
 
 - **Label:** Pressure Sensor
 - **Hierarchy:** Component > Device > Sensor > **PressureSensor**
 - **Description:** Sensor measuring pressure
 - **Default unit:** PA
+
+### PressureSensorAttribute
+
+- **Label:** Pressure Sensor Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SensorAttribute > **PressureSensorAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Pressure Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### Process
 
@@ -807,7 +897,7 @@ mapping procedure.
 ### ProcessCapacity
 
 - **Label:** Process Capacity
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > ProcessAttribute > **ProcessCapacity**
+- **Hierarchy:** Thing > Attribute > PhysicalAttribute > **ProcessCapacity**
 - **Description:** Maximum processing capacity
 - **Default unit:** KiloW
 
@@ -858,7 +948,7 @@ mapping procedure.
 ### SamplingRate
 
 - **Label:** Sampling Rate
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SensorAttribute > **SamplingRate**
+- **Hierarchy:** Thing > Attribute > PhysicalAttribute > **SamplingRate**
 - **Description:** Frequency of measurements or readings
 - **Default unit:** HZ
 
@@ -958,11 +1048,17 @@ mapping procedure.
 - **Description:** Fuel carrier in solid form
 - **Examples:** Wood chips, pellets, coal
 
+### SolidFuelAttribute
+
+- **Label:** Solid Fuel Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > EnergyCarrierAttribute > FuelCarrierAttribute > **SolidFuelAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Solid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### SolidFuelCarrierAttribute
 
 - **Label:** Solid Fuel Carrier Attribute
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > EnergyCarrierAttribute > FuelCarrierAttribute > **SolidFuelCarrierAttribute**
-- **Description:** Typing marker grouping attributes that apply to a Solid Fuel; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+- **Hierarchy:** (root)
+- **Description:** Deprecated in v0.6.0: use SolidFuelAttribute. Kept for one release.
 
 ### StateOfCharge
 
@@ -995,7 +1091,7 @@ mapping procedure.
 ### StorageCapacity
 
 - **Label:** Storage Capacity
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > StorageAttribute > **StorageCapacity**
+- **Hierarchy:** Thing > Attribute > PhysicalAttribute > **StorageCapacity**
 - **Description:** Maximum storage capacity
 - **Default unit:** KiloW-HR
 
@@ -1029,7 +1125,7 @@ mapping procedure.
 ### SwitchState
 
 - **Label:** Switch State
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SwitchAttribute > **SwitchState**
+- **Hierarchy:** Thing > Attribute > CategoricalAttribute > **SwitchState**
 - **Description:** Current state of a switch (open/closed, on/off)
 
 ### TemperatureSensor
@@ -1038,6 +1134,12 @@ mapping procedure.
 - **Hierarchy:** Component > Device > Sensor > **TemperatureSensor**
 - **Description:** Sensor measuring temperature
 - **Default unit:** DEG_C
+
+### TemperatureSensorAttribute
+
+- **Label:** Temperature Sensor Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > SensorAttribute > **TemperatureSensorAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Temperature Sensor; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
 ### TemporalPrecision
 
@@ -1108,6 +1210,12 @@ mapping procedure.
 - **Hierarchy:** Component > Device > Actuator > **Valve**
 - **Description:** Actuator that controls fluid flow
 
+### ValveAttribute
+
+- **Label:** Valve Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > DeviceAttribute > ActuatorAttribute > **ValveAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Valve; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### WeatherObservation
 
 - **Label:** Weather Observation
@@ -1133,11 +1241,17 @@ mapping procedure.
 - **Examples:** The wind resource at a wind park site, characterised by speed and direction profiles
 - **Scope:** Use for the wind resource itself. A wind park (the site) maps to Location; a wind turbine (the machine) maps to Turbine; forecast wind speeds are DynamicAttributes with a FutureTimeSeries.
 
+### WindAttribute
+
+- **Label:** Wind Attribute
+- **Hierarchy:** Thing > Attribute > ComponentAttribute > ResourceAttribute > RenewableResourceAttribute > **WindAttribute**
+- **Description:** Typing marker grouping attributes that apply to a Wind; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+
 ### WindResourceAttribute
 
 - **Label:** Wind Resource Attribute
-- **Hierarchy:** Thing > Attribute > ComponentAttribute > ResourceAttribute > RenewableResourceAttribute > **WindResourceAttribute**
-- **Description:** Typing marker grouping attributes that apply to a Wind; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
+- **Hierarchy:** (root)
+- **Description:** Deprecated in v0.6.0: use WindAttribute. Kept for one release.
 
 ## Object properties
 
@@ -1301,6 +1415,14 @@ mapping procedure.
 - **Domain:** Actor
 - **Range:** ActorAttribute
 
+### hasActuatorActuatorPositionAttribute
+
+- **Label:** has actuator actuator position attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasActuatorAttribute > **hasActuatorActuatorPositionAttribute**
+- **Description:** Links an Actuator to its Actuator Position attribute; under hasActuatorAttribute
+- **Domain:** Actuator
+- **Range:** ActuatorPosition
+
 ### hasActuatorAttribute
 
 - **Label:** has actuator attribute
@@ -1325,12 +1447,27 @@ mapping procedure.
 - **Domain:** Distribution
 - **Range:** DistributionBin
 
+### hasCategoricalValue
+
+- **Label:** has categorical value
+- **Hierarchy:** (root)
+- **Description:** Links a categorical attribute to the category it takes. The category is an IRI: a named individual of the attribute's own class (the allowed values, declared with the Ontology Manager's add_named_individual), so the range is the categorical attribute class. It plays the role hasAttributeValue plays for literal values, but an object property cannot sit under a datatype property, so it has no parent property.
+- **Domain:** CategoricalAttribute
+- **Range:** CategoricalAttribute
+
+### hasCircuitBreakerAttribute
+
+- **Label:** has circuit breaker attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSwitchAttribute > **hasCircuitBreakerAttribute**
+- **Description:** Attaches a Circuit Breaker attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** CircuitBreaker
+- **Range:** CircuitBreakerAttribute
+
 ### hasColdAttribute
 
 - **Label:** has cold attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasThermalEnergyAttribute > **hasColdAttribute**
-- **Description:** Attaches a Cold attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
-- **Domain:** ColdCarrier
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasThermalEnergyCarrierAttribute > hasColdCarrierAttribute > **hasColdAttribute**
+- **Description:** Deprecated in v0.6.0: use hasColdCarrierAttribute. Kept for one release.
 
 ### hasColdCarrierAttribute
 
@@ -1345,6 +1482,16 @@ mapping procedure.
 - **Label:** has component attribute
 - **Hierarchy:** hasAttribute > **hasComponentAttribute**
 - **Description:** Attaches a component attribute to a Component; parent of the per-component-type attachment properties
+- **Domain:** Component
+- **Range:** ComponentAttribute
+
+### hasCompositeWeatherObservationAttribute
+
+- **Label:** has composite weather observation attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasObservationAttribute > hasWeatherObservationAttribute > **hasCompositeWeatherObservationAttribute**
+- **Description:** Attaches a Composite Weather Observation attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** CompositeWeatherObservation
+- **Range:** CompositeWeatherObservationAttribute
 
 ### hasConfiguration
 
@@ -1370,6 +1517,14 @@ mapping procedure.
 - **Domain:** Controller
 - **Range:** ControllerAttribute
 
+### hasControllerSetPointAttribute
+
+- **Label:** has controller set point attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasControllerAttribute > **hasControllerSetPointAttribute**
+- **Description:** Links a Controller to its Set Point attribute; under hasControllerAttribute
+- **Domain:** Controller
+- **Range:** SetPoint
+
 ### hasConversionProcessAttribute
 
 - **Label:** has conversion process attribute
@@ -1378,12 +1533,29 @@ mapping procedure.
 - **Domain:** ConversionProcess
 - **Range:** ConversionProcessAttribute
 
+### hasConversionProcessEfficiencyAttribute
+
+- **Label:** has conversion process efficiency attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasProcessAttribute > hasConversionProcessAttribute > **hasConversionProcessEfficiencyAttribute**
+- **Description:** Links a Conversion Process to its Efficiency attribute; under hasConversionProcessAttribute
+- **Domain:** ConversionProcess
+- **Range:** Efficiency
+
 ### hasConverterAttribute
 
 - **Label:** has converter attribute
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasConverterAttribute**
 - **Description:** Attaches a Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Converter
+- **Range:** ConverterAttribute
+
+### hasDamperAttribute
+
+- **Label:** has damper attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasActuatorAttribute > **hasDamperAttribute**
+- **Description:** Attaches a Damper attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** Damper
+- **Range:** DamperAttribute
 
 ### hasDescriptiveStatistics
 
@@ -1409,6 +1581,14 @@ mapping procedure.
 - **Domain:** Device
 - **Range:** DeviceAttribute
 
+### hasDeviceMeasurementAccuracyAttribute
+
+- **Label:** has device measurement accuracy attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > **hasDeviceMeasurementAccuracyAttribute**
+- **Description:** Links a Device to its Measurement Accuracy attribute; under hasDeviceAttribute
+- **Domain:** Device
+- **Range:** MeasurementAccuracy
+
 ### hasDistribution
 
 - **Label:** has distribution
@@ -1420,9 +1600,32 @@ mapping procedure.
 ### hasElectricityAttribute
 
 - **Label:** has electricity attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > **hasElectricityAttribute**
-- **Description:** Attaches a Electricity attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasElectricityCarrierAttribute > **hasElectricityAttribute**
+- **Description:** Deprecated in v0.6.0: use hasElectricityCarrierAttribute. Kept for one release.
+
+### hasElectricityCarrierAttribute
+
+- **Label:** has electricity carrier attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > **hasElectricityCarrierAttribute**
+- **Description:** Attaches an Electricity Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** ElectricityCarrier
+- **Range:** ElectricityCarrierAttribute
+
+### hasElectricityFlowAttribute
+
+- **Label:** has electricity flow attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasFlowAttribute > hasEnergyCarrierFlowAttribute > **hasElectricityFlowAttribute**
+- **Description:** Attaches an Electricity Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** ElectricityFlow
+- **Range:** ElectricityFlowAttribute
+
+### hasElectricityMeterAttribute
+
+- **Label:** has electricity meter attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasMeterAttribute > **hasElectricityMeterAttribute**
+- **Description:** Attaches an Electricity Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** ElectricityMeter
+- **Range:** ElectricityMeterAttribute
 
 ### hasEnergyCarrierAttribute
 
@@ -1430,12 +1633,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasEnergyCarrierAttribute**
 - **Description:** Attaches a Energy Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** EnergyCarrier
-
-### hasEnergyCarrierEnergyCostAttribute
-
-- **Label:** has energy carrier energy cost attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > **hasEnergyCarrierEnergyCostAttribute**
-- **Description:** Attaches a Energy Carrier Energy Cost attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Range:** EnergyCarrierAttribute
 
 ### hasEnergyCarrierFlowAttribute
 
@@ -1451,6 +1649,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasEnergyConsumerAttribute**
 - **Description:** Attaches a Energy Consumer attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** EnergyConsumer
+- **Range:** EnergyConsumerAttribute
 
 ### hasEnergyConverterAttribute
 
@@ -1458,6 +1657,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > hasConverterAttribute > **hasEnergyConverterAttribute**
 - **Description:** Attaches a Energy Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** EnergyConverter
+- **Range:** EnergyConverterAttribute
 
 ### hasEnergyGeneratorAttribute
 
@@ -1465,6 +1665,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasEnergyGeneratorAttribute**
 - **Description:** Attaches a Energy Generator attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** EnergyGenerator
+- **Range:** EnergyGeneratorAttribute
 
 ### hasEnergyStorageAttribute
 
@@ -1474,6 +1675,14 @@ mapping procedure.
 - **Domain:** EnergyStorage
 - **Range:** EnergyStorageAttribute
 
+### hasEnergyStorageStateOfChargeAttribute
+
+- **Label:** has energy storage state of charge attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasStorageAttribute > hasEnergyStorageAttribute > **hasEnergyStorageStateOfChargeAttribute**
+- **Description:** Links an Energy Storage to its State Of Charge attribute; under hasEnergyStorageAttribute
+- **Domain:** EnergyStorage
+- **Range:** StateOfCharge
+
 ### hasFlowAttribute
 
 - **Label:** has flow attribute
@@ -1482,12 +1691,43 @@ mapping procedure.
 - **Domain:** Flow
 - **Range:** FlowAttribute
 
+### hasFlowFlowCapacityAttribute
+
+- **Label:** has flow flow capacity attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasFlowAttribute > **hasFlowFlowCapacityAttribute**
+- **Description:** Links a Flow to its Flow Capacity attribute; under hasFlowAttribute
+- **Domain:** Flow
+- **Range:** FlowCapacity
+
+### hasFlowFlowRateAttribute
+
+- **Label:** has flow flow rate attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasFlowAttribute > **hasFlowFlowRateAttribute**
+- **Description:** Links a Flow to its Flow Rate attribute; under hasFlowAttribute
+- **Domain:** Flow
+- **Range:** FlowRate
+
+### hasFlowSensorAttribute
+
+- **Label:** has flow sensor attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSensorAttribute > **hasFlowSensorAttribute**
+- **Description:** Attaches a Flow Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** FlowSensor
+- **Range:** FlowSensorAttribute
+
 ### hasFuelAttribute
 
 - **Label:** has fuel attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > **hasFuelAttribute**
-- **Description:** Attaches a Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelCarrierAttribute > **hasFuelAttribute**
+- **Description:** Deprecated in v0.6.0: use hasFuelCarrierAttribute. Kept for one release.
+
+### hasFuelCarrierAttribute
+
+- **Label:** has fuel carrier attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > **hasFuelCarrierAttribute**
+- **Description:** Attaches a Fuel Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** FuelCarrier
+- **Range:** FuelCarrierAttribute
 
 ### hasFutureTimeSeries
 
@@ -1495,12 +1735,35 @@ mapping procedure.
 - **Hierarchy:** hasTimeSeries > **hasFutureTimeSeries**
 - **Description:** Links a dynamic attribute to forecast time series data
 
+### hasGasFlowAttribute
+
+- **Label:** has gas flow attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasFlowAttribute > hasEnergyCarrierFlowAttribute > **hasGasFlowAttribute**
+- **Description:** Attaches a Gas Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** GasFlow
+- **Range:** GasFlowAttribute
+
+### hasGasMeterAttribute
+
+- **Label:** has gas meter attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasMeterAttribute > **hasGasMeterAttribute**
+- **Description:** Attaches a Gas Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** GasMeter
+- **Range:** GasMeterAttribute
+
 ### hasGaseousFuelAttribute
 
 - **Label:** has gaseous fuel attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelAttribute > **hasGaseousFuelAttribute**
-- **Description:** Attaches a Gaseous Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelCarrierAttribute > hasGaseousFuelCarrierAttribute > **hasGaseousFuelAttribute**
+- **Description:** Deprecated in v0.6.0: use hasGaseousFuelCarrierAttribute. Kept for one release.
+
+### hasGaseousFuelCarrierAttribute
+
+- **Label:** has gaseous fuel carrier attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelCarrierAttribute > **hasGaseousFuelCarrierAttribute**
+- **Description:** Attaches a Gaseous Fuel Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** GaseousFuelCarrier
+- **Range:** GaseousFuelCarrierAttribute
 
 ### hasGroup
 
@@ -1513,9 +1776,8 @@ mapping procedure.
 ### hasHeatAttribute
 
 - **Label:** has heat attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasThermalEnergyAttribute > **hasHeatAttribute**
-- **Description:** Attaches a Heat attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
-- **Domain:** HeatCarrier
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasThermalEnergyCarrierAttribute > hasHeatCarrierAttribute > **hasHeatAttribute**
+- **Description:** Deprecated in v0.6.0: use hasHeatCarrierAttribute. Kept for one release.
 
 ### hasHeatCarrierAttribute
 
@@ -1524,6 +1786,22 @@ mapping procedure.
 - **Description:** Attaches a Heat Carrier attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** HeatCarrier
 - **Range:** HeatCarrierAttribute
+
+### hasHeatFlowAttribute
+
+- **Label:** has heat flow attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasFlowAttribute > hasEnergyCarrierFlowAttribute > **hasHeatFlowAttribute**
+- **Description:** Attaches a Heat Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** HeatFlow
+- **Range:** HeatFlowAttribute
+
+### hasHeatMeterAttribute
+
+- **Label:** has heat meter attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasMeterAttribute > **hasHeatMeterAttribute**
+- **Description:** Attaches a Heat Meter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** HeatMeter
+- **Range:** HeatMeterAttribute
 
 ### hasHistoricTimeSeries
 
@@ -1586,10 +1864,18 @@ mapping procedure.
 ### hasLiquidFuelAttribute
 
 - **Label:** has liquid fuel attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelAttribute > **hasLiquidFuelAttribute**
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelCarrierAttribute > **hasLiquidFuelAttribute**
 - **Description:** Attaches a Liquid Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** LiquidFuel
-- **Range:** LiquidFuelCarrierAttribute
+- **Range:** LiquidFuelAttribute
+
+### hasLiquidFuelFlowAttribute
+
+- **Label:** has liquid fuel flow attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasFlowAttribute > hasEnergyCarrierFlowAttribute > **hasLiquidFuelFlowAttribute**
+- **Description:** Attaches a Liquid Fuel Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** LiquidFuelFlow
+- **Range:** LiquidFuelFlowAttribute
 
 ### hasLiveTimeSeries
 
@@ -1617,6 +1903,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasMaterialAttribute**
 - **Description:** Attaches a Material attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Material
+- **Range:** MaterialAttribute
 
 ### hasMaterialConverterAttribute
 
@@ -1624,6 +1911,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > hasConverterAttribute > **hasMaterialConverterAttribute**
 - **Description:** Attaches a Material Converter attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** MaterialConverter
+- **Range:** MaterialConverterAttribute
 
 ### hasMaterialFlowAttribute
 
@@ -1655,6 +1943,14 @@ mapping procedure.
 - **Domain:** Meter
 - **Range:** MeterAttribute
 
+### hasMeterMeterReadingAttribute
+
+- **Label:** has meter meter reading attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasMeterAttribute > **hasMeterMeterReadingAttribute**
+- **Description:** Links a Meter to its Meter Reading attribute; under hasMeterAttribute
+- **Domain:** Meter
+- **Range:** MeterReading
+
 ### hasNetworkAttribute
 
 - **Label:** has network attribute
@@ -1666,9 +1962,8 @@ mapping procedure.
 ### hasNonRenewableAttribute
 
 - **Label:** has non renewable attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > **hasNonRenewableAttribute**
-- **Description:** Attaches a Non Renewable attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
-- **Domain:** NonRenewableResource
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasNonRenewableResourceAttribute > **hasNonRenewableAttribute**
+- **Description:** Deprecated in v0.6.0: use hasNonRenewableResourceAttribute. Kept for one release.
 
 ### hasNonRenewableResourceAttribute
 
@@ -1677,6 +1972,14 @@ mapping procedure.
 - **Description:** Attaches a Non Renewable Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** NonRenewableResource
 - **Range:** NonRenewableResourceAttribute
+
+### hasObservationAttribute
+
+- **Label:** has observation attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > **hasObservationAttribute**
+- **Description:** Attaches an Observation attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** Observation
+- **Range:** ObservationAttribute
 
 ### hasOutputFlow
 
@@ -1692,6 +1995,22 @@ mapping procedure.
 - **Hierarchy:** linksComponent > **hasPart**
 - **Description:** Whole-part composition: this component has another component as a part
 
+### hasPowerSensorAttribute
+
+- **Label:** has power sensor attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSensorAttribute > **hasPowerSensorAttribute**
+- **Description:** Attaches a Power Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** PowerSensor
+- **Range:** PowerSensorAttribute
+
+### hasPressureSensorAttribute
+
+- **Label:** has pressure sensor attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSensorAttribute > **hasPressureSensorAttribute**
+- **Description:** Attaches a Pressure Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** PressureSensor
+- **Range:** PressureSensorAttribute
+
 ### hasProcessAttribute
 
 - **Label:** has process attribute
@@ -1699,6 +2018,14 @@ mapping procedure.
 - **Description:** Attaches a Process attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Process
 - **Range:** ProcessAttribute
+
+### hasProcessProcessCapacityAttribute
+
+- **Label:** has process process capacity attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasProcessAttribute > **hasProcessProcessCapacityAttribute**
+- **Description:** Links a Process to its Process Capacity attribute; under hasProcessAttribute
+- **Domain:** Process
+- **Range:** ProcessCapacity
 
 ### hasReferenceType
 
@@ -1711,9 +2038,8 @@ mapping procedure.
 ### hasRenewableAttribute
 
 - **Label:** has renewable attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > **hasRenewableAttribute**
-- **Description:** Attaches a Renewable attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
-- **Domain:** RenewableResource
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasRenewableResourceAttribute > **hasRenewableAttribute**
+- **Description:** Deprecated in v0.6.0: use hasRenewableResourceAttribute. Kept for one release.
 
 ### hasRenewableResourceAttribute
 
@@ -1729,6 +2055,7 @@ mapping procedure.
 - **Hierarchy:** hasAttribute > hasComponentAttribute > **hasResourceAttribute**
 - **Description:** Attaches a Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Resource
+- **Range:** ResourceAttribute
 
 ### hasSensorAttribute
 
@@ -1737,6 +2064,22 @@ mapping procedure.
 - **Description:** Attaches a Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Sensor
 - **Range:** SensorAttribute
+
+### hasSensorMeasurementValueAttribute
+
+- **Label:** has sensor measurement value attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSensorAttribute > **hasSensorMeasurementValueAttribute**
+- **Description:** Links a Sensor to its Measurement Value attribute; under hasSensorAttribute
+- **Domain:** Sensor
+- **Range:** MeasurementValue
+
+### hasSensorSamplingRateAttribute
+
+- **Label:** has sensor sampling rate attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSensorAttribute > **hasSensorSamplingRateAttribute**
+- **Description:** Links a Sensor to its Sampling Rate attribute; under hasSensorAttribute
+- **Domain:** Sensor
+- **Range:** SamplingRate
 
 ### hasSet
 
@@ -1748,16 +2091,24 @@ mapping procedure.
 ### hasSolarAttribute
 
 - **Label:** has solar attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasRenewableAttribute > **hasSolarAttribute**
-- **Description:** Attaches a Solar attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasRenewableResourceAttribute > hasSolarResourceAttribute > **hasSolarAttribute**
+- **Description:** Deprecated in v0.6.0: use hasSolarResourceAttribute. Kept for one release.
+
+### hasSolarResourceAttribute
+
+- **Label:** has solar resource attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasRenewableResourceAttribute > **hasSolarResourceAttribute**
+- **Description:** Attaches a Solar Resource attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** SolarResource
+- **Range:** SolarResourceAttribute
 
 ### hasSolidFuelAttribute
 
 - **Label:** has solid fuel attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelAttribute > **hasSolidFuelAttribute**
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasFuelCarrierAttribute > **hasSolidFuelAttribute**
 - **Description:** Attaches a Solid Fuel attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** SolidFuel
+- **Range:** SolidFuelAttribute
 
 ### hasSource
 
@@ -1783,6 +2134,14 @@ mapping procedure.
 - **Domain:** StorageProcess
 - **Range:** StorageProcessAttribute
 
+### hasStorageStorageCapacityAttribute
+
+- **Label:** has storage storage capacity attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasStorageAttribute > **hasStorageStorageCapacityAttribute**
+- **Description:** Links a Storage to its Storage Capacity attribute; under hasStorageAttribute
+- **Domain:** Storage
+- **Range:** StorageCapacity
+
 ### hasSwitchAttribute
 
 - **Label:** has switch attribute
@@ -1790,6 +2149,22 @@ mapping procedure.
 - **Description:** Attaches a Switch attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Switch
 - **Range:** SwitchAttribute
+
+### hasSwitchSwitchStateAttribute
+
+- **Label:** has switch switch state attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSwitchAttribute > **hasSwitchSwitchStateAttribute**
+- **Description:** Links a Switch to its Switch State attribute; under hasSwitchAttribute
+- **Domain:** Switch
+- **Range:** SwitchState
+
+### hasTemperatureSensorAttribute
+
+- **Label:** has temperature sensor attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasSensorAttribute > **hasTemperatureSensorAttribute**
+- **Description:** Attaches a Temperature Sensor attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** TemperatureSensor
+- **Range:** TemperatureSensorAttribute
 
 ### hasTemporalPrecision
 
@@ -1800,9 +2175,8 @@ mapping procedure.
 ### hasThermalEnergyAttribute
 
 - **Label:** has thermal energy attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > **hasThermalEnergyAttribute**
-- **Description:** Attaches a Thermal Energy attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
-- **Domain:** ThermalEnergyCarrier
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasEnergyCarrierAttribute > hasThermalEnergyCarrierAttribute > **hasThermalEnergyAttribute**
+- **Description:** Deprecated in v0.6.0: use hasThermalEnergyCarrierAttribute. Kept for one release.
 
 ### hasThermalEnergyCarrierAttribute
 
@@ -1844,12 +2218,29 @@ mapping procedure.
 - **Domain:** Attribute
 - **Range:** Unit
 
+### hasValveAttribute
+
+- **Label:** has valve attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasDeviceAttribute > hasActuatorAttribute > **hasValveAttribute**
+- **Description:** Attaches a Valve attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** Valve
+- **Range:** ValveAttribute
+
+### hasWeatherObservationAttribute
+
+- **Label:** has weather observation attribute
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasObservationAttribute > **hasWeatherObservationAttribute**
+- **Description:** Attaches a Weather Observation attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
+- **Domain:** WeatherObservation
+- **Range:** WeatherObservationAttribute
+
 ### hasWindAttribute
 
 - **Label:** has wind attribute
-- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasRenewableAttribute > **hasWindAttribute**
+- **Hierarchy:** hasAttribute > hasComponentAttribute > hasResourceAttribute > hasRenewableResourceAttribute > **hasWindAttribute**
 - **Description:** Attaches a Wind attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Wind
+- **Range:** WindAttribute
 
 ### isAttributeOf
 
@@ -1962,11 +2353,18 @@ mapping procedure.
 - **Description:** A Location is spatially contained within another Location
 - **Domain:** Location
 
+### locationContains
+
+- **Label:** location contains
+- **Hierarchy:** linksComponent > **locationContains**
+- **Description:** The place that contains the located thing (inverse of locatedIn)
+- **Range:** Location
+
 ### locationOf
 
 - **Label:** location of
 - **Hierarchy:** linksComponent > **locationOf**
-- **Description:** A Location hosts a component (inverse of the location attachment properties)
+- **Description:** A Location hosts a component (inverse of hasLocation)
 
 ### measures
 
@@ -2264,12 +2662,6 @@ mapping procedure.
 - **Hierarchy:** (root)
 - **Description:** Root data property carrying the literal value of an attribute
 - **Domain:** Attribute
-
-### hasCategoricalValue
-
-- **Label:** has categorical value
-- **Hierarchy:** hasAttributeValue > **hasCategoricalValue**
-- **Description:** The selected category value of a categorical attribute
 
 ### hasDataPath
 

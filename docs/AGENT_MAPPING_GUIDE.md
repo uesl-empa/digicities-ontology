@@ -105,10 +105,11 @@ Domain concepts: *wind park*, *wind turbine*, *wind speed forecast*,
 |---|---|---|---|
 | `WindPark` | subclass of `Wind` or `EnergyGenerator` | **`Location`** | It's a *site* — `Location` lists "Site"/"Area" as altLabels and "a wind park" as an example. The park *contains* turbines (`hasPart`/`locatedAt`). |
 | `WindTurbine` | subclass of `Wind` | **`Turbine`** (under `EnergyConverter`) | The machine, not the resource. `Turbine`'s scope note says exactly this. |
-| Wind speed | a plain number | **`DynamicAttribute`** on the park/turbine | Time-varying; the forecast series attaches via `hasFutureTimeSeries` → `FutureTimeSeries` (altLabels: "Forecast", "Prediction"). |
+| Wind speed forecast | a plain number, or an attribute on the park/turbine | **`DynamicAttribute`** of the `Weather` component that delivers it | Time-varying. A forecast file attaches via `hasFutureTimeSeries` (`FutureTimeSeries`, altLabels "Forecast", "Prediction"); a live feed via `hasLiveTimeSeriesReference` (see the stream row below). |
 | The wind itself | — | **`Wind`** (a `RenewableResource`) | Only if the model reasons about the resource; see `Wind`'s scope note. |
 | The simulation config file (wake model type, `k`, TI, simulation name) | a `WindSimulationConfig` component, or attributes on the park | **`ServiceConfiguration`** profile of the forecasting service, `appliesTo` the park; each value a **`ConfigurationAttribute`** | They are boundary conditions of the model run, not properties of the park. A config file is never a component. |
-| Input / output stream addresses | attributes on the park | **`ConfigurationAttribute`**s in the service's runtime profile | Settings the service needs to run; nothing about the park. |
+| Input stream address (the weather feed) | an attribute on the park (`WindPark.WeatherForecast`) | the **live time series of the component it delivers**: a `Weather` component (under `WeatherObservation`) linked to the park, whose `WindspeedForecast` carries the address as `hasLiveTimeSeriesReference` | The stream is that component's data, so the contract can link to it (`CL.WindPark.Weather`). |
+| Output / result stream address | an attribute on the park | the service's **connection** (`result_stream`), which is transport | Where results go is how the service is reached, not a fact about the park. |
 
 Extension shape (each new term annotated so the next agent can map onto it):
 

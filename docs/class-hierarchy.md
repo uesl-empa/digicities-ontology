@@ -107,6 +107,16 @@ See [attribute-types.md](attribute-types.md) for full descriptions.
   - `GeospatialAttribute`
   - Domain-specific `…Attribute` subclasses for each component/flow/resource class (e.g. `EnergyConsumerAttribute`, `ConverterAttribute`, `MeterAttribute`, …) — used as a typing marker so SPARQL queries can filter "all attributes of an X".
 
+### The scaffold of a component class (since v0.6.0, built for every component)
+
+Every component class `X` has, under its parent's:
+
+- a **category** `XAttribute` (`⊑` the parent's category): its attributes sit under it;
+- a **general predicate** `has<X>Attribute` (`⊑` the parent's general predicate) with `rdfs:domain X` and `rdfs:range XAttribute`. The range is the category and nothing else, so a tool reads a component's category from it;
+- one **link predicate** per linked attribute `A`: `has<X><A>Attribute` (`⊑ has<X>Attribute`, domain `X`, range `A`).
+
+The core file is built by the Ontology Manager (`tools/build_core.py`), so the core's scaffold and an extension's are made by the same operations. Renamed scaffold terms (`LiquidFuelCarrierAttribute`, `hasSolarAttribute`, ...) are kept one release as `owl:deprecated` aliases.
+
 ## Time series
 
 - `TimeSeries`

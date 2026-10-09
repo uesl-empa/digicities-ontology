@@ -32,7 +32,7 @@ Another partner finds the same concept useful. They reference the existing IRI i
 
 ### 3. Core promotion
 
-Once a concept is in use across **≥2 workpackages**, a maintainer opens a PR against `core/dici_onto_core.ttl` adding it. The contributing partners' existing TTL data continues to work unchanged because the IRI didn't move. On their next core upgrade, they can drop the term from their local extension if they want. They don't have to.
+Once a concept is in use across **≥2 workpackages**, a maintainer opens a PR adding it to the core's build inputs: a new component class goes into `core/scaffold_instructions.json` (as Ontology Manager operations), anything else into `core/bare_core.ttl`. `tools/build_core.py` then rebuilds `core/dici_onto_core.ttl`, which is never edited by hand. The contributing partners' existing TTL data continues to work unchanged because the IRI didn't move. On their next core upgrade, they can drop the term from their local extension if they want. They don't have to.
 
 Promotion criteria, in rough order of importance:
 

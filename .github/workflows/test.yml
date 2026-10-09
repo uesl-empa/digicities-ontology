@@ -16,6 +16,8 @@ jobs:
         python-version: ["3.9", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # the no-silent-loss test reads the previous release
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -23,3 +25,28 @@ jobs:
         run: pip install rdflib pytest
       - name: Run tests
         run: pytest -v
+
+  # The core is BUILT through the platform's Ontology Manager: rebuild it and
+  # check it equals the committed file and follows the scaffold pattern.
+  build-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check out the platform (provides the Ontology Manager)
+        uses: actions/checkout@v4
+        with:
+          repository: uesl-empa/digicities-platform
+          path: .platform
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          pip install -r .platform/requirements.txt
+          pip install pytest
+      - name: Build and check the core
+        env:
+          DIGICITIES_PLATFORM_DIR: ${{ github.workspace }}/.platform
+        run: pytest -v tests/test_build_core.py
