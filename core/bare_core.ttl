@@ -841,8 +841,8 @@ skos:definition a owl:AnnotationProperty .
     rdfs:label "Digicities ontology"@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:source <https://digicities.info/ontology> ;
-    rdfs:comment "Open OWL/RDF ontology for describing city-scale energy systems."@en ;
-    owl:versionIRI <https://digicities.info/ontology/0.5.0> ;
+    rdfs:comment "Digicities is a requirements-driven semantic layer that connects models to the data they need: each model states its inputs as requirements against a shared ontology, and the platform finds, checks and delivers that data from a knowledge graph. This is that shared ontology."@en ;
+    owl:versionIRI <https://digicities.info/ontology/0.6.0> ;
     owl:versionInfo "0.6.0" .
 
 dici_onto:AnnotationAttribute a owl:Class ;

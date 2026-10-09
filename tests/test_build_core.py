@@ -129,3 +129,11 @@ def test_version_is_the_same_everywhere():
     readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     named = set(re.findall(r"\bv(\d+\.\d+\.\d+)\b", readme))
     assert named == {version}, f"README names {named}, the core is {version}"
+    iris = {str(i) for i in g.objects(ONTOLOGY_IRI, OWL.versionIRI)}
+    assert iris == {f"{ONTOLOGY_IRI}/{version}"}, f"owl:versionIRI {iris}, the core is {version}"
+    bibtex = set(re.findall(r"version\s*=\s*\{(\d+\.\d+\.\d+)\}", readme))
+    assert bibtex == {version}, f"README BibTeX version {bibtex}, the core is {version}"
+    cff = (REPO_ROOT / "CITATION.cff").read_text(encoding="utf-8")
+    cff_version = re.search(r"^version:\s*(\S+)", cff, re.M)
+    assert cff_version and cff_version.group(1) == version, \
+        f"CITATION.cff version {cff_version and cff_version.group(1)}, the core is {version}"

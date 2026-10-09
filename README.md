@@ -1,16 +1,10 @@
 # Digicities ontology
 
-An open OWL/RDF ontology (CC BY 4.0) for describing **anything as a component with attributes** aiming to connect those who publish, model or build services requiring data about those things.
+Digicities is a requirements-driven semantic layer that connects models to the data they need: each model states its inputs as requirements against a shared ontology, and the platform finds, checks and delivers that data from a knowledge graph.
 
-Its core commitment is deliberately general: whatever you're describing, e.g. a building, a turbine, a district, a sensor, a market, a material, a process, is a *modelled as a component with attributes*. Because every party names the world the same way, the ontology becomes a shared language across a whole value chain:
+This repository holds that shared ontology (OWL/RDF, CC BY 4.0). It is the vocabulary both sides use. People who hold data describe their system with it, as components with attributes: a building, a turbine, a district, a sensor, a process. People who build models state what their model needs in the same terms, for example `WindTurbine.HubHeight`. Because both sides use the same terms, the [Digicities platform](https://github.com/uesl-empa/digicities-platform) can match a model's requirements to the data without a hand-written translation for each pair.
 
-- **Data publishers** describe things and release trustworthy, self-describing data about them.
-- **Modelers** assemble those same things into digital replicas of real systems.
-- **Developers** specify requirements and build services that act on them.
-
-Define a thing once, and it can be published, replicated, and built upon without translation at each handoff — so value flows along the chain instead of stalling between the people who produce data, model it, and put it to work. Energy systems are where this began and where it's proven, not the boundary.
-
-Concretely, the ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...), a domain vocabulary (energy carriers, converters, storage, sensors, meters, controllers), and the **16 attribute types** used to attach values to instances (physical, cost, categorical, event, geospatial, time-series, ...). It's the schema layer that powers the [Digicities platform](https://github.com/uesl-empa/digicities-platform), but the TTL is usable standalone with any RDF tool.
+Concretely, the ontology defines a small set of upper-level classes (`Component`, `Process`, `Flow`, `Resource`, `Network`, `Location`, ...), a domain vocabulary (energy carriers, converters, storage, sensors, meters, controllers), and the attribute types used to attach values to instances (physical, cost, categorical, event, curve, data path, identifier, ...; see [`docs/attribute-types.md`](docs/attribute-types.md)). Energy systems are where it started, not its limit. The TTL works on its own with any RDF tool.
 
 ## Structure
 
@@ -22,7 +16,7 @@ core/
 └── qudt_units.txt              # QUDT unit list referenced by Physical/Cost attributes
 docs/
 ├── overview.md          # scope, design principles, namespaces
-├── attribute-types.md   # the 16 attribute-type classes and what they model
+├── attribute-types.md   # the attribute-type classes and what they model
 ├── class-hierarchy.md   # full class list grouped by upper concept
 ├── CORE_EVOLUTION.md    # how workspace extensions become core
 ├── AGENT_MAPPING_GUIDE.md  # mapping procedure + decision tree for onboarding agents
@@ -34,7 +28,9 @@ tools/
 └── generate_term_index.py   # regenerates docs/term-index.{json,md} from the TTL
 tests/
 ├── test_parses.py       # rdflib smoke parse + sanity-check triple count
-└── test_annotations.py  # annotation coverage + stale-term-index guard
+├── test_annotations.py  # annotation coverage + stale-term-index guard
+├── test_build_core.py   # rebuild == committed core; the pattern holds; versions agree
+└── test_inverses.py     # no two properties share an inverse
 ```
 
 ## Managing Ontology Extensions
@@ -69,13 +65,13 @@ print(len(g), "triples")
 
 ## Quick start
 
-Drop `core/dici_onto_core.ttl` into your triplestore as a named graph. The platform uses `<http://classes_and_attributes>`. The ontology declares itself as `<https://digicities.info/ontology>` and uses the `dici_onto:` prefix (`https://digicities.info/ontology#`).
+Drop `core/dici_onto_core.ttl` into your triplestore as a named graph. The platform loads it (with the workspace's extensions) into `<http://ontology_dici_onto>`; instance data goes to `<http://classes_and_attributes>`. The ontology declares itself as `<https://digicities.info/ontology>` and uses the `dici_onto:` prefix (`https://digicities.info/ontology#`).
 
 ## Namespace
 
 Canonical prefix: `dici_onto: <https://digicities.info/ontology#>`
 
-The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/qudt/`, `http://qudt.org/vocab/unit/`) and QUDT currencies (`http://qudt.org/vocab/currency/`) for monetary values.
+The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/qudt/`, `http://qudt.org/vocab/unit/`), QUDT currencies (`http://qudt.org/vocab/currency/`) for monetary values, SKOS for mapping annotations, PROV-O for the one provenance link it has today (`derivedFromCatalogue`), and Dublin Core terms for its own metadata. The full table is in [`docs/overview.md`](docs/overview.md#namespaces).
 
 ## Versioning
 
@@ -113,12 +109,15 @@ If you use the Digicities ontology in published work, please cite it:
 
 ```bibtex
 @dataset{digicities-ontology,
-  title  = {Digicities Ontology},
-  author = {Allan, James},
-  year   = {2026},
-  url    = {https://github.com/uesl-empa/digicities-ontology},
+  title   = {Digicities Ontology},
+  author  = {Allan, James},
+  year    = {2026},
+  version = {0.6.0},
+  url     = {https://github.com/uesl-empa/digicities-ontology},
 }
 ```
+
+The same metadata is in [`CITATION.cff`](CITATION.cff) ("Cite this repository" on GitHub). A Zenodo DOI per release will be added once the Zenodo integration is enabled for this repository.
 
 Or in prose: *"... modelled using the Digicities ontology (https://github.com/uesl-empa/digicities-ontology)."*
 
