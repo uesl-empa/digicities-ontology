@@ -18,6 +18,7 @@ All notable changes to the Digicities ontology are recorded here. The project fo
 ### Deprecated (aliases kept for one release, `owl:deprecated true` + `owl:equivalentProperty` + `rdfs:subPropertyOf` the replacement)
 - `derivedFrom` → `basedOn`. The two said the same thing (Scenario to the scenario it was derived from); nothing wrote `derivedFrom`.
 - `hasDataSource` → `hasReference`. The onboarding agent wrote `hasDataSource` and declared it in each workspace extension; the alias keeps the provenance of workspaces onboarded before 0.7.0 reachable through `hasReference`.
+- The aliases 0.6.0 deprecated are **kept in 0.7.0**, an exception to the one-release rule (decided 2026-10-10): live workspaces are re-onboarded first. They are removed in the release after 0.7.0.
 
 ### Migration
 - Re-provision every workspace (Provision graph) so the triplestore holds core 0.7.0.
