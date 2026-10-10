@@ -75,6 +75,19 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#aggregatesAttribute",
+      "name": "aggregatesAttribute",
+      "kind": "annotationProperty",
+      "label": "aggregates attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Stated on an aggregate attribute CLASS (a subclass of AggregateAttribute): the attribute class whose values it summarises over the components linked to each container (dici_onto:WeightMean aggregatesAttribute dici_onto:Weight). An annotation, so it describes the class and never types anything under reasoning.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#definition",
       "name": "definition",
       "kind": "annotationProperty",
@@ -125,6 +138,19 @@
       "parents": [],
       "parentChainToRoot": [],
       "comment": "Annotation on an attribute class giving the QUDT quantity kind its values measure",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
+      "iri": "https://digicities.info/ontology#usesStatistic",
+      "name": "usesStatistic",
+      "kind": "annotationProperty",
+      "label": "uses statistic",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "Stated on an aggregate attribute CLASS: which statistic it is, given as the DescriptiveStatistics property that holds it (dici_onto:mean, dici_onto:standardDeviation, dici_onto:count, ...). With aggregatesAttribute, the platform reads what to compute from this declaration, never from the class name.",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -248,7 +274,7 @@
         "Attribute",
         "Thing"
       ],
-      "comment": "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.",
+      "comment": "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. The aggregate CLASS (FloorAreaMean) is declared once, with aggregatesAttribute and usesStatistic, and the platform computes it from that declaration. The nodes are written by the collections materializer into the collections graph; never authored.",
       "definition": null,
       "altLabels": [],
       "examples": [],

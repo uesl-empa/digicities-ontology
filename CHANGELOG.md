@@ -8,6 +8,7 @@ All notable changes to the Digicities ontology are recorded here. The project fo
 
 ### Added
 - **`hasReference`** (`rdfs:subPropertyOf prov:wasDerivedFrom`, range `Reference`): where a component instance, an attribute value or a scenario came from. What kind of source it is comes from the Reference's `hasReferenceType`, so a new kind of source needs no new property. Not a `linksComponent` sub-property: provenance is not system topology.
+- **`aggregatesAttribute` and `usesStatistic`** (annotation properties): stated on an aggregate attribute class, a subclass of `AggregateAttribute`, they say which attribute class it summarises and with which statistic (`WeightMean aggregatesAttribute Weight ; usesStatistic dici_onto:mean`). The statistic is the `DescriptiveStatistics` property that holds it, so no new statistic terms. The platform computes a derived value from this declaration, never from the class name. They are annotations, not object properties, because they describe a class: an object property between classes would make the reasoner treat the classes as individuals, and a restriction would talk about each instance instead of the class.
 
 ### Changed
 - **`hasSource` is only the flow property** (the component a `Flow` comes from). Its comment says so; provenance is `hasReference`.

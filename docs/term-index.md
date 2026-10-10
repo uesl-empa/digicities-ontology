@@ -52,7 +52,7 @@ mapping procedure.
 
 - **Label:** Aggregate Attribute
 - **Hierarchy:** Thing > Attribute > **AggregateAttribute**
-- **Description:** A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.
+- **Description:** A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. The aggregate CLASS (FloorAreaMean) is declared once, with aggregatesAttribute and usesStatistic, and the platform computes it from that declaration. The nodes are written by the collections materializer into the collections graph; never authored.
 
 ### AnnotationAttribute
 
@@ -2971,6 +2971,12 @@ mapping procedure.
 - **Hierarchy:** altLabel > **abbreviation**
 - **Description:** Legacy abbreviation annotation; prefer skos:altLabel for new terms
 
+### aggregatesAttribute
+
+- **Label:** aggregates attribute
+- **Hierarchy:** (root)
+- **Description:** Stated on an aggregate attribute CLASS (a subclass of AggregateAttribute): the attribute class whose values it summarises over the components linked to each container (dici_onto:WeightMean aggregatesAttribute dici_onto:Weight). An annotation, so it describes the class and never types anything under reasoning.
+
 ### definition
 
 - **Label:** definition
@@ -2994,4 +3000,10 @@ mapping procedure.
 - **Label:** has quantity kind
 - **Hierarchy:** (root)
 - **Description:** Annotation on an attribute class giving the QUDT quantity kind its values measure
+
+### usesStatistic
+
+- **Label:** uses statistic
+- **Hierarchy:** (root)
+- **Description:** Stated on an aggregate attribute CLASS: which statistic it is, given as the DescriptiveStatistics property that holds it (dici_onto:mean, dici_onto:standardDeviation, dici_onto:count, ...). With aggregatesAttribute, the platform reads what to compute from this declaration, never from the class name.
 

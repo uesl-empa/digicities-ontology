@@ -104,6 +104,8 @@ def test_no_term_of_the_previous_release_disappears_silently():
 INTENDED_ANNOTATION_CHANGES = {
     DICI.hasSource: "0.7.0: flow topology only; provenance is hasReference",
     DICI.basedOn: "0.7.0: states that a scenario inherits the overrides of its parent",
+    DICI.AggregateAttribute: "0.7.0: the aggregate class is declared with aggregatesAttribute "
+                             "and usesStatistic",
 }
 
 
