@@ -34,7 +34,7 @@ changes what a thing is.
 
 ## Where mappings live today
 
-Mappings are **not** in the core. The core v0.6.0 file contains no
+Mappings are **not** in the core. The core v0.7.0 file contains no
 `skos:*Match` statements. There are two places a mapping can live today.
 
 1. **An alignment extension in a workspace.** A Turtle file of mapping
@@ -64,7 +64,7 @@ The planned alignment module (below) closes both gaps.
 
 ## Worked examples
 
-One mapping per target ontology. The Digicities side is a core v0.6.0 class in
+One mapping per target ontology. The Digicities side is a core v0.7.0 class in
 every example. The "Checked" column says how the target IRI was confirmed.
 
 | Target | Mapping | Checked |

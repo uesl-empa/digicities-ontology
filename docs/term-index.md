@@ -1296,8 +1296,8 @@ mapping procedure.
 ### basedOn
 
 - **Label:** based on
-- **Hierarchy:** (root)
-- **Description:** Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling
+- **Hierarchy:** wasDerivedFrom > **basedOn**
+- **Description:** Links a derived scenario to the scenario it was derived from. A scenario inherits the attribute overrides of the scenario it is based on, recursively; its own override of the same attribute wins
 - **Domain:** Scenario
 - **Range:** Scenario
 
@@ -1349,10 +1349,8 @@ mapping procedure.
 ### derivedFrom
 
 - **Label:** derived from
-- **Hierarchy:** (root)
-- **Description:** Scenario provenance: this scenario was derived from another scenario
-- **Domain:** Scenario
-- **Range:** Scenario
+- **Hierarchy:** wasDerivedFrom > basedOn > **derivedFrom**
+- **Description:** Deprecated in v0.7.0: use basedOn (same meaning: a scenario to the scenario it was derived from). Kept for one release.
 
 ### derivedFromCatalogue
 
@@ -1556,6 +1554,12 @@ mapping procedure.
 - **Description:** Attaches a Damper attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Damper
 - **Range:** DamperAttribute
+
+### hasDataSource
+
+- **Label:** has data source
+- **Hierarchy:** wasDerivedFrom > hasReference > **hasDataSource**
+- **Description:** Deprecated in v0.7.0: use hasReference. Workspaces onboarded before v0.7.0 declare this property in their extension; this alias keeps their provenance reachable through hasReference. Kept for one release.
 
 ### hasDescriptiveStatistics
 
@@ -2027,6 +2031,14 @@ mapping procedure.
 - **Domain:** Process
 - **Range:** ProcessCapacity
 
+### hasReference
+
+- **Label:** has reference
+- **Hierarchy:** wasDerivedFrom > **hasReference**
+- **Description:** Where this thing came from: the citable source (Reference) a component instance, an attribute value or a scenario was taken from. What kind of source it is comes from the Reference's hasReferenceType, so a new kind of source needs no new property. Provenance, not system topology: not a linksComponent subproperty
+- **Examples:** WindTurbine Alkmaar_1 hasReference the Reference for the file turbines.csv
+- **Range:** Reference
+
 ### hasReferenceType
 
 - **Label:** has reference type
@@ -2114,7 +2126,7 @@ mapping procedure.
 
 - **Label:** has source
 - **Hierarchy:** linksComponent > **hasSource**
-- **Description:** The component from which the flow originates
+- **Description:** The component from which the flow originates. Flow topology only: where data came from is hasReference
 - **Domain:** Flow
 - **Range:** Component
 

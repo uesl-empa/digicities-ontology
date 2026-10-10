@@ -10,7 +10,7 @@ abstract: >-
 authors:
   - family-names: Allan
     given-names: James
-version: 0.6.0
+version: 0.7.0
 license: CC-BY-4.0
 repository-code: "https://github.com/uesl-empa/digicities-ontology"
 keywords:

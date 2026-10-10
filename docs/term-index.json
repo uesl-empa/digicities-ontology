@@ -4887,9 +4887,13 @@
       "name": "basedOn",
       "kind": "objectProperty",
       "label": "based on",
-      "parents": [],
-      "parentChainToRoot": [],
-      "comment": "Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling",
+      "parents": [
+        "wasDerivedFrom"
+      ],
+      "parentChainToRoot": [
+        "wasDerivedFrom"
+      ],
+      "comment": "Links a derived scenario to the scenario it was derived from. A scenario inherits the attribute overrides of the scenario it is based on, recursively; its own override of the same attribute wins",
       "definition": null,
       "altLabels": [],
       "examples": [],
@@ -5030,19 +5034,20 @@
       "name": "derivedFrom",
       "kind": "objectProperty",
       "label": "derived from",
-      "parents": [],
-      "parentChainToRoot": [],
-      "comment": "Scenario provenance: this scenario was derived from another scenario",
+      "parents": [
+        "basedOn"
+      ],
+      "parentChainToRoot": [
+        "basedOn",
+        "wasDerivedFrom"
+      ],
+      "comment": "Deprecated in v0.7.0: use basedOn (same meaning: a scenario to the scenario it was derived from). Kept for one release.",
       "definition": null,
       "altLabels": [],
       "examples": [],
       "scopeNote": null,
-      "domain": [
-        "Scenario"
-      ],
-      "range": [
-        "Scenario"
-      ]
+      "domain": [],
+      "range": []
     },
     {
       "iri": "https://digicities.info/ontology#derivedFromCatalogue",
@@ -5630,6 +5635,26 @@
       "range": [
         "DamperAttribute"
       ]
+    },
+    {
+      "iri": "https://digicities.info/ontology#hasDataSource",
+      "name": "hasDataSource",
+      "kind": "objectProperty",
+      "label": "has data source",
+      "parents": [
+        "hasReference"
+      ],
+      "parentChainToRoot": [
+        "hasReference",
+        "wasDerivedFrom"
+      ],
+      "comment": "Deprecated in v0.7.0: use hasReference. Workspaces onboarded before v0.7.0 declare this property in their extension; this alias keeps their provenance reachable through hasReference. Kept for one release.",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [],
+      "range": []
     },
     {
       "iri": "https://digicities.info/ontology#hasDescriptiveStatistics",
@@ -7086,6 +7111,29 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasReference",
+      "name": "hasReference",
+      "kind": "objectProperty",
+      "label": "has reference",
+      "parents": [
+        "wasDerivedFrom"
+      ],
+      "parentChainToRoot": [
+        "wasDerivedFrom"
+      ],
+      "comment": "Where this thing came from: the citable source (Reference) a component instance, an attribute value or a scenario was taken from. What kind of source it is comes from the Reference's hasReferenceType, so a new kind of source needs no new property. Provenance, not system topology: not a linksComponent subproperty",
+      "definition": null,
+      "altLabels": [],
+      "examples": [
+        "WindTurbine Alkmaar_1 hasReference the Reference for the file turbines.csv"
+      ],
+      "scopeNote": null,
+      "domain": [],
+      "range": [
+        "Reference"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasReferenceType",
       "name": "hasReferenceType",
       "kind": "objectProperty",
@@ -7355,7 +7403,7 @@
       "parentChainToRoot": [
         "linksComponent"
       ],
-      "comment": "The component from which the flow originates",
+      "comment": "The component from which the flow originates. Flow topology only: where data came from is hasReference",
       "definition": null,
       "altLabels": [],
       "examples": [],
