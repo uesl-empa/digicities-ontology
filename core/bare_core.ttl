@@ -11,14 +11,9 @@
 
 qudt:numericValue a owl:DatatypeProperty .
 
-qudt:unit a owl:ObjectProperty ;
-    rdfs:domain dici_onto:Attribute ;
-    rdfs:range qudt:Unit ;
-    rdfs:subPropertyOf dici_onto:hasUnit .
+qudt:unit a owl:ObjectProperty .
 
-qudt:value a owl:DatatypeProperty ;
-    rdfs:domain dici_onto:Attribute ;
-    rdfs:subPropertyOf dici_onto:hasAttributeValue .
+qudt:value a owl:DatatypeProperty .
 
 unit:KiloW-HR a owl:NamedIndividual .
 
@@ -173,6 +168,14 @@ dici_onto:aggregateOf a owl:ObjectProperty ;
     rdfs:domain dici_onto:AggregateAttribute ;
     rdfs:range dici_onto:Set .
 
+dici_onto:aggregatesAttribute a owl:AnnotationProperty ;
+    rdfs:label "aggregates attribute"@en ;
+    rdfs:comment "Stated on an aggregate attribute CLASS (a subclass of AggregateAttribute): the attribute class whose values it summarises over the components linked to each container (dici_onto:WeightMean aggregatesAttribute dici_onto:Weight). An annotation, so it describes the class and never types anything under reasoning."@en .
+
+dici_onto:usesStatistic a owl:AnnotationProperty ;
+    rdfs:label "uses statistic"@en ;
+    rdfs:comment "Stated on an aggregate attribute CLASS: which statistic it is, given as the DescriptiveStatistics property that holds it (dici_onto:mean, dici_onto:standardDeviation, dici_onto:count, ...). With aggregatesAttribute, the platform reads what to compute from this declaration, never from the class name."@en .
+
 dici_onto:appliesTo a owl:ObjectProperty ;
     rdfs:label "applies to"@en ;
     rdfs:comment "A component a ServiceConfiguration profile is tuned for (the wind park a wake-model setup was calibrated on). Not a linksComponent subproperty: it is not system topology."@en ;
@@ -205,9 +208,10 @@ dici_onto:assumptionType a owl:DatatypeProperty ;
 
 dici_onto:basedOn a owl:ObjectProperty ;
     rdfs:label "based on"@en ;
-    rdfs:comment "Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling"@en ;
+    rdfs:comment "Links a derived scenario to the scenario it was derived from. A scenario inherits the attribute overrides of the scenario it is based on, recursively; its own override of the same attribute wins"@en ;
     rdfs:domain dici_onto:Scenario ;
-    rdfs:range dici_onto:Scenario .
+    rdfs:range dici_onto:Scenario ;
+    rdfs:subPropertyOf prov:wasDerivedFrom .
 
 dici_onto:binFrequency a owl:DatatypeProperty ;
     rdfs:label "bin frequency" ;
@@ -292,12 +296,6 @@ dici_onto:definition a owl:AnnotationProperty ;
 dici_onto:denominatorUnit a owl:DatatypeProperty ;
     rdfs:label "denominator unit"@en ;
     rdfs:comment "Denominator unit of a custom physical ratio attribute"@en .
-
-dici_onto:derivedFrom a owl:ObjectProperty ;
-    rdfs:label "derived from"@en ;
-    rdfs:comment "Scenario provenance: this scenario was derived from another scenario"@en ;
-    rdfs:domain dici_onto:Scenario ;
-    rdfs:range dici_onto:Scenario .
 
 dici_onto:derivedFromCatalogue a owl:ObjectProperty ;
     rdfs:label "derived from catalogue"@en ;
@@ -557,9 +555,16 @@ dici_onto:hasReferenceType a owl:ObjectProperty ;
     rdfs:domain dici_onto:Reference ;
     rdfs:range dici_onto:ReferenceType .
 
+dici_onto:hasReference a owl:ObjectProperty ;
+    rdfs:label "has reference"@en ;
+    rdfs:comment "Where this thing came from: the citable source (Reference) a component instance, an attribute value or a scenario was taken from. What kind of source it is comes from the Reference's hasReferenceType, so a new kind of source needs no new property. Provenance, not system topology: not a linksComponent subproperty"@en ;
+    rdfs:range dici_onto:Reference ;
+    rdfs:subPropertyOf prov:wasDerivedFrom ;
+    skos:example "WindTurbine Alkmaar_1 hasReference the Reference for the file turbines.csv"@en .
+
 dici_onto:hasSource a owl:ObjectProperty ;
     rdfs:label "has source" ;
-    rdfs:comment "The component from which the flow originates"@en ;
+    rdfs:comment "The component from which the flow originates. Flow topology only: where data came from is hasReference"@en ;
     rdfs:domain dici_onto:Flow ;
     rdfs:range dici_onto:Component ;
     rdfs:subPropertyOf dici_onto:linksComponent ;
@@ -843,8 +848,8 @@ skos:definition a owl:AnnotationProperty .
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:source <https://digicities.info/ontology> ;
     rdfs:comment "Digicities is a requirements-driven semantic layer that connects models to the data they need: each model states its inputs as requirements against a shared ontology, and the platform finds, checks and delivers that data from a knowledge graph. This is that shared ontology."@en ;
-    owl:versionIRI <https://digicities.info/ontology/0.6.0> ;
-    owl:versionInfo "0.6.0" .
+    owl:versionIRI <https://digicities.info/ontology/0.7.0> ;
+    owl:versionInfo "0.7.0" .
 
 dici_onto:AnnotationAttribute a owl:Class ;
     rdfs:label "Annotation Attribute" ;
@@ -1050,7 +1055,7 @@ skos:altLabel a owl:AnnotationProperty .
 
 dici_onto:AggregateAttribute a owl:Class ;
     rdfs:label "Aggregate Attribute" ;
-    rdfs:comment "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored."@en ;
+    rdfs:comment "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. The aggregate CLASS (FloorAreaMean) is declared once, with aggregatesAttribute and usesStatistic, and the platform computes it from that declaration. The nodes are written by the collections materializer into the collections graph; never authored."@en ;
     rdfs:subClassOf dici_onto:Attribute .
 
 dici_onto:Distribution a owl:Class ;

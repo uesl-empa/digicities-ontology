@@ -2387,6 +2387,26 @@
     "label_lang": "en",
     "comment": "Deprecated in v0.6.0: use hasNonRenewableResourceAttribute. Kept for one release."
    }
+  },
+  {
+   "op": "add_deprecated_alias",
+   "name": "derivedFrom",
+   "replaced_by": "basedOn",
+   "annotations": {
+    "label": "derived from",
+    "label_lang": "en",
+    "comment": "Deprecated in v0.7.0: use basedOn (same meaning: a scenario to the scenario it was derived from). Kept for one release."
+   }
+  },
+  {
+   "op": "add_deprecated_alias",
+   "name": "hasDataSource",
+   "replaced_by": "hasReference",
+   "annotations": {
+    "label": "has data source",
+    "label_lang": "en",
+    "comment": "Deprecated in v0.7.0: use hasReference. Workspaces onboarded before v0.7.0 declare this property in their extension; this alias keeps their provenance reachable through hasReference. Kept for one release."
+   }
   }
  ]
 }

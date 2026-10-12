@@ -11,14 +11,9 @@
 
 qudt:numericValue a owl:DatatypeProperty .
 
-qudt:unit a owl:ObjectProperty ;
-    rdfs:domain dici_onto:Attribute ;
-    rdfs:range qudt:Unit ;
-    rdfs:subPropertyOf dici_onto:hasUnit .
+qudt:unit a owl:ObjectProperty .
 
-qudt:value a owl:DatatypeProperty ;
-    rdfs:domain dici_onto:Attribute ;
-    rdfs:subPropertyOf dici_onto:hasAttributeValue .
+qudt:value a owl:DatatypeProperty .
 
 skos:example a owl:AnnotationProperty .
 
@@ -168,6 +163,10 @@ dici_onto:aggregateOf a owl:ObjectProperty ;
     rdfs:domain dici_onto:AggregateAttribute ;
     rdfs:range dici_onto:Set .
 
+dici_onto:aggregatesAttribute a owl:AnnotationProperty ;
+    rdfs:label "aggregates attribute"@en ;
+    rdfs:comment "Stated on an aggregate attribute CLASS (a subclass of AggregateAttribute): the attribute class whose values it summarises over the components linked to each container (dici_onto:WeightMean aggregatesAttribute dici_onto:Weight). An annotation, so it describes the class and never types anything under reasoning."@en .
+
 dici_onto:appliesTo a owl:ObjectProperty ;
     rdfs:label "applies to"@en ;
     rdfs:comment "A component a ServiceConfiguration profile is tuned for (the wind park a wake-model setup was calibrated on). Not a linksComponent subproperty: it is not system topology."@en ;
@@ -197,12 +196,6 @@ dici_onto:assumptionType a owl:DatatypeProperty ;
     rdfs:comment "Kind of assumption applied when deriving this scenario (e.g. single value or series). Scenario-provenance metadata"@en ;
     rdfs:domain dici_onto:Scenario ;
     rdfs:range xsd:string .
-
-dici_onto:basedOn a owl:ObjectProperty ;
-    rdfs:label "based on"@en ;
-    rdfs:comment "Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling"@en ;
-    rdfs:domain dici_onto:Scenario ;
-    rdfs:range dici_onto:Scenario .
 
 dici_onto:binFrequency a owl:DatatypeProperty ;
     rdfs:label "bin frequency" ;
@@ -290,9 +283,10 @@ dici_onto:denominatorUnit a owl:DatatypeProperty ;
 
 dici_onto:derivedFrom a owl:ObjectProperty ;
     rdfs:label "derived from"@en ;
-    rdfs:comment "Scenario provenance: this scenario was derived from another scenario"@en ;
-    rdfs:domain dici_onto:Scenario ;
-    rdfs:range dici_onto:Scenario .
+    rdfs:comment "Deprecated in v0.7.0: use basedOn (same meaning: a scenario to the scenario it was derived from). Kept for one release."@en ;
+    rdfs:subPropertyOf dici_onto:basedOn ;
+    owl:deprecated true ;
+    owl:equivalentProperty dici_onto:basedOn .
 
 dici_onto:derivedFromCatalogue a owl:ObjectProperty ;
     rdfs:label "derived from catalogue"@en ;
@@ -455,6 +449,13 @@ dici_onto:hasDataPoints a owl:DatatypeProperty ;
     rdfs:domain dici_onto:CurveAttribute ;
     rdfs:range rdf:JSON ;
     rdfs:subPropertyOf dici_onto:hasAttributeValue .
+
+dici_onto:hasDataSource a owl:ObjectProperty ;
+    rdfs:label "has data source"@en ;
+    rdfs:comment "Deprecated in v0.7.0: use hasReference. Workspaces onboarded before v0.7.0 declare this property in their extension; this alias keeps their provenance reachable through hasReference. Kept for one release."@en ;
+    rdfs:subPropertyOf dici_onto:hasReference ;
+    owl:deprecated true ;
+    owl:equivalentProperty dici_onto:hasReference .
 
 dici_onto:hasDefaultTemporalPrecision a owl:AnnotationProperty ;
     rdfs:label "has default temporal precision"@en ;
@@ -862,7 +863,7 @@ dici_onto:hasSolidFuelAttribute a owl:ObjectProperty ;
 
 dici_onto:hasSource a owl:ObjectProperty ;
     rdfs:label "has source" ;
-    rdfs:comment "The component from which the flow originates"@en ;
+    rdfs:comment "The component from which the flow originates. Flow topology only: where data came from is hasReference"@en ;
     rdfs:domain dici_onto:Flow ;
     rdfs:range dici_onto:Component ;
     rdfs:subPropertyOf dici_onto:linksComponent ;
@@ -1176,6 +1177,10 @@ dici_onto:usedInScenario a owl:ObjectProperty ;
         dici_onto:ComponentLink ;
     rdfs:range dici_onto:Scenario .
 
+dici_onto:usesStatistic a owl:AnnotationProperty ;
+    rdfs:label "uses statistic"@en ;
+    rdfs:comment "Stated on an aggregate attribute CLASS: which statistic it is, given as the DescriptiveStatistics property that holds it (dici_onto:mean, dici_onto:standardDeviation, dici_onto:count, ...). With aggregatesAttribute, the platform reads what to compute from this declaration, never from the class name."@en .
+
 dici_onto:xUnitLabel a owl:DatatypeProperty ;
     rdfs:label "x unit label" ;
     rdfs:comment "String label for the x-axis unit of a CurveAttribute (e.g. 'DEG_C'). Emitted alongside dici_onto:xUnit IRI for backwards compatibility."@en ;
@@ -1203,8 +1208,8 @@ skos:definition a owl:AnnotationProperty .
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:source <https://digicities.info/ontology> ;
     rdfs:comment "Digicities is a requirements-driven semantic layer that connects models to the data they need: each model states its inputs as requirements against a shared ontology, and the platform finds, checks and delivers that data from a knowledge graph. This is that shared ontology."@en ;
-    owl:versionIRI <https://digicities.info/ontology/0.6.0> ;
-    owl:versionInfo "0.6.0" .
+    owl:versionIRI <https://digicities.info/ontology/0.7.0> ;
+    owl:versionInfo "0.7.0" .
 
 dici_onto:ActorAttribute a owl:Class ;
     rdfs:label "Actor Attribute" ;
@@ -1661,13 +1666,6 @@ dici_onto:ProcessCapacity a owl:Class ;
         dici_onto:ProcessAttribute ;
     dici_onto:hasDefaultUnit unit:KiloW .
 
-dici_onto:Reference a owl:Class ;
-    rdfs:label "Reference" ;
-    rdfs:comment "A citable information source (report, paper, dataset, website) that replica or scenario data points to as provenance. Instances are created from the Reference sheet of the ingestion template"@en ;
-    skos:altLabel "Citation"@en,
-        "Source"@en ;
-    skos:example "A journal article identified by DOI backing an efficiency value"@en .
-
 dici_onto:SamplingRate a owl:Class ;
     rdfs:label "Sampling Rate" ;
     rdfs:comment "Frequency of measurements or readings"@en ;
@@ -1974,7 +1972,7 @@ skos:altLabel a owl:AnnotationProperty .
 
 dici_onto:AggregateAttribute a owl:Class ;
     rdfs:label "Aggregate Attribute" ;
-    rdfs:comment "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored."@en ;
+    rdfs:comment "A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. The aggregate CLASS (FloorAreaMean) is declared once, with aggregatesAttribute and usesStatistic, and the platform computes it from that declaration. The nodes are written by the collections materializer into the collections graph; never authored."@en ;
     rdfs:subClassOf dici_onto:Attribute .
 
 dici_onto:Controller a owl:Class ;
@@ -2056,6 +2054,13 @@ dici_onto:ObservationAttribute a owl:Class ;
     rdfs:comment "Typing marker grouping attributes that apply to an Observation; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en ;
     rdfs:subClassOf dici_onto:ComponentAttribute .
 
+dici_onto:Reference a owl:Class ;
+    rdfs:label "Reference" ;
+    rdfs:comment "A citable information source (report, paper, dataset, website) that replica or scenario data points to as provenance. Instances are created from the Reference sheet of the ingestion template"@en ;
+    skos:altLabel "Citation"@en,
+        "Source"@en ;
+    skos:example "A journal article identified by DOI backing an efficiency value"@en .
+
 dici_onto:ReferenceType a owl:Class ;
     rdfs:label "Reference Type" ;
     rdfs:comment "Kind of citable source a Reference is; the allowed values are its named individuals"@en ;
@@ -2090,6 +2095,13 @@ dici_onto:WindAttribute a owl:Class ;
 dici_onto:assumptionObjectProperty a owl:ObjectProperty ;
     rdfs:label "assumption object property"@en ;
     rdfs:comment "Root property for links from an Assumption to its targets"@en .
+
+dici_onto:basedOn a owl:ObjectProperty ;
+    rdfs:label "based on"@en ;
+    rdfs:comment "Links a derived scenario to the scenario it was derived from. A scenario inherits the attribute overrides of the scenario it is based on, recursively; its own override of the same attribute wins"@en ;
+    rdfs:domain dici_onto:Scenario ;
+    rdfs:range dici_onto:Scenario ;
+    rdfs:subPropertyOf prov:wasDerivedFrom .
 
 dici_onto:hasAttribute a owl:ObjectProperty ;
     rdfs:label "has Attribute" ;
@@ -2138,6 +2150,13 @@ dici_onto:hasNonRenewableResourceAttribute a owl:ObjectProperty ;
     rdfs:domain dici_onto:NonRenewableResource ;
     rdfs:range dici_onto:NonRenewableResourceAttribute ;
     rdfs:subPropertyOf dici_onto:hasResourceAttribute .
+
+dici_onto:hasReference a owl:ObjectProperty ;
+    rdfs:label "has reference"@en ;
+    rdfs:comment "Where this thing came from: the citable source (Reference) a component instance, an attribute value or a scenario was taken from. What kind of source it is comes from the Reference's hasReferenceType, so a new kind of source needs no new property. Provenance, not system topology: not a linksComponent subproperty"@en ;
+    rdfs:range dici_onto:Reference ;
+    rdfs:subPropertyOf prov:wasDerivedFrom ;
+    skos:example "WindTurbine Alkmaar_1 hasReference the Reference for the file turbines.csv"@en .
 
 dici_onto:hasResourceAttribute a owl:ObjectProperty ;
     rdfs:label "has resource attribute"@en ;
@@ -2272,6 +2291,12 @@ dici_onto:hasTimeSeriesReference a owl:DatatypeProperty ;
     rdfs:label "has time series reference"@en ;
     rdfs:comment "Root property referencing external time series data from an attribute"@en .
 
+dici_onto:hasUnit a owl:ObjectProperty ;
+    rdfs:label "has unit" ;
+    rdfs:comment "Links an attribute to its QUDT unit"@en ;
+    rdfs:domain dici_onto:Attribute ;
+    rdfs:range qudt:Unit .
+
 dici_onto:timeSeriesReferenceOf a owl:DatatypeProperty ;
     rdfs:label "time series reference of"@en ;
     rdfs:comment "Root inverse-direction property for time series references"@en .
@@ -2386,12 +2411,6 @@ dici_onto:hasThermalEnergyCarrierAttribute a owl:ObjectProperty ;
     rdfs:range dici_onto:ThermalEnergyCarrierAttribute ;
     rdfs:subPropertyOf dici_onto:hasEnergyCarrierAttribute .
 
-dici_onto:hasUnit a owl:ObjectProperty ;
-    rdfs:label "has unit" ;
-    rdfs:comment "Links an attribute to its QUDT unit"@en ;
-    rdfs:domain dici_onto:Attribute ;
-    rdfs:range qudt:Unit .
-
 dici_onto:isTimeSeriesOf a owl:ObjectProperty ;
     rdfs:label "is time series of" ;
     rdfs:comment "Links a time series to the dynamic attribute it represents"@en ;
@@ -2487,6 +2506,8 @@ dici_onto:hasFuelCarrierAttribute a owl:ObjectProperty ;
     rdfs:range dici_onto:FuelCarrierAttribute ;
     rdfs:subPropertyOf dici_onto:hasEnergyCarrierAttribute .
 
+qudt:Unit a owl:Class .
+
 dici_onto:EnergyCarrierFlow a owl:Class ;
     rdfs:label "Energy Carrier Flow" ;
     rdfs:comment "Flow of energy carriers between components"@en ;
@@ -2503,6 +2524,11 @@ dici_onto:TemporalPrecision a owl:Class ;
     rdfs:comment "Granularity of an event attribute temporal value; the allowed values are its named individuals"@en ;
     skos:example "Year, Year-Month, Date, Date-Time, Unknown"@en .
 
+dici_onto:hasAttributeValue a owl:DatatypeProperty ;
+    rdfs:label "has attribute value" ;
+    rdfs:comment "Root data property carrying the literal value of an attribute"@en ;
+    rdfs:domain dici_onto:Attribute .
+
 dici_onto:hasDeviceAttribute a owl:ObjectProperty ;
     rdfs:label "has device attribute" ;
     rdfs:comment "Attaches a Device attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute"@en ;
@@ -2516,8 +2542,6 @@ dici_onto:hasSensorAttribute a owl:ObjectProperty ;
     rdfs:domain dici_onto:Sensor ;
     rdfs:range dici_onto:SensorAttribute ;
     rdfs:subPropertyOf dici_onto:hasDeviceAttribute .
-
-qudt:Unit a owl:Class .
 
 dici_onto:CurveAttribute a owl:Class ;
     rdfs:label "Curve Attribute" ;
@@ -2566,11 +2590,6 @@ dici_onto:Set a owl:Class ;
     rdfs:comment "A collection of attribute instances of a single attribute type, drawn from one workspace replica (optionally restricted to one data source), or one partition of a GroupedSet. Carries descriptive statistics."@en ;
     rdfs:subClassOf dici_onto:Collection .
 
-dici_onto:hasAttributeValue a owl:DatatypeProperty ;
-    rdfs:label "has attribute value" ;
-    rdfs:comment "Root data property carrying the literal value of an attribute"@en ;
-    rdfs:domain dici_onto:Attribute .
-
 dici_onto:ServiceRequirement a owl:Class ;
     rdfs:label "Service Requirement"@en ;
     rdfs:comment "Declares an input a Service requires from a scenario: a component, an attribute, or a link between components"@en ;
@@ -2603,15 +2622,6 @@ dici_onto:Device a owl:Class ;
     skos:scopeNote "Use for monitoring, control and measurement equipment. Machinery that converts or stores energy belongs under Converter or Storage, not Device."@en ;
     dici_onto:definition "Devices are components that provide sensing, actuation, measurement, or control capabilities within the energy system"@en .
 
-dici_onto:TimeSeries a owl:Class ;
-    rdfs:label "Time Series" ;
-    rdfs:comment "A sequence of data points indexed in time order, typically used to represent dynamic attributes over time"@en ;
-    skos:altLabel "Data Series"@en,
-        "Profile"@en,
-        "Timeseries"@en ;
-    skos:example "Hourly electricity demand for 2024; a 48-hour wind speed forecast"@en ;
-    dici_onto:definition "A time series is a series of data points indexed (or listed or graphed) in time order. Time series data is used to track changes over time for dynamic attributes."@en .
-
 dici_onto:Scenario a owl:Class ;
     rdfs:label "Scenario"@en ;
     rdfs:comment "A what-if container: a named snapshot of replica components with attribute overrides"@en ;
@@ -2621,6 +2631,15 @@ dici_onto:Scenario a owl:Class ;
     skos:definition "A named what-if case built from a digital replica: it references the replica components involved and carries only the attribute values that differ from the replica baseline."@en ;
     skos:example "A baseline scenario; a heat-pump-retrofit scenario derived from it with modified heating attributes"@en ;
     skos:scopeNote "Scenarios are thin: they reference the replica's components and carry only superseding attributes marked with usedInScenario."@en .
+
+dici_onto:TimeSeries a owl:Class ;
+    rdfs:label "Time Series" ;
+    rdfs:comment "A sequence of data points indexed in time order, typically used to represent dynamic attributes over time"@en ;
+    skos:altLabel "Data Series"@en,
+        "Profile"@en,
+        "Timeseries"@en ;
+    skos:example "Hourly electricity demand for 2024; a 48-hour wind speed forecast"@en ;
+    dici_onto:definition "A time series is a series of data points indexed (or listed or graphed) in time order. Time series data is used to track changes over time for dynamic attributes."@en .
 
 dici_onto:Flow a owl:Class ;
     rdfs:label "Flow" ;

@@ -71,11 +71,11 @@ Drop `core/dici_onto_core.ttl` into your triplestore as a named graph. The platf
 
 Canonical prefix: `dici_onto: <https://digicities.info/ontology#>`
 
-The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/qudt/`, `http://qudt.org/vocab/unit/`), QUDT currencies (`http://qudt.org/vocab/currency/`) for monetary values, SKOS for mapping annotations, PROV-O for the one provenance link it has today (`derivedFromCatalogue`), and Dublin Core terms for its own metadata. The full table is in [`docs/overview.md`](docs/overview.md#namespaces).
+The ontology re-uses QUDT for units and quantity kinds (`http://qudt.org/schema/qudt/`, `http://qudt.org/vocab/unit/`), QUDT currencies (`http://qudt.org/vocab/currency/`) for monetary values, SKOS for mapping annotations, PROV-O for provenance (`hasReference`, `derivedFromCatalogue` and `basedOn` are sub-properties of `prov:wasDerivedFrom`), and Dublin Core terms for its own metadata. The full table is in [`docs/overview.md`](docs/overview.md#namespaces).
 
 ## Versioning
 
-Semver. The current release is **v0.6.0**, the scaffold release: the core is built by replaying `core/scaffold_instructions.json` through the Digicities platform's Ontology Manager onto `core/bare_core.ttl`, so every component class has its category and general predicate by construction (range = the category), exactly like a workspace extension. Renamed terms stay one release as `owl:deprecated` aliases. See [`CHANGELOG.md`](CHANGELOG.md).
+Semver. The current release is **v0.7.0**, the provenance release: `hasReference` is the core's property for where data came from, `hasSource` is only the flow property, the core no longer gives `qudt:unit` and `qudt:value` Digicities meaning, and a scenario inherits the overrides of the scenarios it is `basedOn`. Since the scaffold release (0.6.0) the core is built by replaying `core/scaffold_instructions.json` through the Digicities platform's Ontology Manager onto `core/bare_core.ttl`, so every component class has its category and general predicate by construction (range = the category), exactly like a workspace extension. Renamed terms stay one release as `owl:deprecated` aliases. See [`CHANGELOG.md`](CHANGELOG.md).
 
 To change the core, edit `bare_core.ttl` or `scaffold_instructions.json`, then rebuild:
 
@@ -112,7 +112,7 @@ If you use the Digicities ontology in published work, please cite it:
   title   = {Digicities Ontology},
   author  = {Allan, James},
   year    = {2026},
-  version = {0.6.0},
+  version = {0.7.0},
   url     = {https://github.com/uesl-empa/digicities-ontology},
 }
 ```

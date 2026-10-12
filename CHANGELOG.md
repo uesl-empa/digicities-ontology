@@ -2,6 +2,29 @@
 
 All notable changes to the Digicities ontology are recorded here. The project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] — 2026-10-10
+
+**BREAKING (pre-1.0 minor).** Provenance release: the three semantic defects found in the October 2026 audit are fixed in the core. Workspaces need **Provision graph** to load it; see "Migration" below.
+
+### Added
+- **`hasReference`** (`rdfs:subPropertyOf prov:wasDerivedFrom`, range `Reference`): where a component instance, an attribute value or a scenario came from. What kind of source it is comes from the Reference's `hasReferenceType`, so a new kind of source needs no new property. Not a `linksComponent` sub-property: provenance is not system topology.
+- **`aggregatesAttribute` and `usesStatistic`** (annotation properties): stated on an aggregate attribute class, a subclass of `AggregateAttribute`, they say which attribute class it summarises and with which statistic (`WeightMean aggregatesAttribute Weight ; usesStatistic dici_onto:mean`). The statistic is the `DescriptiveStatistics` property that holds it, so no new statistic terms. The platform computes a derived value from this declaration, never from the class name. They are annotations, not object properties, because they describe a class: an object property between classes would make the reasoner treat the classes as individuals, and a restriction would talk about each instance instead of the class.
+
+### Changed
+- **`hasSource` is only the flow property** (the component a `Flow` comes from). Its comment says so; provenance is `hasReference`.
+- **`qudt:unit` and `qudt:value` are used as QUDT defines them.** The core no longer gives them `rdfs:domain dici_onto:Attribute`, and they are no longer sub-properties of `dici_onto:hasUnit` / `dici_onto:hasAttributeValue`. Before, any QUDT data loaded next to Digicities data inherited Digicities meaning, and a reasoner applying domains typed QUDT nodes as Digicities attributes. Both stay declared (`owl:ObjectProperty` / `owl:DatatypeProperty`) so OWL tools know their kind. `hasUnit` and `hasAttributeValue` remain Digicities' own properties.
+- **`basedOn` is a sub-property of `prov:wasDerivedFrom`**, and its comment states what the platform now does with it: a scenario inherits the attribute overrides of the scenario it is based on, recursively, and its own override of the same attribute wins.
+
+### Deprecated (aliases kept for one release, `owl:deprecated true` + `owl:equivalentProperty` + `rdfs:subPropertyOf` the replacement)
+- `derivedFrom` → `basedOn`. The two said the same thing (Scenario to the scenario it was derived from); nothing wrote `derivedFrom`.
+- `hasDataSource` → `hasReference`. The onboarding agent wrote `hasDataSource` and declared it in each workspace extension; the alias keeps the provenance of workspaces onboarded before 0.7.0 reachable through `hasReference`.
+- The aliases 0.6.0 deprecated are **kept in 0.7.0**, an exception to the one-release rule (decided 2026-10-10): live workspaces are re-onboarded first. They are removed in the release after 0.7.0.
+
+### Migration
+- Re-provision every workspace (Provision graph) so the triplestore holds core 0.7.0.
+- Workspaces onboarded after 2026-08-13 cite their sources with `hasDataSource`: they keep working through the alias. New onboardings write `hasReference`.
+- Data onboarded before 2026-08-13 used `hasSource` for provenance. That cannot be aliased (the name is the flow property): re-onboard those workspaces.
+
 ## [0.6.0] — 2026-10-09
 
 **BREAKING (pre-1.0 minor).** Scaffold release: the core is no longer edited by hand. It is built by replaying `core/scaffold_instructions.json` through the Digicities platform's Ontology Manager onto `core/bare_core.ttl` (`tools/build_core.py`), so the core follows the same Entity-Attribute-Relation pattern as every workspace extension, by construction. Hand edits had left the pattern broken in 49 places (missing ranges, duplicate predicates, categories named unlike their component, components without a scaffold).

@@ -30,10 +30,10 @@ REPO_ROOT = Path(__file__).parent.parent
 CORE_TTL = REPO_ROOT / "core" / "dici_onto_core.ttl"
 DICI = rdflib.Namespace("https://digicities.info/ontology#")
 ONTOLOGY_IRI = URIRef("https://digicities.info/ontology")
-# The release before the scaffold was built through the Ontology Manager.
-PREVIOUS_RELEASE = "cae6166"
+# The previous release (v0.6.0, the first core built through the Ontology Manager).
+PREVIOUS_RELEASE = "adc856d"
 # Terms of the previous release removed on purpose (no replacement exists).
-REMOVED = {DICI.hasEnergyCarrierEnergyCostAttribute}
+REMOVED: set = set()
 
 PLATFORM = os.environ.get("DIGICITIES_PLATFORM_DIR")
 needs_platform = pytest.mark.skipif(
@@ -102,8 +102,10 @@ def test_no_term_of_the_previous_release_disappears_silently():
 
 # Annotations this release changes on purpose, with the reason.
 INTENDED_ANNOTATION_CHANGES = {
-    DICI.locationOf: "0.6.0: the inverse of hasLocation only (locatedIn has locationContains)",
-    DICI.hasCategoricalValue: "0.6.0: an object property; the value is the category IRI",
+    DICI.hasSource: "0.7.0: flow topology only; provenance is hasReference",
+    DICI.basedOn: "0.7.0: states that a scenario inherits the overrides of its parent",
+    DICI.AggregateAttribute: "0.7.0: the aggregate class is declared with aggregatesAttribute "
+                             "and usesStatistic",
 }
 
 

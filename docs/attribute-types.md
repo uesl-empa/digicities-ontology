@@ -51,7 +51,7 @@ The path-style URI (`BuildingA/floorArea`) is the recommended convention. The on
 
 ## Provenance
 
-The core declares one provenance property so far: `derivedFromCatalogue` (a sub-property of `prov:wasDerivedFrom`), from a sited instance to the catalogue entry it was specified from. To cite a source for a value, use PROV-O directly, as below. A dedicated core property for this (`hasReference`) is planned; see the platform's `docs/KNOWN_LIMITATIONS.md`.
+The core's provenance properties are sub-properties of `prov:wasDerivedFrom`: `hasReference` (a component instance, an attribute value or a scenario to the `Reference` it came from), `derivedFromCatalogue` (a sited instance to the catalogue entry it was specified from) and `basedOn` (a scenario to the scenario it was derived from). A value can also cite its source with `prov:wasDerivedFrom` directly, as below; readers match the whole `prov:wasDerivedFrom` hierarchy.
 
 ```turtle
 <…/BuildingA/floorArea>

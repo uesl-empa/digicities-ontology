@@ -52,7 +52,7 @@ mapping procedure.
 
 - **Label:** Aggregate Attribute
 - **Hierarchy:** Thing > Attribute > **AggregateAttribute**
-- **Description:** A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. Written by the collections materializer into the collections graph; never authored.
+- **Description:** A DERIVED attribute node projecting one statistic of a component-grouped Set onto the group's component instance (e.g. FloorAreaMean on a District), in the exact shape authored attributes take (hasAttribute edge, has<Component><Name>Attribute predicate, qudt:value + qudt:unit) — so services request it as Component.attribute with no special handling. The aggregate CLASS (FloorAreaMean) is declared once, with aggregatesAttribute and usesStatistic, and the platform computes it from that declaration. The nodes are written by the collections materializer into the collections graph; never authored.
 
 ### AnnotationAttribute
 
@@ -1296,8 +1296,8 @@ mapping procedure.
 ### basedOn
 
 - **Label:** based on
-- **Hierarchy:** (root)
-- **Description:** Links a derived scenario to the baseline scenario it was derived from. Scenario-provenance link written by the platform assumptions tooling
+- **Hierarchy:** wasDerivedFrom > **basedOn**
+- **Description:** Links a derived scenario to the scenario it was derived from. A scenario inherits the attribute overrides of the scenario it is based on, recursively; its own override of the same attribute wins
 - **Domain:** Scenario
 - **Range:** Scenario
 
@@ -1349,10 +1349,8 @@ mapping procedure.
 ### derivedFrom
 
 - **Label:** derived from
-- **Hierarchy:** (root)
-- **Description:** Scenario provenance: this scenario was derived from another scenario
-- **Domain:** Scenario
-- **Range:** Scenario
+- **Hierarchy:** wasDerivedFrom > basedOn > **derivedFrom**
+- **Description:** Deprecated in v0.7.0: use basedOn (same meaning: a scenario to the scenario it was derived from). Kept for one release.
 
 ### derivedFromCatalogue
 
@@ -1556,6 +1554,12 @@ mapping procedure.
 - **Description:** Attaches a Damper attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute
 - **Domain:** Damper
 - **Range:** DamperAttribute
+
+### hasDataSource
+
+- **Label:** has data source
+- **Hierarchy:** wasDerivedFrom > hasReference > **hasDataSource**
+- **Description:** Deprecated in v0.7.0: use hasReference. Workspaces onboarded before v0.7.0 declare this property in their extension; this alias keeps their provenance reachable through hasReference. Kept for one release.
 
 ### hasDescriptiveStatistics
 
@@ -2027,6 +2031,14 @@ mapping procedure.
 - **Domain:** Process
 - **Range:** ProcessCapacity
 
+### hasReference
+
+- **Label:** has reference
+- **Hierarchy:** wasDerivedFrom > **hasReference**
+- **Description:** Where this thing came from: the citable source (Reference) a component instance, an attribute value or a scenario was taken from. What kind of source it is comes from the Reference's hasReferenceType, so a new kind of source needs no new property. Provenance, not system topology: not a linksComponent subproperty
+- **Examples:** WindTurbine Alkmaar_1 hasReference the Reference for the file turbines.csv
+- **Range:** Reference
+
 ### hasReferenceType
 
 - **Label:** has reference type
@@ -2114,7 +2126,7 @@ mapping procedure.
 
 - **Label:** has source
 - **Hierarchy:** linksComponent > **hasSource**
-- **Description:** The component from which the flow originates
+- **Description:** The component from which the flow originates. Flow topology only: where data came from is hasReference
 - **Domain:** Flow
 - **Range:** Component
 
@@ -2959,6 +2971,12 @@ mapping procedure.
 - **Hierarchy:** altLabel > **abbreviation**
 - **Description:** Legacy abbreviation annotation; prefer skos:altLabel for new terms
 
+### aggregatesAttribute
+
+- **Label:** aggregates attribute
+- **Hierarchy:** (root)
+- **Description:** Stated on an aggregate attribute CLASS (a subclass of AggregateAttribute): the attribute class whose values it summarises over the components linked to each container (dici_onto:WeightMean aggregatesAttribute dici_onto:Weight). An annotation, so it describes the class and never types anything under reasoning.
+
 ### definition
 
 - **Label:** definition
@@ -2982,4 +3000,10 @@ mapping procedure.
 - **Label:** has quantity kind
 - **Hierarchy:** (root)
 - **Description:** Annotation on an attribute class giving the QUDT quantity kind its values measure
+
+### usesStatistic
+
+- **Label:** uses statistic
+- **Hierarchy:** (root)
+- **Description:** Stated on an aggregate attribute CLASS: which statistic it is, given as the DescriptiveStatistics property that holds it (dici_onto:mean, dici_onto:standardDeviation, dici_onto:count, ...). With aggregatesAttribute, the platform reads what to compute from this declaration, never from the class name.
 
