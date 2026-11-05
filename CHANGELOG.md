@@ -2,6 +2,13 @@
 
 All notable changes to the Digicities ontology are recorded here. The project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-11-05
+
+Additive: a service can now state what it returns, not only what it requires.
+
+### Added
+- **`ComponentAttributeOutput`**, with `isProvidedBy`, `providesOutputEntity`, `providesOutputAttribute`, `atStreamAddress`, `hasResultField` and `identifiedByField`: what a `Service` returns, and which input component each result belongs to (per `Building`, per `Location`, or for the whole `Scenario`). The platform has written the first four of these into workspace extensions since 2026; they are now core.
+
 ## [0.7.0] — 2026-10-10
 
 **BREAKING (pre-1.0 minor).** Provenance release: the three semantic defects found in the October 2026 audit are fixed in the core. Workspaces need **Provision graph** to load it; see "Migration" below.

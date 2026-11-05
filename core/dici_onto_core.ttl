@@ -197,6 +197,12 @@ dici_onto:assumptionType a owl:DatatypeProperty ;
     rdfs:domain dici_onto:Scenario ;
     rdfs:range xsd:string .
 
+dici_onto:atStreamAddress a owl:DatatypeProperty ;
+    rdfs:label "at stream address" ;
+    rdfs:comment "The data stream a ComponentAttributeOutput is published on. Absent when the result comes back in the response"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
 dici_onto:binFrequency a owl:DatatypeProperty ;
     rdfs:label "bin frequency" ;
     rdfs:comment "How many of the Set's values fall in this bin."@en ;
@@ -833,6 +839,12 @@ dici_onto:hasRenewableAttribute a owl:ObjectProperty ;
     owl:deprecated true ;
     owl:equivalentProperty dici_onto:hasRenewableResourceAttribute .
 
+dici_onto:hasResultField a owl:DatatypeProperty ;
+    rdfs:label "has result field" ;
+    rdfs:comment "The name a Service gives this output in what it returns"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
 dici_onto:hasSensorMeasurementValueAttribute a owl:ObjectProperty ;
     rdfs:label "has sensor measurement value attribute"@en ;
     rdfs:comment "Links a Sensor to its Measurement Value attribute; under hasSensorAttribute"@en ;
@@ -947,6 +959,12 @@ dici_onto:historicTimeSeriesReferenceOf a owl:DatatypeProperty ;
     rdfs:comment "Inverse-direction reference: historical data describing an attribute"@en ;
     rdfs:subPropertyOf dici_onto:timeSeriesReferenceOf .
 
+dici_onto:identifiedByField a owl:DatatypeProperty ;
+    rdfs:label "identified by field" ;
+    rdfs:comment "The field of a result that names the component instance it belongs to"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
 dici_onto:identifierValue a owl:DatatypeProperty ;
     rdfs:label "identifier value"@en ;
     rdfs:comment "Literal value of an identifier attribute"@en ;
@@ -957,6 +975,12 @@ dici_onto:isCatalogueEntry a owl:DatatypeProperty ;
     rdfs:comment "Marks a component instance as a catalogue / reference entry (a type or specification) rather than a sited thing. Explorers can hide such entries; scenarios leave them out."@en ;
     rdfs:domain dici_onto:Component ;
     rdfs:range xsd:boolean .
+
+dici_onto:isProvidedBy a owl:ObjectProperty ;
+    rdfs:label "is provided by" ;
+    rdfs:comment "A ComponentAttributeOutput belongs to the Service that returns it"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range dici_onto:Service .
 
 dici_onto:isRequiredBy a owl:ObjectProperty ;
     rdfs:label "is required by" ;
@@ -1089,6 +1113,16 @@ dici_onto:populationInfluenced a owl:DatatypeProperty ;
     rdfs:comment "Share or count of the population affected by an assumption"@en ;
     rdfs:subPropertyOf dici_onto:assumptionDataProperty .
 
+dici_onto:providesOutputAttribute a owl:ObjectProperty ;
+    rdfs:label "provides output attribute" ;
+    rdfs:comment "The attribute class of what a Service returns"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput .
+
+dici_onto:providesOutputEntity a owl:ObjectProperty ;
+    rdfs:label "provides output entity" ;
+    rdfs:comment "The input component type a result belongs to: one value per instance of this type, for example per Building, or per Location for a whole region. Scenario for a result of the whole run"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput .
+
 dici_onto:realTimeSource a owl:ObjectProperty ;
     rdfs:label "real-time source" ;
     rdfs:comment "Reference to a real-time data source for live dynamic attributes"@en ;
@@ -1208,8 +1242,8 @@ skos:definition a owl:AnnotationProperty .
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:source <https://digicities.info/ontology> ;
     rdfs:comment "Digicities is a requirements-driven semantic layer that connects models to the data they need: each model states its inputs as requirements against a shared ontology, and the platform finds, checks and delivers that data from a knowledge graph. This is that shared ontology."@en ;
-    owl:versionIRI <https://digicities.info/ontology/0.7.0> ;
-    owl:versionInfo "0.7.0" .
+    owl:versionIRI <https://digicities.info/ontology/0.8.0> ;
+    owl:versionInfo "0.8.0" .
 
 dici_onto:ActorAttribute a owl:Class ;
     rdfs:label "Actor Attribute" ;
@@ -2339,15 +2373,6 @@ dici_onto:Resource a owl:Class ;
     skos:example "Wind, solar irradiation, groundwater, coal deposit"@en ;
     skos:scopeNote "The wind blowing over a site is a Resource; the electricity generated from it is an ElectricityCarrier; the machine converting it is a Turbine."@en .
 
-dici_onto:Service a owl:Class ;
-    rdfs:label "Service"@en ;
-    rdfs:comment "An external model or tool (simulator, optimizer, forecaster) that consumes scenarios and returns results"@en ;
-    skos:altLabel "External Service"@en,
-        "Model"@en,
-        "Tool"@en ;
-    skos:definition "An external computational model reachable from the platform - a simulator, optimizer or forecaster - that consumes a converted scenario payload and returns results."@en ;
-    skos:example "Energy simulator, flexibility optimizer, wind power forecaster"@en .
-
 dici_onto:ServiceConfiguration a owl:Class ;
     rdfs:label "Service Configuration"@en ;
     rdfs:comment "A configuration profile of one Service: the set of configuration parameters for one way of running it (typically one config file or run setup)."@en ;
@@ -2492,6 +2517,15 @@ dici_onto:ProcessAttribute a owl:Class ;
     rdfs:comment "Typing marker grouping attributes that apply to a Process; lets SPARQL select all attributes of one component type via rdfs:subClassOf*"@en ;
     rdfs:subClassOf dici_onto:ComponentAttribute .
 
+dici_onto:Service a owl:Class ;
+    rdfs:label "Service"@en ;
+    rdfs:comment "An external model or tool (simulator, optimizer, forecaster) that consumes scenarios and returns results"@en ;
+    skos:altLabel "External Service"@en,
+        "Model"@en,
+        "Tool"@en ;
+    skos:definition "An external computational model reachable from the platform - a simulator, optimizer or forecaster - that consumes a converted scenario payload and returns results."@en ;
+    skos:example "Energy simulator, flexibility optimizer, wind power forecaster"@en .
+
 dici_onto:hasFlowAttribute a owl:ObjectProperty ;
     rdfs:label "has flow attribute" ;
     rdfs:comment "Attaches a Flow attribute to its component; part of the has-attribute property hierarchy under dici_onto:hasAttribute"@en ;
@@ -2507,6 +2541,11 @@ dici_onto:hasFuelCarrierAttribute a owl:ObjectProperty ;
     rdfs:subPropertyOf dici_onto:hasEnergyCarrierAttribute .
 
 qudt:Unit a owl:Class .
+
+dici_onto:ComponentAttributeOutput a owl:Class ;
+    rdfs:label "Component-Attribute Output" ;
+    rdfs:comment "What a Service returns: this attribute, for this component type. The output counterpart of a ComponentAttributeRequirement"@en ;
+    rdfs:subClassOf owl:Thing .
 
 dici_onto:EnergyCarrierFlow a owl:Class ;
     rdfs:label "Energy Carrier Flow" ;

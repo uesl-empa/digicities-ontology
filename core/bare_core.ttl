@@ -42,6 +42,45 @@ dici_onto:Collaborator a owl:AnnotationProperty ;
     rdfs:label "collaborator"@en ;
     rdfs:comment "Provenance annotation naming a collaborator on a term or graph"@en .
 
+dici_onto:ComponentAttributeOutput a owl:Class ;
+    rdfs:label "Component-Attribute Output" ;
+    rdfs:comment "What a Service returns: this attribute, for this component type. The output counterpart of a ComponentAttributeRequirement"@en ;
+    rdfs:subClassOf owl:Thing .
+
+dici_onto:isProvidedBy a owl:ObjectProperty ;
+    rdfs:label "is provided by" ;
+    rdfs:comment "A ComponentAttributeOutput belongs to the Service that returns it"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range dici_onto:Service .
+
+dici_onto:providesOutputEntity a owl:ObjectProperty ;
+    rdfs:label "provides output entity" ;
+    rdfs:comment "The input component type a result belongs to: one value per instance of this type, for example per Building, or per Location for a whole region. Scenario for a result of the whole run"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput .
+
+dici_onto:providesOutputAttribute a owl:ObjectProperty ;
+    rdfs:label "provides output attribute" ;
+    rdfs:comment "The attribute class of what a Service returns"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput .
+
+dici_onto:atStreamAddress a owl:DatatypeProperty ;
+    rdfs:label "at stream address" ;
+    rdfs:comment "The data stream a ComponentAttributeOutput is published on. Absent when the result comes back in the response"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
+dici_onto:hasResultField a owl:DatatypeProperty ;
+    rdfs:label "has result field" ;
+    rdfs:comment "The name a Service gives this output in what it returns"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
+dici_onto:identifiedByField a owl:DatatypeProperty ;
+    rdfs:label "identified by field" ;
+    rdfs:comment "The field of a result that names the component instance it belongs to"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
 dici_onto:ComponentAttributeRequirement a owl:Class ;
     rdfs:label "Component-Attribute Requirement" ;
     rdfs:comment "Service requirement demanding that a component carries a given attribute"@en ;
@@ -848,8 +887,8 @@ skos:definition a owl:AnnotationProperty .
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:source <https://digicities.info/ontology> ;
     rdfs:comment "Digicities is a requirements-driven semantic layer that connects models to the data they need: each model states its inputs as requirements against a shared ontology, and the platform finds, checks and delivers that data from a knowledge graph. This is that shared ontology."@en ;
-    owl:versionIRI <https://digicities.info/ontology/0.7.0> ;
-    owl:versionInfo "0.7.0" .
+    owl:versionIRI <https://digicities.info/ontology/0.8.0> ;
+    owl:versionInfo "0.8.0" .
 
 dici_onto:AnnotationAttribute a owl:Class ;
     rdfs:label "Annotation Attribute" ;
