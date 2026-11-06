@@ -4288,6 +4288,25 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#hasResultFileField",
+      "name": "hasResultFileField",
+      "kind": "dataProperty",
+      "label": "has result file field",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The field of a Service's response holding a link to the file this output is in. Absent when the result is in the response or on a stream",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasTemporalValue",
       "name": "hasTemporalValue",
       "kind": "dataProperty",
