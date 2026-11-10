@@ -147,6 +147,12 @@ mapping procedure.
 - **Hierarchy:** Thing > Attribute > **ComponentAttribute**
 - **Description:** Typing marker grouping attributes that apply to a Component; lets SPARQL select all attributes of one component type via rdfs:subClassOf*
 
+### ComponentAttributeOutput
+
+- **Label:** Component-Attribute Output
+- **Hierarchy:** Thing > **ComponentAttributeOutput**
+- **Description:** What a Service returns: this attribute, for this component type. The output counterpart of a ComponentAttributeRequirement
+
 ### ComponentAttributeRequirement
 
 - **Label:** Component-Attribute Requirement
@@ -2302,6 +2308,14 @@ mapping procedure.
 - **Domain:** LiveTimeSeries
 - **Range:** DynamicAttribute
 
+### isProvidedBy
+
+- **Label:** is provided by
+- **Hierarchy:** (root)
+- **Description:** A ComponentAttributeOutput belongs to the Service that returns it
+- **Domain:** ComponentAttributeOutput
+- **Range:** Service
+
 ### isRequiredBy
 
 - **Label:** is required by
@@ -2429,6 +2443,20 @@ mapping procedure.
 - **Hierarchy:** linksComponent > **partOf**
 - **Description:** Whole-part composition: this component is part of another component
 
+### providesOutputAttribute
+
+- **Label:** provides output attribute
+- **Hierarchy:** (root)
+- **Description:** The attribute class of what a Service returns
+- **Domain:** ComponentAttributeOutput
+
+### providesOutputEntity
+
+- **Label:** provides output entity
+- **Hierarchy:** (root)
+- **Description:** The input component type a result belongs to: one value per instance of this type, for example per Building, or per Location for a whole region. Scenario for a result of the whole run
+- **Domain:** ComponentAttributeOutput
+
 ### realTimeSource
 
 - **Label:** real-time source
@@ -2546,6 +2574,14 @@ mapping procedure.
 - **Hierarchy:** (root)
 - **Description:** Kind of assumption applied when deriving this scenario (e.g. single value or series). Scenario-provenance metadata
 - **Domain:** Scenario
+- **Range:** string
+
+### atStreamAddress
+
+- **Label:** at stream address
+- **Hierarchy:** (root)
+- **Description:** The data stream a ComponentAttributeOutput is published on. Absent when the result comes back in the response
+- **Domain:** ComponentAttributeOutput
 - **Range:** string
 
 ### binFrequency
@@ -2717,6 +2753,14 @@ mapping procedure.
 - **Hierarchy:** hasTimeSeriesReference > **hasLiveTimeSeriesReference**
 - **Description:** Reference from an attribute to an external live time series feed
 
+### hasResultField
+
+- **Label:** has result field
+- **Hierarchy:** (root)
+- **Description:** The name a Service gives this output in what it returns
+- **Domain:** ComponentAttributeOutput
+- **Range:** string
+
 ### hasTemporalValue
 
 - **Label:** has temporal value
@@ -2742,6 +2786,14 @@ mapping procedure.
 - **Label:** historic time series reference of
 - **Hierarchy:** timeSeriesReferenceOf > **historicTimeSeriesReferenceOf**
 - **Description:** Inverse-direction reference: historical data describing an attribute
+
+### identifiedByField
+
+- **Label:** identified by field
+- **Hierarchy:** (root)
+- **Description:** The field of a result that names the component instance it belongs to
+- **Domain:** ComponentAttributeOutput
+- **Range:** string
 
 ### identifierValue
 

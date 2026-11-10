@@ -531,6 +531,23 @@
       "scopeNote": null
     },
     {
+      "iri": "https://digicities.info/ontology#ComponentAttributeOutput",
+      "name": "ComponentAttributeOutput",
+      "kind": "class",
+      "label": "Component-Attribute Output",
+      "parents": [
+        "Thing"
+      ],
+      "parentChainToRoot": [
+        "Thing"
+      ],
+      "comment": "What a Service returns: this attribute, for this component type. The output counterpart of a ComponentAttributeRequirement",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null
+    },
+    {
       "iri": "https://digicities.info/ontology#ComponentAttributeRequirement",
       "name": "ComponentAttributeRequirement",
       "kind": "class",
@@ -3795,6 +3812,25 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#atStreamAddress",
+      "name": "atStreamAddress",
+      "kind": "dataProperty",
+      "label": "at stream address",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The data stream a ComponentAttributeOutput is published on. Absent when the result comes back in the response",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#binFrequency",
       "name": "binFrequency",
       "kind": "dataProperty",
@@ -4233,6 +4269,25 @@
       "range": []
     },
     {
+      "iri": "https://digicities.info/ontology#hasResultField",
+      "name": "hasResultField",
+      "kind": "dataProperty",
+      "label": "has result field",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The name a Service gives this output in what it returns",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
+      "range": [
+        "string"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#hasTemporalValue",
       "name": "hasTemporalValue",
       "kind": "dataProperty",
@@ -4303,6 +4358,25 @@
       "scopeNote": null,
       "domain": [],
       "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#identifiedByField",
+      "name": "identifiedByField",
+      "kind": "dataProperty",
+      "label": "identified by field",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The field of a result that names the component instance it belongs to",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
+      "range": [
+        "string"
+      ]
     },
     {
       "iri": "https://digicities.info/ontology#identifierValue",
@@ -7955,6 +8029,25 @@
       ]
     },
     {
+      "iri": "https://digicities.info/ontology#isProvidedBy",
+      "name": "isProvidedBy",
+      "kind": "objectProperty",
+      "label": "is provided by",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "A ComponentAttributeOutput belongs to the Service that returns it",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
+      "range": [
+        "Service"
+      ]
+    },
+    {
       "iri": "https://digicities.info/ontology#isRequiredBy",
       "name": "isRequiredBy",
       "kind": "objectProperty",
@@ -8301,6 +8394,40 @@
       "examples": [],
       "scopeNote": null,
       "domain": [],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#providesOutputAttribute",
+      "name": "providesOutputAttribute",
+      "kind": "objectProperty",
+      "label": "provides output attribute",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The attribute class of what a Service returns",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
+      "range": []
+    },
+    {
+      "iri": "https://digicities.info/ontology#providesOutputEntity",
+      "name": "providesOutputEntity",
+      "kind": "objectProperty",
+      "label": "provides output entity",
+      "parents": [],
+      "parentChainToRoot": [],
+      "comment": "The input component type a result belongs to: one value per instance of this type, for example per Building, or per Location for a whole region. Scenario for a result of the whole run",
+      "definition": null,
+      "altLabels": [],
+      "examples": [],
+      "scopeNote": null,
+      "domain": [
+        "ComponentAttributeOutput"
+      ],
       "range": []
     },
     {
