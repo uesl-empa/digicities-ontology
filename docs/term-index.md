@@ -2761,6 +2761,14 @@ mapping procedure.
 - **Domain:** ComponentAttributeOutput
 - **Range:** string
 
+### hasResultFileField
+
+- **Label:** has result file field
+- **Hierarchy:** (root)
+- **Description:** The field of a Service's response holding a link to the file this output is in. Absent when the result is in the response or on a stream
+- **Domain:** ComponentAttributeOutput
+- **Range:** string
+
 ### hasTemporalValue
 
 - **Label:** has temporal value

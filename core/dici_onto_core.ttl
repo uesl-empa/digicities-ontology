@@ -845,6 +845,12 @@ dici_onto:hasResultField a owl:DatatypeProperty ;
     rdfs:domain dici_onto:ComponentAttributeOutput ;
     rdfs:range xsd:string .
 
+dici_onto:hasResultFileField a owl:DatatypeProperty ;
+    rdfs:label "has result file field" ;
+    rdfs:comment "The field of a Service's response holding a link to the file this output is in. Absent when the result is in the response or on a stream"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
 dici_onto:hasSensorMeasurementValueAttribute a owl:ObjectProperty ;
     rdfs:label "has sensor measurement value attribute"@en ;
     rdfs:comment "Links a Sensor to its Measurement Value attribute; under hasSensorAttribute"@en ;
@@ -2542,11 +2548,6 @@ dici_onto:hasFuelCarrierAttribute a owl:ObjectProperty ;
 
 qudt:Unit a owl:Class .
 
-dici_onto:ComponentAttributeOutput a owl:Class ;
-    rdfs:label "Component-Attribute Output" ;
-    rdfs:comment "What a Service returns: this attribute, for this component type. The output counterpart of a ComponentAttributeRequirement"@en ;
-    rdfs:subClassOf owl:Thing .
-
 dici_onto:EnergyCarrierFlow a owl:Class ;
     rdfs:label "Energy Carrier Flow" ;
     rdfs:comment "Flow of energy carriers between components"@en ;
@@ -2581,6 +2582,11 @@ dici_onto:hasSensorAttribute a owl:ObjectProperty ;
     rdfs:domain dici_onto:Sensor ;
     rdfs:range dici_onto:SensorAttribute ;
     rdfs:subPropertyOf dici_onto:hasDeviceAttribute .
+
+dici_onto:ComponentAttributeOutput a owl:Class ;
+    rdfs:label "Component-Attribute Output" ;
+    rdfs:comment "What a Service returns: this attribute, for this component type. The output counterpart of a ComponentAttributeRequirement"@en ;
+    rdfs:subClassOf owl:Thing .
 
 dici_onto:CurveAttribute a owl:Class ;
     rdfs:label "Curve Attribute" ;

@@ -7,7 +7,7 @@ All notable changes to the Digicities ontology are recorded here. The project fo
 Additive: a service can now state what it returns, not only what it requires.
 
 ### Added
-- **`ComponentAttributeOutput`**, with `isProvidedBy`, `providesOutputEntity`, `providesOutputAttribute`, `atStreamAddress`, `hasResultField` and `identifiedByField`: what a `Service` returns, and which input component each result belongs to (per `Building`, per `Location`, or for the whole `Scenario`). The platform has written the first four of these into workspace extensions since 2026; they are now core.
+- **`ComponentAttributeOutput`**, with `isProvidedBy`, `providesOutputEntity`, `providesOutputAttribute`, `atStreamAddress`, `hasResultField`, `hasResultFileField` and `identifiedByField`: what a `Service` returns, and which input component each result belongs to (per `Building`, per `Location`, or for the whole `Scenario`). The platform has written the first four of these into workspace extensions since 2026; they are now core.
 
 ## [0.7.0] — 2026-10-10
 

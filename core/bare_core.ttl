@@ -75,6 +75,12 @@ dici_onto:hasResultField a owl:DatatypeProperty ;
     rdfs:domain dici_onto:ComponentAttributeOutput ;
     rdfs:range xsd:string .
 
+dici_onto:hasResultFileField a owl:DatatypeProperty ;
+    rdfs:label "has result file field" ;
+    rdfs:comment "The field of a Service's response holding a link to the file this output is in. Absent when the result is in the response or on a stream"@en ;
+    rdfs:domain dici_onto:ComponentAttributeOutput ;
+    rdfs:range xsd:string .
+
 dici_onto:identifiedByField a owl:DatatypeProperty ;
     rdfs:label "identified by field" ;
     rdfs:comment "The field of a result that names the component instance it belongs to"@en ;
